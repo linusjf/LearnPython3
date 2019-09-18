@@ -10,8 +10,19 @@ def process_data(data):
     print("Data processing finished.")
     return modified_data
 
-if __name__ == "__main__":
-    data = "My data read from the Web"
+def read_data_from_web():
+    print("Reading data from the Web")
+    data = "Data from the web"
+    return data
+
+def write_data_to_database(data):
+    print("Writing data to a database")
     print(data)
+
+def main():
+    data = read_data_from_web()
     modified_data = process_data(data)
-    print(modified_data)
+    write_data_to_database(modified_data)
+
+if __name__ == "__main__":
+    main()
