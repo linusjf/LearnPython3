@@ -52,3 +52,32 @@ if not sys.version_info >= (3,5):
 
 #Print Python version in a readable format.
 print("Current Python version: ", sys.version)
+
+# splat operator
+def test(x, y, z):
+	print(x, y, z)
+
+testDict = {'x': 1, 'y': 2, 'z': 3} 
+testList = [10, 20, 30]
+
+test(*testDict)
+test(**testDict)
+test(*testList)
+
+# dictionary of expressions
+
+stdcalc = {
+	'sum': lambda x, y: x + y,
+	'subtract': lambda x, y: x - y,
+	'product': lambda x, y: x * y,
+	'division': lambda x, y: x / y,
+	'power': lambda x, y: x ** y,
+	'nthroot': lambda x, y: x ** (1/y),
+}
+
+print(stdcalc['sum'](9,3))
+print(stdcalc['subtract'](9,3))
+print(stdcalc['product'](9,3))
+print(stdcalc['division'](9,3))
+print(stdcalc['power'](9,3))
+print(stdcalc['nthroot'](9,3))
