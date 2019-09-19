@@ -35,3 +35,20 @@ testSet = {i * 2 for i in range(10)}
 print(testSet)
 print(testDict)
 
+# inspect object in python3
+test = [1, 3, 5, 7]
+print( dir(test) )
+
+# Detect Python Version At Runtime.
+
+import sys
+
+#Detect the Python version currently in use.
+    
+if not sys.version_info >= (3,5):
+    print("Sorry, you aren't running on Python 3.5\n")
+    print("Please upgrade to 3.5.\n")
+    sys.exit(1)
+
+#Print Python version in a readable format.
+print("Current Python version: ", sys.version)
