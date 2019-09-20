@@ -1,47 +1,48 @@
 #!/usr/bin/env python3
-
+"""More python tricks"""
+import sys
 # Use Of Ternary Operator For Conditional
 # Assignment.
 
-def small(a, b, c):
-    return a if a <= b and a <= c else (b if b <= a and b <= c else c)
+def small(_a, _b, _c):
+    """return smallest number"""
+    return _a if _a <= _b and _a <= _c else (_b if _b <= _a and _b <= _c else _c)
 
 print(small(1, 0, 1))
 print(small(1, 2, 2))
 print(small(2, 2, 3))
 print(small(5, 4, 3))
 
-vector = [m**2 if m > 10 else m**4 for m in range(50)]
-print(vector)
+VECTOR = [m**2 if m > 10 else m**4 for m in range(50)]
+print(VECTOR)
 
 #Multi-line strings
-multiStr = "select * from multi_row \
+MULTI_STR = "select * from multi_row \
 where row_id < 5"
-print(multiStr)
+print(MULTI_STR)
 
-multiStr = """select * from multi_row
+MULTI_STR = """select * from multi_row
 where row_id < 5"""
-print(multiStr)
+print(MULTI_STR)
 
-multiStr = ("select * from multi_row "
-            "where row_id < 5 "
-            "order by age")
-print(multiStr)
+MULTI_STR = ("select * from multi_row "
+             "where row_id < 5 "
+             "order by age")
+print(MULTI_STR)
 
 # Dictionary/Set Comprehensions.
-testDict = {i: i * i for i in range(10)}
-testSet = {i * 2 for i in range(10)}
+TEST_DICT = {i: i * i for i in range(10)}
+TEST_SET = {i * 2 for i in range(10)}
 
-print(testSet)
-print(testDict)
+print(TEST_SET)
+print(TEST_DICT)
 
 # inspect object in python3
-test = [1, 3, 5, 7]
-print(dir(test))
+TEST = [1, 3, 5, 7]
+print(dir(TEST))
 
 # Detect Python Version At Runtime.
 
-import sys
 
 #Detect the Python version currently in use.
 if not sys.version_info >= (3, 5):
@@ -53,19 +54,20 @@ if not sys.version_info >= (3, 5):
 print("Current Python version: ", sys.version)
 
 # splat operator
-def test(x, y, z):
-    print(x, y, z)
+def test(_x, _y, _z):
+    """just print"""
+    print(_x, _y, _z)
 
-testDict = {'x': 1, 'y': 2, 'z': 3}
-testList = [10, 20, 30]
+TEST_DICT = {'_x': 1, '_y': 2, '_z': 3}
+TEST_LIST = [10, 20, 30]
 
-test(*testDict)
-test(**testDict)
-test(*testList)
+test(*TEST_DICT)
+test(**TEST_DICT)
+test(*TEST_LIST)
 
 # dictionary of expressions
 
-stdcalc = {
+STDCALC = {
     'sum': lambda x, y: x + y,
     'subtract': lambda x, y: x - y,
     'product': lambda x, y: x * y,
@@ -74,10 +76,10 @@ stdcalc = {
     'nthroot': lambda x, y: x ** (1/y),
 }
 
-print(stdcalc['sum'](9,3))
-print(stdcalc['subtract'](9,3))
-print(stdcalc['product'](9,3))
-print(stdcalc['division'](9,3))
-print(stdcalc['power'](9,3))
-print(stdcalc['nthroot'](9,3))
-print(stdcalc['power'](stdcalc['nthroot'](9,3),3))
+print(STDCALC['sum'](9, 3))
+print(STDCALC['subtract'](9, 3))
+print(STDCALC['product'](9, 3))
+print(STDCALC['division'](9, 3))
+print(STDCALC['power'](9, 3))
+print(STDCALC['nthroot'](9, 3))
+print(STDCALC['power'](STDCALC['nthroot'](9, 3), 3))
