@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-x = {'a': 1, 'b': 2}
-y = {'b': 3, 'c': 4}
+"""Merge dicts"""
+X = {'a': 1, 'b': 2}
+Y = {'b': 3, 'c': 4}
 
-z = {**x, **y}
-print(z)
-z = {**y, **x}
-print(z)
+Z = {**X, **Y}
+print(Z)
+Z = {**Y, **X}
+print(Z)
