@@ -4,3 +4,5 @@ y = {'b': 3, 'c': 4}
 
 z = {**x, **y}
 print(z)
+z = {**y, **x}
+print(z)
