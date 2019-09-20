@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
+"""Best practices"""
 from time import sleep
 
 print("This is my file to demonstrate best practices.")
 
 def process_data(data):
+    """Process data function"""
     print("Beginning data processing...")
     modified_data = data + " that has been modified"
     sleep(3)
@@ -11,15 +13,18 @@ def process_data(data):
     return modified_data
 
 def read_data_from_web():
+    """Read data from web function"""
     print("Reading data from the Web")
     data = "Data from the web"
     return data
 
 def write_data_to_database(data):
+    """write data to database function"""
     print("Writing data to a database")
     print(data)
 
 def main():
+    """main function"""
     data = read_data_from_web()
     modified_data = process_data(data)
     write_data_to_database(modified_data)
