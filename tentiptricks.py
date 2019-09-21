@@ -6,37 +6,37 @@ import sys
 from collections import Counter
 
 # 1. In-Place Swapping Of Two Numbers.
-X, y = 10, 20
+X, Y = 10, 20
 
-print(X, y)
+print(X, Y)
 
-X, y = y, X
+X, Y = Y, X
 
-print(X, y)
+print(X, Y)
 
 # 2. Reversing a string in Python
 
-_a = "GeeksForGeeks"
+A = "GeeksForGeeks"
 
-print("Reverse is", _a[::-1])
+print("Reverse is", A[::-1])
 
 # 3. Create a single string from all the elements in list
 
-_a = ["Geeks", "For", "Geeks"]
+A = ["Geeks", "For", "Geeks"]
 
-print(" ".join(_a))
+print(" ".join(A))
 
 # 4. Chaining Of Comparison Operators.
 
-_n = 10
+N = 10
 
-result = 1 < _n < 20
+RESULT = 1 < N < 20
 
-print(result)
+print(RESULT)
 
-result = 1 > _n <= 9
+RESULT = 1 > N <= 9
 
-print(result)
+print(RESULT)
 
 # 4. Print The File Path Of Imported Modules.
 
@@ -46,9 +46,11 @@ print(socket)
 
 # 5. Use Of Enums In Python.
 
+# pylint: disable=too-few-public-methods
 class MyName:
     """Enum definition"""
     Geeks, For, Geeks = range(3)
+# pylint: enable=too-few-public-methods
 
 print(MyName.Geeks)
 print(MyName.For)
@@ -56,19 +58,19 @@ print(MyName.Geeks)
 
 # 6. Return Multiple Values From Functions.
 
-def x():
+def multiplicity():
     """return multiple values"""
     return 1, 2, 3, 4
 
-a, b, c, d = x()
+A, B, C, D = multiplicity()
 
-print(a, b, c, d)
+print(A, B, C, D)
 
 # 7. Find The Most Frequent Value In A List.
 
-test = [1, 2, 3, 4, 2, 2, 3, 1, 4, 4, 4]
+TEST = [1, 2, 3, 4, 2, 2, 3, 1, 4, 4, 4]
 
-print(max(set(test), key=test.count))
+print(max(set(TEST), key=TEST.count))
 
 # 8. Check The Memory Usage Of An Object.
 
@@ -78,18 +80,18 @@ print(sys.getsizeof(X))
 
 # 9. Print string N times.
 
-n = 2
+N = 2
 
-a = "GeeksforGeeks"
+A = "GeeksforGeeks"
 
-print(a * n) 
+print(A * N)
 
 # 10. Checking if two words are anagrams
 
-def is_anagram(str1, str2): 
+def is_anagram(str1, str2):
     """check if anagram"""
-    return Counter(str1) == Counter(str2) 
+    return Counter(str1) == Counter(str2)
 
 print(is_anagram('geek', 'eegk'))
 
-print(is_anagram('geek', 'peek'))     
+print(is_anagram('geek', 'peek'))
