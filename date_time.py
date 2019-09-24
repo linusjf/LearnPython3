@@ -17,6 +17,13 @@ def main():
     days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
     print("Today is day number %d" % wd_)
     print("which is a " + days[wd_])
+    now = datetime.now() #get the current date and time
+    #%c - local date and time, %x-local's date, %X- local's time
+    print(now.strftime("%c"))
+    print(now.strftime("%x"))
+    print(now.strftime("%X"))
+    print(now.strftime("%I:%M:%S %p")) # 12-Hour:Minute:Second:AM
+    print(now.strftime("%H:%M")) # 24-Hour:Minute
 
 if __name__ == "__main__":
     main()
