@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""More python tricks"""
+"""More python tricks."""
 import sys
 # Use Of Ternary Operator For Conditional
 # Assignment.
 
 
 def small(_a, _b, _c):
-    """return smallest number"""
+    """Return smallest number."""
     return _a if _a <= _b and _a <= _c else (
         _b if _b <= _a and _b <= _c else _c)
 
@@ -60,7 +60,7 @@ print("Current Python version: ", sys.version)
 
 
 def test(_x, _y, _z):
-    """just print"""
+    """Just print."""
     print(_x, _y, _z)
 
 

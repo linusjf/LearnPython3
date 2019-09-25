@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ten Tip Tricks"""
+"""Ten Tip Tricks."""
 import os
 import socket
 import sys
@@ -50,7 +50,8 @@ print(socket)
 
 
 class MyName:
-    """Enum definition"""
+    """Enum definition."""
+
     Geeks, For, Geeks = range(3)
 # pylint: enable=too-few-public-methods
 
@@ -63,7 +64,7 @@ print(MyName.Geeks)
 
 
 def multiplicity():
-    """return multiple values"""
+    """Return multiple values."""
     return 1, 2, 3, 4
 
 
@@ -95,7 +96,7 @@ print(A * N)
 
 
 def is_anagram(str1, str2):
-    """check if anagram"""
+    """Check if anagram."""
     return Counter(str1) == Counter(str2)
 
 

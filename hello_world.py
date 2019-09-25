@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""First program in Python3"""
+"""First program in Python3."""
 
 
 def main():
-    """Main function"""
+    """Print Hello,World."""
     print("Hello, World!")
 
 

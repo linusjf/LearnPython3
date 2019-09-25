@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sort dictionary"""
+"""Sort dictionary."""
 import operator
 XS = {'a': 4, 'b': 3, 'c': 2, 'd': 1}
 

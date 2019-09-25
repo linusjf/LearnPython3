@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-""" DateTime """
+"""DateTime."""
 from datetime import date
 from datetime import datetime
 from datetime import timedelta
 
 
 def main():
-    """ DATETIME OBJECTS """
+    """DATETIME OBJECTS."""
     # Get today's date from datetime class
     today = datetime.now()
     print(today)
