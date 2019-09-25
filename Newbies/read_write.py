@@ -4,8 +4,9 @@ import os
 from os import path
 import shutil
 import datetime
-from datetime import date, time, timedelta
+from datetime import date, time
 import time
+
 
 def main():
     """Execute main."""
@@ -49,6 +50,9 @@ def main():
         _t = time.ctime(path.getmtime("guru99.txt.bak"))
         print(_t)
         print(datetime.datetime.fromtimestamp(path.getmtime("guru99.txt.bak")))
+        # rename the original file
+        os.rename('guru99.txt', 'career.guru99.txt')
+
 
 if __name__ == "__main__":
     main()
