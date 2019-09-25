@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Calendar example """
+"""Calendar example."""
 import calendar
 # Create a plain text calendar
 CAL = calendar.TextCalendar(calendar.MONDAY)

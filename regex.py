@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Regex expressions """
+"""Regex expressions."""
 import re
 XX = "guru99,education is fun"
 R1 = re.findall(r"^\w+", XX)

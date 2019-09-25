@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Named tuple example """
+"""Named tuple example."""
 from collections import namedtuple
 
 Car = namedtuple('Car', 'color mileage')
