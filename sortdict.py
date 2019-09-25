@@ -9,6 +9,10 @@ print(sorted(XS.items(), key=lambda x: x[1]))
 
 print(sorted(XS.items(), key=operator.itemgetter(1)))
 
-XS = {"bash":"unix", "command":"windows", "powershell":"windows", "korn":"unix"}
+XS = {
+    "bash": "unix",
+    "command": "windows",
+    "powershell": "windows",
+    "korn": "unix"}
 print(sorted(XS.items(), key=lambda x: x[0]))
 print(sorted(XS.items(), key=lambda x: x[1]))

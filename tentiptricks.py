@@ -47,10 +47,13 @@ print(socket)
 # 5. Use Of Enums In Python.
 
 # pylint: disable=too-few-public-methods
+
+
 class MyName:
     """Enum definition"""
     Geeks, For, Geeks = range(3)
 # pylint: enable=too-few-public-methods
+
 
 print(MyName.Geeks)
 print(MyName.For)
@@ -58,9 +61,11 @@ print(MyName.Geeks)
 
 # 6. Return Multiple Values From Functions.
 
+
 def multiplicity():
     """return multiple values"""
     return 1, 2, 3, 4
+
 
 A, B, C, D = multiplicity()
 
@@ -88,9 +93,11 @@ print(A * N)
 
 # 10. Checking if two words are anagrams
 
+
 def is_anagram(str1, str2):
     """check if anagram"""
     return Counter(str1) == Counter(str2)
+
 
 print(is_anagram('geek', 'eegk'))
 
