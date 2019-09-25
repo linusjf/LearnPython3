@@ -1,3 +1,28 @@
 #!/usr/bin/env bash
-autopep8 --in-place --aggressive *.py
-prospector . -o text -M -F -D | tee linter.out
+
+#######################################################################
+#@author: Linus Fernandes(linusfernandes @gmail.com)
+# @file: formatandlint
+## @created: Wed 25 Sep 2019.
+# @copyright: Copyright(c) Linus Fernandes
+## @description: 
+######################################################################
+usage() {
+        echo "usage: formatandlint dir"
+        echo "dir - Project directory, must exist"
+        exit 1
+}
+
+proj=$1
+declare -i SUCCESS=0
+if [ -z "$proj" ] || [ ! -d "$proj" ]
+  then
+    usage
+else
+    echo "$proj"
+    autopep8 --in-place --aggressive $(find $proj -name "*.py")
+    SUCCESS=SUCCESS+$?
+    prospector "$proj" -o text -M -F | tee linter.out
+    SUCCESS=SUCCESS+$?
+fi
+exit $SUCCESS
