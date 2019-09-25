@@ -13,6 +13,7 @@ XS = {
     "bash": "unix",
     "command": "windows",
     "powershell": "windows",
-    "korn": "unix"}
+    "korn": "unix",
+}
 print(sorted(XS.items(), key=lambda x: x[0]))
 print(sorted(XS.items(), key=lambda x: x[1]))
