@@ -3,7 +3,9 @@
 import os
 from os import path
 import shutil
-
+import datetime
+from datetime import date, time, timedelta
+import time
 
 def main():
     """Execute main."""
@@ -43,7 +45,10 @@ def main():
         shutil.copy(src, dst)
         # copy over the permissions,modification
         shutil.copystat(src, dst)
-
+        # Get the modification time
+        _t = time.ctime(path.getmtime("guru99.txt.bak"))
+        print(_t)
+        print(datetime.datetime.fromtimestamp(path.getmtime("guru99.txt.bak")))
 
 if __name__ == "__main__":
     main()
