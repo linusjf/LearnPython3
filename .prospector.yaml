@@ -1,3 +1,5 @@
+doc-warnings: true
+
 pep257:
   run: true
   disable:
