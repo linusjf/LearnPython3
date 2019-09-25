@@ -2,6 +2,7 @@
 """ Example of class definition"""
 # Example file for working with classes
 
+
 class MyClass():
     """ Class definition """
 
@@ -14,6 +15,7 @@ class MyClass():
         """ Method 2 """
         print("Software Testing:" + some_string)
     # pylint: enable=no-self-use
+
 
 class ChildClass(MyClass):
     """ Class definition """
@@ -30,6 +32,8 @@ class ChildClass(MyClass):
     # pylint: enable=no-self-use
 
 # pylint: disable=too-few-public-methods
+
+
 class User:
     """ Class User definition """
     name = ""
@@ -43,6 +47,7 @@ class User:
         print("Welcome to Guru99, " + self.name)
 # pylint: enable=too-few-public-methods
 
+
 def main():
     """ exercise the class methods """
     _c = MyClass()
@@ -53,6 +58,7 @@ def main():
     _c.method2("Testing is fun")
     user = User("Alex")
     user.say_hello()
+
 
 if __name__ == "__main__":
     main()
