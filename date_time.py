@@ -23,7 +23,8 @@ def main():
         "thursday",
         "friday",
         "saturday",
-        "sunday"]
+        "sunday",
+    ]
     print("Today is day number %d" % wd_)
     print("which is a " + days[wd_])
     now = datetime.now()  # get the current date and time
