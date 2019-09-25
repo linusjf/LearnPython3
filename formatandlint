@@ -20,9 +20,9 @@ if [ -z "$proj" ] || [ ! -d "$proj" ]
     usage
 else
     echo "$proj"
-    autopep8 --in-place --aggressive $(find $proj -name "*.py")
+    autopep8 --in-place --aggressive -r "$proj"
     SUCCESS=SUCCESS+$?
-    prospector "$proj" -o text -M -F | tee linter.out
+    prospector "$proj" -o grouped -M -F -S | tee linter.out
     SUCCESS=SUCCESS+$?
 fi
 exit $SUCCESS
