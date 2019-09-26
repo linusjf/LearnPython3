@@ -11,7 +11,7 @@ print("")
 print("†††††††††††††††††††††††††††††††††††††††")
 print("")
 
-s = """Gur Mra bs Clguba, ol Gvz Crgref
+S = """Gur Mra bs Clguba, ol Gvz Crgref
 
 Ornhgvshy vf orggre guna htyl.
 Rkcyvpvg vf orggre guna vzcyvpvg.
@@ -36,5 +36,5 @@ Anzrfcnprf ner bar ubaxvat terng vqrn -- yrg'f qb zber bs gubfr!"""
 D = {}
 for c in (65, 97):
     for i in range(26):
-        D[chr(i+c)] = chr((i+13) % 26 + c)
-print("".join([D.get(c, c) for c in s]))
+        D[chr(i + c)] = chr((i + 13) % 26 + c)
+print("".join([D.get(c, c) for c in S]))

@@ -22,7 +22,9 @@ else
     echo "$proj"
     autopep8 --in-place --aggressive -r "$proj"
     SUCCESS=SUCCESS+$?
-    prospector "$proj" -o grouped -M -F -S | tee linter.out
+    pylint "$proj" | tee linter.out
+    SUCCESS=SUCCESS+$?
+    prospector "$proj" | tee -a linter.out
     SUCCESS=SUCCESS+$?
 fi
 exit $SUCCESS

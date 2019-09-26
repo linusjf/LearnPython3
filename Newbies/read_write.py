@@ -4,8 +4,7 @@ import os
 from os import path
 import shutil
 import datetime
-from datetime import date, time
-import time
+from datetime import time
 
 
 def main():
