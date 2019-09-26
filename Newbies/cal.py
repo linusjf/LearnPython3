@@ -25,7 +25,8 @@ for name in calendar.month_name:
 for day in calendar.day_name:
     print(day)
 
-# calculate days based on a rule: For instance an audit day on the second Monday of every month
+# calculate days based on a rule:
+# For instance an audit day on the second Monday of every month
 # Figure out what days that would be for each month, we can use the script
 # as shown here
 

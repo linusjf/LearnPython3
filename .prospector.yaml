@@ -1,4 +1,14 @@
 doc-warnings: true
+test-warnings: true
+strictness: veryhigh
+
+pylint:
+  run: true
+  full: true
+
+pep8:
+  run: true
+  full: true
 
 pep257:
   run: true

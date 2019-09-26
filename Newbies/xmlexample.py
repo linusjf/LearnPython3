@@ -2,6 +2,7 @@
 """Xml example."""
 import xml.dom.minidom
 
+
 def main():
     """Execute main."""
     # use the parse() function to load and parse an XML file
@@ -26,6 +27,7 @@ def main():
     print("%d expertise:" % expertise.length)
     for skill in expertise:
         print(skill.getAttribute("name"))
+
 
 if __name__ == "__main__":
     main()

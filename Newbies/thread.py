@@ -8,18 +8,20 @@ class ThreadTester(threading.Thread):
     """Thread Tester class."""
 
     def __init__(self, identifier, name, i):
+        """Construct the instance."""
         threading.Thread.__init__(self)
         self._id = identifier
         self.name = name
         self.i = i
 
     def run(self):
+        """Run the thread."""
         thread_test(self.name, self.i, 5)
         print("%s has finished execution " % self.name)
 
 
 def thread_test(name, wait, i):
-    """test a thread"""
+    """Test a thread."""
     while i:
         time.sleep(wait)
         print("Running %s \n" % name)
