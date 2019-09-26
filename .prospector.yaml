@@ -3,7 +3,7 @@ test-warnings: true
 strictness: veryhigh
 
 pylint:
-  run: true
+  run: false
   full: true
 
 pep8:
