@@ -4,6 +4,7 @@ class_defn.py
 cubing.py
 date_time.py
 execution_methods.py
+fill_a_story.py < story.txt
 formatting.py < broccoli.txt
 hello_world.py
 mat.py
