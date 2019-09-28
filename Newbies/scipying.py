@@ -9,7 +9,7 @@ from scipy.special import comb, exp10, perm
 COM = comb(5, 2, exact=False, repetition=True)
 print(COM)
 
-#find permutation of 5, 2 using perm (N, k) function
+# find permutation of 5, 2 using perm (N, k) function
 PER = perm(5, 2, exact=True)
 print(PER)
 
