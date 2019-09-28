@@ -10,6 +10,7 @@ mat.py
 mergedict.py
 moretricks.py
 namedtuple.py
+pigsqueal.py < oink.txt
 read_write.py
 regex.py
 scipying.py
