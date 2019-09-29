@@ -5,25 +5,33 @@ from threading import Thread
 from collections.abc import Iterator
 
 # pylint: disable=too-few-public-methods
+
+
 class ThreadSafeIter(Iterator):
-    """Takes an iterator/generator and makes it thread-safe by
-    serializing call to the `next` method of given iterator/generator.
     """
+    Take an iterator/generator and make it thread-safe.
+
+    Serialize call to the `next` method of given iterator/generator.
+    """
+
     def __init__(self, iterator):
+        """Initialise object."""
         self._it = iterator.__iter__()
         self.lock = Lock()
 
     def __next__(self):
+        """Get next object."""
         with self.lock:
             return self._it.__next__()
 # pylint: enable=too-few-public-methods
 
+
 def threadsafe_generator(_f):
-    """A decorator that takes a generator function and makes it thread-safe.
-    """
+    """Decorate a generator function thread-safe."""
     def gen(*_a, **_kw):
         return ThreadSafeIter(_f(*_a, **_kw))
     return gen
+
 
 @threadsafe_generator
 def count():
@@ -34,6 +42,8 @@ def count():
         yield i
 
 # pylint: disable=too-few-public-methods
+
+
 class Counter(Iterator):
     """Counter class."""
 
