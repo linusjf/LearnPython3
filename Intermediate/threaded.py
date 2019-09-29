@@ -22,7 +22,7 @@ class Counter:
 def loop(_func, _n):
     """Run the given function n times in a loop.
     """
-    for i in range(_n):
+    for _ in range(_n):
         _func()
 
 def run(_f, repeats=1000, nthreads=10):
