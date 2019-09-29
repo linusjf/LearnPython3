@@ -19,6 +19,7 @@ pep257:
     # require docstring. In this case, `pep257` will fail because it
     # will say the docstring is required.
     - D203
+    - D212
   enable:
     # pydocstyle
     - D401
