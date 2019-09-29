@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Infinite looper with send."""
 
+
 def infinite_looper(objects):
     """Loop indefinitely."""
     count = 0
@@ -13,7 +14,9 @@ def infinite_looper(objects):
         else:
             count += 1
 
+
 X = infinite_looper("A string with some words")
 print(next(X))
 print(X.send(9))
 print(X.send(12))
+print(X.send(-10))
