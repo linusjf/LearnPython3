@@ -4,9 +4,13 @@ from threading import Lock
 from collections.abc import Iterator
 
 # pylint: disable=too-few-public-methods
+
+
 class LockedIterator(Iterator):
     """Locked Iterator."""
+
     def __init__(self, _it):
+        """Initialise object."""
         self.lock = Lock()
         self._it = _it.__iter__()
 
@@ -20,7 +24,8 @@ class LockedIterator(Iterator):
 
 # pylint: enable=too-few-public-methods
 
-GEN = [x*2 for x in [1, 2, 3, 4]]
+
+GEN = [x * 2 for x in [1, 2, 3, 4]]
 
 for _ in GEN:
     print(_)
