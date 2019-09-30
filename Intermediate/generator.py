@@ -2,6 +2,8 @@
 """Read CSV file using generator."""
 import sys
 import random
+from threading import Timer
+from locked import LockedIterator
 
 
 def csv_reader(file_name):
@@ -14,7 +16,10 @@ def finite_sequence(limit):
     """Generate finite sequence."""
     num = 0
     while num < limit:
-        yield num
+        _x = yield num
+        if _x is not None:
+            print("Ending iterator...")
+            return
         num += 1
 
 
@@ -42,7 +47,10 @@ def run_finite_seq(rand):
 
 def run_finite_palindromes_sixdigits(rand):
     """Run finite sequence of palindromes."""
-    for i in finite_sequence(rand):
+    sequencer = LockedIterator(finite_sequence(rand))
+    _timer = Timer(1, sequencer.send, ['anything'])
+    _timer.start()
+    for i in sequencer:
         pal = is_palindrome(i)
         if pal:
             if len(str(pal)) <= 6:
