@@ -15,6 +15,7 @@ class Test:
     def check(self, _a, _b, _c):
         """Repeat b 100 times in string."""
         self.str = _b * 100
+        # ensures that above is run only once
         self.check = self.check_post
     # pylint: enable=method-hidden
 
