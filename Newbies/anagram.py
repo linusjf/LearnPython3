@@ -2,8 +2,9 @@
 """Anagrams."""
 from collections import Counter
 
+
 def anagram(first, second):
-    """Returns whether second is anagram of first."""
+    """Return whether second is anagram of first."""
     return Counter(first) == Counter(second)
 
 

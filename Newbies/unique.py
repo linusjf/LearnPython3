@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Check for uniqueness in set."""
+
+
 def all_unique(lst):
-    """Returns whether list is unique."""
+    """Return whether list contains unique elements."""
     return len(lst) == len(set(lst))
 
 
