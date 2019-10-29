@@ -4,3 +4,5 @@
 *.bak
 *.zip
 *.mat
+**/__pycache__/**
+**/.mypy_cache/**
