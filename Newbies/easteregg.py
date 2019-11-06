@@ -1,3 +1,4 @@
 #!/usr/bin/env python
 """Easter egg."""
-import antigravity
+# pylint: disable=unused-import
+import antigravity  # noqa: F401

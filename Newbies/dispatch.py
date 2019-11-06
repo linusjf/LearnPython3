@@ -3,27 +3,27 @@
 # Because Python has first-class functions they can
 # be used to emulate switch/case statements
 
-def dispatch_if(operator, x, y):
+
+def dispatch_if(operator, _x, _y):
     """Use switch to call operator."""
     if operator == 'add':
-        return x + y
-    elif operator == 'sub':
-        return x - y
-    elif operator == 'mul':
-        return x * y
-    elif operator == 'div':
-        return x / y
-    else:
-        return None
+        return _x + _y
+    if operator == 'sub':
+        return _x - _y
+    if operator == 'mul':
+        return _x * _y
+    if operator == 'div':
+        return _x / _y
+    return None
 
 
-def dispatch_dict(operator, x, y):
+def dispatch_dict(operator, _x, _y):
     """Use dictionary to dispatch operator."""
     return {
-        'add': lambda: x + y,
-        'sub': lambda: x - y,
-        'mul': lambda: x * y,
-        'div': lambda: x / y,
+        'add': lambda: _x + _y,
+        'sub': lambda: _x - _y,
+        'mul': lambda: _x * _y,
+        'div': lambda: _x / _y,
     }.get(operator, lambda: None)()
 
 
