@@ -1,7 +1,6 @@
 #!/usr/bin/env python
-"""Python's list slice syntAx can be used without indices
-for a few fun and useful things:
-You can clear all elements from a list:"""
+"""Python's list slice syntax can be used without indices."""
+
 LST = [1, 2, 3, 4, 5]
 del LST[:]
 print(LST)
