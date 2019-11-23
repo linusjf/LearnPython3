@@ -3,8 +3,9 @@ test-warnings: true
 strictness: veryhigh
 
 pylint:
-  run: false
-  full: true
+  run: true
+  disable:
+    -E0001
 
 pep8:
   run: true
@@ -23,3 +24,6 @@ pep257:
   enable:
     # pydocstyle
     - D401
+
+pyflakes:
+  run: false

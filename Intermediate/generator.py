@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Read CSV file using generator."""
 import sys
-import random
+from random import randint
 from threading import Timer
 from locked import LockedIterator
 
@@ -75,6 +75,6 @@ for row in CSV_GEN:
 
 print(f"Row count is {ROW_COUNT}")
 
-RAND = random.randint(0, sys.maxsize)
+RAND = randint(0, sys.maxsize)
 
 run_finite_palindromes_sixdigits(RAND)
