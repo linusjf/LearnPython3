@@ -19,11 +19,13 @@ if [ -z "$proj" ] || [ ! -d "$proj" ]
   then
     usage
 else
-    echo "$proj"
-    autopep8 --in-place --aggressive -r "$proj"
-   SUCCESS=SUCCESS+$?
-   pylint "$proj" -r yes -f colorized | tee linter.out
-   SUCCESS=SUCCESS+$?
+  echo "$proj"
+  autopep8 --in-place --aggressive -r "$proj" | tee linter.out
+  SUCCESS=SUCCESS+$?
+  pep257 --explain --source --count "$proj" | tee -a linter.out
+  SUCCESS=SUCCESS+$?
+  pylint "$proj" -r yes -f colorized | tee -a linter.out
+  SUCCESS=SUCCESS+$?
 #    prospector "$proj" | tee -a linter.out
 #   SUCCESS=SUCCESS+$?
 fi
