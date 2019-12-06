@@ -52,11 +52,11 @@ print(socket)
 class MyName:
     """Enum definition."""
 
-    Geeks, For, Geeks = range(3)
+    Geek, For, Geeks = range(3)
 # pylint: enable=too-few-public-methods
 
 
-print(MyName.Geeks)
+print(MyName.Geek)
 print(MyName.For)
 print(MyName.Geeks)
 
