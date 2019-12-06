@@ -7,7 +7,7 @@ pylint:
   disable:
 
 pep8:
-  run: false
+  run: true
   full: true
 
 pep257:
