@@ -2,14 +2,16 @@
 """Display structure."""
 import numpy as np
 
+
 def make_x(_n):
     """Make result."""
     result = np.zeros((_n, _n))
     for i in range(_n):
         for j in range(_n):
-            if i == j or (i + j == _n-1):
+            if i == j or (i + j == _n - 1):
                 result[i, j] = 1.0
     return result
+
 
 def main():
     """Start program."""
@@ -32,6 +34,7 @@ def main():
         print("Error: " + str(type(_e)))
 
     print("\nEnd demo \n")
+
 
 if __name__ == "__main__":
     main()
