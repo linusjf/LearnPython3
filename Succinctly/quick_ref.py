@@ -68,98 +68,110 @@ def show_matrix(_m, _decimals):
 def main():
     """Start program."""
     print("\nBegin quick ref demo \n")
-    ARR_A = np.array([3.0, 2.0, 0.0, 1.0])
+    
     # create array of float64
-    ARR_B = np.zeros(4, dtype=np.int32)
+    arr_a = np.array([3.0, 2.0, 0.0, 1.0])
+
+    print(arr_a)
+
     # create int array [0, 0, 0, 0]
-    B = 1.0 in ARR_A
+    arr_b = np.zeros(4, dtype=np.int32)
+    print(arr_b)
+
     # search array using "in": True
-    RESULT = np.where(ARR_A == 1.0)
+    _b = 1.0 in arr_a
+    print(_b)
+
     # result is (array([3]),)
-    ARR_S = np.sort(ARR_A, kind="quicksort")
+    _result = np.where(arr_a == 1.0)
+    print(_result)
     # sort array: [0.0, 1.0, 2.0, 3.0]
-    ARR_R = ARR_S[::-1]
+    arr_s = np.sort(arr_a, kind="quicksort")
+    print(arr_s)
     # reverse: [3.0, 2.0, 1.0, 0.0]
-    np.random.seed(0)
+    arr_r = arr_s[::-1]
+    print(arr_r)
     # set seed for reproducibility
-    np.random.shuffle(ARR_R)
+    np.random.seed(0)
     # randomize content order
+    np.random.shuffle(arr_r)
 
     # copy array by reference
-    ARR_REF = ARR_A
+    arr_ref = arr_a
     # copy by view reference
-    ARR_V = ARR_A.view()
+    arr_v = arr_a.view()
     # copy array by value
-    ARR_D = np.copy(ARR_A)
-    ARR_E = ARR_A + ARR_B
+    arr_d = np.copy(arr_a)
     # add arrays
+    arr_e = arr_a + arr_b
 
-    M_A = np.matrix([[1.0, 2.0], [3.0, 4.0]])
     # matrix-style 2x2 matrix
-    M_B = np.array([[8, 7], [6, 5]])
+    m_a = np.matrix([[1.0, 2.0], [3.0, 4.0]])
+    m_b = np.array([[8, 7], [6, 5]])
     # ndarray-style 2x2 matrix
-    M_C = np.zeros((2, 2), dtype=np.int32)
+    m_c = np.zeros((2, 2), dtype=np.int32)
     # ndarray 2x2 matrix all zeroes
     try:
         # try-except
-        M = np.loadtxt("foo.txt")
+        _m = np.loadtxt("foo.txt")
         # matrix from file
     except IOError as _e:
         print("Unable to open file: " + str(_e))
 
-    M_E = M_A.transpose()
     # matrix transposition
-    D = spla.det(M_A)
-
+    m_e = m_a.transpose()
     # matrix determinant
-    M_I = np.linalg.inv(M_A)
-    # matrix inverse
+    _d = spla.det(m_a)
 
-    M_IDTY = np.eye(2)
+    # matrix inverse
+    m_i = np.linalg.inv(m_a)
 
     # identity 2x2 matrix
-    M_M = np.dot(M_A, M_I)
+    m_idty = np.eye(2)
 
     # matrix multiplication
-    B = np.allclose(M_M, M_IDTY, 1.0e-5)
+    m_m = np.dot(m_a, m_i)
+
     # matrix equality by value
-    M_X = M_A + np.array([5.0, 8.0])
+    _b = np.allclose(m_m, m_idty, 1.0e-5)
     # broadcasting
-    P_IT = it.permutations(range(3))
+    m_x = m_a + np.array([5.0, 8.0])
+    
     # permutations iterator
-    START_T = time.perf_counter()
+    p_it = it.permutations(range(3))
+    start_t = time.perf_counter()
     # timing
-    for P in P_IT:
-        print(P)
-    END_T = time.perf_counter()
-    ELAP = END_T - START_T
-    print("elapsed = " + str(ELAP) + "secs")
-
+    for _p in p_it:
+        print(_p)
+    end_t = time.perf_counter()
+    _elap = end_t - start_t
     # string concatenation
+    print("elapsed = " + str(_elap) + "secs")
 
-    PC = Permutation(3)
+
     # instantiate a custom class
-    print(PC.as_string())
+    _pc = Permutation(3)
     # instance method call
-    NF = Permutation.my_fact(3)
+    print(_pc.as_string())
     # static method call
-    ARR = np.array([1.0, 3.0, 5.0, 7.0])
+    _nf = Permutation.my_fact(3)
+    _arr = np.array([1.0, 3.0, 5.0, 7.0])
 
     # a sorted array
-    II = np.searchsorted(ARR, 2.0)
+    _ii = np.searchsorted(_arr, 2.0)
     # binary search
-    if II < len(ARR_S) and ARR_S[II] == 2.0:
+    if _ii < len(arr_s) and arr_s[_ii] == 2.0:
         # somewhat tricky return
         print("2.0 found")
 
-    (PERM, LOW, UPP) = spla.lu(M_A)
     # matrix LU decomposition
-    MED = np.median(ARR_A)
+    (_perm, _low, _upp) = spla.lu(m_a)
     # statistics function
-    RV = np.random.normal(0.0, 1.0)
+    _med = np.median(ARR_A)
     # random variable generation
-    G = ss.gamma(3.5)
+    _rv = np.random.normal(0.0, 1.0)
     # advanced math function
+    g = ss.gamma(3.5)
 
     print("\nEnd quick reference \n")
 
