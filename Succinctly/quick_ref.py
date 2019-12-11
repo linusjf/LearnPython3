@@ -10,12 +10,14 @@ import numpy as np
 import scipy.linalg as spla
 # advanced functions like gamma
 import scipy.special as ss
+# pylint: disable=W0611
 # math constants like e
 import scipy.constants as sc
 # functions for integration
 import scipy.integrate as si
 # functions for optimization
 import scipy.optimize as so
+# pylint: enable=W0611
 
 
 class Permutation:
@@ -65,10 +67,12 @@ def show_matrix(_m, _decimals):
             print("%." + str(_decimals) % _m[i, j])
         print("")
 
+
+# pylint: disable=R0914, R0915
 def main():
     """Start program."""
     print("\nBegin quick ref demo \n")
-    
+
     # create array of float64
     arr_a = np.array([3.0, 2.0, 0.0, 1.0])
 
@@ -98,47 +102,63 @@ def main():
 
     # copy array by reference
     arr_ref = arr_a
+    print(arr_ref)
     # copy by view reference
     arr_v = arr_a.view()
+    print(arr_v)
     # copy array by value
     arr_d = np.copy(arr_a)
+    print(arr_d)
     # add arrays
     arr_e = arr_a + arr_b
+    print(arr_e)
 
     # matrix-style 2x2 matrix
     m_a = np.matrix([[1.0, 2.0], [3.0, 4.0]])
+    print(m_a)
     m_b = np.array([[8, 7], [6, 5]])
+    print(m_b)
     # ndarray-style 2x2 matrix
     m_c = np.zeros((2, 2), dtype=np.int32)
+    print(m_c)
     # ndarray 2x2 matrix all zeroes
     try:
         # try-except
         _m = np.loadtxt("foo.txt")
+        print(_m)
         # matrix from file
     except IOError as _e:
         print("Unable to open file: " + str(_e))
 
     # matrix transposition
     m_e = m_a.transpose()
+    print(m_e)
     # matrix determinant
     _d = spla.det(m_a)
+    print(_d)
 
     # matrix inverse
     m_i = np.linalg.inv(m_a)
+    print(m_i)
 
     # identity 2x2 matrix
     m_idty = np.eye(2)
+    print(m_idty)
 
     # matrix multiplication
     m_m = np.dot(m_a, m_i)
+    print(m_m)
 
     # matrix equality by value
     _b = np.allclose(m_m, m_idty, 1.0e-5)
+    print(_b)
     # broadcasting
     m_x = m_a + np.array([5.0, 8.0])
-    
+    print(m_x)
+
     # permutations iterator
     p_it = it.permutations(range(3))
+    print(p_it)
     start_t = time.perf_counter()
     # timing
     for _p in p_it:
@@ -148,17 +168,19 @@ def main():
     # string concatenation
     print("elapsed = " + str(_elap) + "secs")
 
-
     # instantiate a custom class
     _pc = Permutation(3)
     # instance method call
     print(_pc.as_string())
     # static method call
     _nf = Permutation.my_fact(3)
+    print(_nf)
     _arr = np.array([1.0, 3.0, 5.0, 7.0])
+    print(_arr)
 
     # a sorted array
     _ii = np.searchsorted(_arr, 2.0)
+    print(_ii)
     # binary search
     if _ii < len(arr_s) and arr_s[_ii] == 2.0:
         # somewhat tricky return
@@ -166,12 +188,19 @@ def main():
 
     # matrix LU decomposition
     (_perm, _low, _upp) = spla.lu(m_a)
+    print(_perm)
+    print(_low)
+    print(_upp)
     # statistics function
-    _med = np.median(ARR_A)
+    _med = np.median(arr_a)
+
+    print(_med)
     # random variable generation
     _rv = np.random.normal(0.0, 1.0)
+    print(_rv)
     # advanced math function
-    g = ss.gamma(3.5)
+    _g = ss.gamma(3.5)
+    print(_g)
 
     print("\nEnd quick reference \n")
 
