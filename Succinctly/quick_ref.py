@@ -104,7 +104,7 @@ def main():
         # try-except
         M = np.loadtxt("foo.txt")
         # matrix from file
-    except ValueError as _e:
+    except IOError as _e:
         print("Unable to open file: " + str(_e))
 
     M_E = M_A.transpose()
