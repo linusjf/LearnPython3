@@ -99,6 +99,7 @@ def main():
     np.random.seed(0)
     # randomize content order
     np.random.shuffle(arr_r)
+    print(arr_r)
 
     # copy array by reference
     arr_ref = arr_a
@@ -116,23 +117,25 @@ def main():
     # matrix-style 2x2 matrix
     m_a = np.matrix([[1.0, 2.0], [3.0, 4.0]])
     print(m_a)
+    # ndarray-style 2x2 matrix
     m_b = np.array([[8, 7], [6, 5]])
     print(m_b)
-    # ndarray-style 2x2 matrix
+    # ndarray 2x2 matrix all zeroes
     m_c = np.zeros((2, 2), dtype=np.int32)
     print(m_c)
-    # ndarray 2x2 matrix all zeroes
+
+    # matrix from file
     try:
         # try-except
         _m = np.loadtxt("foo.txt")
         print(_m)
-        # matrix from file
     except IOError as _e:
         print("Unable to open file: " + str(_e))
 
     # matrix transposition
     m_e = m_a.transpose()
     print(m_e)
+
     # matrix determinant
     _d = spla.det(m_a)
     print(_d)
@@ -145,20 +148,21 @@ def main():
     m_idty = np.eye(2)
     print(m_idty)
 
-    # matrix multiplication
+    # matrix multiplication into inverse
     m_m = np.dot(m_a, m_i)
     print(m_m)
 
     # matrix equality by value
     _b = np.allclose(m_m, m_idty, 1.0e-5)
     print(_b)
+
     # broadcasting
     m_x = m_a + np.array([5.0, 8.0])
     print(m_x)
 
     # permutations iterator
     p_it = it.permutations(range(3))
-    print(p_it)
+    print(str(p_it))
     start_t = time.perf_counter()
     # timing
     for _p in p_it:
@@ -181,6 +185,7 @@ def main():
     # a sorted array
     _ii = np.searchsorted(_arr, 2.0)
     print(_ii)
+
     # binary search
     if _ii < len(arr_s) and arr_s[_ii] == 2.0:
         # somewhat tricky return
@@ -191,13 +196,15 @@ def main():
     print(_perm)
     print(_low)
     print(_upp)
+
     # statistics function
     _med = np.median(arr_a)
-
     print(_med)
+
     # random variable generation
     _rv = np.random.normal(0.0, 1.0)
     print(_rv)
+
     # advanced math function
     _g = ss.gamma(3.5)
     print(_g)
