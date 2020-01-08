@@ -13,7 +13,7 @@ def my_print(arr, cols, dec):
         # alt: for x in arr
         if i > 0 and i % cols == 0:
             print("")
-        print(fmt % arr[i] + ",")
+        print(fmt % arr[i],end=" ")
     print("")
 
 # =====
