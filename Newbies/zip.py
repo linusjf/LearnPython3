@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Zipping it up."""
 from os import path
 from shutil import make_archive
 from zipfile import ZipFile
-
 
 # Check if file exists
 if path.exists("career.guru99.txt"):

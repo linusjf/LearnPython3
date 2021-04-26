@@ -5,7 +5,9 @@ from graphviz import Digraph
 
 def main():
     """Execute main."""
-    dot = Digraph(comment='The Round Table')
+    dot = Digraph(comment='The Round Table',
+                  format='png',
+                  node_attr={'shape': 'plaintext'})
     dot.node('A', 'King Arthur')
     dot.node('B', 'Sir Bedevere the Wise')
     dot.node('L', 'Sir Lancelot the Brave')
