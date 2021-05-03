@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import pprint
 
-document = "Human machine interface for lab abc computer applications"
 master_recs = [
 "Lumiere Technologies",
 "Mendes Metal",
@@ -66,7 +65,6 @@ for rec in master_recs:
     print(rec + " bag of words: \n")
     print(tfidf[query_bow])
     sims = index[tfidf[query_bow]]
-    #print(list(enumerate(sims)))
 
     for document_number, score in sorted(enumerate(sims), key=lambda x: x[1], reverse=True):
         if score > 0.0:
