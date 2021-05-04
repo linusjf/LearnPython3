@@ -56,6 +56,7 @@ tfidf = models.TfidfModel(bow_corpus)
 
 import Levenshtein
 from gensim import similarities
+from math import sqrt
 
 index = similarities.SparseMatrixSimilarity(tfidf[bow_corpus], num_features=noOfFeatures)
 
@@ -74,4 +75,8 @@ for rec in master_recs:
             leven_score = 1 - leven / max(len(rec),len(text_corpus[document_number]))
             print("Levenshtein normalised score: " + str(leven_score))
             wt_score = (score + leven_score) / 2
-            print("Weighted score: " + str(wt_score))
+            print("Mean Weighted score: " + str(wt_score))
+            geom_wt_score = sqrt(score * leven_score)
+            print("Geometric Weighted score: " + str(geom_wt_score))
+            harmonic_wt_score = 1 / (1 / score + 1 / leven_score)
+            print("Harmonic Weighted score: " + str(harmonic_wt_score))
