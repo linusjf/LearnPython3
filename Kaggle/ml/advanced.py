@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 # Load the data
 data = pd.read_csv('melb_data.csv')
-
+print(data.head())
 # Select target
 y = data.Price
 
@@ -74,3 +74,13 @@ imputed_X_valid_plus.columns = X_valid_plus.columns
 
 print("MAE from Approach 3 (An Extension to Imputation):")
 print(score_dataset(imputed_X_train_plus, imputed_X_valid_plus, y_train, y_valid))
+
+# Shape of training data (num_rows, num_columns)
+print("Shape of training data ")
+print(X_train.shape)
+
+# Number of missing values in each column of training data
+missing_val_count_by_column = (X_train.isnull().sum())
+print("Missing values count by column")
+print(missing_val_count_by_column[missing_val_count_by_column > 0])
+
