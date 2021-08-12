@@ -3,6 +3,8 @@
 
 import pandas as pd
 
+pd.set_option("display.max_rows", None, "display.max_columns", None)
+
 # save filepath to variable for easier access
 melbourne_file_path = 'melb_data.csv'
 # read the data and store data in DataFrame titled melbourne_data
@@ -27,8 +29,9 @@ melbourne_features = ['Rooms', 'Bathroom', 'Landsize', 'Lattitude', 'Longtitude'
 
 X = melbourne_data[melbourne_features]
 
+print("Describe features:")
 print(X.describe())
-
+print("Head:")
 print(X.head())
 
 from sklearn.tree import DecisionTreeRegressor
@@ -43,3 +46,9 @@ print("Making predictions for the following 5 houses:")
 print(X.head())
 print("The predictions are")
 print(melbourne_model.predict(X.head()))
+
+from sklearn.metrics import mean_absolute_error
+
+predicted_home_prices = melbourne_model.predict(X)
+print("Mean Absolute Error:")
+print(mean_absolute_error(y, predicted_home_prices))
