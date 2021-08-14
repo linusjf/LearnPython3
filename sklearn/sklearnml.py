@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from matplotlib.backends.backend_pdf import PdfPages
+pp = PdfPages('sklearnml.pdf')
+
 # Standard scientific Python imports
 import matplotlib.pyplot as plt
 
@@ -20,4 +23,5 @@ for ax, image, label in zip(axes, digits.images, digits.target):
     ax.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
     ax.set_title('Training: %i' % label)
 
-plt.savefig("plot.pdf")
+pp.savefig()
+pp.close()
