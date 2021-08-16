@@ -26,6 +26,8 @@ print(Price.fromstring("1,235€ 99"))
 print(Price.fromstring("24€99"))
 print(Price.fromstring("99 € 95 €"))
 print(Price.fromstring("35€ 999"))
+print(Price.fromstring("€35,999"))
+print(Price.fromstring("€35,999",currency_hint="€",decimal_separator=","))
 
 print(Price.fromstring(""))
 print(Price.fromstring("Foo"))
