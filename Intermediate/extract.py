@@ -4,7 +4,7 @@
 from price_parser import parse_price
 
 def extract_price(description):
-    if description.startswith("€") == -1:
+    if description.startswith("€"):
         return parse_price(description,decimal_separator=",").amount
     else:
         return parse_price(description).amount
