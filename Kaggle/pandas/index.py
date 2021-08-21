@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import pandas as pd
+reviews = pd.read_csv("winemag-data-130k-v2.csv", index_col=0)
+# more options can be specified also
+with pd.option_context('display.max_rows', None, 'display.max_columns', None):  
+    print(reviews.head())
+    print(reviews.tail())
+    print(reviews.country.head())
+    print(reviews.country.tail())
+    print(reviews['country'].head())
+    print(reviews['country'].tail())
+    print(reviews['country'][0])
+    print(reviews.iloc[0])
+    print(reviews.iloc[:, 0].head())
+    print(reviews.iloc[:, 0].tail())
+    print(reviews.iloc[:3, 0])
+    print(reviews.iloc[1:3, 0])
+    print(reviews.iloc[[0, 1, 2], 0])
+    print(reviews.iloc[-5:])
+    print(reviews.loc[0, 'country'])
+    print(reviews.loc[:, ['taster_name', 'taster_twitter_handle', 'points']].head())
+    print(reviews.loc[:, ['taster_name', 'taster_twitter_handle', 'points']].tail())
+    print(reviews.set_index("title").head())
+    print(reviews.set_index("title").tail())
+    print((reviews.country == 'Italy').head())
+    print((reviews.country == 'Italy').tail())
+    print(reviews.loc[reviews.country == 'Italy'].head())
+    print(reviews.loc[reviews.country == 'Italy'].tail())
+    print(reviews.loc[(reviews.country == 'Italy') & (reviews.points >= 90)].head())
+    print(reviews.loc[(reviews.country == 'Italy') & (reviews.points >= 90)].tail())
+    print(reviews.loc[(reviews.country == 'Italy') | (reviews.points >= 90)].head())
+    print(reviews.loc[(reviews.country == 'Italy') | (reviews.points >= 90)].tail())
+    print(reviews.loc[reviews.country.isin(['Italy', 'France'])].head())
+    print(reviews.loc[reviews.country.isin(['Italy', 'France'])].tail())
+    print(reviews.loc[reviews.price.notnull()].head())
+    print(reviews.loc[reviews.price.notnull()].tail())
+    reviews['critic'] = 'everyone'
+    print(reviews['critic'].head())
+    print(reviews['critic'].tail())
+    reviews['index_backwards'] = range(len(reviews), 0, -1)
+    print(reviews['index_backwards'].head())
+    print(reviews['index_backwards'].tail())
+
