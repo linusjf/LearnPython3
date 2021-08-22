@@ -15,17 +15,24 @@ print(flights.head())
 
 may_flights = flights.query("month == 'May'")
 sns.lineplot(data=may_flights, x="year", y="passengers")
-
 pp.savefig()
 
 flights_wide = flights.pivot("year", "month", "passengers")
 print(flights_wide.head())
 
 sns.lineplot(data=flights_wide["May"])
-
 pp.savefig()
 
 sns.lineplot(data=flights_wide)
-
 pp.savefig()
+
+sns.lineplot(data=flights, x="year", y="passengers")
+pp.savefig()
+
+sns.lineplot(data=flights, x="year", y="passengers", hue="month")
+pp.savefig()
+
+sns.lineplot(data=flights, x="year", y="passengers", hue="month", style="month")
+pp.savefig()
+
 pp.close()
