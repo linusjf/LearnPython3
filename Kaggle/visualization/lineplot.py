@@ -55,4 +55,34 @@ plot.set_title("Fig 7")
 pp.savefig()
 plot.get_figure().clf()
 
+plot = sns.lineplot(data=fmri, x="timepoint", y="signal", hue="region", style="event")
+plot.set_title("Fig 8")
+pp.savefig()
+plot.get_figure().clf()
+
+plot = sns.lineplot(
+    data=fmri,
+    x="timepoint", y="signal", hue="event", style="event",
+    markers=True, dashes=False
+)
+plot.set_title("Fig 9")
+pp.savefig()
+plot.get_figure().clf()
+
+plot = sns.lineplot(
+    data=fmri, x="timepoint", y="signal", hue="event", err_style="bars", ci=68
+)
+plot.set_title("Fig 10")
+pp.savefig()
+plot.get_figure().clf()
+
+plot = sns.lineplot(
+    data=fmri.query("region == 'frontal'"),
+    x="timepoint", y="signal", hue="event", units="subject",
+    estimator=None, lw=1,
+)
+plot.set_title("Fig 11")
+pp.savefig()
+plot.get_figure().clf()
+
 pp.close()
