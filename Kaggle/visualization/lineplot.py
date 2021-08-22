@@ -14,25 +14,45 @@ flights = sns.load_dataset("flights")
 print(flights.head())
 
 may_flights = flights.query("month == 'May'")
-sns.lineplot(data=may_flights, x="year", y="passengers")
+plot = sns.lineplot(data=may_flights, x="year", y="passengers")
+plot.set_title("Fig 1")
 pp.savefig()
+plot.get_figure().clf()
 
 flights_wide = flights.pivot("year", "month", "passengers")
 print(flights_wide.head())
 
-sns.lineplot(data=flights_wide["May"])
+plot = sns.lineplot(data=flights_wide["May"])
+plot.set_title("Fig 2")
 pp.savefig()
+plot.get_figure().clf()
 
-sns.lineplot(data=flights_wide)
+plot = sns.lineplot(data=flights_wide)
+plot.set_title("Fig 3")
 pp.savefig()
+plot.get_figure().clf()
 
-sns.lineplot(data=flights, x="year", y="passengers")
+plot = sns.lineplot(data=flights, x="year", y="passengers")
+plot.set_title("Fig 4")
 pp.savefig()
+plot.get_figure().clf()
 
-sns.lineplot(data=flights, x="year", y="passengers", hue="month")
+plot = sns.lineplot(data=flights, x="year", y="passengers", hue="month")
+plot.set_title("Fig 5")
 pp.savefig()
+plot.get_figure().clf()
 
-sns.lineplot(data=flights, x="year", y="passengers", hue="month", style="month")
+plot = sns.lineplot(data=flights, x="year", y="passengers", hue="month", style="month")
+plot.set_title("Fig 6")
 pp.savefig()
+plot.get_figure().clf()
+
+fmri = sns.load_dataset("fmri")
+print(fmri.head())
+
+plot = sns.lineplot(data=fmri, x="timepoint", y="signal", hue="event")
+plot.set_title("Fig 7")
+pp.savefig()
+plot.get_figure().clf()
 
 pp.close()
