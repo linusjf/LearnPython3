@@ -3,8 +3,9 @@
 
 import pandas as pd
 pd.set_option("display.max_rows", 5)
+pd.set_option("display.max_columns", 6)
 pd.plotting.register_matplotlib_converters()
-import matplotlib.pyplot as plt
+import matplotlib as mpl
 import seaborn as sns
 from matplotlib.backends.backend_pdf import PdfPages
 pp = PdfPages('lineplot.pdf')
@@ -82,6 +83,35 @@ plot = sns.lineplot(
     estimator=None, lw=1,
 )
 plot.set_title("Fig 11")
+pp.savefig()
+plot.get_figure().clf()
+
+dots = sns.load_dataset("dots").query("align == 'dots'")
+print(dots.head())
+
+plot = sns.lineplot(
+    data=dots, x="time", y="firing_rate", hue="coherence", style="choice",
+)
+plot.set_title("Fig 12")
+pp.savefig()
+plot.get_figure().clf()
+
+plot = sns.lineplot(
+    data=dots.query("coherence > 0"),
+    x="time", y="firing_rate", hue="coherence", style="choice",
+     palette="flare", hue_norm=mpl.colors.LogNorm(),
+)
+plot.set_title("Fig 13")
+pp.savefig()
+plot.get_figure().clf()
+
+palette = sns.color_palette("mako_r", 6)
+plot =  sns.lineplot(
+    data=dots, x="time", y="firing_rate",
+    hue="coherence", style="choice",
+    palette=palette
+)
+plot.set_title("Fig 14")
 pp.savefig()
 plot.get_figure().clf()
 
