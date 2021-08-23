@@ -88,4 +88,5 @@ g = sns.catplot(x="sex", y="total_bill",
                 height=4, aspect=.7);
 g.fig.suptitle("Fig 12")
 pp.savefig()
+
 pp.close()
