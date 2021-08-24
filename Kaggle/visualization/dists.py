@@ -21,7 +21,7 @@ iris_data = pd.read_csv(iris_filepath, index_col="Id")
 print(iris_data.head())
 
 # Histogram 
-plot = sns.distplot(a=iris_data['PetalLengthCm'], kde=False)
+plot = sns.histplot(iris_data, x='PetalLengthCm')
 plot.set_title("Fig 1")
 pp.savefig()
 plot.figure.clear()
@@ -29,6 +29,31 @@ plot.figure.clear()
 penguins = sns.load_dataset("penguins")
 plot = sns.histplot(data=penguins, x="flipper_length_mm")
 plot.set_title("Fig 2")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(data=penguins, y="flipper_length_mm")
+plot.set_title("Fig 3")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(data=penguins, x="flipper_length_mm", binwidth=3)
+plot.set_title("Fig 4")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(data=penguins, x="flipper_length_mm", bins=30)
+plot.set_title("Fig 5")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(data=penguins, x="flipper_length_mm", kde=True)
+plot.set_title("Fig 6")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(data=penguins)
+plot.set_title("Fig 7")
 pp.savefig()
 plot.figure.clear()
 
