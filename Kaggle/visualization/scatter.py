@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import numpy as np
 import pandas as pd
 pd.set_option("display.max_rows", 5)
 pd.set_option("display.max_columns", 6)
@@ -88,7 +89,7 @@ facet = sns.relplot(
     col="time", hue="day", style="day",
     kind="scatter"
 )
-facet.fig.suptitle("Facet Grid (time)")
+facet.figure.suptitle("Facet Grid (time)")
 pp.savefig()
 
 facet = sns.relplot(
@@ -96,7 +97,16 @@ facet = sns.relplot(
     col="day", hue="time", style="time",
     kind="scatter"
 )
-facet.fig.suptitle("Facet Grid (day)")
+facet.figure.suptitle("Facet Grid (day)")
 pp.savefig()
+facet.figure.clear()
+
+index = pd.date_range("1 1 2000", periods=100, freq="m", name="date")
+data = np.random.randn(100, 4).cumsum(axis=0)
+wide_df = pd.DataFrame(data, index, ["a", "b", "c", "d"])
+plot = sns.scatterplot(data=wide_df)
+plot.set_title("Fig 15")
+pp.savefig()
+plot.get_figure().clf()
 
 pp.close()
