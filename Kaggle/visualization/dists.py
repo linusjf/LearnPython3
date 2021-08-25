@@ -57,4 +57,32 @@ plot.set_title("Fig 7")
 pp.savefig()
 plot.figure.clear()
 
+plot = sns.histplot(data=penguins, x="flipper_length_mm", hue="species")
+plot.set_title("Fig 8")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(data=penguins, x="flipper_length_mm", hue="species", multiple="stack")
+plot.set_title("Fig 9")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(penguins, x="flipper_length_mm", hue="species", element="step")
+plot.set_title("Fig 10")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(penguins, x="flipper_length_mm", hue="species", element="poly")
+plot.set_title("Fig 11")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(
+    penguins, x="bill_length_mm", hue="island", element="step",
+    stat="density", common_norm=False,
+)
+plot.set_title("Fig 12")
+pp.savefig()
+plot.figure.clear()
+
 pp.close()
