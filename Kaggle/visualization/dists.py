@@ -166,4 +166,24 @@ plot = sns.histplot(
 plot.set_title("Fig 25")
 pp.savefig()
 plot.figure.clear()
+
+
+plot = sns.histplot(
+    planets, x="year", y="distance",
+    bins=30, discrete=(True, False), log_scale=(False, True),
+    pthresh=.05, pmax=.9,
+)
+plot.set_title("Fig 26")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(
+    planets, x="year", y="distance",
+    bins=30, discrete=(True, False), log_scale=(False, True),
+    cbar=True, cbar_kws=dict(shrink=.75),
+)
+plot.set_title("Fig 27")
+pp.savefig()
+plot.figure.clear()
+
 pp.close()
