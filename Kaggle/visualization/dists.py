@@ -85,4 +85,51 @@ plot.set_title("Fig 12")
 pp.savefig()
 plot.figure.clear()
 
+tips = sns.load_dataset("tips")
+plot = sns.histplot(data=tips, x="size", stat="percent", discrete=True)
+
+plot.set_title("Fig 13")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(data=tips, x="day", shrink=.8)
+plot.set_title("Fig 14")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(data=tips, x="day", hue="sex", multiple="dodge", shrink=.8)
+plot.set_title("Fig 15")
+pp.savefig()
+plot.figure.clear()
+
+planets = sns.load_dataset("planets")
+plot = sns.histplot(data=planets, x="distance")
+plot.set_title("Fig 16")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(data=planets, x="distance", log_scale=True)
+plot.set_title("Fig 17")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(data=planets, x="distance", log_scale=True, fill=False)
+plot.set_title("Fig 18")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(data=planets, x="distance", log_scale=True, element="step", fill=False)
+plot.set_title("Fig 19")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(
+    data=planets, x="distance", hue="method",
+    hue_order=["Radial Velocity", "Transit"],
+    log_scale=True, element="step", fill=False,
+    cumulative=True, stat="density", common_norm=False,
+)
+plot.set_title("Fig 20")
+pp.savefig()
+plot.figure.clear()
 pp.close()
