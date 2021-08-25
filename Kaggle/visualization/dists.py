@@ -132,4 +132,38 @@ plot = sns.histplot(
 plot.set_title("Fig 20")
 pp.savefig()
 plot.figure.clear()
+
+plot = sns.histplot(penguins, x="bill_depth_mm", y="body_mass_g")
+plot.set_title("Fig 21")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(penguins, x="bill_depth_mm", y="body_mass_g", hue="species")
+plot.set_title("Fig 22")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(
+    penguins, x="bill_depth_mm", y="species", hue="species", legend=False
+)
+plot.set_title("Fig 23")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(
+    planets, x="year", y="distance",
+    bins=30, discrete=(True, False), log_scale=(False, True),
+)
+plot.set_title("Fig 24")
+pp.savefig()
+plot.figure.clear()
+
+plot = sns.histplot(
+    planets, x="year", y="distance",
+    bins=30, discrete=(True, False), log_scale=(False, True),
+    thresh=None,
+)
+plot.set_title("Fig 25")
+pp.savefig()
+plot.figure.clear()
 pp.close()
