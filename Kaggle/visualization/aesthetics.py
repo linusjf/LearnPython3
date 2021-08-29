@@ -54,4 +54,67 @@ sns.despine()
 pp.savefig()
 plt.clf()
 
+f, ax = plt.subplots()
+sns.violinplot(data=data)
+sns.despine(offset=10, trim=True)
+pp.savefig()
+plt.clf()
+
+sns.set_style("whitegrid")
+sns.boxplot(data=data, palette="deep")
+sns.despine(left=True)
+pp.savefig()
+plt.clf()
+
+f = plt.figure(figsize=(6, 6))
+gs = f.add_gridspec(2, 2)
+
+with sns.axes_style("darkgrid"):
+    ax = f.add_subplot(gs[0, 0])
+    sinplot()
+
+with sns.axes_style("white"):
+    ax = f.add_subplot(gs[0, 1])
+    sinplot()
+
+with sns.axes_style("ticks"):
+    ax = f.add_subplot(gs[1, 0])
+    sinplot()
+
+with sns.axes_style("whitegrid"):
+    ax = f.add_subplot(gs[1, 1])
+    sinplot()
+
+f.tight_layout()
+
+sns.axes_style()
+
+sns.set_style("darkgrid", {"axes.facecolor": ".9"})
+sinplot()
+
+pp.savefig()
+plt.clf()
+
+sns.set_theme()
+sns.set_context("paper")
+sinplot()
+
+pp.savefig()
+plt.clf()
+
+sns.set_context("talk")
+sinplot()
+pp.savefig()
+plt.clf()
+
+sns.set_context("poster")
+sinplot()
+pp.savefig()
+plt.clf()
+
+sns.set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5})
+sinplot()
+pp.savefig()
+plt.clf()
+
 pp.close()
