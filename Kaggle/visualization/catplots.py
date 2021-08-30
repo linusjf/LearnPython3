@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import warnings
+warnings.filterwarnings("ignore", message="Attempted to set non-positive left xlim on a log-scaled axis.\nInvalid limit will be ignored.")
 import pandas as pd
 pd.set_option("display.max_rows", 5)
 pd.set_option("display.max_columns", 6)
@@ -14,6 +16,7 @@ pp = PdfPages('catplots.pdf')
 print("Setup Complete")
 
 tips = sns.load_dataset("tips")
+print(tips.head())
 plot = sns.catplot(x="day", y="total_bill", data=tips)
 pp.savefig()
 plot.figure.clear()
@@ -57,6 +60,7 @@ pp.savefig()
 plot.figure.clear()
 
 diamonds = sns.load_dataset("diamonds")
+print(diamonds.head())
 plot = sns.catplot(x="color", y="price", kind="boxen",
             data=diamonds.sort_values("color"))
 pp.savefig()
@@ -90,6 +94,7 @@ pp.savefig()
 plot.figure.clear()
 
 titanic = sns.load_dataset("titanic")
+print(titanic.head())
 plot = sns.catplot(x="sex", y="survived", hue="class", kind="bar", data=titanic)
 pp.savefig()
 plot.figure.clear()
@@ -116,6 +121,7 @@ pp.savefig()
 plot.figure.clear()
 
 iris = sns.load_dataset("iris")
+print(iris.head())
 plot = sns.catplot(data=iris, orient="h", kind="box")
 pp.savefig()
 plot.figure.clear()
@@ -140,5 +146,12 @@ g = sns.catplot(x="fare", y="survived", row="class",
                 data=titanic.query("fare > 0"))
 g.set(xscale="log")
 pp.savefig()
+g.figure.clear()
+
+exercise = sns.load_dataset("exercise")
+print(exercise.head())
+g = sns.catplot(x="time", y="pulse", hue="kind", data=exercise)
+pp.savefig()
+g.figure.clear()
 
 pp.close()
