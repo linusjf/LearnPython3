@@ -54,3 +54,18 @@ print(a)
 a = [[4,3],[2,1]]
 a = np.tile(a,(2,3))
 print(a)
+a = np.arange(10)
+print(a)
+b = a[::2]
+print(b)
+print(np.may_share_memory(a, b))
+b[0] = 12
+print(b)
+# (!)
+print(a)
+a = np.arange(10)
+# force a copy
+c = a[::2].copy()
+c[0] = 12
+print(a)
+print(np.may_share_memory(a, c))
