@@ -51,3 +51,6 @@ print(a)
 a = np.diag(np.arange(7))
 a = a[1::,2::]
 print(a)
+a = [[4,3],[2,1]]
+a = np.tile(a,(2,3))
+print(a)
