@@ -40,3 +40,14 @@ print(np.arange(0, 51, 10)[:, np.newaxis])
 # add 1D array to 2D array
 a = np.arange(6) + np.arange(0, 51, 10)[:, np.newaxis]
 print(a)
+print(a[0, 3:5])
+print(a[4:, 4:])
+print(a[:, 2])
+print(a[2::2, ::2])
+a = np.ones((4,4),dtype=np.int8)
+a[2,3] = 2
+a[3,1] = 6
+print(a)
+a = np.diag(np.arange(7))
+a = a[1::,2::]
+print(a)
