@@ -34,3 +34,9 @@ b = a[0::2]
 print(b)
 b = a[50:0:-2]
 print(b)
+print(np.arange(6))
+print(np.arange(0, 51, 10))
+print(np.arange(0, 51, 10)[:, np.newaxis])
+# add 1D array to 2D array
+a = np.arange(6) + np.arange(0, 51, 10)[:, np.newaxis]
+print(a)
