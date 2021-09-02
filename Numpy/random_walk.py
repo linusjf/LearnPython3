@@ -20,6 +20,12 @@ np.unique(steps)
 positions = np.cumsum(steps, axis=1) 
 sq_distance = positions**2
 mean_sq_distance = np.mean(sq_distance, axis=0)
+print(np.isclose(
+    np.sqrt(mean_sq_distance),
+    np.sqrt(t),atol=1.0).all())
+print(np.isclose(
+    np.sqrt(mean_sq_distance),
+    np.sqrt(t),atol=0.5).all())
 plt.figure(figsize=(4, 3))
 plt.plot(t, np.sqrt(mean_sq_distance), 'g.', t, np.sqrt(t), 'y-')
 plt.xlabel(r"$t$")
