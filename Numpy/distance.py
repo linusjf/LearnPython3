@@ -22,3 +22,11 @@ pp.savefig()
 plt.clf()
 
 pp.close()
+
+x, y = np.ogrid[0:5, 0:5]
+print(x, y)
+print(x.shape, y.shape)
+distance = np.sqrt(x ** 2 + y ** 2)
+x, y = np.mgrid[0:4, 0:4]
+print(x)
+print(y)
