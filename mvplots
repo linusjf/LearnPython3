@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 mkdir -p ~/storage/downloads/Pyplots
 find . -name "*.pdf" | parallel -I% --max-args 1 mv % ~/storage/downloads/Pyplots
-find . -name "*.png" | parallel -I% --max-args 1 mv % ~/storage/downloads/Pyplots
+find . -name "*.png" ! -name "elephant.png" | parallel -I% --max-args 1 mv % ~/storage/downloads/Pyplots
