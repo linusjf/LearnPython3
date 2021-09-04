@@ -30,4 +30,8 @@ print(data[np.ravel(year2)[0]][0])
 year3 = np.where(data[:,3] == largest[3])
 print(data[np.ravel(year3)[0]][0])
 
+largest = np.argmax(data[:,1:], axis=1)
+print(largest)
+cats = np.array(['Hare','Lynx','Carrot'])
+print(cats[largest].reshape(len(largest),1))
 pp.close()
