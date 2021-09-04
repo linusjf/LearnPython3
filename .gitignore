@@ -5,6 +5,7 @@
 *.zip
 *.mat
 *.pdf
+*.png
 *.gv
 **/__pycache__/**
 **/.mypy_cache/**
