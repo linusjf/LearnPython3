@@ -22,7 +22,8 @@ pp.savefig()
 plt.clf()
 
 import imageio
-imageio.imsave('tiny_elephant.png', img[::6,::6])
+img = img[::6,::6].astype(np.uint8)
+imageio.imwrite('tiny_elephant.png',img)
 plt.imshow(plt.imread('tiny_elephant.png'), interpolation='nearest')
 pp.savefig()
 plt.clf()
