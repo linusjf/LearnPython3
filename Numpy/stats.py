@@ -7,7 +7,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 pp = PdfPages('stats.pdf')
 print("Setup Complete")
 
-data = np.loadtxt('population.txt')
+data = np.loadtxt('population.txt',dtype=float)
 year, hares, lynxes, carrots = data.T # trick: columns to variables
 plt.axes([0.2, 0.1, 0.5, 0.8])
 plt.plot(year, hares, year, lynxes, year, carrots)
@@ -37,4 +37,21 @@ print(cats[largest].reshape(len(largest),1))
 plus = np.any(data[:,1:] > 50000,axis=1)
 plusyears = data[:,0][plus]
 print(plusyears.reshape(len(plusyears),1))
+
+sortedhares = hares.argsort()
+sortedlynxes = np.argsort(lynxes)
+sortedcarrots = np.argsort(carrots)
+tophares = hares[sortedhares][0:2]
+toplynxes = lynxes[sortedlynxes][0:2]
+topcarrots = carrots[sortedcarrots][0:2]
+print(tophares,toplynxes,topcarrots)
+
+gradienthare = np.gradient(hares)
+plt.axes([0.2, 0.1, 0.5, 0.8])
+plt.plot(year,gradienthare, year,lynxes)
+plt.legend(('Gradient Hare', 'Lynx population'), loc=(1.05, 0.5))
+pp.savefig()
+plt.clf()
+
+print(np.corrcoef(gradienthare,lynxes))
 pp.close()
