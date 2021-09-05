@@ -34,4 +34,7 @@ largest = np.argmax(data[:,1:], axis=1)
 print(largest)
 cats = np.array(['Hare','Lynx','Carrot'])
 print(cats[largest].reshape(len(largest),1))
+plus = np.any(data[:,1:] > 50000,axis=1)
+plusyears = data[:,0][plus]
+print(plusyears.reshape(len(plusyears),1))
 pp.close()
