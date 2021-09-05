@@ -19,13 +19,13 @@ plt.legend(loc='upper left')
 # Set x limits
 plt.xlim(X.min() * 1.1, X.max() * 1.1)
 # Set x ticks
-plt.xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi],
-[r'$-\pi$', r'$-\pi/2$', r'$0$', r'$+\pi/2$', r'$+\pi$'])
+plt.xticks([-np.pi, -np.pi/2, np.pi/2, np.pi],
+[r'$-\pi$', r'$-\pi/2$',  r'$+\pi/2$', r'$+\pi$'])
 # Set y limits
 plt.ylim(C.min() * 1.1, C.max() * 1.1)
 # Set y ticks
-plt.yticks([-1, 0, +1],
-[r'$-1$', r'$0$', r'$+1$'])
+plt.yticks([-1, +1],
+[r'$-1$', r'$+1$'])
 # move spine
 # gca stands for 'get current axis'
 ax = plt.gca()
@@ -50,6 +50,12 @@ plt.annotate(r'$sin(\frac{2\pi}{3} )=\frac{\sqrt{3} }{2} $',
 xy=(t, np.sin(t)), xycoords='data',
 xytext=(+10, +30), textcoords='offset points', fontsize=16,
 arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+
+#resize ticks
+for label in ax.get_xticklabels() + ax.get_yticklabels():
+    label.set_fontsize(16)
+    label.set_bbox(dict(facecolor='white', edgecolor='None', alpha=0.65))
+
 # Save figure using 72 dots per inch
 plt.savefig("custom.png", dpi=72)
 # Show result on screen
