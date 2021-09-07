@@ -1,4 +1,5 @@
 *.out
+*.dat
 *.pyc
 *.txt
 *.bak
