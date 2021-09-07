@@ -11,8 +11,8 @@ print("Setup Complete")
 
 theta = pi/4
 v0 = 5
-vx = sin(theta) * v0
-vy = cos(theta) * v0
+vx = cos(theta) * v0
+vy = sin(theta) * v0
 g = 9.81
 t = linspace(0, 1, 1001)
 
