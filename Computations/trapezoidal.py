@@ -2,18 +2,13 @@
 # -*- coding: utf-8 -*-
 
 from numpy import exp
+from numpy import linspace
 
 def trapezoidal(f, a, b, n):
-    h = (b-a)/n
-    fa = f(a)
-    fb = f(b)
-    result = 0.5*fa + 0.5*fb
-    for i in range(1, n):
-        val = a + i*h
-        fval = f(val)
-        result += fval
-    result *= h
-    return result
+    h = float(b-a)/n
+    x = linspace(a, b, n+1)
+    s = sum(f(x)) - 0.5*f(a) - 0.5*f(b)
+    return h*s
 
 def application():
     v = lambda t: 3*(t**2)*exp(t**3)

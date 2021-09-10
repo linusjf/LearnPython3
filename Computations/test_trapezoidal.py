@@ -21,9 +21,10 @@ def test_trapezoidal_one_exact_result():
 def test_trapezoidal_linear():
     """Check that linear functions are integrated exactly."""
     f = lambda x: 6*x - 4
-    F = lambda x: 3*x**2 - 4*x  # Anti-derivative
+    # Anti-derivative
+    F = lambda x: 3*x**2 - 4*x  
     a = 1.2; b = 4.4
-    expected = F(b) - F(a)
+    expected = 40.96
     tol = 1E-14
     for n in 2, 20, 21:
         computed = trapezoidal(f, a, b, n)
