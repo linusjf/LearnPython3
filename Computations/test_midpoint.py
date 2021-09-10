@@ -1,9 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sympy
 from numpy import exp
 from numpy import zeros,log
 from midpoint import midpoint
+from midpoint_double import midpoint_double1
+from midpoint_double import midpoint_double2
 
 def test_midpoint_one_exact_result():
     """Compare one hand-computed result."""
@@ -58,7 +61,52 @@ def test_midpoint_conv_rate():
     msg = str(r[-4:])
     assert (abs(r[-1]) - 2) < tol, msg
 
+
+def test_midpoint_double():
+    def f(x, y):
+        return 2*x + y
+
+    nx = ny = 5
+    expected = 9.0
+    val = midpoint_double1(f, 0, 2, 2, 3, nx, ny)
+    error = expected - val
+    msg = 'nx=%d, ny=%d err=%g' % (nx,ny, error)
+    tol = 1E-14
+    assert error < tol , msg
+
+def test_midpoint_double2():
+    def f(x, y):
+        return 2*x + y
+
+    nx = ny = 5
+    expected = 9.0
+    val = midpoint_double2(f, 0, 2, 2, 3, nx, ny)
+    error = expected - val
+    msg = 'nx=%d, ny=%d err=%g' % (nx,ny, error)
+    tol = 1E-14
+    assert error < tol , msg
+
+def test_midpoint_double_sympy():
+    """Test that a linear function is integrated exactly."""
+    def f(x, y):
+        return 2*x + y
+
+    a = 0;  b = 2;  c = 2;  d = 3
+    x, y = sympy.symbols('x  y')
+    I_expected = sympy.integrate(f(x, y), (x, a, b), (y, c, d))
+    # Test three cases: nx < ny, nx = ny, nx > ny
+    for nx, ny in (3, 5), (4, 4), (5, 3):
+        I_computed1 = midpoint_double1(f, a, b, c, d, nx, ny)
+        I_computed2 = midpoint_double2(f, a, b, c, d, nx, ny)
+        tol = 1E-14
+        #print I_expected, I_computed1, I_computed2
+        assert abs(I_computed1 - I_expected) < tol
+        assert abs(I_computed2 - I_expected) < tol
+
 if __name__ == "__main__":
     test_midpoint_one_exact_result()
     test_midpoint_linear()
     test_midpoint_conv_rate()
+    test_midpoint_double2()
+    test_midpoint_double()
+    test_midpoint_double_sympy()
