@@ -8,7 +8,6 @@ def midpoint(f, a, b, n):
     for i in range(n):
         val = (a + h/2.0) + i*h
         res = f(val)
-        res1 = 3*val**2*exp(val**3)
         result += res
     result *= h
     return result
