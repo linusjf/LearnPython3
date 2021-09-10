@@ -40,6 +40,26 @@ def test_MonteCarlo_double_circle_r():
     print('MC approximation %d samples: %.16f' % (n**2, I_computed))
     assert abs(I_expected - I_computed) < 1E-15
 
+def test_MonteCarlo_samples():
+    def g(x, y):
+        return (1 if (0 <= x <= 2 and 3 <= y <= 4.5) else -1)
+     
+    expected = 3.0
+    tol = 0.2
+    res = MonteCarlo_double(lambda x, y: 1, g, 0, 3, 2, 5, 100)
+    assert abs(expected - res) < tol  
+    res = MonteCarlo_double(lambda x, y: 1, g, 0, 3, 2, 5, 1000)
+    assert abs(expected - res) < tol  
+    res = MonteCarlo_double(lambda x, y: 1, g, 0, 3, 2, 5, 1000)
+    assert abs(expected - res) < tol  
+    res = MonteCarlo_double(lambda x, y: 1, g, 0, 3, 2, 5, 2000)
+    assert abs(expected - res) < tol  
+    res = MonteCarlo_double(lambda x, y: 1, g, 0, 3, 2, 5, 2000)
+    assert abs(expected - res) < tol  
+    res = MonteCarlo_double(lambda x, y: 1, g, 0, 3, 2, 5, 5000)
+    assert abs(expected - res) < tol  
+
 if __name__ == '__main__':
     test_MonteCarlo_double_rectangle_area()
     test_MonteCarlo_double_circle_r()
+    test_MonteCarlo_samples()
