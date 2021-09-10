@@ -63,6 +63,16 @@ def test_midpoint_conv_rate():
     msg = str(r[-4:])
     assert (abs(r[-1]) - 2) < tol, msg
 
+def test_midpoint():
+    def f(x):
+        return 2*x**3
+    a = 1;  b = 3;
+    n = 2
+    numerical = midpoint(f, a, b, n)
+    hand = 38.0
+    error = abs(numerical - hand)
+    tol = 1E-14
+    assert error < tol, error
 
 def test_midpoint_double():
     def f(x, y):
@@ -125,6 +135,7 @@ def test_midpoint_triple():
         assert abs(I_computed2 - I_expected) < tol
 
 if __name__ == "__main__":
+    test_midpoint()
     test_midpoint_one_exact_result()
     test_midpoint_linear()
     test_midpoint_conv_rate()
