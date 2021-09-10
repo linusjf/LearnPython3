@@ -7,6 +7,8 @@ from numpy import zeros,log
 from midpoint import midpoint
 from midpoint_double import midpoint_double1
 from midpoint_double import midpoint_double2
+from midpoint_triple import midpoint_triple1
+from midpoint_triple import midpoint_triple2
 
 def test_midpoint_one_exact_result():
     """Compare one hand-computed result."""
@@ -103,6 +105,25 @@ def test_midpoint_double_sympy():
         assert abs(I_computed1 - I_expected) < tol
         assert abs(I_computed2 - I_expected) < tol
 
+def test_midpoint_triple():
+    """Test that a linear function is integrated exactly."""
+    def g(x, y, z):
+        return 2*x + y - 4*z
+
+    a = 0;  b = 2;  c = 2;  d = 3;  e = -1;  f = 2
+    x, y, z = sympy.symbols('x y z')
+    I_expected = sympy.integrate(
+        g(x, y, z), (x, a, b), (y, c, d), (z, e, f))
+    for nx, ny, nz in (3, 5, 2), (4, 4, 4), (5, 3, 6):
+        I_computed1 = midpoint_triple1(
+            g, a, b, c, d, e, f, nx, ny, nz)
+        I_computed2 = midpoint_triple2(
+            g, a, b, c, d, e, f, nx, ny, nz)
+        tol = 1E-14
+        print(I_expected, I_computed1, I_computed2)
+        assert abs(I_computed1 - I_expected) < tol
+        assert abs(I_computed2 - I_expected) < tol
+
 if __name__ == "__main__":
     test_midpoint_one_exact_result()
     test_midpoint_linear()
@@ -110,3 +131,4 @@ if __name__ == "__main__":
     test_midpoint_double2()
     test_midpoint_double()
     test_midpoint_double_sympy()
+    test_midpoint_triple()
