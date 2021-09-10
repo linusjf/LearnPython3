@@ -6,6 +6,17 @@ from numpy import log
 from numpy import zeros
 from trapezoidal import trapezoidal
 
+def test_trapezoidal():
+    def f(x):
+        return 2*x**3
+    a = 1;  b = 3
+    n = 2
+    numerical = trapezoidal(f, a, b, n)
+    hand = 44.0
+    error = abs(numerical - hand)
+    tol = 1E-14
+    assert error < tol, error
+
 def test_trapezoidal_one_exact_result():
     """Compare one hand-computed result."""
     v = lambda t: 3*(t**2)*exp(t**3)
@@ -60,6 +71,7 @@ def test_trapezoidal_conv_rate():
     assert (abs(r[-1]) - 2) < tol, msg
 
 if __name__ == "__main__":
+    test_trapezoidal()
     test_trapezoidal_one_exact_result()
     test_trapezoidal_linear()
     test_trapezoidal_conv_rate()
