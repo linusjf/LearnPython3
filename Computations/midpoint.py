@@ -1,13 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from numpy import exp
+from numpy import linspace
 
 def midpoint(f, a, b, n):
     h = float(b-a)/n
-    result = 0
-    for i in range(n):
-        val = (a + h/2.0) + i*h
-        res = f(val)
-        result += res
-    result *= h
-    return result
+    x = linspace(a + h/2, b - h/2, n)
+    return h*sum(f(x))
+
