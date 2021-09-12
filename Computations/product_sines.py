@@ -22,6 +22,3 @@ for i in range(1,11):
             assert abs(I) < tol
         else:
             assert abs(abs(I) - pi) < tolpi
-
-
-
