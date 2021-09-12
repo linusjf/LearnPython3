@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sympy
 from numpy import exp
 from numpy import log
 from numpy import zeros
 from trapezoidal import trapezoidal
+from trapezoidal import trapezoidal_double
 
 def test_trapezoidal():
     def f(x):
@@ -70,8 +72,24 @@ def test_trapezoidal_conv_rate():
     msg = str(r[-4:])
     assert (abs(r[-1]) - 2) < tol, msg
 
+def test_trapezoidal_double():
+    """Test that a linear function is integrated exactly."""
+    def f(x, y):
+        return 2*x + y
+
+    a = 0;  b = 2;  c = 2;  d = 3
+    x, y = sympy.symbols('x  y')
+    I_expected = sympy.integrate(f(x, y), (x, a, b), (y, c, d))
+    # Test three cases: nx < ny, nx = ny, nx > ny
+    for nx, ny in (3, 5), (4, 4), (5, 3):
+        I_computed = trapezoidal_double(f, a, b, c, d, nx, ny)
+        tol = 1E-14
+        #print I_expected, I_computed
+        assert abs(I_computed - I_expected) < tol
+
 if __name__ == "__main__":
     test_trapezoidal()
     test_trapezoidal_one_exact_result()
     test_trapezoidal_linear()
     test_trapezoidal_conv_rate()
+    test_trapezoidal_double()
