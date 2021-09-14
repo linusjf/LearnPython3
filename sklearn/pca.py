@@ -14,6 +14,8 @@ from matplotlib.colors import ListedColormap
 from matplotlib.colors import ListedColormap
 from matplotlib.backends.backend_pdf import PdfPages
 pp = PdfPages('pca.pdf')
+from matplotlib.axes._axes import _log as matplotlib_axes_logger
+matplotlib_axes_logger.setLevel('ERROR')
 print("Setup Complete")
 
 # importing or loading the dataset
