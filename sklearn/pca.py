@@ -36,9 +36,11 @@ X_test = sc.transform(X_test)
 # and testing set of X component
 pca = PCA(n_components = 2)
 X_train = pca.fit_transform(X_train)
+print(X_train.shape)
 X_test = pca.transform(X_test)
+print(X_test.shape)
 explained_variance = pca.explained_variance_ratio_
-
+print("pca explained variance: ", explained_variance )
 # Fitting Logistic Regression To the training set
 classifier = LogisticRegression(random_state = 0)
 classifier.fit(X_train, y_train)
