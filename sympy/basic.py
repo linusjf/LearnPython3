@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import numpy 
 from sympy import *
 x, y, z = symbols("x y z")
 expr = cos(x) + 1
@@ -45,3 +46,20 @@ print(expr.evalf(subs={x: 2.4}))
 one = cos(1)**2 + sin(1)**2
 print((one - 1).evalf())
 print((one - 1).evalf(chop=True))
+
+a = numpy.arange(10) 
+expr = sin(x)
+f = lambdify(x, expr, "numpy") 
+print(f(a))
+
+f = lambdify(x, expr, "math")
+print(f(0.1))
+
+def mysin(x):
+    """
+    My sine. Note that this is only accurate for small x.
+    """
+    return x
+
+f = lambdify(x, expr, {"sin":mysin})
+print(f(0.1))
