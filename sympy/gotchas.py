@@ -50,3 +50,7 @@ print(type(Integer(1) + 1))
 print(type(1 + 1))
 print(Integer(1)/Integer(3))
 print(type(Integer(1)/Integer(3)))
+
+print(Rational(1, 2))
+print(x + 1/2) 
+print(x + Rational(1, 2))
