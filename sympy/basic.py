@@ -31,3 +31,17 @@ expr = x**4 - 4*x**3 + 4*x**2 - 2*x + 3*y**0
 replacements = [(x**i, y**i) for i in range(5) if i % 2 == 0]
 print(replacements)
 print(expr.subs(replacements))
+
+str_expr = "x**2 + 3*x - 1/2"
+expr = sympify(str_expr)
+print(expr)
+print(expr.subs(x, 2))
+expr = sqrt(8)
+print(expr.evalf())
+print(pi.evalf(100))
+
+expr = cos(2*x)
+print(expr.evalf(subs={x: 2.4}))
+one = cos(1)**2 + sin(1)**2
+print((one - 1).evalf())
+print((one - 1).evalf(chop=True))
