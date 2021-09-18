@@ -43,3 +43,16 @@ print(integ.doit())
 integ = Integral(x**y*exp(-x), (x, 0, oo))
 print(integ)
 print(integ.doit())
+
+
+print(limit(sin(x)/x, x, 0))
+
+expr = x**2/exp(x)
+print(expr.subs(x, oo))
+print(limit(expr, x, oo))
+
+expr = Limit((cos(x) - 1)/x, x, 0)
+print(expr)
+print(expr.doit())
+print(limit(1/x, x, 0, '+'))
+print(limit(1/x, x, 0, '-'))
