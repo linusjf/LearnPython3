@@ -63,3 +63,20 @@ print(x + x**3 + x**6 + O(x**4))
 print(x*O(1))
 print(expr.series(x, 0, 4).removeO())
 print(exp(x - 6).series(x, x0=6))
+
+f, g = symbols('f g', cls=Function)
+print(differentiate_finite(f(x)*g(x)))
+
+f = Function('f')
+dfdx = f(x).diff(x)
+print(dfdx.as_finite_difference())
+
+f = Function('f')
+d2fdx2 = f(x).diff(x, 2)
+h = Symbol('h')
+print(d2fdx2.as_finite_difference([-3*h,-h,2*h]))
+print(finite_diff_weights(2, [-3, -1, 2], 0)[-1][-1])
+
+x_list = [-3, 1, 2]
+y_list = symbols('a b c')
+print(apply_finite_diff(1, x_list, y_list, 0))
