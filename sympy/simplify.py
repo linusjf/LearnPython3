@@ -90,3 +90,24 @@ print(logcombine(n*log(x)))
 print(logcombine(n*log(z)))
 
 print(logcombine(n*log(z), force=True))
+
+x, y, z = symbols('x y z')
+k, m, n = symbols('k m n')
+print(factorial(n))
+
+print(binomial(n, k))
+print(gamma(z))
+
+print(hyper([1, 2], [3], z))
+print(tan(x).rewrite(sin))
+print(factorial(x).rewrite(gamma))
+print(expand_func(gamma(x + 3)))
+
+print(hyperexpand(hyper([1, 1], [2], z)))
+expr = meijerg([[1],[1]], [[1],[]], -z)
+print(expr)
+print(hyperexpand(expr))
+n, k = symbols('n k', integer = True)
+print(combsimp(factorial(n)/factorial(n - 3)))
+print(combsimp(binomial(n+1, k+1)/binomial(n, k)))
+print(gammasimp(gamma(x)*gamma(1 - x)))
