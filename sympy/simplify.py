@@ -72,3 +72,21 @@ print(expand_power_base((z*t)**c, force=True))
 print(expand_power_exp(x**5))
 print(powdenest((x**a)**b))
 print(powdenest((z**a)**b))
+
+x, y = symbols('x y', positive=True)
+n = symbols('n', real=True)
+print(expand_log(log(x*y)))
+print(expand_log(log(x/y)))
+print(expand_log(log(x**2)))
+print(expand_log(log(x**n)))
+print(expand_log(log(z*t)))
+
+print(expand_log(log(z**2)))
+print(expand_log(log(z**2), force=True))
+
+print(logcombine(log(x) + log(y)))
+
+print(logcombine(n*log(x)))
+print(logcombine(n*log(z)))
+
+print(logcombine(n*log(z), force=True))
