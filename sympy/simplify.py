@@ -102,7 +102,6 @@ print(hyper([1, 2], [3], z))
 print(tan(x).rewrite(sin))
 print(factorial(x).rewrite(gamma))
 print(expand_func(gamma(x + 3)))
-
 print(hyperexpand(hyper([1, 1], [2], z)))
 expr = meijerg([[1],[1]], [[1],[]], -z)
 print(expr)
@@ -111,3 +110,47 @@ n, k = symbols('n k', integer = True)
 print(combsimp(factorial(n)/factorial(n - 3)))
 print(combsimp(binomial(n+1, k+1)/binomial(n, k)))
 print(gammasimp(gamma(x)*gamma(1 - x)))
+
+def list_to_frac(l):
+    expr = Integer(0)
+    for i in reversed(l[1:]):
+        expr += i
+        expr = 1/expr
+    return l[0] + expr
+print(list_to_frac([x, y, z]))
+print(list_to_frac([1, 2, 3, 4]))
+syms = symbols('a0:5')
+print(syms)
+a0, a1, a2, a3, a4 = syms
+frac = list_to_frac(syms)
+print(frac)
+
+frac = cancel(frac)
+print(frac)
+l = []
+frac = apart(frac, a0)
+print(frac)
+l.append(a0)
+frac = 1/(frac - a0)
+print(frac)
+frac = apart(frac, a1)
+print(frac)
+l.append(a1)
+frac = 1/(frac - a1)
+frac = apart(frac, a2)
+l.append(a2)
+frac = 1/(frac - a2)
+frac = apart(frac, a3)
+print(frac)
+l.append(a3)
+frac = 1/(frac - a3)
+frac = apart(frac, a4)
+print(frac)
+l.append(a4)
+print(list_to_frac(l))
+
+import random
+l = list(symbols('a0:5'))
+random.shuffle(l)
+orig_frac = frac = cancel(list_to_frac(l))
+del l
