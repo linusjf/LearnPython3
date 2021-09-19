@@ -32,6 +32,11 @@ expr = x**4 - 4*x**3 + 4*x**2 - 2*x + 3*y**0
 replacements = [(x**i, y**i) for i in range(5) if i % 2 == 0]
 print(replacements)
 print(expr.subs(replacements))
+expr = x**4 - 4*x**3 + 4*x**2 - 2*x + 3*y
+print(expr)
+replacements = [(x**i, y**i) for i in (2,3,4) if i % 2 != 0]
+print(replacements)
+print(expr.subs(replacements))
 
 str_expr = "x**2 + 3*x - 1/2"
 expr = sympify(str_expr)
