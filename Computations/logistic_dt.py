@@ -25,6 +25,7 @@ while one_more == True:
                   U_0=100, dt=dt_k, T=T)
     plt.plot(t_old,u_old,'b-',t_new,u_new,'r--')
     plt.xlabel('t'); plt.ylabel('N(t)');
+    plt.title("dt = " + str(dt_k))
     pp.savefig()
     plt.clf()
     print("Timestep was: ", dt_k)
