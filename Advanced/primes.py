@@ -58,3 +58,20 @@ for x in prime_generator:
 primes = (i for i in range(1,100) if check_prime(i))
 for x in primes:
     print(x)
+
+def triplet(n): 
+    # Find all the Pythagorean triplets between 1 and n
+    for a in range(n):
+        for b in range(a):
+            for c in range(b):
+                if a*a == b*b + c*c:
+                    yield(a, b, c)
+
+triplet_generator = triplet(100)
+for x in triplet_generator:
+    print(x)
+
+triplet_generator = ((a,b,c) for a in range(100) for
+b in range(a) for c in range(b) if a*a == b*b + c*c)
+for x in triplet_generator:
+    print(x)
