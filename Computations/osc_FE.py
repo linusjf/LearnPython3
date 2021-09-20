@@ -7,7 +7,7 @@ print("Setup Complete")
 
 omega = 2
 P = 2*pi/omega
-dts = (P/20,P/100,P/1000)
+dts = (P/20,P/40,P/160,P/2000)
 T = 3*P
 for dt in dts:
     N_t = int(round(T/dt))
