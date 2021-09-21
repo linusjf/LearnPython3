@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import numpy as np
 #Importing the fft and inverse fft functions from fftpackage
-from scipy.fftpack import fft,fftfreq,ifft
+from scipy.fftpack import dct,fft,fftfreq,idct,ifft
 
 #create an array with random n numbers
 x = np.array([1.0, 2.0, 1.0, -1.0, 1.5])
@@ -25,3 +25,7 @@ print(sig.size)
 sample_freq = fftfreq(sig.size, d = time_step)
 sig_fft = fft(sig)
 print(sig_fft.shape)
+
+print(dct(np.array([4., 3., 5., 10., 5., 3.])))
+
+print(idct(np.array([4., 3., 5., 10., 5., 3.])))
