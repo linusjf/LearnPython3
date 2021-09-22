@@ -4,6 +4,7 @@
 #importing the scipy and numpy packages
 from scipy import linalg
 import numpy as np
+from numpy.linalg import LinAlgError
 
 #Declaring the numpy arrays
 a = np.array([[3, 2, 0], [1, -1, 0], [0, 5, 1]])
@@ -44,3 +45,25 @@ U, s, Vh = linalg.svd(a)
 
 # printing the result
 print(U, Vh, s)
+
+arr = np.array([[1, 2],
+                [3, 4]])
+print(linalg.det(arr))
+
+arr = np.array([[3, 2],
+                [6, 4]])
+print(linalg.det(arr)) 
+
+arr = np.array([[1, 2],
+                [3, 4]])
+iarr = linalg.inv(arr)
+print(iarr)
+
+np.allclose(np.dot(arr, iarr), np.eye(2))
+
+arr = np.array([[3, 2],
+                [6, 4]])
+try:
+    print(linalg.inv(arr))
+except LinAlgError as lae:
+    print(f"Error: {lae}")
