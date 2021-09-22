@@ -3,6 +3,7 @@
 import numpy as np
 from scipy.optimize import least_squares
 from scipy.optimize import root
+from scipy.optimize import minimize
 
 #Rosenbrock Function
 def fun_rosenbrock(x):
@@ -17,3 +18,10 @@ def func(x):
 
 sol = root(func, 0.3)
 print(sol)
+
+def eqn(x):
+  return x**2 + x + 2
+
+mymin = minimize(eqn, 0, method='BFGS')
+
+print(mymin)
