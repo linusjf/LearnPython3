@@ -67,3 +67,11 @@ try:
     print(linalg.inv(arr))
 except LinAlgError as lae:
     print(f"Error: {lae}")
+
+arr = np.arange(9).reshape((3, 3)) + np.diag([1, 0, 1])
+uarr, spec, vharr = linalg.svd(arr)
+print(spec)    
+sarr = np.diag(spec)
+svd_mat = uarr.dot(sarr).dot(vharr)
+print(np.allclose(svd_mat, arr))
+
