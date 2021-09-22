@@ -44,7 +44,6 @@ plt.legend(['data', 'default', 'sf = 0.5'], loc = 'best')
 pp.savefig()
 plt.clf()
 
-
 xs = np.linspace(-3, 3, 1000)
 ys = xs**2 + np.sin(xs) + 1
 interp_func = Rbf(xs, ys)
@@ -53,5 +52,23 @@ plt.plot(xs, ys, 'g', lw = 3)
 plt.scatter(newx, interp_func(newx),c='r')
 plt.legend(['data', 'Rbf'], loc = 'best')
 pp.savefig()
+plt.clf()
+
+measured_time = np.linspace(0, 1, 10)
+noise = (np.random.random(10)*2 - 1) * 1e-1
+measures = np.sin(2 * np.pi * measured_time) + noise
+
+linear_interp = interp1d(measured_time, measures)
+
+interpolation_time = np.linspace(0, 1, 50)
+linear_results = linear_interp(interpolation_time)
+cubic_interp = interp1d(measured_time, measures, kind='cubic')
+cubic_results = cubic_interp(interpolation_time)
+plt.scatter(measured_time, measures, c='g',label='data')
+plt.plot(interpolation_time, linear_results, 'b',label='linear')
+plt.plot(interpolation_time, cubic_results, 'r',label='cubic')
+plt.legend()
+pp.savefig()
+plt.clf()
 
 pp.close()
