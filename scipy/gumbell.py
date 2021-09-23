@@ -10,9 +10,9 @@ print("Setup Complete")
 
 years_nb = 21
 wspeeds = np.load('sprog-windspeeds.npy')
-print(wspeeds)
+print(wspeeds.shape)
 max_speeds = np.array([arr.max() for arr in np.array_split(wspeeds, years_nb)])
-print(max_speeds)
+print(max_speeds.shape)
 
 plt.bar(np.arange(years_nb) + 1, max_speeds)
 plt.axis('tight')
@@ -26,13 +26,17 @@ def gumbell_dist(arr):
 
 sorted_max_speeds = np.sort(max_speeds)
 cprob = (np.arange(years_nb, dtype=np.float32) + 1)/(years_nb + 1)
+print(cprob)
 gprob = gumbell_dist(cprob)
+print(gprob)
 speed_spline = UnivariateSpline(gprob, sorted_max_speeds, k=1)
 nprob = gumbell_dist(np.linspace(1e-3, 1-1e-3, 100))
 fitted_max_speeds = speed_spline(nprob)
 
 fifty_prob = gumbell_dist(49./50.)
+print(fifty_prob)
 fifty_wind = speed_spline(fifty_prob)
+print(fifty_wind)
 
 plt.plot(sorted_max_speeds, gprob, 'o')
 plt.plot(fitted_max_speeds, nprob, 'g--')
