@@ -29,6 +29,8 @@ res_max, cov_max = optimize.curve_fit(yearly_temps, months,
 res_min, cov_min = optimize.curve_fit(yearly_temps, months,
                                       temp_min, [-40, 20, 0])
 days = np.linspace(0, 12, num=365)
+print(res_max)
+print(res_min)
 
 plt.plot(months, temp_max, 'ro')
 plt.plot(days, yearly_temps(days, *res_max), 'r-')
