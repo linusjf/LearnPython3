@@ -1,2 +1,3 @@
 cos_module.py
-cos_module_wrap.c
+cos_doubles.py
+*wrap.c
