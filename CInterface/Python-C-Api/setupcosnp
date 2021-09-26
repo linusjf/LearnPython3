@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 rm -rf build &> /dev/null
 rm *.so &> /dev/null
-python setup.py build_ext --inplace
+
+python setupcosnp.py build_ext --inplace
 
