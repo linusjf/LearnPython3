@@ -10,3 +10,5 @@
 *.gv
 **/__pycache__/**
 **/.mypy_cache/**
+*.o
+*.so
