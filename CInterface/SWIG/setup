@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+rm -rf *wrap.c cos_module.py *.so &> /dev/null
 python setup.py build_ext --inplace

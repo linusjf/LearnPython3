@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+rm -f *wrap.c cos_doubles.py *.so &> /dev/null
+python setupcosdoubles.py build_ext --inplace
