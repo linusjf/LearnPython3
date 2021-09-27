@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+rm -rf *.so _*.c 
+python setupcosdoubles.py build_ext --inplace
