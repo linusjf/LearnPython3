@@ -1,4 +1,5 @@
 build/*
-*.c
+_*.c
+cos_module.c
 *.so
 
