@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from statsmodels.formula.api import ols
 import pandas
 pandas.set_option('display.max_rows', 500)
 pandas.set_option('display.max_columns', 500)
@@ -84,3 +85,6 @@ maleVIQ = males['VIQ']
 femaleVIQ = females['VIQ']
 res = stats.mannwhitneyu(maleVIQ, femaleVIQ)   
 print(res)
+
+model = ols("VIQ ~ Gender + 1", data).fit()
+print(model.summary())
