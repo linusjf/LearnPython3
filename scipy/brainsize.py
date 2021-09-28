@@ -88,3 +88,14 @@ print(res)
 
 model = ols("VIQ ~ Gender + 1", data).fit()
 print(model.summary())
+
+data_fisq = pandas.DataFrame({'iq': data['FSIQ'], 'type': 'fsiq'})
+data_piq = pandas.DataFrame({'iq': data['PIQ'], 'type': 'piq'})
+data_long = pandas.concat((data_fisq, data_piq))
+print(data_long)  
+
+model = ols("iq ~ type", data_long).fit()
+print(model.summary()) 
+
+res = stats.ttest_ind(data['FSIQ'], data['PIQ'])
+print(res)
