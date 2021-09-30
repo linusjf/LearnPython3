@@ -69,3 +69,21 @@ print(d)
 
 d = dmatrix("0 + a:b", data)
 print(d)
+
+d = dmatrix("a + b + a:b", data)
+print(d)
+
+d = dmatrix("a*b", data)
+print(d)
+
+d = dmatrix("C(c, Poly)", {"c": ["c1", "c1", "c2", "c2", "c3", "c3"]})
+print(d)
+
+d = dmatrix("a:x1", data)
+print(d)
+
+d = dmatrix("x1 + a:x1", data)
+print(d)
+
+d = dmatrix("C(a, Poly):center(x1)", data)
+print(d)
