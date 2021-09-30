@@ -34,6 +34,7 @@ print("Rsquared")
 print(res.rsquared)
 print("Rainbow test")
 print(sm.stats.linear_rainbow(res))
+print(sm.stats.linear_rainbow.__doc__)
 sm.graphics.plot_partregress('Lottery', 'Wealth', ['Region', 'Literacy'],
                              data=df, obs_labels=False)
 plt.savefig('intro.png')
