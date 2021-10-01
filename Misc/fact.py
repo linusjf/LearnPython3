@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# https://www.linkedin.com/feed/update/urn:li:activity:6849655496094302208
+
 from functools import lru_cache
 from timeit import timeit
 from random import randrange
