@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import numpy as np
-from patsy import dmatrix
+from patsy import dmatrix,build_design_matrices
 from matplotlib import pyplot as plt
 from matplotlib import cm
 
@@ -34,3 +34,16 @@ for i in range(df * df):
 #fig.tight_layout()
 
 plt.savefig("tensors.png")
+
+data = {"x1": np.linspace(0., 1., 100),
+        "x2": np.linspace(0., 1., 100),
+        "x3": np.linspace(0., 1., 100)} 
+
+design_matrix = dmatrix("te(cr(x1, df=3), cr(x2, df=3), cc(x3, df=3), constraints='center')",data)
+
+new_data = {"x1": [0.1, 0.2],
+   "x2": [0.2, 0.3],
+   "x3": [0.3, 0.4]} 
+
+new_design_matrix = build_design_matrices([design_matrix.design_info], new_data)[0]
+print(new_design_matrix)
