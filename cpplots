@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-mkdir -p ~/storage/downloads/Pyplots
-find . -name "*.pdf" | parallel -I% --max-args 1 cp % ~/storage/downloads/Pyplots
-find . -name "*.png" | parallel -I% --max-args 1 cp % ~/storage/downloads/Pyplots
+mkdir -p /data/data/com.termux/files/home/storage/downloads/Pyplots
+find . -name "*.pdf" | parallel -I% --max-args 1 cp % /data/data/com.termux/files/home/storage/downloads/Pyplots
+find . -name "*.png" | parallel -I% --max-args 1 cp % /data/data/com.termux/files/home/storage/downloads/Pyplots
