@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# create mycluster profile
+#ipython profile create mycluster --parallel 
+#ipcluster start --profile=mycluster --n=10 &
+ipcluster start --n=6 &
+sleep 1m
+./ipycluster.py
+#ipcluster stop --profile=mycluster
+ipcluster stop
+
