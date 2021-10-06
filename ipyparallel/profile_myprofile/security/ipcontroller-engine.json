@@ -1,0 +1,21 @@
+{
+  "ssh": "",
+  "interface": "tcp://127.0.0.1",
+  "registration": 43703,
+  "control": 44886,
+  "mux": 35062,
+  "task": 45668,
+  "iopub": 60572,
+  "hb_ping": 43506,
+  "hb_pong": 57042,
+  "broadcast": [
+    33463,
+    49142
+  ],
+  "key": "79f58500-cf13ecf2405d83c405af65bc",
+  "curve_serverkey": null,
+  "location": "localhost",
+  "pack": "json",
+  "unpack": "json",
+  "signature_scheme": "hmac-sha256"
+}
