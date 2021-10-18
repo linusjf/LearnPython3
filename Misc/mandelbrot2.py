@@ -13,9 +13,7 @@ WIDTH = 1024
 # as integer value of rgb 
 
 def rgb_conv(i): 
-
-    color = 255 * array(colorsys.hsv_to_rgb(i % 4, i % 8, i % 16)) 
-
+    color = 255 * array(colorsys.hsv_to_rgb(255/i,1.0,0.5)) 
     return tuple(color.astype(int)) 
 
   
@@ -45,7 +43,7 @@ for x in range(img.size[0]):
     for y in range(img.size[1]): 
         pixels[x, y] = mandelbrot((x - (0.75 * WIDTH)) / (WIDTH / 4),
                                   (y - (WIDTH / 4)) / (WIDTH / 4))
-
+print(f"{1.0:%}")
 # to display the created fractal after  
 # completing the given number of iterations 
 img.show()
