@@ -14,7 +14,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-
 def sample_from_finite_probability_space(finite_prob_space):
     """
     Produces a random outcome from a given finite probability space.
