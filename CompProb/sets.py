@@ -16,3 +16,11 @@ print(A_union_C)
 # equivalent also to "sample_space - B"
 B_complement = sample_space.difference(B)  
 print(B_complement)
+
+faces_that_add_to_7 = set()
+for x in range(1, 7):
+    for y in range(1, 7):
+        if x + y == 7:
+            faces_that_add_to_7.add((x, y))
+
+print(faces_that_add_to_7)
