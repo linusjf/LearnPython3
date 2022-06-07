@@ -15,10 +15,14 @@ print("Marginal probability for Gender = Female")
 female_only = joint_prob_gender_admission[gender_mapping['female']]
 print(female_only)
 
-print("Probability for Female + Admitted")
-prob_female_admitted = joint_prob_gender_admission[gender_mapping['female'], admission_mapping['admitted']]
-print(prob_female_admitted)
-prob_admitted_given_female = prob_female_admitted / np.sum(female_only)
+print("Probability for Female + Admission")
+prob_female_admission = joint_prob_gender_admission[gender_mapping['female'], ]
+print(prob_female_admission)
+prob_admission_given_female = prob_female_admission / np.sum(female_only)
 
-print("Probability for Admitted|Female")
-print(prob_admitted_given_female)
+print("Probability for Admission|Female")
+print(prob_admission_given_female)
+
+prob_admission_given_female_dict = dict(zip(admission_labels, prob_admission_given_female))
+print("Probability for Admission|Female (Dict)")
+print(prob_admission_given_female_dict)
