@@ -42,3 +42,14 @@ print(prob_admission_given_male)
 prob_admission_given_male_dict = dict(zip(admission_labels, prob_admission_given_male))
 print("Probability for Admission|Male (Dict)")
 print(prob_admission_given_male_dict)
+
+print("Marginal probability for Admission = Admitted")
+admitted_only = joint_prob_gender_admission[:, admission_mapping['admitted']]
+print(admitted_only)
+
+print("Probability Gender|Admission=Admitted")
+prob_gender_given_admitted = admitted_only / np.sum(admitted_only)
+print(prob_gender_given_admitted)
+prob_gender_given_admitted_dict = dict(zip(gender_labels, prob_gender_given_admitted))
+print("Probability Gender|Admission=Admitted (Dict)")
+print(prob_gender_given_admitted_dict)
