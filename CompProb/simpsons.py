@@ -53,3 +53,13 @@ print(prob_gender_given_admitted)
 prob_gender_given_admitted_dict = dict(zip(gender_labels, prob_gender_given_admitted))
 print("Probability Gender|Admission=Admitted (Dict)")
 print(prob_gender_given_admitted_dict)
+
+female_and_A_only = joint_prob_table[gender_mapping['female'], department_mapping['A']]
+print("Probability of female and department A")
+print(female_and_A_only)
+prob_admission_given_female_A = female_and_A_only/np.sum(female_and_A_only)
+print("Probability Admission|Gender=Female & Dept=A")
+print(prob_admission_given_female_A)
+prob_admission_given_female_A_dict = dict(zip(admission_labels, prob_admission_given_female_A))
+print("Probability Admission|Gender=Female & Dept=A (Dict)")
+print(prob_admission_given_female_A_dict)
