@@ -142,7 +142,7 @@ print("Probability Admission|Gender=Female & Dept=E")
 print(prob_admission_given_female_E)
 prob_admission_given_female_E_dict = dict(zip(admission_labels, prob_admission_given_female_E))
 print("Probability Admission|Gender=Female & Dept=E (Dict)")
-print(prob_admission_given_female_D_dict)
+print(prob_admission_given_female_E_dict)
 
 male_and_E_only = joint_prob_table[gender_mapping['male'], department_mapping['E']]
 print("Probability of male and department E")
@@ -153,3 +153,23 @@ print(prob_admission_given_male_E)
 prob_admission_given_male_E_dict = dict(zip(admission_labels, prob_admission_given_male_E))
 print("Probability Admission|Gender=Male & Dept=E (Dict)")
 print(prob_admission_given_male_E_dict)
+
+female_and_F_only = joint_prob_table[gender_mapping['female'], department_mapping['F']]
+print("Probability of female and department F")
+print(female_and_F_only)
+prob_admission_given_female_F = female_and_F_only/np.sum(female_and_F_only)
+print("Probability Admission|Gender=Female & Dept=F")
+print(prob_admission_given_female_F)
+prob_admission_given_female_F_dict = dict(zip(admission_labels, prob_admission_given_female_F))
+print("Probability Admission|Gender=Female & Dept=F (Dict)")
+print(prob_admission_given_female_F_dict)
+
+male_and_F_only = joint_prob_table[gender_mapping['male'], department_mapping['F']]
+print("Probability of male and department F")
+print(male_and_F_only)
+prob_admission_given_male_F = male_and_F_only/np.sum(male_and_F_only)
+print("Probability Admission|Gender=Male & Dept=F")
+print(prob_admission_given_male_F)
+prob_admission_given_male_F_dict = dict(zip(admission_labels, prob_admission_given_male_F))
+print("Probability Admission|Gender=Male & Dept=F (Dict)")
+print(prob_admission_given_male_F_dict)
