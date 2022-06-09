@@ -179,3 +179,9 @@ print(prob_admission_given_male_A,prob_admission_given_male_B,prob_admission_giv
 print()
 print("Probability Admission|Gender=Female Dept-wise (A-F)")
 print(prob_admission_given_female_A,prob_admission_given_female_B,prob_admission_given_female_C,prob_admission_given_female_D,prob_admission_given_female_E,prob_admission_given_female_F,sep=" ")
+
+print()
+for department in department_labels:
+    for gender in gender_labels:
+        restricted = joint_prob_table[gender_mapping[gender], department_mapping[department]]
+        print(department, gender, dict(zip(admission_labels, restricted / np.sum(restricted)))['admitted'])
