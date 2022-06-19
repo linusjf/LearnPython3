@@ -21,6 +21,7 @@ print(Y[0])
 
 ax = sns.heatmap(companies.corr())
 pdf_pages.savefig(bbox_inches='tight')
+pdf_pages.close()
 
 #Encoding categorical data
 from sklearn.preprocessing import OneHotEncoder
@@ -40,4 +41,23 @@ Y = companies.iloc[:,6].values
 print(X[0])
 print(Y[0])
 
-pdf_pages.close()
+# fix for dummy variable trap
+X = X[:, 1:]
+print(X[0])
+
+from sklearn.model_selection import train_test_split
+X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size = 0.2,random_state = 0)
+
+from sklearn.linear_model import LinearRegression
+model_fit = LinearRegression()
+model_fit.fit(X_train,Y_train)
+print(model_fit)
+
+Y_pred = model_fit.predict(X_test)
+print(Y_pred)
+
+print(model_fit.coef_)
+print(model_fit.intercept_)
+
+from sklearn.metrics import r2_score
+print(r2_score(Y_test,Y_pred))
