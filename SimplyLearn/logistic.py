@@ -22,7 +22,6 @@ import numpy as np
 fig = plt.figure(figsize=(8,40))
 
 for index,(image,label) in enumerate(zip(digits.data[0:10],digits.target[0:10])):
-    print(index,label)
     plt.subplot(5,2,index+1)
     plt.imshow(np.reshape(image,(8,8)),cmap=plt.cm.gray)
     plt.title("Training: %i\n" % label, fontsize = 20)
@@ -30,3 +29,20 @@ for index,(image,label) in enumerate(zip(digits.data[0:10],digits.target[0:10]))
 fig.tight_layout()
 pdf_pages.savefig()
 pdf_pages.close()
+
+from sklearn.model_selection import train_test_split
+X_train,X_test,Y_train,Y_test = train_test_split(digits.data,digits.target,test_size = 0.23,random_state = 2)
+
+print(X_train.shape)
+print(Y_train.shape)
+print(X_test.shape)
+print(Y_test.shape)
+
+from sklearn.linear_model import LogisticRegression
+logistic_regr = LogisticRegression(max_iter=4000)
+logistic_regr.fit(X_train,Y_train)
+print(logistic_regr.predict(X_test[0].reshape(1,-1)))
+
+logistic_regr.predict(X_test[0:10])
+
+predictions = logistic_regr.predict(X_test)
