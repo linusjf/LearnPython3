@@ -39,10 +39,13 @@ print(X_test.shape)
 print(Y_test.shape)
 
 from sklearn.linear_model import LogisticRegression
-logistic_regr = LogisticRegression(max_iter=4000)
+logistic_regr = LogisticRegression(max_iter=2000)
 logistic_regr.fit(X_train,Y_train)
 print(logistic_regr.predict(X_test[0].reshape(1,-1)))
 
 logistic_regr.predict(X_test[0:10])
 
 predictions = logistic_regr.predict(X_test)
+
+score = logistic_regr.score(X_test,Y_test)
+print(score)
