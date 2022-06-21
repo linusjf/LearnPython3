@@ -61,4 +61,19 @@ all_sample_title = "Accuracy score: {0}".format(score)
 plt.title(all_sample_title,size = 15)
 
 pdf_pages.savefig()
+
+index = 0
+misclassifiedIndex = []
+for predicted,actual in zip(predictions,Y_test):
+    if predicted != actual:
+        misclassifiedIndex.append(index)
+    index += 1
+
+plt.figure(figsize=(8,20))
+for plotIndex,wrong in enumerate(misclassifiedIndex[0:10]):
+    plt.subplot(5,2,plotIndex + 1)
+    plt.imshow(np.reshape(X_test[wrong],(8,8)),cmap=plt.cm.gray)
+    plt.title("Predicted: {}, Actual: {}".format(predictions[wrong],Y_test[wrong]), fontsize = 20)
+
+pdf_pages.savefig()
 pdf_pages.close()
