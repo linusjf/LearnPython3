@@ -28,7 +28,6 @@ for index,(image,label) in enumerate(zip(digits.data[0:10],digits.target[0:10]))
 
 fig.tight_layout()
 pdf_pages.savefig()
-pdf_pages.close()
 
 from sklearn.model_selection import train_test_split
 X_train,X_test,Y_train,Y_test = train_test_split(digits.data,digits.target,test_size = 0.23,random_state = 2)
@@ -49,3 +48,17 @@ predictions = logistic_regr.predict(X_test)
 
 score = logistic_regr.score(X_test,Y_test)
 print(score)
+
+from sklearn import metrics
+cm = metrics.confusion_matrix(Y_test,predictions)
+print(cm)
+
+plt.figure(figsize = (9,9))
+sns.heatmap(cm,annot = True,fmt = ".3f",linewidths = 0.5,square = True, cmap = 'Blues_r')
+plt.xlabel('Actual label')
+plt.ylabel('Predicted label')
+all_sample_title = "Accuracy score: {0}".format(score)
+plt.title(all_sample_title,size = 15)
+
+pdf_pages.savefig()
+pdf_pages.close()
