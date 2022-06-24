@@ -50,6 +50,8 @@ ax.scatter(clf.support_vectors_[:,0],
            s=100,
            linewidth=1,
            facecolors='none')
+print(clf.support_vectors_[:,0])
+print(clf.support_vectors_[:,1])
 
 pdf_pages.savefig()
 pdf_pages.close()
