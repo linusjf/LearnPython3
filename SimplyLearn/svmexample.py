@@ -23,17 +23,25 @@ pdf_pages.savefig()
 newdata = [[3,4],[5,6]]
 print("predicted: ",clf.predict(newdata))
 
-plt.scatter(X[:,0],X[:,1],c = Y,s = 30,cmap=plt.cm.Paired)
-
+#plt.scatter(X[:,0],X[:,1],c = Y,s = 30,cmap=plt.cm.Paired)
 # plot the decision function
 ax = plt.gca()
 xlim = ax.get_xlim()
+print("xlim: ",xlim)
 ylim = ax.get_ylim()
+print("ylim: ",ylim)
 xx = np.linspace(xlim[0],xlim[1],30)
 yy = np.linspace(ylim[0],ylim[1],30)
 YY, XX = np.meshgrid(yy,xx)
+print("XX shape: ",XX.shape)
 xy = np.vstack([XX.ravel(),YY.ravel()]).T
-Z = clf.decision_function(xy).reshape(XX.shape)
+print("xy: ",xy)
+print("xy shape: ",xy.shape)
+Z = clf.decision_function(xy)
+print("Z shape: ", Z.shape)
+Z = Z.reshape(XX.shape)
+print("Z shape: ", Z.shape)
+#print("Z: ",Z)
 ax.contour(XX,YY,Z,colors='k',levels=[-1,0,1],
            alpha=0.5,
            linestyles=['--','-','--'])
