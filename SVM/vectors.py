@@ -44,3 +44,9 @@ def dot_product(x,y):
 
 # 34.0
 print(dot_product(x,y))
+
+# numpy function
+x = np.array([3,5])
+y = np.array([8,2])
+# 34
+print(np.dot(x,y)) 
