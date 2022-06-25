@@ -34,4 +34,13 @@ theta = 45
 x = [3,5]
 y = [8,2]
 # 34.0
-print(geometric_dot_product(x,y,theta)) 
+print(geometric_dot_product(x,y,theta))
+
+def dot_product(x,y):
+    result = 0
+    for i in range(len(x)):
+        result = result + x[i]*y[i]
+    return result
+
+# 34.0
+print(dot_product(x,y))
