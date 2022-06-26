@@ -35,9 +35,12 @@ from succinctly.datasets import get_dataset, linearly_separable as ls
 np.random.seed(88)
 
 X, y = get_dataset(ls.get_training_examples)
-# transform X into an array of augmented vectors.
+print(X.shape)
+print(y.shape)
 
+# transform X into an array of augmented vectors.
 X_augmented = np.c_[np.ones(X.shape[0]), X]
+print(X_augmented.shape)
 
 w = perceptron_learning_algorithm(X_augmented, y)
 
