@@ -46,7 +46,14 @@ import warnings; warnings.simplefilter('ignore')
 from sklearn.cluster import MiniBatchKMeans
 kmeans = MiniBatchKMeans(16)
 kmeans.fit(data)
-new_colors = kmeans.cluster_centers_[kmeans.predict(data)]
+centroids = kmeans.cluster_centers_
+print(centroids)
+print(centroids.shape)
+preds = kmeans.predict(data)
+print(preds)
+print(preds.shape)
+new_colors = centroids[preds]
+print(new_colors.shape)
 
 plot_pixels(data,title='Reduced color space: 16 colors',colors=new_colors)
 pdf_pages.savefig()
