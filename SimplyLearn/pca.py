@@ -18,9 +18,20 @@ from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 scaler.fit(df)
 scaled_data = scaler.transform(df)
+
+from sklearn.decomposition import PCA
+pca = PCA(n_components=2)
+pca.fit(scaled_data)
+x_pca = pca.transform(scaled_data)
+print(scaled_data.shape)
+print(x_pca.shape)
 # The PDF document
 pdf_pages = PdfPages("pca.pdf")
 
-fig = plt.figure(figsize = (6,4))
+plt.figure(figsize = (8,6))
+plt.scatter(x_pca[:,0],x_pca[:,1],c=cancer['target'],cmap='plasma')
+plt.xlabel("First principal component")
+plt.ylabel("Second principal component")
+
 pdf_pages.savefig()
 pdf_pages.close()
