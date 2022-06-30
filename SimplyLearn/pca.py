@@ -34,4 +34,10 @@ plt.xlabel("First principal component")
 plt.ylabel("Second principal component")
 
 pdf_pages.savefig()
+
+print(pca.components_)
+df_comp = pd.DataFrame(pca.components_,columns=cancer["feature_names"])
+plt.figure(figsize=(12,6))
+sns.heatmap(df_comp,cmap='plasma')
+pdf_pages.savefig(bbox_inches='tight')
 pdf_pages.close()
