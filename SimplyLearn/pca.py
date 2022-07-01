@@ -36,6 +36,7 @@ plt.ylabel("Second principal component")
 pdf_pages.savefig()
 
 print(pca.components_)
+print(pca.explained_variance_ratio_)
 df_comp = pd.DataFrame(pca.components_,columns=cancer["feature_names"])
 plt.figure(figsize=(12,6))
 sns.heatmap(df_comp,cmap='plasma')
