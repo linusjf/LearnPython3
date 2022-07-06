@@ -59,4 +59,26 @@ y = -1
 # -3.577708764
 print (example_geometric_margin(w_1, b_1, x, y))  
 # -3.577708764
-print(example_geometric_margin(w_2, b_2, x, y))  
+print(example_geometric_margin(w_2, b_2, x, y)) 
+
+# Compare two hyperplanes using the geometrical margin.
+positive_x = [[2,7],[8,3],[7,5],[4,4],[4,6],[1,3],[2,5]]
+
+negative_x = [[8,7],[4,10],[9,7],[7,10],[9,6],[4,8],[10,10]]
+
+X = np.vstack((positive_x, negative_x))
+
+y = np.hstack((np.ones(len(positive_x)), 
+               -1*np.ones(len(negative_x))))
+
+w = np.array([-0.4, -1])
+
+b = 8
+
+# 0.185695338177
+print(geometric_margin(w, b, X, 
+y))          
+# change the value of b
+# 0.64993368362
+print(geometric_margin(w, 8.5, X, 
+y))        
