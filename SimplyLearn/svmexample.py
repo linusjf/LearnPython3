@@ -41,7 +41,7 @@ Z = clf.decision_function(xy)
 print("Z shape: ", Z.shape)
 Z = Z.reshape(XX.shape)
 print("Z shape: ", Z.shape)
-#print("Z: ",Z)
+print("Z: ",Z)
 ax.contour(XX,YY,Z,colors='k',levels=[-1,0,1],
            alpha=0.5,
            linestyles=['--','-','--'])
