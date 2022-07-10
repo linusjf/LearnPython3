@@ -29,6 +29,8 @@ from matplotlib.backends.backend_pdf import PdfPages
 np.random.seed(0)
 X = np.r_[np.random.randn(20, 2) - [2, 2], np.random.randn(20, 2) + [2, 2]]
 Y = [0] * 20 + [1] * 20
+print("X: ",X)
+print("Y: ",Y)
 
 # figure number
 fignum = 1
@@ -94,6 +96,7 @@ for name, penalty in (("unreg", 1), ("reg", 0.05)):
 
     plt.xticks(())
     plt.yticks(())
+    plt.title("name = {},C = {}".format(name,penalty))
     fignum = fignum + 1
     pdf_pages.savefig()
 
