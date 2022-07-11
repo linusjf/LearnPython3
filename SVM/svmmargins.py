@@ -75,7 +75,10 @@ for name, penalty in (("unreg", 1), ("reg", 0.05)):
         cmap=cm.get_cmap("RdBu"),
     )
     plt.scatter(
-        X[:, 0], X[:, 1], c=Y, zorder=10, cmap=cm.get_cmap("RdBu"), edgecolors="k"
+        X[:, 0], X[:, 1], c=Y, 
+        zorder=10, 
+        cmap=cm.get_cmap("RdBu"),
+        edgecolors="k"
     )
 
     plt.axis("tight")
