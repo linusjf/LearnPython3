@@ -25,3 +25,10 @@ print(hard_constraint_is_satisfied(w, b, x, y))
 
 # We can use zeta = 2 and satisfy the soft constraint.
 print(soft_constraint_is_satisfied(w, b, x, y, zeta=2))
+
+# We can pick a huge zeta for every point
+# to always satisfy the soft constraint.
+# True
+print(soft_constraint_is_satisfied(w, b, x, y, zeta=10))   
+# True
+print(soft_constraint_is_satisfied(w, b, x, y, zeta=1000)) 
