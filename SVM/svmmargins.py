@@ -39,7 +39,7 @@ fignum = 1
 pdf_pages = PdfPages("svmmargins.pdf")
 
 # fit the model
-for name, penalty in (("unreg", 1), ("reg", 0.05)):
+for name, penalty in (("unreg", float('inf')),("unreg", 1), ("reg", 0.05)):
 
     clf = svm.SVC(kernel="linear", C=penalty)
     clf.fit(X, Y)
