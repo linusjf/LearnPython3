@@ -128,8 +128,8 @@ score = accuracy_score(y, (yhat > 0.5))
 print(f"Before training - loss value {loss} accuracy {score}")
  
 # train for each epoch
-n_epochs = 150
-learning_rate = 0.005
+n_epochs = 1000
+learning_rate = 0.001
 for n in range(n_epochs):
     model.forward(X)
     yhat = model.a[-1]
