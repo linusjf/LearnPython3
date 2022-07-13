@@ -9,4 +9,8 @@ x1 = [3,6]
 x2 = [10,10] 
 
 # 8100
-print(polynomial_kernel(x1, x2)) 
+print(polynomial_kernel(x1, x2))
+
+def polynomial_kernel(a, b, degree, constant=0):
+    result = sum([a[i] * b[i] for  i in range(len(a))]) + constant
+    return pow(result, degree)
