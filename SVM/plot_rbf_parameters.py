@@ -82,6 +82,7 @@ map.
 # the values of interest.
 
 import numpy as np
+import time
 from matplotlib.colors import Normalize
 from matplotlib.backends.backend_pdf import PdfPages
 pp = PdfPages('plot_rbf_parameters.pdf')
@@ -143,6 +144,7 @@ from sklearn.svm import SVC
 from sklearn.model_selection import StratifiedShuffleSplit
 from sklearn.model_selection import GridSearchCV
 
+tic = time.perf_counter()
 C_range = np.logspace(-2, 10, 13)
 gamma_range = np.logspace(-9, 3, 13)
 param_grid = dict(gamma=gamma_range, C=C_range)
@@ -154,11 +156,14 @@ print(
     "The best parameters are %s with a score of %0.2f"
     % (grid.best_params_, grid.best_score_)
 )
+toc = time.perf_counter()
+print("Time taken for parameter search : {}".format(toc - tic))
 
 # %%
 # Now we need to fit a classifier for all parameters in the 2d version
 # (we use a smaller set of parameters here because it takes a while to train)
 
+tic = time.perf_counter()
 C_2d_range = [1e-2, 1, 1e2]
 gamma_2d_range = [1e-1, 1, 1e1]
 classifiers = []
@@ -167,6 +172,8 @@ for C in C_2d_range:
         clf = SVC(C=C, gamma=gamma)
         clf.fit(X_2d, y_2d)
         classifiers.append((C, gamma, clf))
+toc = time.perf_counter()
+print("Time taken to fit SVC models : {}".format(toc - tic))
 
 # %%
 # Visualization
@@ -176,6 +183,7 @@ for C in C_2d_range:
 
 import matplotlib.pyplot as plt
 
+tic = time.perf_counter()
 plt.figure(figsize=(8, 6))
 xx, yy = np.meshgrid(np.linspace(-3, 3, 200), np.linspace(-3, 3, 200))
 for k, (C, gamma, clf) in enumerate(classifiers):
@@ -195,7 +203,15 @@ for k, (C, gamma, clf) in enumerate(classifiers):
     plt.axis("tight")
     print("gamma={},C={} plotted...".format(gamma,C))
 
+toc = time.perf_counter()
+print("Time taken for plots : {}".format(toc - tic))
+
+tic = time.perf_counter()
+print("start save figure...")  
 pp.savefig()
+print("end save figure...")  
+toc = time.perf_counter()
+print("Time taken to save plots : {}".format(toc - tic))
 scores = grid.cv_results_["mean_test_score"].reshape(len(C_range), len(gamma_range))
 
 # %%
@@ -208,6 +224,7 @@ scores = grid.cv_results_["mean_test_score"].reshape(len(C_range), len(gamma_ran
 # interesting range while not brutally collapsing all the low score values to
 # the same color.
 
+tic = time.perf_counter()
 print("start plotting heatmap...")  
 plt.figure(figsize=(8, 6))
 plt.subplots_adjust(left=0.2, right=0.95, bottom=0.15, top=0.95)
@@ -225,5 +242,6 @@ plt.yticks(np.arange(len(C_range)), C_range)
 plt.title("Validation accuracy")
 pp.savefig()
 print("end plotting heatmap...")  
+toc = time.perf_counter()
+print("Time taken for heatmap : {}".format(toc - tic))
 pp.close()
-print("end...")  
