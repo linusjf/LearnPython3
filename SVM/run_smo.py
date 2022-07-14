@@ -10,7 +10,7 @@ def linear_kernel(x1, x2):
 
 
 def compute_w(multipliers, X, y):
-    return np.sum(multipliers[i] * y[i] * X[i] for i in range(len(y)))
+    return sum(multipliers[i] * y[i] * X[i] for i in range(len(y)))
 
 if __name__ == '__main__':
 
