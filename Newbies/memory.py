@@ -20,3 +20,25 @@ sandwich = 10
 print("The value of variable peanut_butter: " ,peanut_butter)
 print("The value of peanut_butter did NOT change even though we changed the value of sandwich")
 print("The memory location of variable peanut_butter is: ",id(peanut_butter))
+
+import time
+number = 1000000
+# Check the current time
+startTime = time.time()
+# Create an empty list
+list = []
+# Add items to the list one by one
+for counter in range(number):
+ list.append(counter)
+# Display the run time
+print(time.time() - startTime)
+
+# Check the current time
+startTime = time.time()
+# Create a list of 1000000 zeros
+list = [None]*number
+# Add items to the list one by one
+for counter in range(number):
+ list[counter] = counter
+# Display the run time
+print(time.time() - startTime)
