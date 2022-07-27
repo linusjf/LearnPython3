@@ -24,3 +24,14 @@ print(numpy.linalg.solve(A,b))
 # print it.
 A = numpy.array([[2, 1], [6, 3]])
 print(numpy.linalg.det(A))
+
+numpy.random.seed(1)
+# Create A and b matrices with random
+A = 10*numpy.random.rand(10,10)-5
+b = 10*numpy.random.rand(10)-5
+# Solve Ax = b
+solution = numpy.linalg.solve(A,b)
+print(solution)
+# To verify the solution works, show Ax - b is near 0
+rem = sum(abs(numpy.dot(A,solution) - b))
+print(rem)
