@@ -7,3 +7,20 @@ b = numpy.array([-8, 15, 19])
 # Solve Ax = b
 sol = numpy.linalg.solve(A,b)
 print(sol)
+
+# inconsistent system
+A = numpy.array([[2, 1], [6, 3]])
+b = numpy.array([3, 3])
+print(numpy.linalg.solve(A,b))
+
+# dependent system
+A = numpy.array([[2, 1], [6, 3]])
+b = numpy.array([1, 3])
+print(numpy.linalg.solve(A,b))
+# A good practice is to verify that the 
+# determinant of A is nonzero with the numpy.linalg.det function before proceeding 
+# further. 
+# In the following code, we create a NumPy array A, compute the determinant, and 
+# print it.
+A = numpy.array([[2, 1], [6, 3]])
+print(numpy.linalg.det(A))
