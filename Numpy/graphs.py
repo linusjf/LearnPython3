@@ -52,3 +52,18 @@ print(numpy.sum(indegrees))
 print("A1² = ",numpy.linalg.matrix_power(A1,2))
 # Find the third power of adjacency matrix A1
 print("\nA1³ = ", numpy.linalg.matrix_power(A1,3))
+
+print()
+# Print the number of paths from v1 to v6 of each length from 1 
+# to 6
+for counter in range(1,7):
+    A2counter = numpy.linalg.matrix_power(A2,counter)
+    print("There are", A2counter[0,5], "paths of length", counter, "from v1 to v6")
+
+print()
+# Print the number of paths from v2 to v3 of each length from 1 
+# to 6
+for counter in range(1,7):
+    A2counter = numpy.linalg.matrix_power(A2,counter)
+    print("There are", A2counter[1,2], "paths of length", 
+          counter, "from v2 to v3")
