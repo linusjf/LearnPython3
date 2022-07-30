@@ -47,3 +47,8 @@ indegrees = numpy.sum(A3, axis=0)
 print(indegrees)
 print(numpy.sum(outdegrees))
 print(numpy.sum(indegrees))
+
+# Find the second power of adjacency matrix A1
+print("A1² = ",numpy.linalg.matrix_power(A1,2))
+# Find the third power of adjacency matrix A1
+print("\nA1³ = ", numpy.linalg.matrix_power(A1,3))
