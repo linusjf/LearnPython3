@@ -111,7 +111,8 @@ def distancesWithinComponent(source):
     for i in range(1, W2.shape[0] + 1):
         if i != source and isConnected(W2, source, i):
             component.append(i)
-        
+
+    print("component = ",component)
     # find the weight matrix correponding to the connected component
     subnetwork = W2[numpy.array(component) - 1,:][:,numpy.array(component) - 1]
     # run Dijkstra's algorithm
@@ -171,5 +172,11 @@ W2 = numpy.array([[0, 4, 0, 0, 0, 0],
  [0, 0, 4, 2, 0, 0],
  [0, 1, 0, 0, 0, 0]])
 
-distancesWithinComponent(1)
-distancesWithinComponent(3)
+s,p = distancesWithinComponent(1)
+print(s,p)
+for i in range(2,s.shape[0]+1):
+    printShortestPath(s, p, 1, i)
+s,p = distancesWithinComponent(3)
+print(s,p)
+for i in range(2,s.shape[0]+1):
+    printShortestPath(s, p, 1, i)
