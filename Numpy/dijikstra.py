@@ -38,7 +38,7 @@ def printShortestPath(shortestDistances, previousVertices,
         output.append('v' + str(i + 1))
 
     # print the strings with no spaces
-    print('Path =', *output, '\t\t Distance =',shortestDistances[destination])
+    print('Path =', *output, '\nDistance =',shortestDistances[destination])
 
 # Dijkstra's algorithm for finding shortest paths from the 
 # source vertex to all other vertices in the graph
@@ -100,8 +100,6 @@ def Dijkstra(W, i):
         
     # print the table similar to the book
     print(numpy.array([numpy.arange(n) + 1, shortestDistances,previousVertices + 1]).T)
-    for i in range(2,7):
-        printShortestPath(shortestDistances, previousVertices, 1, i)
     # return the outputs
     return shortestDistances, previousVertices
 
@@ -116,3 +114,5 @@ W1 = numpy.array([[0, 4, 1, 0, 2, 0],
 # Run Dijkstra's algorithm with a source at vertex v1
 s,p = Dijkstra(W1, 1)
 print(s,p)
+for i in range(2,7):
+    printShortestPath(s, p, 1, i)
