@@ -1,6 +1,45 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import numpy
+# Use the previousVertices chart to construct the shortest path 
+ # from input source to input destination and print a
+ # string showing the path
+def printShortestPath(shortestDistances, previousVertices, 
+ source, destination):
+    # avoid off-by-one error
+    source -= 1
+    destination -= 1
+
+    # convert previousVertices to integers
+    previousVertices = previousVertices.astype(int)
+
+    # initialize the path with the destination
+    path = [destination]
+    
+    # add the previous vertex from previousVertices until we 
+    # reach the source
+    # the source
+    for _ in range(previousVertices.shape[0] - 1):
+        # if the source is in the path, stop
+        if path[-1] == source:
+            break
+        # if the source is not in the path, add the previous vertex
+        else:
+            path.append(previousVertices[path[-1]])
+
+    # initialize an output string
+    output = []
+
+    # iterate through the path backwards (source to destination)
+    for i in numpy.flip(path):
+        # construct a list of strings to output
+        if i > 0:
+            output.append('->')
+        output.append('v' + str(i + 1))
+
+    # print the strings with no spaces
+    print('Path =', *output, '\t\t Distance =',shortestDistances[destination])
+
 # Dijkstra's algorithm for finding shortest paths from the 
 # source vertex to all other vertices in the graph
 #
@@ -61,6 +100,8 @@ def Dijkstra(W, i):
         
     # print the table similar to the book
     print(numpy.array([numpy.arange(n) + 1, shortestDistances,previousVertices + 1]).T)
+    for i in range(2,7):
+        printShortestPath(shortestDistances, previousVertices, 1, i)
     # return the outputs
     return shortestDistances, previousVertices
 
