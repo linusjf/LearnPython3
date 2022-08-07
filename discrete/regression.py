@@ -3,7 +3,8 @@
 import numpy as np
 import pandas as pd
 pd.options.mode.chained_assignment = None  # default='warn'
-
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
@@ -44,7 +45,6 @@ plt.legend()
 pp.savefig()
 plt.clf()
 
-from sklearn.linear_model import LinearRegression
 reg = LinearRegression()
 X = df["weight"]
 Y = df["horsepower"]
@@ -56,9 +56,6 @@ print("The value obtained for beta_1 is: ",reg.coef_)
 print("Weights of cars: ",X_new)
 print("Predicted horsepower of cars: ")
 print(reg.predict(X_new.reshape(-1,1)))
-
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
 
 #Selecting the variables of interest
 X = df["horsepower"]
