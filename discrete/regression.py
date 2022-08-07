@@ -38,4 +38,45 @@ plt.plot(X_plot, Y_plot, "r-", label = Equationline)
 sns.scatterplot(x=X,y=Y, label = "Training Data")
 plt.legend()
 pp.savefig()
+plt.clf()
+
+from sklearn.linear_model import LinearRegression
+reg = LinearRegression()
+X = df["weight"]
+Y = df["horsepower"]
+X = X.values.reshape(-1,1)
+Y = Y.values.reshape(-1,1)
+reg.fit(X, Y)
+print("The value obtained for beta_o is: ", reg.intercept_)
+print("The value obtained for beta_1 is: ",reg.coef_)
+print("Weights of cars: ",X_new)
+print("Predicted horsepower of cars: ")
+print(reg.predict(X_new.reshape(-1,1)))
+
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+
+#Selecting the variables of interest
+X = pd.to_numeric(df["horsepower"], downcast="float")
+y = df["mpg"]
+#Converting the series to a column matrix 
+X_new = X.values.reshape(-1,1)
+y_new = y.values.reshape(-1,1)
+
+poly_features = PolynomialFeatures(degree=2, include_bias=False)
+X_poly = poly_features.fit_transform(X_new)
+reg = LinearRegression()
+reg.fit(X_poly, y_new)
+print("Y = {:.4f} X^2 {:.3f} X + {:.3f}".format(reg.coef_[0,1], 
+                                                reg.coef_[0,0], 
+                                                reg.intercept_[0]))
+start = X.values.min()
+stop = X.values.max()
+X_plot = np.linspace(start, stop, 1000, dtype=float)
+Y_plot = reg.coef_[0,1] * X_plot * X_plot + reg.coef_[0,0] * X_plot + reg.intercept_[0]
+Equationline = "Y ={:.4f} $X^2$ {:.3f} $X$ + {:.3f}".format(reg.coef_[0,1], reg.coef_[0,0], reg.intercept_[0])
+sns.scatterplot(x=X,y=y, label = "Training Data")
+plt.plot(X_plot, Y_plot, "r-", label = Equationline)
+plt.legend()
+pp.savefig()
 pp.close()
