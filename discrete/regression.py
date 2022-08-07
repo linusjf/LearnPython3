@@ -8,7 +8,9 @@ from matplotlib.backends.backend_pdf import PdfPages
 pp = PdfPages('regression.pdf')
 print("Setup Complete")
 # Importing the csv file
-origdf = pd.read_csv("auto-mpg.csv")
+origdf = pd.read_csv("auto-mpg.csv",
+                     dtype={'mpg': 'float',
+                            'weight': 'float','displacement': 'float'})
 print(origdf.shape)
 df = origdf[origdf.horsepower != "?"]
 # Plotting the pairplot
@@ -18,7 +20,8 @@ plt.clf()
 test = origdf[origdf.horsepower == "?"]
 print(df.shape)
 print(test.shape)
-X = df["weight"].astype(float)
+#X = df["weight"].astype(float)
+X = df["weight"]
 #Y = df["horsepower"].astype(float)
 Y = pd.to_numeric(df["horsepower"], downcast="float")
 # here we are adding X_o = 1 to all the feature values 
@@ -58,6 +61,7 @@ from sklearn.linear_model import LinearRegression
 
 #Selecting the variables of interest
 X = pd.to_numeric(df["horsepower"], downcast="float")
+#X = df["horsepower"]
 y = df["mpg"]
 #Converting the series to a column matrix 
 X_new = X.values.reshape(-1,1)
