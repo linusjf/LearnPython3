@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import pandas as pd
+pd.options.mode.chained_assignment = None  # default='warn'
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
@@ -20,10 +22,9 @@ plt.clf()
 test = origdf[origdf.horsepower == "?"]
 print(df.shape)
 print(test.shape)
-#X = df["weight"].astype(float)
+df["horsepower"] = pd.to_numeric(df["horsepower"], downcast="float")
 X = df["weight"]
-#Y = df["horsepower"].astype(float)
-Y = pd.to_numeric(df["horsepower"], downcast="float")
+Y = df["horsepower"]
 # here we are adding X_o = 1 to all the feature values 
 X_b = np.c_[np.ones((df.shape[0],1)),X]
 beta_values = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(Y)
@@ -60,8 +61,7 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 
 #Selecting the variables of interest
-X = pd.to_numeric(df["horsepower"], downcast="float")
-#X = df["horsepower"]
+X = df["horsepower"]
 y = df["mpg"]
 #Converting the series to a column matrix 
 X_new = X.values.reshape(-1,1)
@@ -71,9 +71,7 @@ poly_features = PolynomialFeatures(degree=2, include_bias=False)
 X_poly = poly_features.fit_transform(X_new)
 reg = LinearRegression()
 reg.fit(X_poly, y_new)
-print("Y = {:.4f} X^2 {:.3f} X + {:.3f}".format(reg.coef_[0,1], 
-                                                reg.coef_[0,0], 
-                                                reg.intercept_[0]))
+print("Y = {:.4f} X^2 {:.3f} X + {:.3f}".format(reg.coef_[0,1],reg.coef_[0,0], reg.intercept_[0]))
 start = X.values.min()
 stop = X.values.max()
 X_plot = np.linspace(start, stop, 1000, dtype=float)
