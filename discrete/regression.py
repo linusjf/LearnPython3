@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import pandas as pd
-pd.options.mode.chained_assignment = None  # default='warn'
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 import seaborn as sns
@@ -24,10 +23,10 @@ plt.clf()
 test = origdf[origdf.horsepower == "?"]
 print(df.shape)
 print(test.shape)
-df["horsepower"] = pd.to_numeric(df["horsepower"], downcast="float")
+df = df.astype({"horsepower": "float"})
 X = df["weight"]
 Y = df["horsepower"]
-# here we are adding X_o = 1 to all the feature values 
+# here we are adding X_0 = 1 to all the feature values 
 X_b = np.c_[np.ones((df.shape[0],1)),X]
 beta_values = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(Y)
 print(beta_values)
@@ -52,7 +51,7 @@ Y = df["horsepower"]
 X = X.values.reshape(-1,1)
 Y = Y.values.reshape(-1,1)
 reg.fit(X, Y)
-print("The value obtained for beta_o is: ", reg.intercept_)
+print("The value obtained for beta_0 is: ", reg.intercept_)
 print("The value obtained for beta_1 is: ",reg.coef_)
 print("Weights of cars: ",X_new)
 print("Predicted horsepower of cars: ")
@@ -86,7 +85,7 @@ X = df[["horsepower","weight"]]
 reg = LinearRegression()
 reg.fit(X, Y)
 # Printing the parameter values obtained after fitting the model
-print("The value obtained for beta_o is: ", reg.intercept_)
+print("The value obtained for beta_0 is: ", reg.intercept_)
 print("The value obtained for beta_1 and beta_2 are: ",reg.coef_[0] , "and", reg.coef_[1] )
 
 # Plotting the surface plot
@@ -99,7 +98,7 @@ X2_values = np.linspace(X2_min, X2_max, 100)
 Y_reg = reg.intercept_ + (reg.coef_[0] * X1_values) + (reg.
  coef_[1] * X2_values)
 Y_plot = Y_reg.reshape(-1,1)
-fig = plt.figure(figsize=(11.69,8.27))
+fig = plt.figure(figsize=(8.27,11.69))
 ax = fig.add_subplot(111, projection='3d')
 ax.scatter(X.horsepower, X.weight, Y, color="red", s=1, label="Training data")
 X1_plot, X2_plot = np.meshgrid(X1_values, X2_values)
