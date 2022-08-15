@@ -96,26 +96,29 @@ print(adjacencies)
 # convert the adjacency list to an adjacency matrix
 # find the number of webpages and initialize A
 N = np.max(adjacencies) + 1
+print(N)
 A = np.zeros([N, N])
 # iterate over the rows of the adjacency list
 for k in range(adjacencies.shape[0]):
     # find the adjacent vertex numbers
     i, j = adjacencies[k,]
-
     # put 1 in the adjacency matrix
     A[i, j] = 1
 
 # convert A to the transition probability matrix
 # divide each row of A by its row sum
 rowSums = A.sum(axis = 1)[:,None]
+print(rowSums)
 # divide A by the rowSums
 A = np.divide(A, rowSums, where = rowSums != 0)
+rowSums = A.sum(axis = 1)[:,None]
+print(rowSums)
 # run PageRank
 v, i = PageRank(A,verbose=True)
 # print the steady state PageRank vector and iteration number
 print(v)
 print(v.shape)
-print(np.sum(v))
+print(np.sum(v,dtype=float))
 print(i)
 
 # sort the PageRanks in ascending order
