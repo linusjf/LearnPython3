@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-import numpy
+import numpy as np
+import pandas as pd
 # The PageRank algorithm for ranking search results
 #
 # INPUTS
@@ -19,25 +19,25 @@ def PageRank(A, d = 0.85, eps = 0.0005, maxIterations = 1000,
     N = A.shape[0]
 
     # initialize the old and new PageRank vectors
-    vOld = numpy.ones([N])
-    vNew = numpy.ones([N])/N
+    vOld = np.ones([N])
+    vNew = np.ones([N])/N
     # initialize a counter
     i = 0
     # compute the update matrix
     U = d * A.T + (1 - d) / N
  
-    while numpy.linalg.norm(vOld - vNew) >= eps:
+    while np.linalg.norm(vOld - vNew) >= eps:
         # if the verbose flag is true, print the progress at each iteration
         if verbose:
             print('At iteration', i, 'the error is',
-              numpy.round(numpy.linalg.norm(vOld - vNew), 3), 
-              'with PageRank', numpy.round(vNew, 3))
+              np.round(np.linalg.norm(vOld - vNew), 3), 
+              'with PageRank', np.round(vNew, 3))
 
         # save the current PageRank as the old PageRank
         vOld = vNew
 
         # update the PageRank vector
-        vNew = numpy.dot(U, vOld)
+        vNew = np.dot(U, vOld)
 
         # increment the counter
         i += 1
@@ -45,7 +45,7 @@ def PageRank(A, d = 0.85, eps = 0.0005, maxIterations = 1000,
         if i == maxIterations:
             print('The PageRank algorithm ran for',
                   maxIterations, 'with error',
-                  numpy.round(numpy.linalg.norm(vOld - vNew), 
+                  np.round(np.linalg.norm(vOld - vNew), 
                               3))
             # return the PageRank vector and the 
             return vNew, i
@@ -54,7 +54,7 @@ def PageRank(A, d = 0.85, eps = 0.0005, maxIterations = 1000,
     return vNew, i
 
 # transition probability matrix
-A = numpy.array([[0, 1/4, 1/4, 1/4, 1/4],
+A = np.array([[0, 1/4, 1/4, 1/4, 1/4],
  [1/2, 0, 0, 1/2, 0],
  [1/3, 0, 0, 1/3, 1/3],
  [1, 0, 0, 0, 0],
@@ -63,7 +63,7 @@ A = numpy.array([[0, 1/4, 1/4, 1/4, 1/4],
 print(PageRank(A, verbose=True))
 
 # transition probability matrix
-B = numpy.array([[0, 1/4, 1/4, 1/4, 1/4],
+B = np.array([[0, 1/4, 1/4, 1/4, 1/4],
  [1/3, 0, 1/3, 1/3, 0],
  [1/3, 0, 0, 1/3, 1/3],
  [1/2, 0, 1/2, 0, 0],
@@ -71,10 +71,8 @@ B = numpy.array([[0, 1/4, 1/4, 1/4, 1/4],
 # Run the PageRank algorithm with default settings
 print(PageRank(B, verbose = True))
 
-# import the pandas library
-import pandas
 # read the txt file into a dataframe
-data = pandas.read_csv("California.txt", delimiter=' ')
+data = pd.read_csv("California.txt", delimiter=' ')
 # display the dataframe
 print(data)
 
@@ -93,8 +91,8 @@ print(adjacencies)
 
 # convert the adjacency list to an adjacency matrix
 # find the number of webpages and initialize A
-N = numpy.max(adjacencies) + 1
-A = numpy.zeros([N, N])
+N = np.max(adjacencies) + 1
+A = np.zeros([N, N])
 # iterate over the rows of the adjacency list
 for k in range(adjacencies.shape[0]):
     # find the adjacent vertex numbers
@@ -107,9 +105,29 @@ for k in range(adjacencies.shape[0]):
 # divide each row of A by its row sum
 rowSums = A.sum(axis = 1)[:,None]
 # divide A by the rowSums
-A = numpy.divide(A, rowSums, where = rowSums != 0)
+A = np.divide(A, rowSums, where = rowSums != 0)
 # run PageRank
 v, i = PageRank(A,verbose=True)
 # print the steady state PageRank vector and iteration number
 print(v)
+print(v.shape)
 print(i)
+
+# sort the PageRanks in ascending order
+ranks = np.argsort(v)
+# find the PageRanks in descending order
+ranks = np.flip(ranks)
+print(ranks)
+
+# return the URLs of the top few webpages
+rankedPages = pd.DataFrame(columns = ['Type', 'Source', 
+ 'Destination'])
+# add the top 10-ranked webpages
+for i in range(10):
+    row = data.loc[(data['Type'] == 'n')
+                   & (data['Source'] == ranks[i])]
+    rankedPages = pd.concat([rankedPages,row])
+ 
+# display the top 10
+rankedPages.drop(columns = ['Type', 'Source'])
+print(rankedPages)
