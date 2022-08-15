@@ -60,7 +60,9 @@ A = np.array([[0, 1/4, 1/4, 1/4, 1/4],
  [1, 0, 0, 0, 0],
  [0, 0, 0, 1, 0]])
 # Run the PageRank algorithm with default settings
-print(PageRank(A, verbose=True))
+v,i = PageRank(A, verbose=True)
+print(np.sum(v))
+print(v,i)
 
 # transition probability matrix
 B = np.array([[0, 1/4, 1/4, 1/4, 1/4],
@@ -69,7 +71,9 @@ B = np.array([[0, 1/4, 1/4, 1/4, 1/4],
  [1/2, 0, 1/2, 0, 0],
  [0, 0, 1/2, 1/2, 0]])
 # Run the PageRank algorithm with default settings
-print(PageRank(B, verbose = True))
+v,i = PageRank(B, verbose = True)
+print(np.sum(v))
+print(v,i)
 
 # read the txt file into a dataframe
 data = pd.read_csv("California.txt", delimiter=' ')
@@ -111,6 +115,7 @@ v, i = PageRank(A,verbose=True)
 # print the steady state PageRank vector and iteration number
 print(v)
 print(v.shape)
+print(np.sum(v))
 print(i)
 
 # sort the PageRanks in ascending order
