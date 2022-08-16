@@ -109,10 +109,27 @@ for k in range(adjacencies.shape[0]):
 # divide each row of A by its row sum
 rowSums = A.sum(axis = 1)[:,None]
 print(rowSums)
+
+# add fix for sinks i.e., pages that don't link at all
+indices = np.where(rowSums == 0)
+print(indices[0])
+print(indices[0].shape)
+indices = indices[0]
+print(indices)
+print(indices.shape[0])
+print(indices[0])
+print(A.shape)
+for i in range(indices.shape[0]):
+    print(i)
+    idx = indices[i]
+    print(idx)
+    A[idx] = np.ones(A.shape[0])
+    A[idx,idx] = 0
+    print(A[idx])
+
+rowSums = A.sum(axis = 1)[:,None]
 # divide A by the rowSums
 A = np.divide(A, rowSums, where = rowSums != 0)
-rowSums = A.sum(axis = 1)[:,None]
-print(rowSums)
 # run PageRank
 v, i = PageRank(A,verbose=True)
 # print the steady state PageRank vector and iteration number
