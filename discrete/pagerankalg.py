@@ -119,7 +119,7 @@ for i in range(indices.shape[0]):
 
 rowSums = A.sum(axis = 1)[:,None]
 # divide A by the rowSums
-A = np.divide(A, rowSums, where = rowSums != 0)
+A = np.divide(A, rowSums)
 # run PageRank
 v, i = PageRank(A,verbose=True)
 # print the steady state PageRank vector and iteration number
