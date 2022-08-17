@@ -16,3 +16,21 @@ G.add_edges_from(elist)
 elist = [('a', 'b', 5.0), ('b', 'c', 3.0), ('a', 'c', 1.0), ('c', 'd', 7.3)]
 G.add_weighted_edges_from(elist)
 print(G)
+
+G = nx.Graph()
+e = [('a', 'b', 0.3), ('b', 'c', 0.9), ('a', 'c', 0.5), ('c', 'd', 1.2)]
+G.add_weighted_edges_from(e)
+print(nx.dijkstra_path(G, 'a', 'd'))
+
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_pdf import PdfPages
+pp = PdfPages('graphcreation.pdf')
+print("Setup Complete")
+G = nx.cubical_graph()
+subax1 = plt.subplot(121)
+# default spring_layout
+nx.draw(G) 
+subax2 = plt.subplot(122)
+nx.draw(G, pos=nx.circular_layout(G), node_color='r', edge_color='b')
+pp.savefig()
+pp.close()
