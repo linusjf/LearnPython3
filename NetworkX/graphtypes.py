@@ -75,3 +75,79 @@ for u, v, weight in G.edges.data("weight"):
         # Do something useful with the edges
         print(weight)
         pass
+
+class ThinGraph(nx.Graph):
+    all_edge_dict = {"weight": 1}
+
+    def single_edge_dict(self):
+        return self.all_edge_dict
+
+    edge_attr_dict_factory = single_edge_dict
+
+G = ThinGraph()
+G.add_edge(2, 1)
+print(G[2][1])
+G.add_edge(2, 2)
+print(G[2][2])
+print(G[2][1] is G[2][2])
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.Graph() 
+print(G)
+G = nx.Graph(name="my graph")
+print(G)
+e = [(1, 2), (2, 3), (3, 4)] # list of edges
+G = nx.Graph(e)
+print(G)
+# Arbitrary graph attribute pairs (key=value) may be assigned
+G = nx.Graph(e, day="Friday")
+print(G)
+print(G.graph)
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.Graph() 
+G.add_node(1)
+print(G)
+G.add_node("Hello")
+print(G)
+K3 = nx.Graph([(0, 1), (1, 2), (2, 0)])
+G.add_node(K3)
+print(G)
+print(G.graph)
+print(G.number_of_nodes())
+# Use keywords set/change node attributes:
+G.add_node(1, size=10)
+print(G)
+G.add_node(3, weight=0.4, UTM=("13S", 382871, 3972649))
+print(G)
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.Graph() 
+G.add_nodes_from("Hello")
+print(G)
+K3 = nx.Graph([(0, 1), (1, 2), (2, 0)])
+G.add_nodes_from(K3)
+print(G)
+print(sorted(G.nodes(), key=str))
+# Use keywords to update specific node attributes for every node.
+G.add_nodes_from([1, 2], size=10)
+print(G)
+G.add_nodes_from([3, 4], weight=0.4)
+print(G)
+# Use (node, attrdict) tuples to update attributes for specific nodes.
+G.add_nodes_from([(1, dict(size=11)), (2, {"color": "blue"})])
+print(G)
+G.nodes[1]["size"]
+print(G)
+
+H = nx.Graph()
+H.add_nodes_from(G.nodes(data=True))
+print(H)
+print(H.nodes[1]["size"])
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.path_graph(3) 
+print(list(G.edges))
+G.remove_node(1)
+print(list(G.edges))
+
