@@ -33,3 +33,45 @@ G.add_edges_from(H.edges)
 print(G)
 # If some edges connect nodes not yet in the graph, the nodes are added automatically. There are no errors when
 # adding nodes or edges that already exist.
+G = nx.Graph(day="Friday")
+print(G.graph)
+# Add node attributes using add_node(), add_nodes_from() or G.nodes
+G.add_node(1, time="5pm")
+print(G)
+G.add_nodes_from([3], time="2pm")
+print(G.nodes[1])
+# node must exist already to use G.nodes
+G.nodes[1]["room"] = 714 
+print(G)
+# remove attribute
+del G.nodes[1]["room"]
+print(list(G.nodes(data=True)))
+# edge attributes using add_edge(), add_edges_from(), subscript notation, or G.edges.
+G.add_edge(1, 2, weight=4.7)
+print(G)
+G.add_edges_from([(3, 4), (4, 5)], color="red")
+print(G)
+G.add_edges_from([(1, 2, {"color": "blue"}), (2, 3, {"weight": 8})])
+print(G)
+G[1][2]["weight"] = 4.7
+print(G)
+G.edges[1, 2]["weight"] = 4
+print(G)
+# check if node in graph
+print(1 in G)
+# iterate through nodes
+print([n for n in G if n < 3]) 
+# number of nodes in graph
+print(len(G)) 
+
+for n, nbrsdict in G.adjacency():
+    for nbr, eattr in nbrsdict.items():
+        if "weight" in eattr:
+            print(eattr)
+            pass
+
+for u, v, weight in G.edges.data("weight"):
+    if weight is not None:
+        # Do something useful with the edges
+        print(weight)
+        pass
