@@ -150,4 +150,59 @@ G = nx.path_graph(3)
 print(list(G.edges))
 G.remove_node(1)
 print(list(G.edges))
+G = nx.path_graph(4) 
+print(list(G.edges))
+G.remove_node(1)
+print(list(G.edges))
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.path_graph(3)
+e = list(G.nodes)
+print(e)
+G.remove_nodes_from(e)
+print(list(G.nodes))
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.Graph() 
+e = (1, 2)
+# explicit two-node form
+G.add_edge(1, 2) 
+print(G)
+# single edge as tuple of two nodes
+G.add_edge(*e) 
+print(G)
+# add edges from iterable container
+G.add_edges_from([(1, 2)]) 
+print(G)
+G.add_edges_from([(3, 4)]) 
+print(G)
+
+G.add_edge(1, 2, weight=3)
+G.add_edge(1, 3, weight=7, capacity=15, length=342.7)
+print(G)
+# For non-string attribute keys, use subscript notation.
+G.add_edge(1, 2)
+print(G)
+G[1][2].update({0: 5})
+print(G)
+G.edges[1, 2].update({0: 5})
+print(G)
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.Graph() 
+G.add_edges_from([(0, 1), (1, 2)]) # using a list of edge tuples
+print(G)
+e = zip(range(0, 3), range(1, 4))
+# Add the path graph 0-1-2-3
+G.add_edges_from(e) 
+print(G)
+# Associate data to edges
+G.add_edges_from([(1, 2), (2, 3)], weight=3)
+print(G)
+G.add_edges_from([(3, 4), (1, 4)], label="WN2898")
+print(G)
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.Graph() 
+G.add_weighted_edges_from([(0, 1, 3.0), (1, 2, 7.5)])
+print(G)
 
