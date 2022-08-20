@@ -1,62 +1,68 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import networkx as nx
+
+def printgraph(G):
+    print(G)
+    print("Nodes: ",G.nodes)
+    print("Edges: ",G.edges)
+
 # Create an empty graph structure (a “null graph”) with no nodes and no edges.
 G = nx.Graph()
 # G can be grown in several ways.
 # Nodes:
 # Add one node at a time:
 G.add_node(1)
-print(G)
+printgraph(G)
 # Add the nodes from any container (a list, dict, set or even the lines from a file or the nodes from another graph).
 G.add_nodes_from([2, 3])
-print(G)
+printgraph(G)
 G.add_nodes_from(range(100, 110))
-print(G)
+printgraph(G)
 H = nx.path_graph(10)
-print(H)
+printgraph(H)
 G.add_nodes_from(H)
 # In addition to strings and integers any hashable Python object (except None) can represent a node, e.g. a customized
 # node object, or even another Graph.
 G.add_node(H)
-print(G)
+printgraph(G)
 # Edges:
 # G can also be grown by adding edges.
 # Add one edge,
 G.add_edge(1, 2)
-print(G)
+printgraph(G)
 # a list of edges,
 G.add_edges_from([(1, 2), (1, 3)])
-print(G)
+printgraph(G)
 # or a collection of edges,
 G.add_edges_from(H.edges)
-print(G)
+printgraph(G)
 # If some edges connect nodes not yet in the graph, the nodes are added automatically. There are no errors when
 # adding nodes or edges that already exist.
 G = nx.Graph(day="Friday")
 print(G.graph)
 # Add node attributes using add_node(), add_nodes_from() or G.nodes
 G.add_node(1, time="5pm")
-print(G)
+printgraph(G)
 G.add_nodes_from([3], time="2pm")
 print(G.nodes[1])
 # node must exist already to use G.nodes
 G.nodes[1]["room"] = 714 
-print(G)
+printgraph(G)
 # remove attribute
 del G.nodes[1]["room"]
 print(list(G.nodes(data=True)))
 # edge attributes using add_edge(), add_edges_from(), subscript notation, or G.edges.
 G.add_edge(1, 2, weight=4.7)
-print(G)
+printgraph(G)
 G.add_edges_from([(3, 4), (4, 5)], color="red")
-print(G)
+printgraph(G)
 G.add_edges_from([(1, 2, {"color": "blue"}), (2, 3, {"weight": 8})])
-print(G)
+printgraph(G)
 G[1][2]["weight"] = 4.7
-print(G)
+printgraph(G)
 G.edges[1, 2]["weight"] = 4
-print(G)
+printgraph(G)
 # check if node in graph
 print(1 in G)
 # iterate through nodes
@@ -93,56 +99,56 @@ print(G[2][1] is G[2][2])
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
 G = nx.Graph() 
-print(G)
+printgraph(G)
 G = nx.Graph(name="my graph")
-print(G)
+printgraph(G)
 e = [(1, 2), (2, 3), (3, 4)] # list of edges
 G = nx.Graph(e)
-print(G)
+printgraph(G)
 # Arbitrary graph attribute pairs (key=value) may be assigned
 G = nx.Graph(e, day="Friday")
-print(G)
+printgraph(G)
 print(G.graph)
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
 G = nx.Graph() 
 G.add_node(1)
-print(G)
+printgraph(G)
 G.add_node("Hello")
-print(G)
+printgraph(G)
 K3 = nx.Graph([(0, 1), (1, 2), (2, 0)])
 G.add_node(K3)
-print(G)
+printgraph(G)
 print(G.graph)
 print(G.number_of_nodes())
 # Use keywords set/change node attributes:
 G.add_node(1, size=10)
-print(G)
+printgraph(G)
 G.add_node(3, weight=0.4, UTM=("13S", 382871, 3972649))
-print(G)
+printgraph(G)
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
 G = nx.Graph() 
 G.add_nodes_from("Hello")
-print(G)
+printgraph(G)
 K3 = nx.Graph([(0, 1), (1, 2), (2, 0)])
 G.add_nodes_from(K3)
-print(G)
+printgraph(G)
 print(sorted(G.nodes(), key=str))
 # Use keywords to update specific node attributes for every node.
 G.add_nodes_from([1, 2], size=10)
-print(G)
+printgraph(G)
 G.add_nodes_from([3, 4], weight=0.4)
-print(G)
+printgraph(G)
 # Use (node, attrdict) tuples to update attributes for specific nodes.
 G.add_nodes_from([(1, dict(size=11)), (2, {"color": "blue"})])
-print(G)
+printgraph(G)
 G.nodes[1]["size"]
-print(G)
+printgraph(G)
 
 H = nx.Graph()
 H.add_nodes_from(G.nodes(data=True))
-print(H)
+printgraph(H)
 print(H.nodes[1]["size"])
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
@@ -167,42 +173,56 @@ G = nx.Graph()
 e = (1, 2)
 # explicit two-node form
 G.add_edge(1, 2) 
-print(G)
+printgraph(G)
 # single edge as tuple of two nodes
 G.add_edge(*e) 
-print(G)
+printgraph(G)
 # add edges from iterable container
 G.add_edges_from([(1, 2)]) 
-print(G)
+printgraph(G)
 G.add_edges_from([(3, 4)]) 
-print(G)
+printgraph(G)
 
 G.add_edge(1, 2, weight=3)
 G.add_edge(1, 3, weight=7, capacity=15, length=342.7)
-print(G)
+printgraph(G)
 # For non-string attribute keys, use subscript notation.
 G.add_edge(1, 2)
-print(G)
+printgraph(G)
 G[1][2].update({0: 5})
-print(G)
+printgraph(G)
 G.edges[1, 2].update({0: 5})
-print(G)
+printgraph(G)
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
 G = nx.Graph() 
 G.add_edges_from([(0, 1), (1, 2)]) # using a list of edge tuples
-print(G)
+printgraph(G)
 e = zip(range(0, 3), range(1, 4))
 # Add the path graph 0-1-2-3
 G.add_edges_from(e) 
-print(G)
+printgraph(G)
 # Associate data to edges
 G.add_edges_from([(1, 2), (2, 3)], weight=3)
-print(G)
+printgraph(G)
 G.add_edges_from([(3, 4), (1, 4)], label="WN2898")
-print(G)
+printgraph(G)
 # or DiGraph, MultiGraph, MultiDiGraph, etc
 G = nx.Graph() 
 G.add_weighted_edges_from([(0, 1, 3.0), (1, 2, 7.5)])
-print(G)
+printgraph(G)
 
+# or DiGraph, etc
+G = nx.path_graph(4) 
+printgraph(G)
+G.remove_edge(0, 1)
+printgraph(G)
+e = (1, 2)
+# unpacks e from an edge tuple
+G.remove_edge(*e) 
+printgraph(G)
+# an edge with attribute data
+e = (2, 3, {"weight": 7}) 
+# select first part of edge tuple
+G.remove_edge(*e[:2])
+printgraph(G)
