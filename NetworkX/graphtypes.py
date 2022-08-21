@@ -369,4 +369,21 @@ e = (0, 1, {"weight": 7})
 # e is a 3-tuple (u, v, data_dictionary)
 print(G.has_edge(*e[:2])) 
 # though this gives KeyError if 0 not in G
-print(1 in G[0]) 
+print(1 in G[0])
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.path_graph(4) 
+print(G[0][1])
+G[0][1]["weight"] = 7
+print(G[0][1]["weight"])
+print(G[1][0]["weight"])
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.path_graph(4)
+# default edge data is {}
+print(G.get_edge_data(0, 1)) 
+e = (0, 1)
+# tuple form
+print(G.get_edge_data(*e))
+# edge not in graph, return 0
+print(G.get_edge_data("a", "b", default=0))
+
