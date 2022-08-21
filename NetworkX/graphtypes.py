@@ -356,4 +356,17 @@ print(G.edges.data("weight", default=1))
 # only edges from these nodes
 print(G.edges([0, 3]))
 # only edges from node 0
-print(G.edges(0)) 
+print(G.edges(0))
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.path_graph(4) 
+# using two nodes
+print(G.has_edge(0, 1)) 
+e = (0, 1)
+# e is a 2-tuple (u, v)
+print(G.has_edge(*e)) 
+e = (0, 1, {"weight": 7})
+# e is a 3-tuple (u, v, data_dictionary)
+print(G.has_edge(*e[:2])) 
+# though this gives KeyError if 0 not in G
+print(1 in G[0]) 
