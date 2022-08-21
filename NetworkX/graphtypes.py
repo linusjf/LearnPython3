@@ -332,3 +332,28 @@ printgraph(G)
 G.add_node(2, weight=3)
 printgraph(G)
 print(dict(G.nodes(data="weight", default=1)))
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.path_graph(4) 
+print([n for n in G])
+print(list(G))
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.path_graph(3) 
+print(G.has_node(0))
+print(0 in G)
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.path_graph(4)
+print(1 in G)
+
+# or MultiGraph, etc
+G = nx.path_graph(3) 
+G.add_edge(2, 3, weight=5)
+print([e for e in G.edges])
+# default data is {} (empty dict)
+print(G.edges.data()) 
+print(G.edges.data("weight", default=1))
+# only edges from these nodes
+print(G.edges([0, 3]))
+# only edges from node 0
+print(G.edges(0)) 
