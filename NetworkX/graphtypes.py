@@ -4,8 +4,8 @@ import networkx as nx
 
 def printgraph(G):
     print(G)
-    print("Nodes: ",G.nodes)
-    print("Edges: ",G.edges)
+    print("Nodes: ",G.nodes(data=True))
+    print("Edges: ",G.edges(data=True))
 
 # Create an empty graph structure (a “null graph”) with no nodes and no edges.
 G = nx.Graph()
@@ -297,4 +297,16 @@ print(edges)
 # for singleton, use a container
 nodes = [1000] 
 G.update(edges, nodes)
+printgraph(G)
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.path_graph(4) 
+printgraph(G)
+G.clear()
+printgraph(G)
+
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.path_graph(4) 
+printgraph(G)
+G.clear_edges()
 printgraph(G)
