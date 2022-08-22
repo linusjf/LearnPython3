@@ -386,4 +386,12 @@ e = (0, 1)
 print(G.get_edge_data(*e))
 # edge not in graph, return 0
 print(G.get_edge_data("a", "b", default=0))
-
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.Graph()
+G.add_edge("a", "b", weight=7)
+print(G["a"])
+G = nx.path_graph(4)
+print([n for n in G[0]])
+# or DiGraph, MultiGraph, MultiDiGraph, etc
+G = nx.path_graph(4)
+print([n for n in G.neighbors(0)])
