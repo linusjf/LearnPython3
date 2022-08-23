@@ -45,3 +45,59 @@ print(a2)
 a3 = hstack((a1, a2))
 print(a3)
 print(a3.shape)
+
+# create one-dimensional array
+# list of data
+data = [11, 22, 33, 44, 55]
+# array of data
+data = array(data)
+print(data)
+print(type(data))
+
+# create two-dimensional array
+# list of data
+data = [[11, 22],
+[33, 44],
+[55, 66]]
+# array of data
+data = array(data)
+print(data)
+print(type(data))
+
+# define array
+data = array([11, 22, 33, 44, 55])
+# index data
+print(data[0])
+print(data[4])
+
+# define array
+data = array([11, 22, 33, 44, 55])
+# index data
+try:
+    print(data[5])
+except IndexError as ie:
+    print("IndexError: {0}".format(ie))
+
+# define array
+data = array([11, 22, 33, 44, 55])
+# index data
+print(data[-1])
+print(data[-5])
+
+# define array
+data = array([
+[11, 22],
+[33, 44],
+[55, 66]])
+# index data
+print(data[0,0])
+
+# define array
+data = array([
+[11, 22],
+[33, 44],
+[55, 66]])
+# index data
+print(data[0,])
+
+
