@@ -100,4 +100,13 @@ data = array([
 # index data
 print(data[0,])
 
+# slice a one-dimensional array
+# define array
+data = array([11, 22, 33, 44, 55])
+print(data[:])
+# slice a subset of a one-dimensional array
+# define array
+data = array([11, 22, 33, 44, 55])
+print(data[0:1])
+
 
