@@ -42,3 +42,12 @@ plt.xlabel("Principal Component 1")
 plt.ylabel("Principal Component 2")
 pp.savefig()
 pp.close()
+
+#Setting the variance to 0.95
+pca = PCA(n_components = 0.95)
+pca.fit(scaled_data)
+#Applying to our scaled dataset
+scaled_data_pca = pca.transform(scaled_data)
+#Check the shape of the original dataset and the new dataset
+print("The dimensions of the original dataset are: ", scaled_data.shape)
+print("The dimensions of the dataset after performing PCA is: ", scaled_data_pca.shape)
