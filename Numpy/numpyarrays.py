@@ -109,4 +109,27 @@ print(data[:])
 data = array([11, 22, 33, 44, 55])
 print(data[0:1])
 
+# define array
+data = array([11, 22, 33, 44, 55])
+print(data[-2:])
 
+# define array
+data = array([
+[11, 22, 33],
+[44, 55, 66],
+[77, 88, 99]])
+# separate data
+X, y = data[:, :-1], data[:, -1]
+print(X)
+print(y)
+
+# define array
+data = array([
+[11, 22, 33],
+[44, 55, 66],
+[77, 88, 99]])
+# separate data
+split = 2
+train,test = data[:split,:],data[split:,:]
+print(train)
+print(test)
