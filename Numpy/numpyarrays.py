@@ -133,3 +133,41 @@ split = 2
 train,test = data[:split,:],data[split:,:]
 print(train)
 print(test)
+
+# shape of one-dimensional array
+# define array
+data = array([11, 22, 33, 44, 55])
+print(data.shape)
+# list of data
+data = [[11, 22],
+[33, 44],
+[55, 66]]
+# array of data
+data = array(data)
+print(data.shape)
+# list of data
+data = [[11, 22],
+        [33, 44],
+        [55, 66]]
+# array of data
+data = array(data)
+print('Rows: %d' % data.shape[0])
+print('Cols: %d' % data.shape[1])
+
+# define array
+data = array([11, 22, 33, 44, 55])
+print(data.shape)
+# reshape
+data = data.reshape((data.shape[0], 1))
+print(data.shape)
+
+# list of data
+data = [[11, 22],
+[33, 44],
+[55, 66]]
+# array of data
+data = array(data)
+print(data.shape)
+# reshape
+data = data.reshape((data.shape[0], data.shape[1], 1))
+print(data.shape)
