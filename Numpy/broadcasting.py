@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
+from numpy import array
 
 a = np.arange(0,40,10)
 print(a)
@@ -22,3 +23,53 @@ a = a[:, np.newaxis]
 print(a.shape)
 print(a)
 print(a + b)
+
+# define array
+a = array([1, 2, 3])
+print(a)
+# define scalar
+b = 2
+print(b)
+# broadcast
+c = a + b
+print(c)
+
+# define array
+A = array([
+[1, 2, 3],
+[1, 2, 3]])
+print(A)
+# define scalar
+b = 2
+print(b)
+# broadcast
+C = A + b
+print(C)
+
+# define two-dimensional array
+A = array([
+[1, 2, 3],
+[1, 2, 3]])
+print(A)
+# define one-dimensional array
+b = array([1, 2, 3])
+print(b)
+# broadcast
+C = A + b
+print(C)
+
+# broadcasting error
+# define two-dimensional array
+A = array([
+[1, 2, 3],
+[1, 2, 3]])
+print(A.shape)
+# define one-dimensional array
+b = array([1, 2])
+print(b.shape)
+try:
+    # attempt broadcast
+    C = A + b
+    print(C)
+except ValueError as ve:
+    print("Value Error: {}".format(ve))
