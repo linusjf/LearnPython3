@@ -8,6 +8,8 @@ from numpy import array
 from numpy import trace
 from numpy import prod
 from numpy import sum
+from numpy import amax
+from numpy import amin
 from numpy.linalg import eigvals
 from numpy.linalg import det
 from numpy.linalg import slogdet
@@ -15,16 +17,23 @@ from numpy import log
 
 def verify(A):
     print(A)
+    maxval = abs(amax(A)) if abs(amax(A) > abs(amin(A)))  else abs(amin(A))
+    epsilon = maxval * 1e-16
+    print(epsilon)
     # factorize
     values = eigvals(A)
     print(values)
     determinant = det(A)
     print(determinant)
-    if (abs(determinant) < 1e-10):
+    proddet = prod(values)
+    print(proddet)
+    if ((determinant < (-epsilon) or
+            determinant < epsilon) or
+            (proddet < -epsilon or 
+             proddet < epsilon)):
         print("Singular Matrix")
     else:
         print("Non-Singular matrix")
-    print(prod(values))
     print(slogdet(A))
     print(sum(log(values)))
     print(trace(A))
