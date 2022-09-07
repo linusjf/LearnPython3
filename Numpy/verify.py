@@ -4,6 +4,7 @@
 # -*- coding: utf-8 -*-
 # eigendecomposition
 import numpy as np
+import sympy
 from numpy import array
 from numpy import trace
 from numpy import prod
@@ -38,6 +39,9 @@ def verify(A):
     print(sum(log(values)))
     print(trace(A))
     print(sum(values))
+    _, inds = sympy.Matrix(A).T.rref()
+    print("Independent rows: {}".format(inds))
+    print("Reduced matrix: {}".format(A[array(inds)]))
     print()
 
 
