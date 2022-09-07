@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import sys
+print('sys: %s' % sys.version)
 # scipy
 import scipy
 print('scipy: %s' % scipy.__version__)
