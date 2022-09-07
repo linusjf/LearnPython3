@@ -3,12 +3,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # eigendecomposition
+import numpy as np
 from numpy import array
 from numpy import trace
 from numpy import prod
 from numpy import sum
 from numpy.linalg import eigvals
 from numpy.linalg import det
+from numpy.linalg import slogdet
+from numpy import log
 
 def verify(A):
     print(A)
@@ -17,6 +20,8 @@ def verify(A):
     print(values)
     print(det(A))
     print(prod(values))
+    print(slogdet(A))
+    print(sum(log(values)))
     print(trace(A))
     print(sum(values))
     print()
