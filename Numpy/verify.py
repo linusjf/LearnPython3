@@ -18,7 +18,12 @@ def verify(A):
     # factorize
     values = eigvals(A)
     print(values)
-    print(det(A))
+    determinant = det(A)
+    print(determinant)
+    if (abs(determinant) < 1e-10):
+        print("Singular Matrix")
+    else:
+        print("Non-Singular matrix")
     print(prod(values))
     print(slogdet(A))
     print(sum(log(values)))
