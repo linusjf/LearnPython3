@@ -80,3 +80,4 @@ for rec in master_recs:
             print("Geometric Weighted score: " + str(geom_wt_score))
             harmonic_wt_score = 1 / (1 / score + 1 / leven_score)
             print("Harmonic Weighted score: " + str(harmonic_wt_score))
+            print()
