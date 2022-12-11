@@ -12,3 +12,4 @@
 **/.mypy_cache/**
 *.o
 *.so
+commit.txt
