@@ -21,6 +21,8 @@ header = {
     'X-Github-Username': '%s' % username,
     'Content-Type': 'application/json',
     'Authorization': 'Token %s' % api_token}
+print("Header:")
+print("------------------------------")
 print(header)
 url = "/gists"
 data = {
@@ -32,6 +34,8 @@ data = {
         }
     }
 }
+print("Files:")
+print("------------------------------")
 print(data)
 gisturl = ""
 try:
@@ -54,9 +58,10 @@ except Exception as exc:
 
 data = { 
     "description": "Updating the description for this gist",
-    "files": {
+    "files":{ 
         "file1.txt": {
-            "content": "Updating file contents.."
+            "content": "Updating file contents...",
+            "filename": "file.txt"
         }
     }
 }
@@ -64,6 +69,8 @@ try:
     r = requests.patch('%s' %gisturl,
                        headers=header,
                        data=json.dumps(data))
+    print("Patch result:")
+    print("------------------------------")
     print(r.json())
 except Exception as exc:
     print(exc)
@@ -83,6 +90,8 @@ except Exception as exc:
     print(exc)
     exit(1)
 gists = r.json()
+print("List gists result:")
+print("------------------------------")
 for gist in gists:
     data = gist['files'].values()
     data = list(data)[0] 
