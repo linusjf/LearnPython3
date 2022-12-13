@@ -75,3 +75,15 @@ try:
 except Exception as exc:
     print(exc)
     exit(1)
+
+url = "/users/%s/gists" % username
+try:
+    r = requests.get('%s%s' % (BASE_URL, url),headers=header)
+except Exception as exc:
+    print(exc)
+    exit(1)
+gists = r.json()
+for gist in gists:
+    data = gist['files'].values()
+    data = list(data)[0] 
+    print(data['filename'],data['raw_url'], data['language'])
