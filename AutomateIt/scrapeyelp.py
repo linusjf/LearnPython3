@@ -24,7 +24,6 @@ for a in soup_s.find_all('a', href=True):
         url.append(home_url + href)
     
 url = url[0:10]
-print(url)
 
 #Function that will do actual scraping job
 def scrape(ur):
