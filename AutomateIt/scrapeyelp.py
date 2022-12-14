@@ -43,8 +43,12 @@ def scrape(ur):
     if title:
         print("Title: ", title)
     if saddress:
-        print("Address: ",
-        saddress)
+        print("Address: ")
+        print("Street address: ",saddress["streetAddress"])
+        print("Locality: ",saddress["addressLocality"])
+        print("Country: ",saddress["addressCountry"])
+        print("Region: ",saddress["addressRegion"])
+        print("Postal code: ",saddress["postalCode"])
     if phone:
         print("Phone Number: ", phone)
     print("-------------------")
