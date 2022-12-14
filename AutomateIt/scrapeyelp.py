@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from threading import Thread
 import urllib.request as req
 import json
+import xml.sax.saxutils as saxutils
 #Location of restaurants
 home_url = "https://www.yelp.com"
 find_what = "Restaurants"
@@ -36,15 +37,14 @@ def scrape(ur):
             jsonstring = jsondata
             break
 
-    #print(jsonstring)
     title = jsonstring["name"]
     saddress = jsonstring["address"]
     phone = jsonstring["telephone"]
     if title:
-        print("Title: ", title)
+        print("Title: ", saxutils.unescape(title,{"&apos;":"'"}))
     if saddress:
         print("Address: ")
-        print("Street address: ",saddress["streetAddress"])
+        print("Street address: ",saxutils.unescape(saddress["streetAddress"],{"&apos;":"'"}))
         print("Locality: ",saddress["addressLocality"])
         print("Country: ",saddress["addressCountry"])
         print("Region: ",saddress["addressRegion"])
