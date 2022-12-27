@@ -39,10 +39,6 @@ def connect_ftp(q,executor):
         except ftplib.error_perm:
             print("login failed, wrong credentials")
             pass
-        except socket.gaierror as ex:
-            print(ex)
-            clear(q,executor)
-            break
         else:
             threadLock.acquire()
             # correct credentials
