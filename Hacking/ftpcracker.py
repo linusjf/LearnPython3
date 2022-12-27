@@ -55,8 +55,7 @@ def connect_ftp(q,executor):
             # notify the queue that the task is completed for this password
             if q.empty() is not True:
                 q.task_done()
-                executor.shutdown(wait=False,cancel_futures=True)
-
+    executor.shutdown(wait=False,cancel_futures=True)
 
 if __name__ == "__main__":
     import argparse
