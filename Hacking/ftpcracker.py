@@ -67,8 +67,8 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="FTP Cracker using Python")
     parser.add_argument("host", help="The target host or IP address of the FTP server")
-    parser.add_argument("-u", "--user", help="The username of target FTP server")
-    parser.add_argument("-p", "--passlist", help="The path of the pass list")
+    parser.add_argument("-u", "--user", help="The username of target FTP server",required=True)
+    parser.add_argument("-p", "--passlist", help="The path of the pass list",required=True)
     parser.add_argument("-t", "--threads", help="Number of workers to spawn for login, default is 30", default=30)
 
     args = parser.parse_args()
