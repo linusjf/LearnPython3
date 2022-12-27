@@ -62,6 +62,12 @@ def clear(q,executor):
     # shutdown the executor
     executor.shutdown(wait=False,cancel_futures=True)
 
+def range_type(astr, min=1, max=32):
+    value = int(astr)
+    if (min<= value  and value <= max):
+        return value
+    else:
+        raise argparse.ArgumentTypeError('value not in range %s-%s'%(min,max))
 
 if __name__ == "__main__":
     import argparse
@@ -69,7 +75,7 @@ if __name__ == "__main__":
     parser.add_argument("host", help="The target host or IP address of the FTP server")
     parser.add_argument("-u", "--user", help="The username of target FTP server",required=True)
     parser.add_argument("-p", "--passlist", help="The path of the pass list",required=True)
-    parser.add_argument("-t", "--threads", help="Number of workers to spawn for login, default is 30", default=30)
+    parser.add_argument("-t", "--threads", help="Number of workers to spawn for login, default is 30", default=30,type=range_type,metavar='[1-32]')
 
     args = parser.parse_args()
     # hostname or IP address of the FTP server
@@ -78,7 +84,7 @@ if __name__ == "__main__":
     user = args.user
     passlist = args.passlist
     # number of threads to spawn
-    n_threads = int(args.threads)
+    n_threads = args.threads
 
     try:
         socket.gethostbyaddr(host)
