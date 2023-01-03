@@ -18,3 +18,8 @@ words = ['cat', 'attempt', 'tattle']
 print([w for w in words if re.search(r'tt', w)])
 print(all(re.search(r'at', w) for w in words))
 print(any(re.search(r'stat', w) for w in words))
+
+pet = re.compile(r'dog')
+print(type(pet))
+print(bool(pet.search('They bought a dog')))
+print(bool(pet.search('A cat crossed their path')))
