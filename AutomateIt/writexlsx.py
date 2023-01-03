@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import xlsxwriter
 workbook = xlsxwriter.Workbook('addsheet.xlsx')
-worksheet = workbook.add_worksheet(name='New Sheet 2')
+worksheet = workbook.add_worksheet(name='Sheets')
 workbook.close()
 
 workbook = xlsxwriter.Workbook('expenses.xlsx')
@@ -20,5 +20,14 @@ for item, cost in (expenses):
     worksheet.write(row, col + 1, cost)
     row += 1
 worksheet.write(row, 0, 'Total')
-worksheet.write(row, 1, '=SUM(B1:B4)')
+worksheet.write_formula('B5', '=SUM(B1:B4)')
+
+cellformat = workbook.add_format({'bg_color': 'blue',
+ 'font_color': 'red'})
+worksheet.conditional_format('B1:KB5',
+ {'type': 'cell',
+ 'criteria': '>=',
+ 'value': 150,
+ 'format': cellformat}
+ )
 workbook.close()
