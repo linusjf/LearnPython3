@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import xlsxwriter
-workbook = xlsxwriter.Workbook('chart_line.xlsx')
+workbook = xlsxwriter.Workbook('chartline.xlsx')
 worksheet = workbook.add_worksheet()
 data = [10, 40, 50, 20, 10, 50]
 worksheet.write_column('A1', data)
