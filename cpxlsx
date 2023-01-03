@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+mkdir -p /data/data/com.termux/files/home/storage/downloads/Pydata
+find . -name "*.xlsx" | parallel -I% --max-args 1 cp % /data/data/com.termux/files/home/storage/downloads/Pydata
+find . -name "*.csv" | parallel -I% --max-args 1 cp % /data/data/com.termux/files/home/storage/downloads/Pydata
