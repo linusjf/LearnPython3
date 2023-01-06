@@ -10,3 +10,4 @@ chartline.xlsx
 chartcolumn.xlsx
 !diveintopython.pdf
 *.docx
+.env
