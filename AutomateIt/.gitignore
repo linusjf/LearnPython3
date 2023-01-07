@@ -11,3 +11,5 @@ chartcolumn.xlsx
 !diveintopython.pdf
 *.docx
 .env
+credentials.json
+token.json
