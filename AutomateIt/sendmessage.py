@@ -30,10 +30,7 @@ def gmail_send_message():
     creds, _ = google.auth.default()
 
     try:
-        service = build('gmail',
-                        'v1',
-                        credentials=creds,
-                        scopes=["https://www.googleapis.com/auth/gmail.send"])
+        service = build('gmail', 'v1', credentials=creds)
         message = EmailMessage()
 
         message.set_content('This is automated draft mail')
