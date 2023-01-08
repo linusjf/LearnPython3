@@ -12,4 +12,5 @@ chartcolumn.xlsx
 *.docx
 .env
 credentials.json
+application_default_credentials.json
 token.json
