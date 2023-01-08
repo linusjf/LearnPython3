@@ -10,6 +10,7 @@
 
 from __future__ import print_function
 
+import config
 import base64
 import mimetypes
 import os
