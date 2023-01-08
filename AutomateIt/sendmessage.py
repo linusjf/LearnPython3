@@ -9,6 +9,7 @@
 ######################################################################
 from __future__ import print_function
 
+import config
 import base64
 from email.message import EmailMessage
 
@@ -29,7 +30,10 @@ def gmail_send_message():
     creds, _ = google.auth.default()
 
     try:
-        service = build('gmail', 'v1', credentials=creds)
+        service = build('gmail',
+                        'v1',
+                        credentials=creds,
+                        scopes=["https://www.googleapis.com/auth/gmail.send"])
         message = EmailMessage()
 
         message.set_content('This is automated draft mail')
