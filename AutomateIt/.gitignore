@@ -10,6 +10,7 @@ chartline.xlsx
 chartcolumn.xlsx
 !diveintopython.pdf
 *.docx
+*.pptx
 .env
 credentials.json
 application_default_credentials.json
