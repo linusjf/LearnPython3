@@ -11,6 +11,7 @@ chartcolumn.xlsx
 !diveintopython.pdf
 *.docx
 *.pptx
+!Sample_ppt.pptx
 .env
 credentials.json
 application_default_credentials.json
