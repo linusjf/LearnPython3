@@ -106,4 +106,37 @@ series_1.add_data_point(2.6, 0.8, 8)
 chart = slide.shapes.add_chart(XL_CHART_TYPE.BUBBLE, x, y, cx, cy,
                                chart_data).chart
 
+slide = prs.slides.add_slide(prs.slide_layouts[5])
+
+chart_data = ChartData()
+chart_data.categories = ['Q1 Sales', 'Q2 Sales', 'Q3 Sales']
+chart_data.add_series('West', (32.2, 28.4, 34.7))
+chart_data.add_series('East', (24.3, 30.6, 20.2))
+chart_data.add_series('Midwest', (20.4, 18.3, 26.2))
+
+x, y, cx, cy = Inches(2), Inches(2), Inches(6), Inches(4.5)
+chart = slide.shapes.add_chart(XL_CHART_TYPE.LINE, x, y, cx, cy,
+                               chart_data).chart
+
+chart.has_legend = True
+chart.legend.include_in_layout = False
+chart.series[0].smooth = True
+
+slide = prs.slides.add_slide(prs.slide_layouts[5])
+chart_data = ChartData()
+chart_data.categories = ['West', 'East', 'North', 'South', 'Other']
+chart_data.add_series('Series 1', (0.135, 0.324, 0.180, 0.235, 0.126))
+
+chart = slide.shapes.add_chart(XL_CHART_TYPE.PIE, x, y, cx, cy,
+                               chart_data).chart
+
+chart.has_legend = True
+chart.legend.position = XL_LEGEND_POSITION.BOTTOM
+chart.legend.include_in_layout = False
+
+chart.plots[0].has_data_labels = True
+data_labels = chart.plots[0].data_labels
+data_labels.number_format = '0%'
+data_labels.position = XL_LABEL_POSITION.OUTSIDE_END
+
 prs.save('chart.pptx')
