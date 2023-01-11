@@ -45,14 +45,13 @@ def get_user(u_id):
     """Get user"""
     for user in users:
         if user.get("id") == u_id:
-            return jsonify({'users': user})
+            return jsonify({'user': user})
     return abort(404)
 
 
 @app.route('/v1/users/', methods=['POST'])
 def create_user():
     """create user"""
-    print(request.json)
     if not request.json or not 'email' in request.json:
         abort(404)
     user_id = users[-1].get("id") + 1
@@ -76,7 +75,7 @@ def update_user(u_id):
     user[0]['username'] = request.json.get('username', user[0]['username'])
     user[0]['email'] = request.json.get('email', user[0]['email'])
     user[0]['active'] = request.json.get('active', user[0]['active'])
-    return jsonify({'users': user[0]})
+    return jsonify({'user': user[0]})
 
 
 @app.route('/v1/users/<int:u_id>/', methods=['DELETE'])
