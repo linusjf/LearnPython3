@@ -4,7 +4,7 @@ curl -Ls http://localhost:5000/v1/users/ | jq .
 curl -Ls http://localhost:5000/v1/users/1 | jq .
 curl -Ls http://localhost:5000/v1/users/2 | jq .
 curl -X POST "http://localhost:5000/v1/users/" \
--H "Content-Type: application/json" -d '{"username": "macintosh","email": "mack@jack.com"}'
+-H "Content-Type: application/json" -d '{"username": "macintosh","email": "mack@jack.com"}' -s | jq .
 curl -Ls http://localhost:5000/v1/users/3 | jq .
 ps aux | grep 'python' | grep -v 'grep'
 pid=$(cat app.pid)
