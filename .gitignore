@@ -13,3 +13,4 @@
 *.o
 *.so
 commit.txt
+**/venv/**
