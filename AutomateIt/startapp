@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+function egress() {
+  echo "deactivating virtualenv..." | tee venv.txt
+  deactivate
+  echo "Removing directory venv..." | tee -a venv.txt
+  rm -rf venv
+  echo "Process $$ exiting..."
+  exit 1
+}
+trap egress SIGKILL EXIT
+pip install virtualenv
+virtualenv venv
+source venv/bin/activate
+pip install flask python-dotenv
+./app.py 

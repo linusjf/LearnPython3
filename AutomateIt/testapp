@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+ps
+pid=$(cat app.pid)
+echo "Killing app.py... with pid: " "$pid"
+kill -9 "$pid"
+echo "Removing app.pid..."
+rm app.pid

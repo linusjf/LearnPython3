@@ -9,7 +9,9 @@
 ######################################################################
 """
 
-from flask import Flask, abort, jsonify, make_response
+import os
+
+from flask import Flask, abort, jsonify, make_response, request
 
 app = Flask(__name__)
 
@@ -47,5 +49,50 @@ def get_user(u_id):
     return abort(404)
 
 
+@app.route('/v1/users/', methods=['POST'])
+def create_user():
+    """create user"""
+    if not request.json or not 'email' in request.json:
+        abort(404)
+    user_id = users[-1].get("id") + 1
+    username = request.json.get('username')
+    email = request.json.get('email')
+    status = False
+    user = {
+        "id": user_id,
+        "email": email,
+        "username": username,
+        "active": status
+    }
+    users.append(user)
+    return jsonify({'user': user}), 201
+
+
+@app.route('/v1/users/<int:u_id>/', methods=['PUT'])
+def update_user(u_id):
+    """update user"""
+    user = [user for user in users if user['id'] == u_id]
+    user[0]['username'] = request.json.get('username', user[0]['username'])
+    user[0]['email'] = request.json.get('email', user[0]['email'])
+    user[0]['active'] = request.json.get('active', user[0]['active'])
+    return jsonify({'users': user[0]})
+
+
+@app.route('/v1/users/<int:u_id>/', methods=['DELETE'])
+def delete_user(u_id):
+    """delete user"""
+    user = [user for user in users if user['id'] == u_id]
+    users.remove(user[0])
+    return jsonify({}), 204
+
+
+def write_pid_file():
+    """write pid file"""
+    pid = str(os.getpid())
+    with open('app.pid', 'w', encoding="utf-8") as pid_file:
+        pid_file.write(pid)
+
+
 if __name__ == '__main__':
+    write_pid_file()
     app.run(debug=True)
