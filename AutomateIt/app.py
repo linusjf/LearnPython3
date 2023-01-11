@@ -52,6 +52,7 @@ def get_user(u_id):
 @app.route('/v1/users/', methods=['POST'])
 def create_user():
     """create user"""
+    print(request.json)
     if not request.json or not 'email' in request.json:
         abort(404)
     user_id = users[-1].get("id") + 1
