@@ -2,3 +2,6 @@ fromaddr = "<fromaddr>"
 password = "<apppassword>"
 toaddr = "<toaddr>"
 GOOGLE_APPLICATION_CREDENTIALS = <application_default_credentials>.json
+TWITTER_API_KEY = 
+TWITTER_API_KEY_SECRET = 
+TWITTER_BEARER_TOKEN = 
