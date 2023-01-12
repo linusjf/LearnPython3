@@ -18,3 +18,4 @@ application_default_credentials.json
 token.json
 !python.png
 app.pid
+venv.txt
