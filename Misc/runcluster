@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-
+require() {
+hash "$@" || exit 127;
+}
+require ipcluster sleep
 # create mycluster profile
 #ipython profile create mycluster --parallel 
 #ipcluster start --profile=mycluster --n=10 &
