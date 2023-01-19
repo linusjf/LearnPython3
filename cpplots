@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-mkdir -p /data/data/com.termux/files/home/storage/downloads/Pyplots
-find . -name "*.pdf" | parallel -I% --max-args 1 cp % /data/data/com.termux/files/home/storage/downloads/Pyplots
-find . -name "*.png" | parallel -I% --max-args 1 cp % /data/data/com.termux/files/home/storage/downloads/Pyplots
-find . -name "*.jpg" | parallel -I% --max-args 1 cp % /data/data/com.termux/files/home/storage/downloads/Pyplots
+require() {
+hash "$@" || exit 127;
+}
+require mkdir find parallel cp
+mkdir -p "${PREFIX}/home/storage/downloads/Pyplots"
+find . -name "*.pdf" | parallel -I% --max-args 1 cp % "$PREFIX/home/storage/downloads/Pyplots"
+find . -name "*.png" | parallel -I% --max-args 1 cp % "$PREFIX/home/storage/downloads/Pyplots"
+find . -name "*.jpg" | parallel -I% --max-args 1 cp % "$PREFIX/home/storage/downloads/Pyplots"
