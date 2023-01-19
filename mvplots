@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-mkdir -p /data/data/com.termux/files/home/storage/downloads/Pyplots/
-find . -name "*.pdf" ! -name "diveintopython.pdf" | parallel -I% --max-args 1 mv % /data/data/com.termux/files/home/storage/downloads/Pyplots
-find . -name "*.png" ! -name "elephant.png" ! -name "fname.png" | parallel -I% --max-args 1 mv % /data/data/com.termux/files/home/storage/downloads/Pyplots
-find . -name "*.jpg" | parallel -I% --max-args 1 mv % /data/data/com.termux/files/home/storage/downloads/Pyplots
+require() {
+hash "$@" || exit 127;
+}
+require mkdir find parallel mv
+mkdir -p "$PREFIX/home/storage/downloads/Pyplots/"
+find . -name "*.pdf" ! -name "diveintopython.pdf" | parallel -I% --max-args 1 mv % "$PREFIX/home/storage/downloads/Pyplots"
+find . -name "*.png" ! -name "elephant.png" ! -name "fname.png" | parallel -I% --max-args 1 mv % "$PREFIX/home/storage/downloads/Pyplots"
+find . -name "*.jpg" | parallel -I% --max-args 1 mv % "$PREFIX/home/storage/downloads/Pyplots"
+

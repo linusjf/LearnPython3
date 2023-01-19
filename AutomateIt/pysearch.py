@@ -40,4 +40,5 @@ OAUTH_TOKEN = final_step['oauth_token']
 OAUTH_TOKEN_SECRET = final_step['oauth_token_secret']
 
 twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+twitter.get_home_timeline()
 print(twitter.search(q='python'))
