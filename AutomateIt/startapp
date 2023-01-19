@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+function require() {
+hash "$@" || exit 127;
+}
+require pip virtualenv tee rm
+
 function egress() {
   echo "deactivating virtualenv..." | tee venv.txt
   deactivate
@@ -7,9 +12,10 @@ function egress() {
   echo "Process $$ exiting..."
   exit 1
 }
-trap egress SIGKILL EXIT
+trap egress SIGTERM EXIT
 pip install virtualenv
 virtualenv venv
+# shellcheck disable=SC1091
 source venv/bin/activate
 pip install flask python-dotenv
 ./app.py 
