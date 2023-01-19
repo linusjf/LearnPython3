@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
+require() {
+hash "$@" || exit 127;
+}
+require pytest
 pytest  -s -v
