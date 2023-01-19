@@ -16,7 +16,7 @@ hash "$@" || exit 127;
 }
 require autopep8 pep257 pylint prospector tee
 
-proj=$1
+proj="$1"
 declare -i SUCCESS=0
 if [ -z "$proj" ] || [ ! -d "$proj" ]
   then
@@ -32,4 +32,4 @@ else
   prospector "$proj" | tee -a linter.out
   SUCCESS=SUCCESS+$?
 fi
-exit $SUCCESS
+exit "$SUCCESS"
