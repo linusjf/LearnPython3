@@ -3,8 +3,8 @@ require() {
 hash "$@" || exit 127;
 }
 require mkdir find parallel mv
-mkdir -p "$PREFIX/home/storage/downloads/Pyplots/"
-find . -name "*.pdf" ! -name "diveintopython.pdf" | parallel -I% --max-args 1 mv % "$PREFIX/home/storage/downloads/Pyplots"
-find . -name "*.png" ! -name "elephant.png" ! -name "fname.png" | parallel -I% --max-args 1 mv % "$PREFIX/home/storage/downloads/Pyplots"
-find . -name "*.jpg" | parallel -I% --max-args 1 mv % "$PREFIX/home/storage/downloads/Pyplots"
+mkdir -p "${HOME}/storage/downloads/Pyplots/"
+find . -name "*.pdf" ! -name "diveintopython.pdf" | parallel -I% --max-args 1 mv % "${HOME}/storage/downloads/Pyplots"
+find . -name "*.png" ! -name "elephant.png" ! -name "fname.png" | parallel -I% --max-args 1 mv % "${HOME}/storage/downloads/Pyplots"
+find . -name "*.jpg" | parallel -I% --max-args 1 mv % "${HOME}/storage/downloads/Pyplots"
 
