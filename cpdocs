@@ -3,8 +3,8 @@ require() {
 hash "$@" || exit 127;
 }
 require mkdir find parallel cp
-mkdir -p "${PREFIX}/home/storage/downloads/Pydocs"
-find . -name "*.xlsx" | parallel -I% --max-args 1 cp % "${PREFIX}/home/storage/downloads/Pydocs"
-find . -name "*.csv" | parallel -I% --max-args 1 cp % "${PREFIX}/home/storage/downloads/Pydocs"
-find . -name "*.docx" | parallel -I% --max-args 1 cp % "${PREFIX}/home/storage/downloads/Pydocs"
-find . -name "*.pptx" | parallel -I% --max-args 1 cp % "${PREFIX}/home/storage/downloads/Pydocs"
+mkdir -p "${HOME}/storage/downloads/Pydocs"
+find . -name "*.xlsx" | parallel -I% --max-args 1 cp % "${HOME}/storage/downloads/Pydocs"
+find . -name "*.csv" | parallel -I% --max-args 1 cp % "${HOME}/storage/downloads/Pydocs"
+find . -name "*.docx" | parallel -I% --max-args 1 cp % "${HOME}/storage/downloads/Pydocs"
+find . -name "*.pptx" | parallel -I% --max-args 1 cp % "${HOME}/storage/downloads/Pydocs"
