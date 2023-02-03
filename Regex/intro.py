@@ -2,6 +2,7 @@
 """Regex samples"""
 # -*- coding: utf-8 -*-
 import re
+import regex
 
 SENTENCE = 'This is a sample string'
 # check if 'SENTENCE' contains the given string argument
@@ -40,3 +41,6 @@ except TypeError as te:
     print(te)
 print(bool(re.search(rb'is', BYTE_DATA)))
 print(bool(re.search(rb'xyz', BYTE_DATA)))
+
+print(bool(regex.search(r'is', SENTENCE)))
+print(bool(regex.search(r'xyz', SENTENCE)))
