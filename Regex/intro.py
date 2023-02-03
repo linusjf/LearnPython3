@@ -25,3 +25,18 @@ pet = re.compile(r'dog')
 print(type(pet))
 print(bool(pet.search('They bought a dog')))
 print(bool(pet.search('A cat crossed their path')))
+
+word = re.compile(r'is')
+print(bool(word.search(SENTENCE, 4)))
+print(bool(word.search(SENTENCE, 6)))
+# search for 'is' between 3rd and 4th characters
+bool(word.search(SENTENCE, 2, 4))
+
+BYTE_DATA = b'This is a sample string'
+# error message truncated for presentation purposes
+try:
+    print(re.search(r'is', BYTE_DATA))
+except TypeError as te:
+    print(te)
+print(bool(re.search(rb'is', BYTE_DATA)))
+print(bool(re.search(rb'xyz', BYTE_DATA)))
