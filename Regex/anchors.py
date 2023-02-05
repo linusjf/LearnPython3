@@ -102,3 +102,8 @@ print(re.sub(r'\Bpar\b', r'X', WORDS))
 print(re.sub(r'par\B', r'X', WORDS))
 # replace 'par' if it is surrounded by word characters
 print(re.sub(r'\Bpar\B', r'X', WORDS))
+
+print(re.sub(r'\b', r':', 'copper'))
+print(re.sub(r'\B', r':', 'copper'))
+print(re.sub(r'\b', r' ', '-----hello-----'))
+print(re.sub(r'\B', r' ', '-----hello-----'))
