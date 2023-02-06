@@ -47,3 +47,9 @@ alt.sub(r'X', 'cater cat concatenate par spare')
 # this is how the above RE looks as a normal string
 print(alt.pattern)
 print(alt.pattern == r'\b(cat|par)\b')
+
+#For the given input list, filter all elements that start with den or end with ly
+foo = ['lovely', '1 dentist', '2 lonely', 'eden', 'fly away', 'dent']
+se = re.compile(r'(\Aden)|(ly\Z)')
+print([e for e in foo if se.search(e)])
+#['lovely', '2 lonely', 'dent']
