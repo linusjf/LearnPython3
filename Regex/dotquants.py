@@ -69,3 +69,23 @@ SEQ1 = 'cat and dog'
 SEQ2 = 'dog and cat'
 print(bool(re.search(r'cat.*dog|dog.*cat', SEQ1)))
 print(bool(re.search(r'cat.*dog|dog.*cat', SEQ2)))
+
+# if you just need True/False result, this would be a scalable approach
+patterns = (r'cat', r'dog')
+print(all(re.search(p, SEQ1) for p in patterns))
+print(all(re.search(p, SEQ2) for p in patterns))
+print(re.sub(r'f.?o', r'X', 'foot'))
+# a more practical example
+# prefix '<' with '\' if it is not already prefixed
+print(re.sub(r'\\?<', r'\<', r'blah \< foo < bar \< blah < baz'))
+# say goodbye to r'handful|handy|hand' shenanigans
+print(re.sub(r'hand(y|ful)?', r'X', 'hand handy handful'))
+SENTENCE = 'that is quite a fabricated tale'
+# r't.*a' will always match from first 't' to last 'a'
+# also, note that count argument is set to 1 for illustration purposes
+print(re.sub(r't.*a', r'X', SENTENCE, count=1))
+print(re.sub(r't.*a', r'X', 'star', count=1))
+# matching first 't' to last 'a' for t.*a won't work for these cases
+# the engine backtracks until .*q matches and so on
+print(re.sub(r't.*a.*q.*f', r'X', SENTENCE, count=1))
+print(re.sub(r't.*a.*u', r'X', SENTENCE, count=1))
