@@ -89,3 +89,13 @@ print(re.sub(r't.*a', r'X', 'star', count=1))
 # the engine backtracks until .*q matches and so on
 print(re.sub(r't.*a.*q.*f', r'X', SENTENCE, count=1))
 print(re.sub(r't.*a.*u', r'X', SENTENCE, count=1))
+
+print(re.sub(r'f.??o', r'X', 'foot', count=1))
+print(re.sub(r'f.??o', r'X', 'frost', count=1))
+print(re.sub(r'.{2,5}?', r'X', '123456789', count=1))
+
+# r't.*?a' will always match from first 't' to first 'a'
+print(re.sub(r't.*?a', r'X', SENTENCE, count=1))
+# matching first 't' to first 'a' for t.*?a won't work for this case
+# so, engine will move forward until .*?f matches and so on
+print(re.sub(r't.*?a.*?f', r'X', SENTENCE, count=1))
