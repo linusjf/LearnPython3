@@ -9,6 +9,7 @@
 ######################################################################
 """
 import re
+import regex
 
 # matches character 'c', any character and then character 't'
 print(re.sub(r'c.t', r'X', 'tac tin cat abc;tuv acute'))
@@ -99,3 +100,17 @@ print(re.sub(r't.*?a', r'X', SENTENCE, count=1))
 # matching first 't' to first 'a' for t.*?a won't work for this case
 # so, engine will move forward until .*?f matches and so on
 print(re.sub(r't.*?a.*?f', r'X', SENTENCE, count=1))
+
+demo = ['abc', 'ac', 'adc', 'abbc', 'xabbbcz', 'bbb', 'bc', 'abbbbbc']
+# functionally equivalent greedy and possessive versions
+print([w for w in demo if regex.search(r'ab*c', w)])
+print([w for w in demo if regex.search(r'ab*+c', w)])
+# different results
+print(regex.sub(r'f(a|e)*at', r'X', 'feat ft feaeat'))
+# (a|e)*+ would match 'a' or 'e' as much as possible
+# no backtracking, so another 'a' can never match
+print(regex.sub(r'f(a|e)*+at', r'X', 'feat ft feaeat'))
+# same as: r'(b|o)++'
+print(regex.sub(r'(?>(b|o)+)', r'X', 'abbbc foooooot'))
+# same as: r'f(a|e)*+at'
+print(regex.sub(r'f(?>(a|e)*)at', r'X', 'feat ft feaeat'))
