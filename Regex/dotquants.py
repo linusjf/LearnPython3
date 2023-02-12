@@ -157,3 +157,22 @@ print(re.search(r'::.*?::apple', IP)[0])
 # similarly '::pineapple::' fails
 # '::guava::' succeeds because it is followed by 'apple'
 print(re.search(r'(?>::.*?::)apple', IP)[0])
+
+print("\n-------")
+print("Exercises....")
+print("-------\n")
+pat = re.compile(r'42//?5')
+EQN1 = 'a+42//5-c'
+print(pat.split(EQN1))
+EQN2 = 'pressure*3+42/5-14256'
+print(pat.split(EQN2))
+EQN3 = 'r*42-5/3+42///5-42/53+a'
+print(pat.split(EQN3))
+
+STR1 = 'a+b(addition)'
+STR2 = 'a/b(division) + c%d(#modulo)'
+STR3 = 'Hi there(greeting). Nice day(a(b)'
+remove_parentheses = re.compile(r'\(.+?\)')
+print(remove_parentheses.sub('', STR1))
+print(remove_parentheses.sub('', STR2))
+print(remove_parentheses.sub('', STR3))
