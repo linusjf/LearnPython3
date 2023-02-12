@@ -176,3 +176,11 @@ remove_parentheses = re.compile(r'\(.+?\)')
 print(remove_parentheses.sub('', STR1))
 print(remove_parentheses.sub('', STR2))
 print(remove_parentheses.sub('', STR3))
+
+#Remove leading/trailing whitespaces from all the individual fields of these csv strings.
+CSV1 = ' comma ,separated ,values '
+CSV2 = 'good bad,nice ice , 42 , , stall    small'
+ws = re.compile(r'\s+')
+print(ws.sub('', CSV1))
+ws = re.compile(r'(\s*+,\s*+)|(,\s+)')
+print(ws.sub(',', CSV2))
