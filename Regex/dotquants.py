@@ -9,7 +9,6 @@
 ######################################################################
 """
 import re
-import regex
 
 # matches character 'c', any character and then character 't'
 print(re.sub(r'c.t', r'X', 'tac tin cat abc;tuv acute'))
@@ -103,14 +102,58 @@ print(re.sub(r't.*?a.*?f', r'X', SENTENCE, count=1))
 
 demo = ['abc', 'ac', 'adc', 'abbc', 'xabbbcz', 'bbb', 'bc', 'abbbbbc']
 # functionally equivalent greedy and possessive versions
-print([w for w in demo if regex.search(r'ab*c', w)])
-print([w for w in demo if regex.search(r'ab*+c', w)])
+print([w for w in demo if re.search(r'ab*c', w)])
+print([w for w in demo if re.search(r'ab*+c', w)])
 # different results
-print(regex.sub(r'f(a|e)*at', r'X', 'feat ft feaeat'))
+print(re.sub(r'f(a|e)*at', r'X', 'feat ft feaeat'))
+IP = 'fig:mango:pineapple:guava:apples:orange'
+print(re.search(r':.*+', IP)[0])
+print(bool(re.search(r':.*+apple', IP)))
+# Suppose you want to match integer numbers greater than or equal
+# to 100 where these numbers can optionally have leading zeros.
+
+NUMBERS = '42 314 001 12 00984'
+
+# this solution fails because 0* and \d{3,} can both match leading zeros
+# and greedy quantifiers will give up characters to help overall regex succeed
+print(re.findall(r'0*\d{3,}', NUMBERS))
+# here 0*+ will not give back leading zeros after they are consumed
+print(re.findall(r'0*+\d{3,}', NUMBERS))
+# workaround if possessive quantifiers are not supported
+print(re.findall(r'0*[1-9]\d{2,}', NUMBERS))
 # (a|e)*+ would match 'a' or 'e' as much as possible
 # no backtracking, so another 'a' can never match
-print(regex.sub(r'f(a|e)*+at', r'X', 'feat ft feaeat'))
+print(re.sub(r'f(a|e)*+at', r'X', 'feat ft feaeat'))
+lines = ['#comment', 'c = "#"', '\t #comment', 'abc', '', ' \t ']
+# The goal is to match lines whose first non-whitespace character is not a # character.
+# A matching line should have at least one non-# character,
+# so empty lines and those with only whitespace characters should not match.
+# this solution fails because \s* can backtrack
+# and [^#] can match a whitespace character as well
+print([e for e in lines if re.match(r'\s*[^#]', e)])
+
+# this works because \s*+ will not give back any whitespace characters
+print([e for e in lines if re.match(r'\s*+[^#]', e)])
+
+# workaround if possessive quantifiers are not supported
+print([e for e in lines if re.match(r'\s*[^#\s]', e)])
 # same as: r'(b|o)++'
-print(regex.sub(r'(?>(b|o)+)', r'X', 'abbbc foooooot'))
+print(re.sub(r'(?>(b|o)+)', r'X', 'abbbc foooooot'))
 # same as: r'f(a|e)*+at'
-print(regex.sub(r'f(?>(a|e)*)at', r'X', 'feat ft feaeat'))
+print(re.sub(r'f(?>(a|e)*)at', r'X', 'feat ft feaeat'))
+
+NUMBERS = '42 314 001 12 00984'
+# 0* is greedy and the (?>) grouping prevents backtracking
+# same as: re.findall(r'0*+\d{3,}', numbers)
+print(re.findall(r'(?>0*)\d{3,}', NUMBERS))
+
+IP = 'fig::mango::pineapple::guava::apples::orange'
+
+# this matches from the first '::' to the first occurrence of '::apple'
+print(re.search(r'::.*?::apple', IP)[0])
+
+# '(?>::.*?::)' will match only from '::' to the very next '::'
+# '::mango::' fails because 'apple' isn't found afterwards
+# similarly '::pineapple::' fails
+# '::guava::' succeeds because it is followed by 'apple'
+print(re.search(r'(?>::.*?::)apple', IP)[0])
