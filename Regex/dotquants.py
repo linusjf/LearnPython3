@@ -184,3 +184,12 @@ ws = re.compile(r'\s+')
 print(ws.sub('', CSV1))
 ws = re.compile(r'(\s*+,\s*+)|(,\s+)')
 print(ws.sub(',', CSV2))
+
+WORDS = 'plink incoming tint winter in caution sentient'
+change = re.compile(r'int|in|ion|ing|inco|inter|ink')
+# wrong output
+print(change.sub(r'X', WORDS))
+# expected output
+change = re.compile(
+    r'inter|inco|ing|ink|int|ion|in')  ##### add your solution here
+print(change.sub(r'X', WORDS))
