@@ -50,3 +50,23 @@ for m in m_iter:
 m_iter = re.finditer(r'ab+c', 'abc ac adc abbbc')
 for m in m_iter:
     print(m.span())
+
+print("\n---------------")
+print("Exercises")
+print("---------------\n")
+
+# a) For the given strings, extract the matching portion from first is to last t
+STR1 = 'What is the biggest fruit you have seen?'
+STR2 = 'Your mission is to read and practice consistently'
+expr = re.compile(r'is.*t')  ##### add your solution here
+print(re.findall(expr, STR1)[0])  ##### add your solution here
+print(re.findall(expr, STR2)[0])  ##### add your solution here
+
+#Transform the given input strings to the expected output as shown below.
+ROW1 = '-2,5 4,+3 +42,-53 '
+ROW2 = '1.32,-3.14 634,5.63 '
+EXPR = r'(\-?\+?\d+\.?\d*),(\-?\+?\d+\.?\d*)'
+m_iter = re.finditer(EXPR, ROW1)
+print([(int(m[1]) + int(m[2])) for m in m_iter])
+m_iter = re.finditer(EXPR, ROW2)
+print([(float(m[1]) + float(m[2])) for m in m_iter])
