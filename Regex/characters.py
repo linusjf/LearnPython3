@@ -82,3 +82,42 @@ print(re.findall(r'[\w\s]+', 'tea sea-pit sit-lean\tbean'))
 print(re.sub(r'\D+', r'-', 'Sample123string42with777numbers'))
 print(re.sub(r'\W+', r'', 'foo=5, bar=3; x=83, y=120'))
 print(re.findall(r'\S+', ' 1..3 \v\f foo_baz 42\tzzz \r\n1-2-3 '))
+
+print("\n-----------")
+print("Exercises")
+print("-----------\n")
+# Delete all pair of parentheses, unless they contain a parentheses character.
+STR1 = 'def factorial()'
+STR2 = 'a/b(division) + c%d(#modulo) - (e+(j/k-3)*4)'
+STR3 = 'Hi there(greeting). Nice day(a(b)'
+remove_parentheses = re.compile(r'\([#/\w-]*\)')  ##### add your solution here
+print(remove_parentheses.sub('', STR1))
+print(remove_parentheses.sub('', STR2))
+print(remove_parentheses.sub('', STR3))
+
+#Extract all hex character sequences, with optional prefix. Match the characters case insen-
+#sitively, and the sequences shouldn’t be surrounded by other word characters.
+hex_seq = re.compile(r'\b0?x?[a-f0-9]+\b', flags=re.IGNORECASE)
+STR1 = '128A foo 0xfe32 34 0xbar'
+STR2 = '0XDEADBEEF place 0x0ff1ce bad'
+print(hex_seq.findall(STR1))
+print(hex_seq.findall(STR2))
+
+# Check if input string contains any number sequence that is greater than 624.
+STR1 = 'hi0000432abcd'
+STR2 = '42_624 0512'
+STR3 = '3.14 96 2 foo1234baz'
+REGEX = r'0*[1-9][0-9]+'
+m_iter = re.finditer(REGEX, STR1)
+print([m[0] for m in m_iter if int(m[0]) > 624])
+m_iter = re.finditer(REGEX, STR2)
+print([m[0] for m in m_iter if int(m[0]) > 624])
+m_iter = re.finditer(REGEX, STR3)
+print([m[0] for m in m_iter if int(m[0]) > 624])
+
+#Split the given strings based on consecutive sequence of digit or whitespace characters.
+STR1 = 'lion \t Ink32onion Nice'
+STR2 = '**1\f2\n3star\t7 77\r**'
+expr = re.compile(r'[\s0-9]+')  ##### add your solution here
+print(expr.split(STR1))
+print(expr.split(STR2))
