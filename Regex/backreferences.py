@@ -50,3 +50,19 @@ WORDS = 'effort flee facade oddball rat tool'
 repeat_char = re.compile(r'\b\w*(\w)\1\w*\b')
 # () in findall will only return text matched by capture groups
 print(repeat_char.findall(WORDS))
+
+WORDS = 'effort flee facade oddball rat tool'
+# whole words containing at least one consecutive repeated character
+repeat_char = re.compile(r'\b\w*(\w)\1\w*\b')
+# () in findall will only return text matched by capture groups
+print(repeat_char.findall(WORDS))
+m_iter = repeat_char.finditer(WORDS)
+print([m[0] for m in m_iter])
+
+# giving names to first and second captured words
+re.sub(r'(?P<fw>\w+),(?P<sw>\w+)', r'\g<sw>,\g<fw>', 'good,bad 42,24')
+SENTENCE = 'I bought an apple'
+m = re.search(r'(?P<fruit>\w+)\Z', SENTENCE)
+print(m[1])
+print(m['fruit'])
+print(m.group('fruit'))
