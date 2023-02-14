@@ -1,5 +1,5 @@
 | Note | Description |
-| —--- | —---------- |
+| ---- | ------------ |
 | [ae;o] | match any of these characters once |
 | quantifiers are applicable to character classes too |
 | [3-7] | range of characters from 3 to 7 |
