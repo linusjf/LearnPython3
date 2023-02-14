@@ -97,7 +97,7 @@ print(remove_parentheses.sub('', STR3))
 
 #Extract all hex character sequences, with optional prefix. Match the characters case insen-
 #sitively, and the sequences shouldn’t be surrounded by other word characters.
-hex_seq = re.compile(r'\b0?x?[a-f0-9]+\b', flags=re.IGNORECASE)
+hex_seq = re.compile(r'\b(?:0x)?[a-f0-9]+\b', flags=re.IGNORECASE)
 STR1 = '128A foo 0xfe32 34 0xbar'
 STR2 = '0XDEADBEEF place 0x0ff1ce bad'
 print(hex_seq.findall(STR1))
