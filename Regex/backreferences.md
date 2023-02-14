@@ -7,7 +7,7 @@
 | | possible values: \g<0> , \g<1> , etc (not limited to 99) |
 | | \\g<0> refers to entire matched portion |
 | (?:pat) | non-capturing group |
-| (?P<name>pat) | named capture group |
+| (?P\<name\>pat) | named capture group |
 | | refer as 'name' in re.Match object |
 | | refer as (?P=name) in search section |
 | | refer as \\g<name> in replacement section |
