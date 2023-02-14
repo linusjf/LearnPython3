@@ -9,6 +9,7 @@
 ######################################################################
 """
 import re
+import regex
 
 # remove square brackets that surround digit characters
 print(re.sub(r'\[(\d+)\]', r'\1', '[52] apples and [31] mangoes'))
@@ -66,3 +67,10 @@ m = re.search(r'(?P<fruit>\w+)\Z', SENTENCE)
 print(m[1])
 print(m['fruit'])
 print(m.group('fruit'))
+
+ROW = 'today,2008-03-24,food,2012-08-12,nice,5632'
+# with re module and manually repeating the pattern
+print(re.search(r'\d{4}-\d{2}-\d{2}.*\d{4}-\d{2}-\d{2}', ROW)[0])
+# with regex module and subexpression calling
+print(regex.search(r'(\d{4}-\d{2}-\d{2}).*(?1)', ROW)[0])
+print(regex.search(r'(?P<date>\d{4}-\d{2}-\d{2}).*(?&date)', ROW)[0])
