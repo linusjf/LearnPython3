@@ -1,5 +1,5 @@
 | Note | Description |
-| —--- | —---------- |
+| ---- | ----------- |
 | lookarounds | custom assertions, zero-width like anchors |
 | \(\?\!pat\) | negative lookahead assertion |
 | \(\?\<\!pat\) | negative lookbehind assertion |
