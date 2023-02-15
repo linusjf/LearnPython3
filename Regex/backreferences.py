@@ -128,3 +128,7 @@ print(regex.findall(ANCHOR1))
 print(regex.findall(ANCHOR2))
 print(regex.sub(r'[\2](#\1)', ANCHOR1))
 print(regex.sub(r'[\2](#\1)', ANCHOR2))
+
+#Use appropriate regular expression function to get the expected output for the given string.
+STR1 = 'price_42 roast:\t\n:-ice==cat\neast'
+print(re.findall(r'\w+|[\s:-]+|=+', STR1))
