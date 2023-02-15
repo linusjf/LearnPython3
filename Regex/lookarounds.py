@@ -9,6 +9,7 @@
 ######################################################################
 """
 import re
+import regex
 
 # change 'foo' only if it is not followed by a digit character
 # note that end of string satisfies the given assertion
@@ -65,3 +66,14 @@ try:
     re.sub(r'(?<=\A|,)(?=,|\Z)', r'NA', ',1,,,two,3,,,')
 except re.error as e:
     print(e)
+
+# similar to: r'(?<=\b\w)\w*\W*'
+# text matched before \K won't be replaced
+print(regex.sub(r'\b\w\K\w*\W*', r'', 'sea eat car rat eel tea'))
+# replace only 3rd occurrence of 'cat'
+print(regex.sub(r'(cat.*?){2}\Kcat', r'X', 'cat scatter cater scat', count=1))
+#The regex module allows using variable length lookbehind without needing any change.
+print(regex.findall(r'(?<=\b[a-z]+)\d+', 'pore42 car3 pare7 care5'))
+print(regex.sub(r'(?<=\A|,)(?=,|\Z)', r'NA', ',1,,,two,3,,,'))
+print(
+    regex.sub(r'(?<=(cat.*?){2})cat', r'X', 'cat scatter cater scat', count=1))
