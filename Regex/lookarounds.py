@@ -77,3 +77,9 @@ print(regex.findall(r'(?<=\b[a-z]+)\d+', 'pore42 car3 pare7 care5'))
 print(regex.sub(r'(?<=\A|,)(?=,|\Z)', r'NA', ',1,,,two,3,,,'))
 print(
     regex.sub(r'(?<=(cat.*?){2})cat', r'X', 'cat scatter cater scat', count=1))
+
+print(regex.findall(r'(?<!car|pare)\d+', 'pore42 car3 pare7 care5'))
+# match 'dog' only if it is not preceded by 'cat'
+print(bool(regex.search(r'(?<!cat.*)dog', 'fox,cat,dog,parrot')))
+# match 'dog' only if it is not preceded by 'parrot'
+print(bool(regex.search(r'(?<!parrot.*)dog', 'fox,cat,dog,parrot')))
