@@ -48,3 +48,20 @@ words = ['sequoia', 'subtle', 'questionable', 'exhibit', 'equation']
 print([w for w in words if re.search(r'(?=.*b)(?=.*e).*t', w)])
 # words containing all lowercase vowels in any order
 print([w for w in words if re.search(r'(?=.*a)(?=.*e)(?=.*i)(?=.*o).*u', w)])
+
+# allowed
+print(re.findall(r'(?<=(?:po|ca)re)\d+', 'pore42 car3 pare7 care5'))
+print(re.findall(r'(?<=\b[a-z]{4})\d+', 'pore42 car3 pare7 care5'))
+# not allowed
+try:
+    re.findall(r'(?<!car|pare)\d+', 'pore42 car3 pare7 care5')
+except re.error as e:
+    print(e)
+try:
+    re.findall(r'(?<=\b[a-z]+)\d+', 'pore42 car3 pare7 care5')
+except re.error as e:
+    print(e)
+try:
+    re.sub(r'(?<=\A|,)(?=,|\Z)', r'NA', ',1,,,two,3,,,')
+except re.error as e:
+    print(e)
