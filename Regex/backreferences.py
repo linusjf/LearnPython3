@@ -8,6 +8,7 @@
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
+import urllib.request
 import re
 
 import regex
@@ -83,3 +84,14 @@ print("--------------/n")
 ROW = '3.14,hi:42.5,bye:1056.1,cool:00.9,fool'
 regex = regex.compile(r'(\d+\.\d),(\w+)')
 print(regex.sub(r'\2,\g<1>0', ROW))
+
+SCARLET_PIMPERNEL_LINK = r'https://www.gutenberg.org/cache/epub/60/pg60.txt'
+word_expr = re.compile(
+    rb'\b\w+(\w)\1\w*(\w)\2\w*\b')  ##### add your solution here
+COUNT = 0
+with urllib.request.urlopen(SCARLET_PIMPERNEL_LINK) as ip_file:
+    for line in ip_file:
+        for word in re.findall(rb'\w+', line):
+            if word_expr.search(word):
+                COUNT += 1
+print(COUNT)
