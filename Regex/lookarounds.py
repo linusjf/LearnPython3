@@ -41,3 +41,10 @@ print(re.sub(r'(\S+\s+)(?=(\S+)\s)', r'\1\2\n', 'a b c d e'))
 # and of course, use non-capturing group where needed
 print(re.findall(r'(?<=(po|ca)re)\d+', 'pore42 car3 pare7 care5'))
 print(re.findall(r'(?<=(?:po|ca)re)\d+', 'pore42 car3 pare7 care5'))
+
+words = ['sequoia', 'subtle', 'questionable', 'exhibit', 'equation']
+# words containing 'b' and 'e' and 't' in any order
+# same as: r'b.*e.*t|b.*t.*e|e.*b.*t|e.*t.*b|t.*b.*e|t.*e.*b'
+print([w for w in words if re.search(r'(?=.*b)(?=.*e).*t', w)])
+# words containing all lowercase vowels in any order
+print([w for w in words if re.search(r'(?=.*a)(?=.*e)(?=.*i)(?=.*o).*u', w)])
