@@ -8,8 +8,8 @@
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
-import urllib.request
 import re
+import urllib.request
 
 import regex
 
@@ -77,9 +77,9 @@ print(re.search(r'\d{4}-\d{2}-\d{2}.*\d{4}-\d{2}-\d{2}', ROW)[0])
 print(regex.search(r'(\d{4}-\d{2}-\d{2}).*(?1)', ROW)[0])
 print(regex.search(r'(?P<date>\d{4}-\d{2}-\d{2}).*(?&date)', ROW)[0])
 
-print("/n--------------")
+print("\n--------------")
 print("Exercises")
-print("--------------/n")
+print("--------------\n")
 
 ROW = '3.14,hi:42.5,bye:1056.1,cool:00.9,fool'
 regex = regex.compile(r'(\d+\.\d),(\w+)')
@@ -95,3 +95,36 @@ with urllib.request.urlopen(SCARLET_PIMPERNEL_LINK) as ip_file:
             if word_expr.search(word):
                 COUNT += 1
 print(COUNT)
+
+#Convert the given markdown headers to corresponding anchor tag. Consider the input
+#to start with one or more # characters followed by space and word characters. The name
+#attribute is constructed by converting the header to lowercase and replacing spaces with hy-
+#phens. Can you do it without using a capture group?
+HEADER1 = '# Regular Expressions'
+HEADER2 = '## Compiling regular expressions'
+
+
+##### add your solution here for header1
+def anchor(_):
+    """anchor"""
+    match = _[0].replace(" ", "-")
+    _anchor = match.split("-")[0]
+    _name = match[match.find("-") + 1:].lower()
+    _label = _[0][_[0].find(" ") + 1:]
+    return _anchor + " " + '<a name="' + _name + '"></a>' + _label
+
+
+regex = re.compile(r'\#+[A-Za-z0-9 ]+')
+print(regex.findall(HEADER1))
+print(regex.findall(HEADER2))
+print(regex.sub(anchor, HEADER1))
+print(regex.sub(anchor, HEADER2))
+
+#Convert the given markdown anchors to corresponding hyperlinks.
+ANCHOR1 = '# <a name="regular-expressions"></a>Regular Expressions'
+ANCHOR2 = '## <a name="subexpression-calls"></a>Subexpression calls'
+regex = re.compile(r'\#+ \<a name="([\w-]+)"></a>([A-Za-z ]+)')
+print(regex.findall(ANCHOR1))
+print(regex.findall(ANCHOR2))
+print(regex.sub(r'[\2](#\1)', ANCHOR1))
+print(regex.sub(r'[\2](#\1)', ANCHOR2))
