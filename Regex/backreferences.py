@@ -9,6 +9,7 @@
 ######################################################################
 """
 import re
+
 import regex
 
 # remove square brackets that surround digit characters
@@ -74,3 +75,11 @@ print(re.search(r'\d{4}-\d{2}-\d{2}.*\d{4}-\d{2}-\d{2}', ROW)[0])
 # with regex module and subexpression calling
 print(regex.search(r'(\d{4}-\d{2}-\d{2}).*(?1)', ROW)[0])
 print(regex.search(r'(?P<date>\d{4}-\d{2}-\d{2}).*(?&date)', ROW)[0])
+
+print("/n--------------")
+print("Exercises")
+print("--------------/n")
+
+ROW = '3.14,hi:42.5,bye:1056.1,cool:00.9,fool'
+regex = regex.compile(r'(\d+\.\d),(\w+)')
+print(regex.sub(r'\2,\g<1>0', ROW))
