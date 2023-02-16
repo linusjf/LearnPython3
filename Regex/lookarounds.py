@@ -9,6 +9,7 @@
 ######################################################################
 """
 import re
+
 import regex
 
 # change 'foo' only if it is not followed by a digit character
@@ -83,3 +84,53 @@ print(regex.findall(r'(?<!car|pare)\d+', 'pore42 car3 pare7 care5'))
 print(bool(regex.search(r'(?<!cat.*)dog', 'fox,cat,dog,parrot')))
 # match 'dog' only if it is not preceded by 'parrot'
 print(bool(regex.search(r'(?<!parrot.*)dog', 'fox,cat,dog,parrot')))
+
+# note the use of \A anchor to force matching all characters up to 'dog'
+print(bool(re.search(r'\A((?!cat).)*dog', 'fox,cat,dog,parrot')))
+print(bool(re.search(r'\A((?!parrot).)*dog', 'fox,cat,dog,parrot')))
+# easier to understand by checking matched portion
+print(re.search(r'\A((?!cat).)*', 'fox,cat,dog,parrot')[0])
+print(re.search(r'\A((?!parrot).)*', 'fox,cat,dog,parrot')[0])
+print(re.search(r'\A((?!(.)\2).)*', 'fox,cat,dog,parrot')[0])
+# match if 'do' is not there between 'at' and 'par'
+print(bool(re.search(r'at((?!do).)*par', 'fox,cat,dog,parrot')))
+# match if 'go' is not there between 'at' and 'par'
+print(bool(re.search(r'at((?!go).)*par', 'fox,cat,dog,parrot')))
+print(re.search(r'at((?!go).)*par', 'fox,cat,dog,parrot')[0])
+# use non-capturing group if required
+print(re.findall(r'a(?:(?!\d).)*z', 'at,baz,a2z,bad-zoo'))
+
+items = ['1,2,3,4', 'a,b,c,d', '#apple 123']
+# filter elements containing digit and '#' characters
+print([s for s in items if '#' in s and re.search(r'\d', s)])
+# modify elements only if it doesn't start with '#'
+for s in items:
+    if s[0] != '#':
+        print(re.sub(r',.+,', ' ', s))
+
+# change 'cat' only if it is not followed by a digit character
+# note that the end of string satisfies the given assertion
+# 'catcat' has two matches as the assertion doesn't consume characters
+print(re.sub(r'cat(?!\d)', 'dog', 'hey cats! cat42 cat_5 catcat'))
+
+# change 'cat' only if it is not preceded by _
+# note how 'cat' at the start of string is matched as well
+print(re.sub(r'(?<!_)cat', 'dog', 'cat _cat 42catcat'))
+
+# overlap example
+# the final _ was replaced as well as played a part in the assertion
+print(re.sub(r'(?<!_)cat.', 'dog', 'cats _cater 42cat_cats'))
+
+# change whole word only if it is not preceded by : or -
+print(re.sub(r'(?<![:-])\b\w+\b', 'X', ':cart <apple: -rest ;tea'))
+# add space to word boundaries, but not at the start or end of string
+# similar to: re.sub(r'\b', ' ', 'output=num1+35*42/num2').strip()
+print(re.sub(r'(?<!\A)\b(?!\Z)', ' ', 'output=num1+35*42/num2'))
+
+#a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
+CSV1 = ' comma ,separated ,values '
+CSV2 = 'good bad,nice ice , 42 , , stall small'
+remove_whitespace = regex.compile(
+    r'(?<=^|, )|(?<=, ) | (?=$|,)|(?<=, )(?=,)')  ##### add your solution here
+print(remove_whitespace.sub('', CSV1))
+print(remove_whitespace.sub('', CSV2))
