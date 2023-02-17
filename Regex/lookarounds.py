@@ -126,6 +126,32 @@ print(re.sub(r'(?<![:-])\b\w+\b', 'X', ':cart <apple: -rest ;tea'))
 # add space to word boundaries, but not at the start or end of string
 # similar to: re.sub(r'\b', ' ', 'output=num1+35*42/num2').strip()
 print(re.sub(r'(?<!\A)\b(?!\Z)', ' ', 'output=num1+35*42/num2'))
+# replace a character as long as it is not preceded by 'p' or 'r
+print(re.sub(r'(?<![pr]).', '*', 'spare'))
+print(re.sub(r'.(?<![pr].)', '*', 'spare'))
+
+# replace 'par' as long as 's' is not present later in the input
+# this assumes that the lookaround doesn't conflict with search pattern
+# i.e. 's' will not conflict 'par' but would affect if it was 'r' and 'par'
+print(re.sub(r'par(?!.*s)', '[\\g<0>]', 'par spare part party'))
+print(re.sub(r'(?!.*s)par', '[\\g<0>]', 'par spare part party'))
+
+# since the three assertions used here are all zero-width,
+# all of the 6 possible combinations will be equivalent
+print(re.sub(r'(?!\Z)\b(?<!\A)', ' ', 'output=num1+35*42/num2'))
+
+# extract digits only if it is followed by ,
+# note that end of string doesn't qualify as this is a positive assertion
+print(re.findall(r'\d+(?=,)', '42 apple-5, fig3; x-83, y-20: f12'))
+
+# extract digits only if it is preceded by - and followed by ; or :
+print(re.findall(r'(?<=-)\d+(?=[:;])', '42 apple-5, fig3; x-83, y-20: f12'))
+
+# replace 'par' as long as 'part' occurs as a whole word later in the line
+print(re.sub(r'par(?=.*\bpart\b)', '[\\g<0>]', 'par spare part party'))
+
+# replace 'par' as long as 'part' occurs as a starting  later in the line
+print(re.sub(r'par(?=.*\bpart)', '[\\g<0>]', 'par spare part party'))
 
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
