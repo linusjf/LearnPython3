@@ -153,6 +153,14 @@ print(re.sub(r'par(?=.*\bpart\b)', '[\\g<0>]', 'par spare part party'))
 # replace 'par' as long as 'part' occurs as a starting  later in the line
 print(re.sub(r'par(?=.*\bpart)', '[\\g<0>]', 'par spare part party'))
 
+# except first and last fields
+print(re.findall(r'(?<=,)[^,]+(?=,)', '1,two,3,four,5'))
+
+# replace empty fields with NA
+# note that in this case, order of lookbehind and lookahead doesn't matter
+print(re.sub(r'(?<![^,])(?![^,])', 'NA', ',1,,,two,3,,,'))
+print(regex.sub(r'(?<=\A|,)(?=,|\Z)', 'NA', ',1,,,two,3,,,'))
+
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
 CSV2 = 'good bad,nice ice , 42 , , stall small'
