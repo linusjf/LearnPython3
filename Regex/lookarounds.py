@@ -203,10 +203,35 @@ except re.error as e:
     print(e)
     #look-behind requires fixed-width pattern
 
+S = 'pore42 tar3 dare7 care5'
+
+# workaround for r'(?<!tar|dare)\d+'
+print(re.findall(r'(?<!tar)(?<!dare)\d+', S))
+
+# workaround for r'(?<=tar|dare)\d+'
+print(re.findall(r'(?:(?<=tar)|(?<=dare))\d+', S))
+
+# workaround for r'(?<=\A|,)(?=,|\Z)'
+print(re.sub(r'((?<=\A)|(?<=,))(?=,|\Z)', 'NA', ',1,,,two,3,,,'))
+
+S = 'pore42 tar3 dare7 care5'
+
+# same as: re.findall(r'(?:(?<=tar)|(?<=dare))\d+', s)
+print(re.findall(r'(?:tar|dare)(\d+)', S))
+
+# delete digits only if they are preceded by 'tar' or 'dare'
+print(re.sub(r'(tar|dare)\d+', r'\1', S))
+
+# workaround for r'(?<=\b[pd][a-z]*)\d+'
+# get digits only if they are preceded by a word starting with 'p' or 'd'
+print(re.findall(r'\b[pd][a-z]*(\d+)', S))
+
+# delete digits only if they are preceded by a word starting with 'p' or 'd'
+print(re.sub(r'(\b[pd][a-z]*)\d+', r'\1', S))
+
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
 CSV2 = 'good bad,nice ice , 42 , , stall small'
-remove_whitespace = regex.compile(
-    r'(?<=^|, )|(?<=, ) | (?=$|,)|(?<=, )(?=,)')  ##### add your solution here
+remove_whitespace = regex.compile(r'(?<=^|, )|(?<=, ) | (?=$|,)|(?<=, )(?=,)')
 print(remove_whitespace.sub('', CSV1))
 print(remove_whitespace.sub('', CSV2))
