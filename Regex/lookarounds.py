@@ -229,6 +229,27 @@ print(re.findall(r'\b[pd][a-z]*(\d+)', S))
 # delete digits only if they are preceded by a word starting with 'p' or 'd'
 print(re.sub(r'(\b[pd][a-z]*)\d+', r'\1', S))
 
+# note the use of \A anchor to force matching all the characters up to 'dog'
+print(bool(re.search(r'\A((?!cat).)*dog', 'fox,cat,dog,parrot')))
+print(re.search(r'\A((?!cat).)*dog', 'fox,cat,dog,parrot'))
+print(re.search(r'\A((?!cat).)*', 'fox,cat,dog,parrot')[0])
+# easier to understand by checking the matched portion
+print(bool(re.search(r'\A((?!parrot).)*dog', 'fox,cat,dog,parrot')))
+print(re.search(r'\A((?!parrot).)*', 'fox,cat,dog,parrot')[0])
+# without the anchor, you'll get false matches
+print(bool(re.search(r'((?!cat).)*dog', 'fox,cat,dog,parrot')))
+print(re.search(r'\A(?:(?!(.)\1).)*', 'fox,cat,dog,parrot')[0])
+
+# match if 'do' is not there between 'at' and 'par'
+print(bool(re.search(r'at((?!do).)*par', 'fox,cat,dog,parrot')))
+# match if 'go' is not there between 'at' and 'par'
+print(bool(re.search(r'at((?!go).)*par', 'fox,cat,dog,parrot')))
+print(re.search(r'at((?!go).)*par', 'fox,cat,dog,parrot')[0])
+
+# use non-capturing group if required
+WORDS = 'apple banana 12_bananas cherry fig mango cake42'
+print(re.findall(r'\b[a-z](?:(?!pp|rr)[a-z])*\b', WORDS))
+
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
 CSV2 = 'good bad,nice ice , 42 , , stall small'
