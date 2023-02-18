@@ -161,6 +161,48 @@ print(re.findall(r'(?<=,)[^,]+(?=,)', '1,two,3,four,5'))
 print(re.sub(r'(?<![^,])(?![^,])', 'NA', ',1,,,two,3,,,'))
 print(regex.sub(r'(?<=\A|,)(?=,|\Z)', 'NA', ',1,,,two,3,,,'))
 
+print(re.sub(r'(\S+\s+)(?=(\S+)\s)', r'\1\2\n', 'a b c d e'))
+
+# and of course, use non-capturing group where needed
+print(re.findall(r'(?<=(po|ca)re)\d+', 'pore42 car3 pare7 care5'))
+print(re.findall(r'(?<=(?:po|ca)re)\d+', 'pore42 car3 pare7 care5'))
+
+words = ['sequoia', 'subtle', 'questionable', 'exhibit', 'equation']
+
+# words containing 'b' and 'e' and 't' in any order
+# same as: r'b.*e.*t|b.*t.*e|e.*b.*t|e.*t.*b|t.*b.*e|t.*e.*b'
+print([w for w in words if re.search(r'(?=.*b)(?=.*e).*t', w)])
+
+# words containing all lowercase vowels in any order
+print([w for w in words if re.search(r'(?=.*a)(?=.*e)(?=.*i)(?=.*o).*u', w)])
+
+# words containing ('ab' or 'at') and 'q' but not 'n' at the end of the element
+print([w for w in words if re.search(r'(?!.*n\Z)(?=.*a[bt]).*q', w)])
+
+S = 'pore42 tar3 dare7 care5'
+
+# allowed
+print(re.findall(r'(?<=(?:po|da)re)\d+', S))
+print(re.findall(r'(?<=\b[a-z]{4})\d+', S))
+
+# not allowed
+try:
+    re.findall(r'(?<!tar|dare)\d+', S)
+except re.error as e:
+    #look-behind requires fixed-width pattern
+    print(e)
+
+try:
+    re.findall(r'(?<=\b[pd][a-z]*)\d+', S)
+except re.error as e:
+    print(e)
+#look-behind requires fixed-width pattern
+try:
+    re.sub(r'(?<=\A|,)(?=,|\Z)', 'NA', ',1,,,two,3,,,')
+except re.error as e:
+    print(e)
+    #look-behind requires fixed-width pattern
+
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
 CSV2 = 'good bad,nice ice , 42 , , stall small'
