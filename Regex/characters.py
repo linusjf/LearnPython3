@@ -90,13 +90,13 @@ print("-----------\n")
 STR1 = 'def factorial()'
 STR2 = 'a/b(division) + c%d(#modulo) - (e+(j/k-3)*4)'
 STR3 = 'Hi there(greeting). Nice day(a(b)'
-remove_parentheses = re.compile(r'\([#/\w-]*\)')  ##### add your solution here
+remove_parentheses = re.compile(r'\([#/\w-]*\)')  # add your solution here
 print(remove_parentheses.sub('', STR1))
 print(remove_parentheses.sub('', STR2))
 print(remove_parentheses.sub('', STR3))
 
-#Extract all hex character sequences, with optional prefix. Match the characters case insen-
-#sitively, and the sequences shouldn’t be surrounded by other word characters.
+# Extract all hex character sequences, with optional prefix. Match the characters case insen-
+# sitively, and the sequences shouldn’t be surrounded by other word characters.
 hex_seq = re.compile(r'\b(?:0x)?[a-f0-9]+\b', flags=re.IGNORECASE)
 STR1 = '128A foo 0xfe32 34 0xbar'
 STR2 = '0XDEADBEEF place 0x0ff1ce bad'
@@ -115,9 +115,10 @@ print([m[0] for m in m_iter if int(m[0]) > 624])
 m_iter = re.finditer(REGEX, STR3)
 print([m[0] for m in m_iter if int(m[0]) > 624])
 
-#Split the given strings based on consecutive sequence of digit or whitespace characters.
+# Split the given strings based on consecutive sequence of digit or
+# whitespace characters.
 STR1 = 'lion \t Ink32onion Nice'
 STR2 = '**1\f2\n3star\t7 77\r**'
-expr = re.compile(r'[\s0-9]+')  ##### add your solution here
+expr = re.compile(r'[\s0-9]+')  # add your solution here
 print(expr.split(STR1))
 print(expr.split(STR2))

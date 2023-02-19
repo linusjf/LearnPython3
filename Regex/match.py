@@ -55,14 +55,15 @@ print("\n---------------")
 print("Exercises")
 print("---------------\n")
 
-# a) For the given strings, extract the matching portion from first is to last t
+# a) For the given strings, extract the matching portion from first is to
+# last t
 STR1 = 'What is the biggest fruit you have seen?'
 STR2 = 'Your mission is to read and practice consistently'
-expr = re.compile(r'is.*t')  ##### add your solution here
-print(re.findall(expr, STR1)[0])  ##### add your solution here
-print(re.findall(expr, STR2)[0])  ##### add your solution here
+expr = re.compile(r'is.*t')  # add your solution here
+print(re.findall(expr, STR1)[0])  # add your solution here
+print(re.findall(expr, STR2)[0])  # add your solution here
 
-#Transform the given input strings to the expected output as shown below.
+# Transform the given input strings to the expected output as shown below.
 ROW1 = '-2,5 4,+3 +42,-53 '
 ROW2 = '1.32,-3.14 634,5.63 '
 EXPR = r'(\-?\+?\d+\.?\d*),(\-?\+?\d+\.?\d*)'

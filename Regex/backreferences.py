@@ -87,7 +87,7 @@ print(regex.sub(r'\2,\g<1>0', ROW))
 
 SCARLET_PIMPERNEL_LINK = r'https://www.gutenberg.org/cache/epub/60/pg60.txt'
 word_expr = re.compile(
-    rb'\b\w+(\w)\1\w*(\w)\2\w*\b')  ##### add your solution here
+    rb'\b\w+(\w)\1\w*(\w)\2\w*\b')  # add your solution here
 COUNT = 0
 with urllib.request.urlopen(SCARLET_PIMPERNEL_LINK) as ip_file:
     for line in ip_file:
@@ -96,15 +96,15 @@ with urllib.request.urlopen(SCARLET_PIMPERNEL_LINK) as ip_file:
                 COUNT += 1
 print(COUNT)
 
-#Convert the given markdown headers to corresponding anchor tag. Consider the input
-#to start with one or more # characters followed by space and word characters. The name
-#attribute is constructed by converting the header to lowercase and replacing spaces with hy-
-#phens. Can you do it without using a capture group?
+# Convert the given markdown headers to corresponding anchor tag. Consider the input
+# to start with one or more # characters followed by space and word characters. The name
+# attribute is constructed by converting the header to lowercase and replacing spaces with hy-
+# phens. Can you do it without using a capture group?
 HEADER1 = '# Regular Expressions'
 HEADER2 = '## Compiling regular expressions'
 
 
-##### add your solution here for header1
+# add your solution here for header1
 def anchor(_):
     """anchor"""
     match = _[0].replace(" ", "-")
@@ -120,7 +120,7 @@ print(regex.findall(HEADER2))
 print(regex.sub(anchor, HEADER1))
 print(regex.sub(anchor, HEADER2))
 
-#Convert the given markdown anchors to corresponding hyperlinks.
+# Convert the given markdown anchors to corresponding hyperlinks.
 ANCHOR1 = '# <a name="regular-expressions"></a>Regular Expressions'
 ANCHOR2 = '## <a name="subexpression-calls"></a>Subexpression calls'
 regex = re.compile(r'\#+ \<a name="([\w-]+)"></a>([A-Za-z ]+)')
@@ -129,6 +129,7 @@ print(regex.findall(ANCHOR2))
 print(regex.sub(r'[\2](#\1)', ANCHOR1))
 print(regex.sub(r'[\2](#\1)', ANCHOR2))
 
-#Use appropriate regular expression function to get the expected output for the given string.
+# Use appropriate regular expression function to get the expected output
+# for the given string.
 STR1 = 'price_42 roast:\t\n:-ice==cat\neast'
 print(re.findall(r'\w+|[\s:-]+|=+', STR1))
