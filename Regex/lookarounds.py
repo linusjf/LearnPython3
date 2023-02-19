@@ -291,6 +291,28 @@ noendregex = regex.compile(r'(?:[^{]++|{(?!END}))+')
 print(noendregex.findall("THE{END}"))
 print(noendregex.findall("NoEnd"))
 
+startregex = regex.compile(r'(?<=#START#).*')
+print(startregex.findall("#START#stringstartshere#START#"))
+startregex = regex.compile(r'(?<=#START#).+')
+print(startregex.findall("#START#stringstartshere#START#"))
+endregex = regex.compile(r'.*(?=#END#)')
+print(endregex.findall("#END#stringendsshere#END#"))
+endregex = regex.compile(r'.+(?=#END#)')
+print(endregex.findall("#END#stringendsshere#END#"))
+startendregex = regex.compile(r'(?<=#START#).+?(?=#END#)')
+print(startendregex.findall("#START#stringendsshere#END#"))
+startendregex = regex.compile(r'(?<=#START#).*?(?=#END#)')
+print(startendregex.findall("#START#stringendsshere#END#"))
+
+insertregex = regex.compile(r'(?<=[a-z])(?=[A-Z])')
+print(insertregex.sub(' ', "HaroldAndKumarGoToWhiteCastle"))
+print(insertregex.split("AppleOrangeBananaStrawberryPeach"))
+
+overlapregex = regex.compile(r'(?=(\w+))')
+print(overlapregex.findall("ABCDE"))
+overlapregex = regex.compile(r'(?<=(\w+))')
+print(overlapregex.findall("ABCDE"))
+
 #Suppose you want to match one word character \w as long as it is not the letter Q.
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
