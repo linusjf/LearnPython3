@@ -357,6 +357,14 @@ print(regexbtf.findall(NUMBERS))
 regexbtf = regex.compile(r'\d+(?<=_\d{2}(?=_))')
 print(regexbtf.findall(NUMBERS))
 
+# matches a number that is precede by an underscore that is not
+# preceded by an underscore unless that underscore is preceded by an X.
+NUMBERS = "23 _45_ __67_ X__78 89 67 _56_"
+regexbtf = regex.compile(r'(?<=(?<!(?<!X)_)_)\d+')
+print(regexbtf.findall(NUMBERS))
+regexbtf = regex.compile(r'(?:(?<=(?<!_)_)|(?<=X__))\d+')
+print(regexbtf.findall(NUMBERS))
+
 #Suppose you want to match one word character \w as long as it is not the letter Q.
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
