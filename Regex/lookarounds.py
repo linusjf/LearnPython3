@@ -250,6 +250,33 @@ print(re.search(r'at((?!go).)*par', 'fox,cat,dog,parrot')[0])
 WORDS = 'apple banana 12_bananas cherry fig mango cake42'
 print(re.findall(r'\b[a-z](?:(?!pp|rr)[a-z])*\b', WORDS))
 
+#Our password must meet four conditions:
+
+#1. The password must have between six and ten word characters \w
+#2. It must include at least one lowercase character [a-z]
+#3. It must include at least three uppercase characters [A-Z]
+#4. It must include at least one digit \d
+regexpwd = re.compile(
+    r'\A(?=[^a-z]*[a-z])(?=(?:[^A-Z]*[A-Z]){3})(?=\D*\d)\w{6,10}\Z')
+print(regexpwd.findall("fivec"))
+print(regexpwd.findall("ALLCAPS"))
+print(regexpwd.findall("NOtallcaps"))
+print(regexpwd.findall("NODigits"))
+print(regexpwd.findall("NODigits1"))
+
+noQregex = regex.compile(r'[^\WQ]')
+print(noQregex.findall("noqueue"))
+print(noQregex.findall("Queue"))
+noQregex = regex.compile(r'[_0-9a-zA-PR-Z]')
+print(noQregex.findall("noqueue"))
+print(noQregex.findall("Queue"))
+noQregex = regex.compile(r'(?!Q)\w')
+print(noQregex.findall("noqueue"))
+print(noQregex.findall("Queue"))
+noQregex = regex.compile(r'\w(?<!Q)')
+print(noQregex.findall("noqueue"))
+print(noQregex.findall("Queue"))
+#Suppose you want to match one word character \w as long as it is not the letter Q.
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
 CSV2 = 'good bad,nice ice , 42 , , stall small'
