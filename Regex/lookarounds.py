@@ -342,6 +342,21 @@ inefficientregex = regex.compile(r'\d{3}(?<!USD\d{3})')
 TEXT = "JPY100"
 print(efficientregex.findall(TEXT))
 print(inefficientregex.findall(TEXT))
+
+# Suppose you want to match a two-digit
+# number surrounded by underscores as in _12_ but not the underscores.
+regexone = regex.compile(r'_(\d{2})_')
+regextwo = regex.compile(r'(?<=_)\d{2}(?=_)')
+regexthree = regex.compile(r'_\K\d{2}(?=_)')
+NUMBERS = "23 _45_ _67_ 78 89 67 _56_"
+print(regexone.findall(NUMBERS))
+print(regextwo.findall(NUMBERS))
+print(regexthree.findall(NUMBERS))
+regexbtf = regex.compile(r'(?<=_(?=\d{2}_))\d+')
+print(regexbtf.findall(NUMBERS))
+regexbtf = regex.compile(r'\d+(?<=_\d{2}(?=_))')
+print(regexbtf.findall(NUMBERS))
+
 #Suppose you want to match one word character \w as long as it is not the letter Q.
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
