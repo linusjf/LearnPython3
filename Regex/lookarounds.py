@@ -281,6 +281,15 @@ print(noQregex.findall("Queue"))
 noendregex = regex.compile(r'(?:(?!{END}).)*')
 print(noendregex.findall("THE{END}"))
 print(noendregex.findall("NoEnd"))
+noendregex = regex.compile(r'(?:(?!{END}).)+')
+print(noendregex.findall("THE{END}"))
+print(noendregex.findall("NoEnd"))
+noendregex = regex.compile(r'(?:[^{]++|{(?!END}))*+')
+print(noendregex.findall("THE{END}"))
+print(noendregex.findall("NoEnd"))
+noendregex = regex.compile(r'(?:[^{]++|{(?!END}))+')
+print(noendregex.findall("THE{END}"))
+print(noendregex.findall("NoEnd"))
 
 #Suppose you want to match one word character \w as long as it is not the letter Q.
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
