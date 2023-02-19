@@ -365,6 +365,21 @@ print(regexbtf.findall(NUMBERS))
 regexbtf = regex.compile(r'(?:(?<=(?<!_)_)|(?<=X__))\d+')
 print(regexbtf.findall(NUMBERS))
 
+ANIMALS = "_rabbit _dog _mouse DIC:cat:dog:mouse"
+animalregex = regex.compile(r'_(\w+)\b(?=.*:\1\b)')
+print(animalregex.findall(ANIMALS))
+animalregex = regex.compile(r'_(?=.*:(\w+)\b)\1\b')
+print(animalregex.findall(ANIMALS))
+animalregex = regex.compile(r'_(?=.*:(\w+)\b)\1\b')
+print(animalregex.findall(ANIMALS))
+
+expr = regex.compile(r'(?<=\b\d+_)[A-Z]+')
+print(expr.findall("123456_ORANGE"))
+print(expr.findall("abc12_APPLE"))
+
+variablelb = regex.compile(r'(?<=(\d{1,5}))Z')
+print(variablelb.findall("123Z"))
+
 #Suppose you want to match one word character \w as long as it is not the letter Q.
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
