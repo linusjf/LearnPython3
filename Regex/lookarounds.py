@@ -313,6 +313,15 @@ print(overlapregex.findall("ABCDE"))
 overlapregex = regex.compile(r'(?<=(\w+))')
 print(overlapregex.findall("ABCDE"))
 
+multiregex = regex.compile(r'(?m)^')
+LINES = """This is
+a multline
+string. We will regex
+the start of each
+line.
+"""
+print(multiregex.sub("// ", LINES))
+
 #Suppose you want to match one word character \w as long as it is not the letter Q.
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
