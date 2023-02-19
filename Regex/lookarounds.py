@@ -322,6 +322,26 @@ line.
 """
 print(multiregex.sub("// ", LINES))
 
+efficientregex = regex.compile(r'\d+(?= dollars)')
+inefficientregex = regex.compile(r'(?=\d+ dollars)\d+')
+TEXT = "100 dollars"
+print(efficientregex.findall(TEXT))
+print(inefficientregex.findall(TEXT))
+efficientregex = regex.compile(r'\d+(?! dollars)')
+inefficientregex = regex.compile(r'(?!\d+ dollars)\d+')
+TEXT = "100 pesos"
+print(efficientregex.findall(TEXT))
+print(inefficientregex.findall(TEXT))
+efficientregex = regex.compile(r'(?<=USD)\d{3}')
+inefficientregex = regex.compile(r'\d{3}(?<=USD\d{3})')
+TEXT = "USD100"
+print(efficientregex.findall(TEXT))
+print(inefficientregex.findall(TEXT))
+efficientregex = regex.compile(r'(?<!USD)\d{3}')
+inefficientregex = regex.compile(r'\d{3}(?<!USD\d{3})')
+TEXT = "JPY100"
+print(efficientregex.findall(TEXT))
+print(inefficientregex.findall(TEXT))
 #Suppose you want to match one word character \w as long as it is not the letter Q.
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
