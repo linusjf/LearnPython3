@@ -108,16 +108,19 @@ print(re.sub(r'\B', r':', 'copper'))
 print(re.sub(r'\b', r' ', '-----hello-----'))
 print(re.sub(r'\B', r' ', '-----hello-----'))
 
-#For the given input string, change only whole word red to brown
+# For the given input string, change only whole word red to brown
 WORDS = 'bred red spread credible'
 print(re.sub(r'\bred\b', r'brown', WORDS))
-# For the given input list, filter all elements that contains 42 surrounded by word characters.
+# For the given input list, filter all elements that contains 42
+# surrounded by word characters.
 words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake4b']
 print([w for w in words if re.search(r'\B42\B', w)])
-# For the given input list, filter all elements that start with den or end with ly
+# For the given input list, filter all elements that start with den or end
+# with ly
 foo = ['lovely', '1 dentist', '2 lonely', 'eden', 'fly away', 'dent']
 print([e for e in foo if re.search(r'^den', e) or re.search(r'ly$', e)])
-# For the given input string, change whole word mall only if it is at start of line.
+# For the given input string, change whole word mall only if it is at
+# start of line.
 PARA = '''\
 ball fall wall tall
 mall call ball pall

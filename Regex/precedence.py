@@ -45,9 +45,9 @@ print(alt.sub(r'X', 'hands handful handed handy'))
 # without sorting, alternation order will come into play
 print(re.sub('|'.join(words), r'X', 'hands handful handed handy'))
 
-#For the given url, count the total number of lines that contain removed or rested or
-#received or replied or refused or retired as whole words. Note that each line
-#in the for loop will be of bytes data type.
+# For the given url, count the total number of lines that contain removed or rested or
+# received or replied or refused or retired as whole words. Note that each line
+# in the for loop will be of bytes data type.
 SCARLET_PIMPERNEL_LINK = r'https://www.gutenberg.org/cache/epub/60/pg60.txt'
 words = re.compile(rb're(ceiv|fus|mov|pli|tir|st)ed')
 COUNT = 0
