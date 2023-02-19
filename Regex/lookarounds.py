@@ -379,6 +379,19 @@ print(expr.findall("abc12_APPLE"))
 
 variablelb = regex.compile(r'(?<=(\d{1,5}))Z')
 print(variablelb.findall("123Z"))
+cgregex = regex.compile(r'\b\d+_([A-Z]+)')
+print(cgregex.findall("123456_ORANGE"))
+print(cgregex.findall("abc12_APPLE"))
+keepoutregex = regex.compile(r'\b\d+_\K[A-Z]+')
+print(keepoutregex.findall("123456_ORANGE"))
+print(keepoutregex.findall("abc12_APPLE"))
+
+numsregex = regex.compile(r'(?<=\d)\d')
+print(numsregex.findall("123"))
+numsregex = regex.compile(r'\d\K\d')
+print(numsregex.findall("123"))
+numsregex = regex.compile(r'\d(\d)')
+print(numsregex.findall("123"))
 
 #Suppose you want to match one word character \w as long as it is not the letter Q.
 #a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
