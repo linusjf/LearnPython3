@@ -73,7 +73,8 @@ except re.error as e:
 print(regex.sub(r'\b\w\K\w*\W*', r'', 'sea eat car rat eel tea'))
 # replace only 3rd occurrence of 'cat'
 print(regex.sub(r'(cat.*?){2}\Kcat', r'X', 'cat scatter cater scat', count=1))
-#The regex module allows using variable length lookbehind without needing any change.
+# The regex module allows using variable length lookbehind without needing
+# any change.
 print(regex.findall(r'(?<=\b[a-z]+)\d+', 'pore42 car3 pare7 care5'))
 print(regex.sub(r'(?<=\A|,)(?=,|\Z)', r'NA', ',1,,,two,3,,,'))
 print(
@@ -189,19 +190,19 @@ print(re.findall(r'(?<=\b[a-z]{4})\d+', S))
 try:
     re.findall(r'(?<!tar|dare)\d+', S)
 except re.error as e:
-    #look-behind requires fixed-width pattern
+    # look-behind requires fixed-width pattern
     print(e)
 
 try:
     re.findall(r'(?<=\b[pd][a-z]*)\d+', S)
 except re.error as e:
     print(e)
-#look-behind requires fixed-width pattern
+# look-behind requires fixed-width pattern
 try:
     re.sub(r'(?<=\A|,)(?=,|\Z)', 'NA', ',1,,,two,3,,,')
 except re.error as e:
     print(e)
-    #look-behind requires fixed-width pattern
+    # look-behind requires fixed-width pattern
 
 S = 'pore42 tar3 dare7 care5'
 
@@ -250,12 +251,12 @@ print(re.search(r'at((?!go).)*par', 'fox,cat,dog,parrot')[0])
 WORDS = 'apple banana 12_bananas cherry fig mango cake42'
 print(re.findall(r'\b[a-z](?:(?!pp|rr)[a-z])*\b', WORDS))
 
-#Our password must meet four conditions:
+# Our password must meet four conditions:
 
-#1. The password must have between six and ten word characters \w
-#2. It must include at least one lowercase character [a-z]
-#3. It must include at least three uppercase characters [A-Z]
-#4. It must include at least one digit \d
+# 1. The password must have between six and ten word characters \w
+# 2. It must include at least one lowercase character [a-z]
+# 3. It must include at least three uppercase characters [A-Z]
+# 4. It must include at least one digit \d
 regexpwd = re.compile(
     r'\A(?=[^a-z]*[a-z])(?=(?:[^A-Z]*[A-Z]){3})(?=\D*\d)\w{6,10}\Z')
 print(regexpwd.findall("fivec"))
@@ -277,7 +278,8 @@ noQregex = regex.compile(r'\w(?<!Q)')
 print(noQregex.findall("noqueue"))
 print(noQregex.findall("Queue"))
 
-#suppose we want to match any character as long as it is not followed by {END}.
+# suppose we want to match any character as long as it is not followed by
+# {END}.
 noendregex = regex.compile(r'(?:(?!{END}).)*')
 print(noendregex.findall("THE{END}"))
 print(noendregex.findall("NoEnd"))
@@ -393,8 +395,9 @@ print(numsregex.findall("123"))
 numsregex = regex.compile(r'\d(\d)')
 print(numsregex.findall("123"))
 
-#Suppose you want to match one word character \w as long as it is not the letter Q.
-#a) Remove leading and trailing whitespaces from all the individual fields of these csv strings.
+# Suppose you want to match one word character \w as long as it is not the letter Q.
+# a) Remove leading and trailing whitespaces from all the individual
+# fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
 CSV2 = 'good bad,nice ice , 42 , , stall small'
 remove_whitespace = regex.compile(r'(?<=^|, )|(?<=, ) | (?=$|,)|(?<=, )(?=,)')

@@ -36,7 +36,7 @@ print(re.sub(r'ta*r', r'X', 'tr tear tare steer sitaara'))
 print(re.sub(r't(e|a)*r', r'X', 'tr tear tare steer sitaara'))
 # match zero or more of '1' followed by '2'
 print(re.sub(r'1*2', r'X', '3111111111125111142'))
-#Time to introduce re.split function:
+# Time to introduce re.split function:
 # last element is empty because there is nothing between 511114 and 2
 print(re.split(r'1*2', '3111111111125111142'))
 # optional argument maxsplit specifies how many times to split
@@ -46,9 +46,9 @@ print(re.split(r'1*2', '3111111111125111142', maxsplit=1))
 # it matches between every character
 # and, there is an empty match after the split at u
 print(re.split(r'u*', 'cloudy'))
-#The + metacharacter quantifies a character or group to match 1 or more times. Similar
-#to * quantifier, there is no upper bound. More importantly, this doesn’t have surprises like
-#matching empty string in between patterns or at start/end of string.
+# The + metacharacter quantifies a character or group to match 1 or more times. Similar
+# to * quantifier, there is no upper bound. More importantly, this doesn’t have surprises like
+# matching empty string in between patterns or at start/end of string.
 print(re.sub(r'ta+r', r'X', 'tr tear tare steer sitaara'))
 print(re.sub(r't(e|a)+r', r'X', 'tr tear tare steer sitaara'))
 print(re.sub(r'1+2', r'X', '3111111111125111142'))
@@ -62,9 +62,9 @@ print([w for w in demo if re.search(r'ab{3}c', w)])
 # match 'Error' followed by zero or more characters followed by 'valid'
 print(bool(re.search(r'Error.*valid', 'Error: not a valid input')))
 print(bool(re.search(r'Error.*valid', 'Error: key not found')))
-#To allow matching in any order, you’ll have to bring in alternation as well. That is somewhat
-#manageable for 2 or 3 patterns. In a later chapter, you’ll learn how to use lookarounds for a
-#comparatively easier approach.
+# To allow matching in any order, you’ll have to bring in alternation as well. That is somewhat
+# manageable for 2 or 3 patterns. In a later chapter, you’ll learn how to use lookarounds for a
+# comparatively easier approach.
 SEQ1 = 'cat and dog'
 SEQ2 = 'dog and cat'
 print(bool(re.search(r'cat.*dog|dog.*cat', SEQ1)))
@@ -177,7 +177,8 @@ print(remove_parentheses.sub('', STR1))
 print(remove_parentheses.sub('', STR2))
 print(remove_parentheses.sub('', STR3))
 
-#Remove leading/trailing whitespaces from all the individual fields of these csv strings.
+# Remove leading/trailing whitespaces from all the individual fields of
+# these csv strings.
 CSV1 = ' comma ,separated ,values '
 CSV2 = 'good bad,nice ice , 42 , , stall    small'
 ws = re.compile(r'\s+')
@@ -191,5 +192,5 @@ change = re.compile(r'int|in|ion|ing|inco|inter|ink')
 print(change.sub(r'X', WORDS))
 # expected output
 change = re.compile(
-    r'inter|inco|ing|ink|int|ion|in')  ##### add your solution here
+    r'inter|inco|ing|ink|int|ion|in')  # add your solution here
 print(change.sub(r'X', WORDS))
