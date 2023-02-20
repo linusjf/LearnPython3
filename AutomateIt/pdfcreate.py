@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import fpdf
+"""PDFCreate."""
 from fpdf import FPDF
 
 pdf = FPDF(format="letter")
