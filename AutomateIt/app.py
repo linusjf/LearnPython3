@@ -53,7 +53,8 @@ def create_user():
     username = request.json.get("username")
     email = request.json.get("email")
     status = False
-    user = {"id": user_id, "email": email, "username": username, "active": status}
+    user = {"id": user_id,
+            "email": email, "username": username, "active": status}
     users.append(user)
     return jsonify({"user": user}), 201
 
