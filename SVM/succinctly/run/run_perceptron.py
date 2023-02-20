@@ -2,7 +2,7 @@ import numpy as np
 from succinctly.datasets import get_dataset, linearly_separable as ls
 from succinctly.algorithms.perceptron_learning_algorithm import perceptron_learning_algorithm
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     np.random.seed(88)
 
     X, y = get_dataset(ls.get_training_examples)
@@ -12,6 +12,4 @@ if __name__ == '__main__':
 
     w = perceptron_learning_algorithm(X_augmented, y)
 
-    print(w) # [-44.35244895   1.50714969   5.52834138]
-
-
+    print(w)  # [-44.35244895   1.50714969   5.52834138]

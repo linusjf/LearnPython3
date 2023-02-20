@@ -173,18 +173,18 @@ class State:
     def showBoard(self):
         # p1: x  p2: o
         for i in range(0, BOARD_ROWS):
-            print('-------------')
-            out = '| '
+            print("-------------")
+            out = "| "
             for j in range(0, BOARD_COLS):
                 if self.board[i, j] == 1:
-                    token = 'x'
+                    token = "x"
                 if self.board[i, j] == -1:
-                    token = 'o'
+                    token = "o"
                 if self.board[i, j] == 0:
-                    token = ' '
-                out += token + ' | '
+                    token = " "
+                out += token + " | "
             print(out)
-        print('-------------')
+        print("-------------")
 
 
 class Player:
@@ -211,7 +211,11 @@ class Player:
                 next_board = current_board.copy()
                 next_board[p] = symbol
                 next_boardHash = self.getHash(next_board)
-                value = 0 if self.states_value.get(next_boardHash) is None else self.states_value.get(next_boardHash)
+                value = (
+                    0
+                    if self.states_value.get(next_boardHash) is None
+                    else self.states_value.get(next_boardHash)
+                )
                 # print("value", value)
                 if value >= value_max:
                     value_max = value
@@ -235,12 +239,12 @@ class Player:
         self.states = []
 
     def savePolicy(self):
-        fw = open('policy_' + str(self.name), 'wb')
+        fw = open("policy_" + str(self.name), "wb")
         pickle.dump(self.states_value, fw)
         fw.close()
 
     def loadPolicy(self, file):
-        fr = open(file, 'rb')
+        fr = open(file, "rb")
         self.states_value = pickle.load(fr)
         fr.close()
 

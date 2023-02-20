@@ -40,28 +40,22 @@ def main():
     # print today's date
     print("today is: " + str(datetime.now()))
     # print today's date one year from now
-    print("one year from now it will be: " +
-          str(datetime.now() + timedelta(days=365)))
+    print("one year from now it will be: " + str(datetime.now() + timedelta(days=365)))
     # create a timedelta that uses more than one argument
-    print("in one week and 4 days it will be " +
-          str(datetime.now() + timedelta(weeks=1, days=4)))
+    print("in one week and 4 days it will be " + str(datetime.now() + timedelta(weeks=1, days=4)))
     # How many days until New Year's Day?
     today = date.today()  # get todays date
     nyd = date(today.year, 1, 1)  # get New Year Day for the same year
     # use date comparison to see if New Year Day has already gone for this year
     # if it has, use the replace() function to get the date for next year
     if nyd < today:
-        print(
-            "Last New Year's was %d days ago." %
-            ((today - nyd).days))
+        print("Last New Year's was %d days ago." % ((today - nyd).days))
 
     # get coming New Year Day for the same year
     nextnyd = date(today.year + 1, 1, 1)
 
     if nextnyd > today:
-        print(
-            "Upcoming New Year's is in %d days." %
-            ((nextnyd - today).days))
+        print("Upcoming New Year's is in %d days." % ((nextnyd - today).days))
 
 
 if __name__ == "__main__":

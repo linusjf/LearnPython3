@@ -48,7 +48,7 @@ def run_finite_seq(rand):
 def run_finite_palindromes_sixdigits(rand):
     """Run finite sequence of palindromes."""
     sequencer = LockedIterator(finite_sequence(rand))
-    _timer = Timer(1, sequencer.send, ['anything'])
+    _timer = Timer(1, sequencer.send, ["anything"])
     _timer.start()
     for i in sequencer:
         pal = is_palindrome(i)

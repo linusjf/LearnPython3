@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 import networkx as nx
 
+
 def printgraph(G):
     print(G)
-    print("Nodes: ",G.nodes(data=True))
-    print("Edges: ",G.edges(data=True))
+    print("Nodes: ", G.nodes(data=True))
+    print("Edges: ", G.edges(data=True))
+
 
 # Create an empty graph structure (a “null graph”) with no nodes and no edges.
 G = nx.Graph()
@@ -47,7 +49,7 @@ printgraph(G)
 G.add_nodes_from([3], time="2pm")
 print(G.nodes[1])
 # node must exist already to use G.nodes
-G.nodes[1]["room"] = 714 
+G.nodes[1]["room"] = 714
 printgraph(G)
 # remove attribute
 del G.nodes[1]["room"]
@@ -66,9 +68,9 @@ printgraph(G)
 # check if node in graph
 print(1 in G)
 # iterate through nodes
-print([n for n in G if n < 3]) 
+print([n for n in G if n < 3])
 # number of nodes in graph
-print(len(G)) 
+print(len(G))
 
 for n, nbrsdict in G.adjacency():
     for nbr, eattr in nbrsdict.items():
@@ -82,6 +84,7 @@ for u, v, weight in G.edges.data("weight"):
         print(weight)
         pass
 
+
 class ThinGraph(nx.Graph):
     all_edge_dict = {"weight": 1}
 
@@ -89,6 +92,7 @@ class ThinGraph(nx.Graph):
         return self.all_edge_dict
 
     edge_attr_dict_factory = single_edge_dict
+
 
 G = ThinGraph()
 G.add_edge(2, 1)
@@ -98,11 +102,11 @@ print(G[2][2])
 print(G[2][1] is G[2][2])
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.Graph() 
+G = nx.Graph()
 printgraph(G)
 G = nx.Graph(name="my graph")
 printgraph(G)
-e = [(1, 2), (2, 3), (3, 4)] # list of edges
+e = [(1, 2), (2, 3), (3, 4)]  # list of edges
 G = nx.Graph(e)
 printgraph(G)
 # Arbitrary graph attribute pairs (key=value) may be assigned
@@ -111,7 +115,7 @@ printgraph(G)
 print(G.graph)
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.Graph() 
+G = nx.Graph()
 G.add_node(1)
 printgraph(G)
 G.add_node("Hello")
@@ -128,7 +132,7 @@ G.add_node(3, weight=0.4, UTM=("13S", 382871, 3972649))
 printgraph(G)
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.Graph() 
+G = nx.Graph()
 G.add_nodes_from("Hello")
 printgraph(G)
 K3 = nx.Graph([(0, 1), (1, 2), (2, 0)])
@@ -152,11 +156,11 @@ printgraph(H)
 print(H.nodes[1]["size"])
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.path_graph(3) 
+G = nx.path_graph(3)
 print(list(G.edges))
 G.remove_node(1)
 print(list(G.edges))
-G = nx.path_graph(4) 
+G = nx.path_graph(4)
 print(list(G.edges))
 G.remove_node(1)
 print(list(G.edges))
@@ -169,18 +173,18 @@ G.remove_nodes_from(e)
 print(list(G.nodes))
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.Graph() 
+G = nx.Graph()
 e = (1, 2)
 # explicit two-node form
-G.add_edge(1, 2) 
+G.add_edge(1, 2)
 printgraph(G)
 # single edge as tuple of two nodes
-G.add_edge(*e) 
+G.add_edge(*e)
 printgraph(G)
 # add edges from iterable container
-G.add_edges_from([(1, 2)]) 
+G.add_edges_from([(1, 2)])
 printgraph(G)
-G.add_edges_from([(3, 4)]) 
+G.add_edges_from([(3, 4)])
 printgraph(G)
 
 G.add_edge(1, 2, weight=3)
@@ -195,12 +199,12 @@ G.edges[1, 2].update({0: 5})
 printgraph(G)
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.Graph() 
-G.add_edges_from([(0, 1), (1, 2)]) # using a list of edge tuples
+G = nx.Graph()
+G.add_edges_from([(0, 1), (1, 2)])  # using a list of edge tuples
 printgraph(G)
 e = zip(range(0, 3), range(1, 4))
 # Add the path graph 0-1-2-3
-G.add_edges_from(e) 
+G.add_edges_from(e)
 printgraph(G)
 # Associate data to edges
 G.add_edges_from([(1, 2), (2, 3)], weight=3)
@@ -208,27 +212,27 @@ printgraph(G)
 G.add_edges_from([(3, 4), (1, 4)], label="WN2898")
 printgraph(G)
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.Graph() 
+G = nx.Graph()
 G.add_weighted_edges_from([(0, 1, 3.0), (1, 2, 7.5)])
 printgraph(G)
 
 # or DiGraph, etc
-G = nx.path_graph(4) 
+G = nx.path_graph(4)
 printgraph(G)
 G.remove_edge(0, 1)
 printgraph(G)
 e = (1, 2)
 # unpacks e from an edge tuple
-G.remove_edge(*e) 
+G.remove_edge(*e)
 printgraph(G)
 # an edge with attribute data
-e = (2, 3, {"weight": 7}) 
+e = (2, 3, {"weight": 7})
 # select first part of edge tuple
 G.remove_edge(*e[:2])
 printgraph(G)
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.path_graph(4) 
+G = nx.path_graph(4)
 printgraph(G)
 ebunch = [(1, 2), (2, 3)]
 G.remove_edges_from(ebunch)
@@ -243,28 +247,17 @@ DG = nx.DiGraph()
 printgraph(DG)
 # dict-of-dict-of-attribute
 adj = {1: {2: 1.3, 3: 0.7}, 2: {1: 1.4}, 3: {1: 0.7}}
-e = [
-    (u, v, {"weight": d})
-    for u, nbrs in adj.items()
-    for v, d in nbrs.items()
-]
+e = [(u, v, {"weight": d}) for u, nbrs in adj.items() for v, d in nbrs.items()]
 DG.update(edges=e, nodes=adj)
 printgraph(DG)
 # dict-of-dict-of-dict
 adj = {1: {2: {"weight": 1.3}, 3: {"color": 0.7, "weight": 1.2}}}
-e = [
-    (u, v, {"weight": d})
-    for u, nbrs in adj.items()
-    for v, d in nbrs.items()
-]
+e = [(u, v, {"weight": d}) for u, nbrs in adj.items() for v, d in nbrs.items()]
 DG.update(edges=e, nodes=adj)
 printgraph(DG)
 # predecessor adjacency (dict-of-set)
 pred = {1: {2, 3}, 2: {3}, 3: {3}}
-e = [(v, u) 
-     for u, nbrs in pred.items() 
-     for v in nbrs
-     ]
+e = [(v, u) for u, nbrs in pred.items() for v in nbrs]
 print(e)
 
 # MultiGraph dict-of-dict-of-dict-of-attribute
@@ -288,25 +281,22 @@ printgraph(G)
 G.update(nx.complete_graph(range(4, 10)))
 printgraph(G)
 from itertools import combinations
-edges = (
-    (u, v, {"power": u * v})
-    for u, v in combinations(range(10, 20), 2)
-    if u * v < 225
-)
+
+edges = ((u, v, {"power": u * v}) for u, v in combinations(range(10, 20), 2) if u * v < 225)
 print(edges)
 # for singleton, use a container
-nodes = [1000] 
+nodes = [1000]
 G.update(edges, nodes)
 printgraph(G)
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.path_graph(4) 
+G = nx.path_graph(4)
 printgraph(G)
 G.clear()
 printgraph(G)
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.path_graph(4) 
+G = nx.path_graph(4)
 printgraph(G)
 G.clear_edges()
 printgraph(G)
@@ -334,11 +324,11 @@ printgraph(G)
 print(dict(G.nodes(data="weight", default=1)))
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.path_graph(4) 
+G = nx.path_graph(4)
 print([n for n in G])
 print(list(G))
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.path_graph(3) 
+G = nx.path_graph(3)
 print(G.has_node(0))
 print(0 in G)
 
@@ -347,11 +337,11 @@ G = nx.path_graph(4)
 print(1 in G)
 
 # or MultiGraph, etc
-G = nx.path_graph(3) 
+G = nx.path_graph(3)
 G.add_edge(2, 3, weight=5)
 print([e for e in G.edges])
 # default data is {} (empty dict)
-print(G.edges.data()) 
+print(G.edges.data())
 print(G.edges.data("weight", default=1))
 # only edges from these nodes
 print(G.edges([0, 3]))
@@ -359,20 +349,20 @@ print(G.edges([0, 3]))
 print(G.edges(0))
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.path_graph(4) 
+G = nx.path_graph(4)
 # using two nodes
-print(G.has_edge(0, 1)) 
+print(G.has_edge(0, 1))
 e = (0, 1)
 # e is a 2-tuple (u, v)
-print(G.has_edge(*e)) 
+print(G.has_edge(*e))
 e = (0, 1, {"weight": 7})
 # e is a 3-tuple (u, v, data_dictionary)
-print(G.has_edge(*e[:2])) 
+print(G.has_edge(*e[:2]))
 # though this gives KeyError if 0 not in G
 print(1 in G[0])
 
 # or DiGraph, MultiGraph, MultiDiGraph, etc
-G = nx.path_graph(4) 
+G = nx.path_graph(4)
 print(G[0][1])
 G[0][1]["weight"] = 7
 print(G[0][1]["weight"])
@@ -380,7 +370,7 @@ print(G[1][0]["weight"])
 # or DiGraph, MultiGraph, MultiDiGraph, etc
 G = nx.path_graph(4)
 # default edge data is {}
-print(G.get_edge_data(0, 1)) 
+print(G.get_edge_data(0, 1))
 e = (0, 1)
 # tuple form
 print(G.get_edge_data(*e))

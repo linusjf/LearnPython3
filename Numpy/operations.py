@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
+
 a = np.array([1, 2, 3, 4])
 b = np.array([4, 2, 2, 4])
 print(a == b)
@@ -32,14 +33,8 @@ a = np.arange(9).reshape(3, 3)
 a.T[0, 2] = 999
 print(a.T)
 print(a)
-print(np.allclose([1e10,1e-7], 
-                  [1.00001e10,1e-8]))
-print(np.allclose([1e10,1e-8], 
-                  [1.00001e10,1e-9]))
-print(np.allclose([1e10,1e-8],
-                  [1.0001e10,1e-9]))
-print(np.allclose([1.0, np.nan], 
-                  [1.0, np.nan]))
-print(np.allclose([1.0, np.nan], 
-                  [1.0, np.nan], 
-                  equal_nan=True))
+print(np.allclose([1e10, 1e-7], [1.00001e10, 1e-8]))
+print(np.allclose([1e10, 1e-8], [1.00001e10, 1e-9]))
+print(np.allclose([1e10, 1e-8], [1.0001e10, 1e-9]))
+print(np.allclose([1.0, np.nan], [1.0, np.nan]))
+print(np.allclose([1.0, np.nan], [1.0, np.nan], equal_nan=True))

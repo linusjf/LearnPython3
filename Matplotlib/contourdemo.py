@@ -4,10 +4,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('contourdemo.pdf')
+
+pp = PdfPages("contourdemo.pdf")
 print("Setup Complete")
 
-origin = 'lower'
+origin = "lower"
 
 delta = 0.025
 
@@ -16,22 +17,22 @@ X, Y = np.meshgrid(x, y)
 print("printing X,Y shapes")
 print(X.shape)
 print(Y.shape)
-Z1 = np.exp(-X**2 - Y**2)
-Z2 = np.exp(-(X - 1)**2 - (Y - 1)**2)
+Z1 = np.exp(-(X**2) - Y**2)
+Z2 = np.exp(-((X - 1) ** 2) - (Y - 1) ** 2)
 Z = (Z1 - Z2) * 2
 print("printing Z shape")
 print(Z.shape)
 
 nr, nc = Z.shape
 print("printing Z shape")
-print(nr,nc)
+print(nr, nc)
 # put NaNs in one corner:
-Z[-nr // 6:, -nc // 6:] = np.nan
+Z[-nr // 6 :, -nc // 6 :] = np.nan
 # contourf will convert these to masked
 
 Z = np.ma.array(Z)
 # mask another corner:
-Z[:nr // 6, :nc // 6] = np.ma.masked
+Z[: nr // 6, : nc // 6] = np.ma.masked
 
 # mask a circle in the middle:
 interior = np.sqrt(X**2 + Y**2) < 0.5
@@ -50,15 +51,15 @@ CS = ax2.contourf(X, Y, Z, 10, cmap=plt.cm.bone, origin=origin)
 # We could pass in additional levels to provide extra resolution,
 # or leave out the levels kwarg to use all of the original levels.
 
-CS2 = ax2.contour(CS, levels=CS.levels[::2], colors='r', origin=origin)
+CS2 = ax2.contour(CS, levels=CS.levels[::2], colors="r", origin=origin)
 
-ax2.set_title('Nonsense (3 masked regions)')
-ax2.set_xlabel('word length anomaly')
-ax2.set_ylabel('sentence length anomaly')
+ax2.set_title("Nonsense (3 masked regions)")
+ax2.set_xlabel("word length anomaly")
+ax2.set_ylabel("sentence length anomaly")
 
 # Make a colorbar for the ContourSet returned by the contourf call.
 cbar = fig1.colorbar(CS)
-cbar.ax.set_ylabel('verbosity coefficient')
+cbar.ax.set_ylabel("verbosity coefficient")
 # Add the contour line levels to the colorbar
 cbar.add_lines(CS2)
 pp.savefig()
@@ -69,22 +70,16 @@ fig2, ax2 = plt.subplots(constrained_layout=True)
 # and with the colormap generated automatically from a list
 # of colors.
 levels = [-1.5, -1, -0.5, 0, 0.5, 1]
-CS3 = ax2.contourf(X, Y, Z, levels,
-                   colors=('r', 'g', 'b'),
-                   origin=origin,
-                   extend='both')
+CS3 = ax2.contourf(X, Y, Z, levels, colors=("r", "g", "b"), origin=origin, extend="both")
 # Our data range extends outside the range of levels; make
 # data below the lowest contour level yellow, and above the
 # highest level cyan:
-CS3.cmap.set_under('yellow')
-CS3.cmap.set_over('cyan')
+CS3.cmap.set_under("yellow")
+CS3.cmap.set_over("cyan")
 
-CS4 = ax2.contour(X, Y, Z, levels,
-                  colors=('k',),
-                  linewidths=(3,),
-                  origin=origin)
-ax2.set_title('Listed colors (3 masked regions)')
-ax2.clabel(CS4, fmt='%2.1f', colors='w', fontsize=14)
+CS4 = ax2.contour(X, Y, Z, levels, colors=("k",), linewidths=(3,), origin=origin)
+ax2.set_title("Listed colors (3 masked regions)")
+ax2.clabel(CS4, fmt="%2.1f", colors="w", fontsize=14)
 
 # Notice that the colorbar gets all the information it
 # needs from the ContourSet object, CS3.

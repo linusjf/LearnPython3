@@ -3,14 +3,17 @@
 
 import numpy as np
 import pandas as pd
+
 pd.set_option("display.max_rows", 5)
 pd.set_option("display.max_columns", 6)
 pd.plotting.register_matplotlib_converters()
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 sns.set_theme()
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('data.pdf')
+
+pp = PdfPages("data.pdf")
 print("Setup Complete")
 
 flights = sns.load_dataset("flights")
@@ -41,7 +44,9 @@ plot.figure.clear()
 anagrams = sns.load_dataset("anagrams")
 print(anagrams)
 
-anagrams_long = anagrams.melt(id_vars=["subidr", "attnr"], var_name="solutions", value_name="score")
+anagrams_long = anagrams.melt(
+    id_vars=["subidr", "attnr"], var_name="solutions", value_name="score"
+)
 print(anagrams_long.head())
 
 plot = sns.catplot(data=anagrams_long, x="solutions", y="score", hue="attnr", kind="point")

@@ -3,12 +3,13 @@
 
 import warnings
 from sympy import *
-q = Symbol("q", positive = True)
-m = Matrix([
-[-2*cosh(q/3),      exp(-q),            1],
-[      exp(q), -2*cosh(q/3),            1],
-[           1,            1, -2*cosh(q/3)]])
-print(m.nullspace()) 
+
+q = Symbol("q", positive=True)
+m = Matrix(
+    [[-2 * cosh(q / 3), exp(-q), 1], [exp(q), -2 * cosh(q / 3), 1], [1, 1, -2 * cosh(q / 3)]]
+)
+print(m.nullspace())
+
 
 def my_iszero(x):
     try:
@@ -21,7 +22,9 @@ def my_iszero(x):
         warnings.warn("Zero testing of {} evaluated into None".format(x))
     return result
 
-print(m.nullspace(iszerofunc=my_iszero)) 
+
+print(m.nullspace(iszerofunc=my_iszero))
+
 
 def my_iszeroA(x):
     try:
@@ -34,4 +37,5 @@ def my_iszeroA(x):
         warnings.warn("Zero testing of {} evaluated into None".format(x))
     return result
 
-print(m.nullspace(iszerofunc=my_iszeroA)) 
+
+print(m.nullspace(iszerofunc=my_iszeroA))

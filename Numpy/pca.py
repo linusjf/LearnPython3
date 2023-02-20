@@ -6,11 +6,9 @@ from numpy import array
 from numpy import mean
 from numpy import cov
 from numpy.linalg import eig
+
 # define matrix
-A = array([
-[1, 2],
-[3, 4],
-[5, 6]])
+A = array([[1, 2], [3, 4], [5, 6]])
 print(A)
 # column means
 M = mean(A.T, axis=1)
@@ -28,11 +26,9 @@ print(P.T)
 
 # principal component analysis with scikit-learn
 from sklearn.decomposition import PCA
+
 # define matrix
-A = array([
-[1, 2],
-[3, 4],
-[5, 6]])
+A = array([[1, 2], [3, 4], [5, 6]])
 print(A)
 # create the transform
 pca = PCA(2)

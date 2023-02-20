@@ -2,6 +2,7 @@
 """Scipy examples."""
 import numpy as np
 from scipy import linalg
+
 # pylint: disable=no-name-in-module
 from scipy.special import comb, exp10, perm
 

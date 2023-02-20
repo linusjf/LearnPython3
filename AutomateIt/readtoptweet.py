@@ -18,15 +18,15 @@ consumer_key = config.twitterapikey
 consumer_secret = config.twitterapikeysecret
 
 # Get request token
-REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write"
+REQUEST_TOKEN_URL = (
+    "https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write"
+)
 oauth = OAuth1Session(consumer_key, client_secret=consumer_secret)
 
 try:
     fetch_response = oauth.fetch_request_token(REQUEST_TOKEN_URL)
 except ValueError:
-    print(
-        "There may have been an issue with the consumer_key or consumer_secret you entered."
-    )
+    print("There may have been an issue with the consumer_key or consumer_secret you entered.")
 
 resource_owner_key = fetch_response.get("oauth_token")
 resource_owner_secret = fetch_response.get("oauth_token_secret")
@@ -51,8 +51,7 @@ oauth_tokens = oauth.fetch_access_token(ACCESS_TOKEN_URL)
 
 access_token = oauth_tokens["oauth_token"]
 access_token_secret = oauth_tokens["oauth_token_secret"]
-twitter = Twython(consumer_key, consumer_secret, access_token,
-                  access_token_secret)
+twitter = Twython(consumer_key, consumer_secret, access_token, access_token_secret)
 try:
     tweet = twitter.get_home_timeline()[1]
     print("Tweet text: ", tweet["text"])

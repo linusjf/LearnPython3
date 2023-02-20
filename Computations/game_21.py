@@ -11,15 +11,14 @@ while not_finished:
     print("You got: ", next_number)
     sum += next_number
     if sum > upper_limit:
-        print("Game over, you passed 21 (with your %d points)!"\
-                % sum)
+        print("Game over, you passed 21 (with your %d points)!" % sum)
         not_finished = False
     elif sum == upper_limit:
         print("Game over, you are at exactly 21 points. You win!")
         not_finished = False
     else:
         print("Your score is now: %d points!" % (sum))
-        answer = input('Another draw (y/n)? ')
-        if answer != 'y':
+        answer = input("Another draw (y/n)? ")
+        if answer != "y":
             not_finished = False
 print("Finished!")

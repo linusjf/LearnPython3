@@ -5,11 +5,9 @@ from numpy import array
 from numpy.linalg import det
 from numpy import prod
 from numpy.linalg import eig
+
 # define matrix
-A = array([
-[1, 2, 3],
-[4, 5, 6],
-[7, 8, 9]])
+A = array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 print(A)
 # factorize
 values, vectors = eig(A)
@@ -21,11 +19,9 @@ print(prod(values))
 # confirm eigenvector
 from numpy import array
 from numpy.linalg import eig
+
 # define matrix
-A = array([
-[1, 2, 3],
-[4, 5, 6],
-[7, 8, 9]])
+A = array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 # factorize
 values, vectors = eig(A)
 print(values)
@@ -49,11 +45,9 @@ print(C)
 # reconstruct matrix
 from numpy import diag
 from numpy.linalg import inv
+
 # define matrix
-A = array([
-[1, 2, 3],
-[4, 5, 6],
-[7, 8, 9]])
+A = array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 print(A)
 # factorize
 values, vectors = eig(A)

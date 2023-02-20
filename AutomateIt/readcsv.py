@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import csv
-fh = open("mylist.csv", 'rt')
+
+fh = open("mylist.csv", "rt")
 try:
     reader = csv.reader(fh)
     print("Data from the CSV:")

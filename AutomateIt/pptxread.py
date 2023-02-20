@@ -12,7 +12,7 @@ import collections.abc
 
 from pptx import Presentation
 
-path_to_presentation = 'samplepptx.pptx'
+path_to_presentation = "samplepptx.pptx"
 prs = Presentation(path_to_presentation)
 print("Presentation object for myprofile file: ", prs)
 print("Slides are:")
@@ -22,13 +22,12 @@ print("Slide has following objects:")
 slide1, slide2 = prs.slides[0], prs.slides[1]
 print("Slide Ids: \n", slide1.slide_id, ",", slide2.slide_id)
 print("Slide Open XML elements: \n", slide1.element, ",", slide2.element)
-print("Slide layouts: \n", slide1.slide_layout.name, ",",
-      slide2.slide_layout.name)
+print("Slide layouts: \n", slide1.slide_layout.name, ",", slide2.slide_layout.name)
 
 print("Shapes in the slides")
 i = 1
 for slide in prs.slides:
-    print('Slide', i)
+    print("Slide", i)
     for shape in slide.shapes:
         print("Shape: ", shape.shape_type)
     i += 1

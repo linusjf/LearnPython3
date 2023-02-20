@@ -11,6 +11,6 @@ comb = []
 for d1, d2 in dice:
     if d1 + d2 == 7:
         n += 1
-        comb.append((d1,d2))
-print('%d combinations results in the sum 7' % n)
+        comb.append((d1, d2))
+print("%d combinations results in the sum 7" % n)
 print(comb)

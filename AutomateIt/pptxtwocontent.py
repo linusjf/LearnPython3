@@ -17,14 +17,14 @@ two_content_slide_layout = prs.slide_layouts[3]
 slide = prs.slides.add_slide(two_content_slide_layout)
 shapes = slide.shapes
 title_shape = shapes.title
-title_shape.text = 'Adding a Two Content Slide'
+title_shape.text = "Adding a Two Content Slide"
 body_shape = shapes.placeholders[1]
 tf = body_shape.text_frame
-tf.text = 'This is line 1.'
+tf.text = "This is line 1."
 p = tf.add_paragraph()
-p.text = 'Again a Line 2..'
+p.text = "Again a Line 2.."
 p.level = 1
 p = tf.add_paragraph()
-p.text = 'And this is line 3...'
+p.text = "And this is line 3..."
 p.level = 2
-prs.save('twocontent.pptx')
+prs.save("twocontent.pptx")

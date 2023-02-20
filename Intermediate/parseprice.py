@@ -3,14 +3,15 @@
 
 from price_parser import Price
 from price_parser import parse_price
+
 price = Price.fromstring("22,90 €")
 print(price)
 # numeric price amount
-print(price.amount)       
+print(price.amount)
 # currency symbol, as appears in the string
-print(price.currency)     
+print(price.currency)
 # price amount, as appears in the string
-print(price.amount_text)  
+print(price.amount_text)
 # price amount as float, not Decimal
 print(price.amount_float)
 
@@ -27,7 +28,7 @@ print(Price.fromstring("24€99"))
 print(Price.fromstring("99 € 95 €"))
 print(Price.fromstring("35€ 999"))
 print(Price.fromstring("€35,999"))
-print(Price.fromstring("€35,999",currency_hint="€",decimal_separator=","))
+print(Price.fromstring("€35,999", currency_hint="€", decimal_separator=","))
 
 print(Price.fromstring(""))
 print(Price.fromstring("Foo"))
@@ -38,7 +39,7 @@ print(Price.fromstring("R$"))
 print(Price.fromstring("34.99", currency_hint="руб. (шт)"))
 
 price = Price.fromstring("1 000")
-price.currency = 'EUR'
+price.currency = "EUR"
 print(price)
 
 print(Price.fromstring("Price: $140.600", decimal_separator="."))

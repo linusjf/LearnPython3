@@ -10,9 +10,10 @@ numbers = zeros(N)
 # Draw random numbers
 for i in range(len(numbers)):
     numbers[i] = uniform(0, 10)
-print("Unsorted: %5.3f  %5.3f %5.3f %5.3f  %5.3f %5.3f" % \
-        (numbers[0], numbers[1], numbers[2],\
-         numbers[3], numbers[4], numbers[5]))
+print(
+    "Unsorted: %5.3f  %5.3f %5.3f %5.3f  %5.3f %5.3f"
+    % (numbers[0], numbers[1], numbers[2], numbers[3], numbers[4], numbers[5])
+)
 
 for reference in range(N):
     smallest = numbers[reference]
@@ -27,6 +28,7 @@ for reference in range(N):
     numbers[reference] = numbers[i_smallest]
     numbers[i_smallest] = switch
 
-print("Sorted  : %5.3f  %5.3f %5.3f %5.3f  %5.3f %5.3f" % \
-        (numbers[0], numbers[1], numbers[2],\
-         numbers[3], numbers[4], numbers[5]))
+print(
+    "Sorted  : %5.3f  %5.3f %5.3f %5.3f  %5.3f %5.3f"
+    % (numbers[0], numbers[1], numbers[2], numbers[3], numbers[4], numbers[5])
+)

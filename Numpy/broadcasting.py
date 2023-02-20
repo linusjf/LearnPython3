@@ -4,7 +4,7 @@
 import numpy as np
 from numpy import array
 
-a = np.arange(0,40,10)
+a = np.arange(0, 40, 10)
 print(a)
 a = np.tile(a, (3, 1))
 print(a)
@@ -19,7 +19,7 @@ print(a)
 a = np.arange(0, 40, 10)
 print(a.shape)
 # adds a new axis -> 2D array
-a = a[:, np.newaxis] 
+a = a[:, np.newaxis]
 print(a.shape)
 print(a)
 print(a + b)
@@ -35,9 +35,7 @@ c = a + b
 print(c)
 
 # define array
-A = array([
-[1, 2, 3],
-[1, 2, 3]])
+A = array([[1, 2, 3], [1, 2, 3]])
 print(A)
 # define scalar
 b = 2
@@ -47,9 +45,7 @@ C = A + b
 print(C)
 
 # define two-dimensional array
-A = array([
-[1, 2, 3],
-[1, 2, 3]])
+A = array([[1, 2, 3], [1, 2, 3]])
 print(A)
 # define one-dimensional array
 b = array([1, 2, 3])
@@ -60,9 +56,7 @@ print(C)
 
 # broadcasting error
 # define two-dimensional array
-A = array([
-[1, 2, 3],
-[1, 2, 3]])
+A = array([[1, 2, 3], [1, 2, 3]])
 print(A.shape)
 # define one-dimensional array
 b = array([1, 2])

@@ -1,17 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import numpy as np; 
+import numpy as np
+
 np.random.seed(0)
 import pandas as pd
+
 pd.set_option("display.max_rows", 5)
 pd.set_option("display.max_columns", 6)
 pd.plotting.register_matplotlib_converters()
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 sns.set_theme()
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('heatmap.pdf')
+
+pp = PdfPages("heatmap.pdf")
 print("Setup Complete")
 
 uniform_data = np.random.rand(10, 12)
@@ -44,7 +48,7 @@ ax.set_title("Flights (Annotated)")
 pp.savefig()
 ax.get_figure().clf()
 
-ax = sns.heatmap(flights, linewidths=.5)
+ax = sns.heatmap(flights, linewidths=0.5)
 ax.set_title("Flights (Lines)")
 pp.savefig()
 ax.get_figure().clf()
@@ -70,11 +74,9 @@ ax.set_title("Flights (No ColorBar)")
 pp.savefig()
 ax.get_figure().clf()
 
-grid_kws = {"height_ratios": (.9, .05), "hspace": .3}
+grid_kws = {"height_ratios": (0.9, 0.05), "hspace": 0.3}
 f, (ax, cbar_ax) = plt.subplots(2, gridspec_kw=grid_kws)
-ax = sns.heatmap(flights, ax=ax,
-                 cbar_ax=cbar_ax,
-                 cbar_kws={"orientation": "horizontal"})
+ax = sns.heatmap(flights, ax=ax, cbar_ax=cbar_ax, cbar_kws={"orientation": "horizontal"})
 ax.set_title("Flights (Different Axes)")
 pp.savefig()
 ax.get_figure().clf()
@@ -84,7 +86,7 @@ mask = np.zeros_like(corr)
 mask[np.triu_indices_from(mask)] = True
 with sns.axes_style("white"):
     f, ax = plt.subplots(figsize=(7, 5))
-    ax = sns.heatmap(corr, mask=mask, vmax=.3, square=True)
+    ax = sns.heatmap(corr, mask=mask, vmax=0.3, square=True)
     ax.set_title("Flights (Mask)")
     pp.savefig()
     ax.get_figure().clf()

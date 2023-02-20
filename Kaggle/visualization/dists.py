@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import pandas as pd
+
 pd.set_option("display.max_rows", 5)
 pd.set_option("display.max_columns", 6)
 pd.plotting.register_matplotlib_converters()
 import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('dists.pdf')
+
+pp = PdfPages("dists.pdf")
 print("Setup Complete")
 
 penguins = sns.load_dataset("penguins")
@@ -63,24 +65,39 @@ pp.savefig()
 plot.figure.clear()
 
 plot = sns.displot(
-    data=penguins, y="flipper_length_mm", hue="sex", col="species",
-    kind="ecdf", height=4, aspect=.7,
+    data=penguins,
+    y="flipper_length_mm",
+    hue="sex",
+    col="species",
+    kind="ecdf",
+    height=4,
+    aspect=0.7,
 )
 plot.figure.suptitle("Fig 11")
 pp.savefig()
 plot.figure.clear()
 
 plot = sns.displot(
-    data=penguins, y="flipper_length_mm", hue="sex", col="species",
-    kind="ecdf", height=4, aspect=.7,
+    data=penguins,
+    y="flipper_length_mm",
+    hue="sex",
+    col="species",
+    kind="ecdf",
+    height=4,
+    aspect=0.7,
 )
 plot.figure.suptitle("Fig 12")
 pp.savefig()
 plot.figure.clear()
 
 g = sns.displot(
-    data=penguins, y="flipper_length_mm", hue="sex", col="species",
-    kind="kde", height=4, aspect=.7,
+    data=penguins,
+    y="flipper_length_mm",
+    hue="sex",
+    col="species",
+    kind="kde",
+    height=4,
+    aspect=0.7,
 )
 g.set_axis_labels("Density (a.u.)", "Flipper length (mm)")
 g.set_titles("{col_name} penguins")

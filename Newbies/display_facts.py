@@ -5,19 +5,19 @@
 def display_facts(facts):
     """Display facts."""
     for fact in facts:
-        print('{}: {}'.format(fact, facts[fact]))
+        print("{}: {}".format(fact, facts[fact]))
         print()
 
 
 FACTS = {
-    'David': 'Was a mascot in college.',
-    'Jeff': 'Was born in France.',
-    'Anna': 'Has arachnophobia.'
+    "David": "Was a mascot in college.",
+    "Jeff": "Was born in France.",
+    "Anna": "Has arachnophobia.",
 }
 
 display_facts(FACTS)
 
-FACTS['David'] = 'Can juggle.'
-FACTS['Dylan'] = 'Has a pet hedgehog.'
+FACTS["David"] = "Can juggle."
+FACTS["Dylan"] = "Has a pet hedgehog."
 
 display_facts(FACTS)

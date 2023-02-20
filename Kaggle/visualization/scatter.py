@@ -3,14 +3,17 @@
 
 import numpy as np
 import pandas as pd
+
 pd.set_option("display.max_rows", 5)
 pd.set_option("display.max_columns", 6)
 pd.plotting.register_matplotlib_converters()
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 sns.set_theme()
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('scatter.pdf')
+
+pp = PdfPages("scatter.pdf")
 print("Setup Complete")
 
 tips = sns.load_dataset("tips")
@@ -58,16 +61,21 @@ pp.savefig()
 plot.get_figure().clf()
 
 plot = sns.scatterplot(
-    data=tips, x="total_bill", y="tip", hue="size", size="size",
-    sizes=(20, 200), legend="full"
+    data=tips, x="total_bill", y="tip", hue="size", size="size", sizes=(20, 200), legend="full"
 )
 plot.set_title("Fig 9")
 pp.savefig()
 plot.get_figure().clf()
 
 plot = sns.scatterplot(
-    data=tips, x="total_bill", y="tip", hue="size", size="size",
-    sizes=(20, 200), hue_norm=(0, 7), legend="full"
+    data=tips,
+    x="total_bill",
+    y="tip",
+    hue="size",
+    size="size",
+    sizes=(20, 200),
+    hue_norm=(0, 7),
+    legend="full",
 )
 plot.set_title("Fig 10")
 pp.savefig()
@@ -85,17 +93,13 @@ pp.savefig()
 plot.get_figure().clf()
 
 facet = sns.relplot(
-    data=tips, x="total_bill", y="tip",
-    col="time", hue="day", style="day",
-    kind="scatter"
+    data=tips, x="total_bill", y="tip", col="time", hue="day", style="day", kind="scatter"
 )
 facet.figure.suptitle("Facet Grid (time)")
 pp.savefig()
 
 facet = sns.relplot(
-    data=tips, x="total_bill", y="tip",
-    col="day", hue="time", style="time",
-    kind="scatter"
+    data=tips, x="total_bill", y="tip", col="day", hue="time", style="time", kind="scatter"
 )
 facet.figure.suptitle("Facet Grid (day)")
 pp.savefig()

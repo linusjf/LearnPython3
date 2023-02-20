@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from math import atan,pi
+from math import atan, pi
 
 # Horizontal position
-x = 10             
+x = 10
 # Vertical position
-y = 10             
+y = 10
 
-angle = atan(y/x)
+angle = atan(y / x)
 
-print((angle/pi)*180)
+print((angle / pi) * 180)
