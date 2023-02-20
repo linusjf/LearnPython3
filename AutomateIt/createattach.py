@@ -10,7 +10,6 @@
 
 from __future__ import print_function
 
-import config
 import base64
 import mimetypes
 import os
@@ -19,6 +18,7 @@ from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
+import config
 
 import google.auth
 from googleapiclient.discovery import build
@@ -27,7 +27,7 @@ from googleapiclient.errors import HttpError
 
 def gmail_create_draft_with_attachment():
     """Create and insert a draft email with attachment.
-     Print the returned draft's message and id.
+    Print the returned draft's message and id.
     Returns: Draft object, including draft id and message meta data.
 
     Load pre-authorized user credentials from the environment.
