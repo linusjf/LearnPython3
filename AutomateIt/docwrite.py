@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+"""DocWrite."""
 from docx import Document
 from docx.shared import Inches
 
