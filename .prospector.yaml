@@ -11,6 +11,7 @@ pep8:
   disable:
     # pycodestyle
     - E501
+    - E203
 
 pep257:
   run: false
