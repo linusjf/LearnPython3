@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""PDFCopy."""
 from PyPDF2 import PdfReader, PdfWriter
 
-infile = PdfReader(open("diveintopython.pdf", "rb"))
-outfile = PdfWriter()
-outfile.add_blank_page(612, 792)
-p = infile.pages[0]
-outfile.add_page(p)
-with open("myPdf.pdf", "wb") as f:
-    outfile.write(f)
-f.close()
+with open("diveintopython.pdf", "rb", encoding="utf-8") as infile:
+    infile = PdfReader(infile)
+    outfile = PdfWriter()
+    outfile.add_blank_page(612, 792)
+    p = infile.pages[0]
+    outfile.add_page(p)
+    with open("myPdf.pdf", "wb") as f:
+        outfile.write(f)

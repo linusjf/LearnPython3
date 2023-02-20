@@ -72,8 +72,10 @@ print(
 print(authorization_url)
 
 # Paste in your authorize URL to complete the request
-authorization_response = input("Paste in the full URL after you've\
-        authorized your App:\n")
+authorization_response = input(
+    "Paste in the full URL after you've\
+        authorized your App:\n"
+)
 
 # Fetch your access token
 TOKEN_URL = "https://api.twitter.com/2/oauth2/token"
@@ -118,8 +120,10 @@ headers = {
 }
 response = requests.request("GET", url, headers=headers, timeout=10)
 if response.status_code != 200:
-    raise Exception(f"Request returned an error:\
-            {response.status_code} {response.text}")
+    raise Exception(
+        f"Request returned an error:\
+            {response.status_code} {response.text}"
+    )
 print(f"Response code: {response.status_code}")
 json_response = response.json()
 print(json.dumps(json_response, indent=4, sort_keys=True))
