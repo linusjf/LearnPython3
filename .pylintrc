@@ -242,14 +242,14 @@ function-naming-style=snake_case
 
 # Good variable names which should always be accepted, separated by a comma.
 good-names=i,
-           j,
-           k,
-           ex,
-           Run,
-           _
+          j,
+          k,
+          ex,
+          Run,
+          _
 
 # Include a hint for the correct naming format with invalid-name.
-include-naming-hint=no
+include-naming-hint=yes
 
 # Naming style matching correct inline iteration names.
 inlinevar-naming-style=any
@@ -309,7 +309,7 @@ indent-after-paren=2
 indent-string='    '
 
 # Maximum number of characters on a single line.
-max-line-length=80
+max-line-length=99
 
 # Maximum number of lines in a module.
 max-module-lines=1000
@@ -319,7 +319,7 @@ max-module-lines=1000
 # `trailing-comma` allows a space between comma and closing bracket: (a, ).
 # `empty-line` allows space-only lines.
 no-space-check=trailing-comma,
-               dict-separator
+              dict-separator
 
 # Allow the body of a class to be on the same line as the declaration if body
 # contains single statement.
@@ -567,4 +567,4 @@ known-third-party=enchant
 # Exceptions that will emit a warning when being caught. Defaults to
 # "BaseException, Exception".
 overgeneral-exceptions=BaseException,
-                       Exception
+                      Exception
