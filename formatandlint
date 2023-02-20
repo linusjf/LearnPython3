@@ -22,13 +22,9 @@ if [ -z "$proj" ] || [ ! -d "$proj" ]; then
   usage
 else
   echo "$proj"
-  black "$proj"
+  black "$proj" | tee linter.out
   SUCCESS=SUCCESS+$?
-  pep257 --explain --source --count "$proj" | tee -a linter.out
-  SUCCESS=SUCCESS+$?
-  pylint "$proj" -r yes -f colorized | tee -a linter.out
-  SUCCESS=SUCCESS+$?
-  prospector "$proj" | tee -a linter.out
+  prospector "$proj" | tee linter.out
   SUCCESS=SUCCESS+$?
 fi
 exit "$SUCCESS"

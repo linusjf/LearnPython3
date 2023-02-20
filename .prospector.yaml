@@ -3,7 +3,7 @@ test-warnings: true
 strictness: veryhigh
 
 pylint:
-  run: false
+  run: true
   disable:
 
 pep8:
@@ -14,7 +14,7 @@ pep8:
     - E203
 
 pep257:
-  run: false
+  run: true
   disable:
     # These ones are ignored because the `missing-docstring` is checked
     # by `pylint` and it has an option called `docstring-min-length`
@@ -23,11 +23,9 @@ pep257:
     # will say the docstring is required.
     - D203
     - D212
-    # pycodestyle
-    - E501
   enable:
     # pydocstyle
     - D401
 
 pyflakes:
-  run: false
+  run: true
