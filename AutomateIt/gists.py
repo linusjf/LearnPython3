@@ -4,6 +4,7 @@
 import json
 import sys
 import requests
+
 TOKEN = ""
 try:
     with open(".gisttoken", "r", encoding="utf-8") as file:
@@ -38,8 +39,7 @@ print("------------------------------")
 print(data)
 GISTURL = ""
 try:
-    r = requests.post(f"{BASE_URL}{URL}", headers=HEADER,
-                      data=json.dumps(data), timeout=5)
+    r = requests.post(f"{BASE_URL}{URL}", headers=HEADER, data=json.dumps(data), timeout=5)
     GISTURL = r.json()["url"]
     print(GISTURL)
 except OSError as exc:
@@ -55,8 +55,7 @@ except OSError as exc:
 
 data = {
     "description": "Updating the description for this gist",
-    "files": {"file1.txt": {"content": "Updating file contents...", "filename":
-                            "file.txt"}},
+    "files": {"file1.txt": {"content": "Updating file contents...", "filename": "file.txt"}},
 }
 try:
     r = requests.patch(f"{GISTURL}", headers=HEADER, data=json.dumps(data), timeout=5)

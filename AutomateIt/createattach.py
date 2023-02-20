@@ -22,6 +22,7 @@ import google.auth
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
+
 def gmail_create_draft_with_attachment():
     """Create and insert a draft email with attachment.
     Print the returned draft's message and id.
@@ -45,8 +46,7 @@ def gmail_create_draft_with_attachment():
 
         # text
         mime_message.set_content(
-            "Hi, this is automated mail with attachment."
-            "Please do not reply."
+            "Hi, this is automated mail with attachment." "Please do not reply."
         )
 
         # attachment
