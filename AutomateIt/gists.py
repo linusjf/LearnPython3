@@ -1,31 +1,33 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-token = ""
-try:
-    with open(".gisttoken", "r") as file:
-        token = file.read()
-except Exception as exc:
-    print(exc)
-    exit(1)
-
-import requests
+"""gists"""
 import json
+import sys
+import requests
+TOKEN = ""
+try:
+    with open(".gisttoken", "r", encoding="utf-8") as file:
+        TOKEN = file.read()
+except OSError as exc:
+    print(exc)
+    sys.exit(1)
+
 
 BASE_URL = "https://api.github.com"
-Link_URL = "https://gist.github.com"
-## Fill in your github username
-username = "fernal73"
-## Fill in your token
-api_token = token.rstrip()
-header = {
-    "X-Github-Username": "%s" % username,
+LINK_URL = "https://gist.github.com"
+# Fill in your github username
+USERNAME = "fernal73"
+# Fill in your token
+api_token = TOKEN.rstrip()
+HEADER = {
+    "X-Github-Username": f"{USERNAME}",
     "Content-Type": "application/json",
-    "Authorization": "Token %s" % api_token,
+    "Authorization": f"Token {api_token}",
 }
 print("Header:")
 print("------------------------------")
-print(header)
-url = "/gists"
+print(HEADER)
+URL = "/gists"
 data = {
     "description": "the description for this gist",
     "public": True,
@@ -34,47 +36,49 @@ data = {
 print("Files:")
 print("------------------------------")
 print(data)
-gisturl = ""
+GISTURL = ""
 try:
-    r = requests.post("%s%s" % (BASE_URL, url), headers=header, data=json.dumps(data))
-    gisturl = r.json()["url"]
-    print(gisturl)
-except Exception as exc:
+    r = requests.post(f"{BASE_URL}{URL}", headers=HEADER,
+                      data=json.dumps(data), timeout=5)
+    GISTURL = r.json()["url"]
+    print(GISTURL)
+except OSError as exc:
     print(exc)
-    exit(1)
+    sys.exit(1)
 
 try:
-    r = requests.get("%s" % gisturl, headers=header)
+    r = requests.get(f"{GISTURL}", headers=HEADER, timeout=5)
     print(r.json())
-except Exception as exc:
+except OSError as exc:
     print(exc)
-    exit(1)
+    sys.exit(1)
 
 data = {
     "description": "Updating the description for this gist",
-    "files": {"file1.txt": {"content": "Updating file contents...", "filename": "file.txt"}},
+    "files": {"file1.txt": {"content": "Updating file contents...", "filename":
+                            "file.txt"}},
 }
 try:
-    r = requests.patch("%s" % gisturl, headers=header, data=json.dumps(data))
+    r = requests.patch(f"{GISTURL}", headers=HEADER, data=json.dumps(data), timeout=5)
     print("Patch result:")
     print("------------------------------")
     print(r.json())
-except Exception as exc:
+except OSError as exc:
     print(exc)
-    exit(1)
+    sys.exit(1)
 
 try:
-    r = requests.delete("%s" % gisturl, headers=header)
-except Exception as exc:
+    r = requests.delete(f"{GISTURL}", headers=HEADER, timeout=5)
+except OSError as exc:
     print(exc)
-    exit(1)
+    sys.exit(1)
 
-url = "/users/%s/gists" % username
+URL = f"/users/{USERNAME}/gists"
 try:
-    r = requests.get("%s%s" % (BASE_URL, url), headers=header)
-except Exception as exc:
+    r = requests.get(f"{BASE_URL}{URL}", headers=HEADER, timeout=5)
+except OSError as exc:
     print(exc)
-    exit(1)
+    sys.exit(1)
 gists = r.json()
 print("List gists result:")
 print("------------------------------")
