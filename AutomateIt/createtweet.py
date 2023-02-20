@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 """
+CreateTweet.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : createtweet
@@ -24,7 +26,8 @@ consumer_secret = config.twitterapikeysecret
 payload = {"text": "Hello world!"}
 
 # Get request token
-REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write"  # noqa
+REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token?\
+        oauth_callback=oob&x_auth_access_type=write"  # noqa
 oauth = OAuth1Session(consumer_key, client_secret=consumer_secret)
 
 try:
