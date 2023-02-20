@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 """
+LookupBookmarks.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : lookupbookmarks
@@ -19,21 +21,26 @@ from requests_oauthlib import OAuth2Session
 
 import config
 
-# First, you will need to enable OAuth 2.0 in your App’s auth settings in the Developer Portal to get your client ID.
+# First, you will need to enable OAuth 2.0 in your App’s auth settings
+# in the Developer Portal to get your client ID.
 # Inside your terminal you will need to set an enviornment variable
 # export CLIENT_ID='your-client-id'
 client_id = config.twitterapikey
 
-# If you have selected a type of App that is a confidential client you will need to set a client secret.
+# If you have selected a type of App that is a confidential client you will
+# need
+# to set a client secret.
 # Confidential Clients securely authenticate with the authorization server.
 
 # Inside your terminal you will need to set an enviornment variable
 # export CLIENT_SECRET='your-client-secret'
 
-# Remove the comment on the following line if you are using a confidential client
+# Remove the comment on the following line if you are using a
+# confidential client
 client_secret = config.twitterapikeysecret
 
-# Replace the following URL with your callback URL, which can be obtained from your App's auth settings.
+# Replace the following URL with your callback URL, which can be
+# obtained from your App's auth settings.
 REDIRECT_URI = "https://linusfernandes.com"
 
 # Set the scopes
@@ -59,22 +66,27 @@ authorization_url, state = oauth.authorization_url(
 
 # Visit the URL to authorize your App to make requests on behalf of a user
 print(
-    "Visit the following URL to authorize your App on behalf of your Twitter handle in a browser:"
+    "Visit the following URL to authorize your App\
+            on behalf of your Twitter handle in a browser:"
 )
 print(authorization_url)
 
 # Paste in your authorize URL to complete the request
-authorization_response = input("Paste in the full URL after you've authorized your App:\n")
+authorization_response = input("Paste in the full URL after you've\
+        authorized your App:\n")
 
 # Fetch your access token
 TOKEN_URL = "https://api.twitter.com/2/oauth2/token"
 
-# The following line of code will only work if you are using a type of App that is a public client
+# The following line of code will only work if you are using
+# a type of App that is a public client
 AUTH = False
 
-# If you are using a confidential client you will need to pass in basic encoding of your client ID and client secret.
+# If you are using a confidential client you will need to pass
+# in basic encoding of your client ID and client secret.
 
-# Please remove the comment on the following line if you are using a type of App that is a confidential client
+# Please remove the comment on the following line
+# if you are using a type of App that is a confidential client
 # auth = HTTPBasicAuth(client_id, client_secret)
 
 token = oauth.fetch_token(
@@ -106,7 +118,8 @@ headers = {
 }
 response = requests.request("GET", url, headers=headers, timeout=10)
 if response.status_code != 200:
-    raise Exception(f"Request returned an error: {response.status_code} {response.text}")
+    raise Exception(f"Request returned an error:\
+            {response.status_code} {response.text}")
 print(f"Response code: {response.status_code}")
 json_response = response.json()
 print(json.dumps(json_response, indent=4, sort_keys=True))
