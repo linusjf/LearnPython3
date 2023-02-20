@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""avatar"""
+"""Avatar."""
 import re
 import urllib.request as req
 import os
