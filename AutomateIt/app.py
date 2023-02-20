@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 """
+App.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : app
@@ -23,19 +25,19 @@ users = [
 
 @app.route("/v1/users/", methods=["GET"])
 def get_users():
-    """Get users"""
+    """Get users."""
     return jsonify({"users": users})
 
 
 @app.errorhandler(404)
 def not_found(error):
-    """Not found"""
+    """Not found."""
     return make_response(jsonify({"error": "Not found: " + str(error)}), 404)
 
 
 @app.route("/v1/users/<int:u_id>/", methods=["GET"])
 def get_user(u_id):
-    """Get user"""
+    """Get user."""
     for user in users:
         if user.get("id") == u_id:
             return jsonify({"user": user})
@@ -44,38 +46,39 @@ def get_user(u_id):
 
 @app.route("/v1/users/", methods=["POST"])
 def create_user():
-    """create user"""
-    if not request.json or not "email" in request.json:
+    """Create user."""
+    if not request.json or "email" not in request.json:
         abort(404)
-    user_id = users[-1].get("id") + 1
+    user_id = int(users[-1].get('id')) + 1
     username = request.json.get("username")
     email = request.json.get("email")
     status = False
-    user = {"id": user_id, "email": email, "username": username, "active": status}
+    user = {"id": user_id, "email": email, "username": username,
+            "active": status}
     users.append(user)
     return jsonify({"user": user}), 201
 
 
 @app.route("/v1/users/<int:u_id>/", methods=["PUT"])
 def update_user(u_id):
-    """update user"""
+    """Update user."""
     user = [user for user in users if user["id"] == u_id]
-    user[0]["username"] = request.json.get("username", user[0]["username"])
-    user[0]["email"] = request.json.get("email", user[0]["email"])
-    user[0]["active"] = request.json.get("active", user[0]["active"])
+    user[0]['username'] = request.json.get('username', user[0]['username'])
+    user[0]['email'] = request.json.get('email', user[0]['email'])
+    user[0]['active'] = request.json.get('active', user[0]['active'])
     return jsonify({"user": user[0]})
 
 
 @app.route("/v1/users/<int:u_id>/", methods=["DELETE"])
 def delete_user(u_id):
-    """delete user"""
+    """Delete user."""
     user = [user for user in users if user["id"] == u_id]
     users.remove(user[0])
     return jsonify({}), 204
 
 
 def write_pid_file():
-    """write pid file"""
+    """Write pid file."""
     pid = str(os.getpid())
     with open("app.pid", "w", encoding="utf-8") as pid_file:
         pid_file.write(pid)
