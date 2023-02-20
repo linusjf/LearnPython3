@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""htttpreqs"""
+"""Httpreqs."""
 import requests
 
 r = requests.get("http://ip.jsontest.com/", timeout=5)

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""gists"""
+"""Gists."""
 import json
 import sys
 import requests
