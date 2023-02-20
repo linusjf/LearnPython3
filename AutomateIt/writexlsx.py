@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""WriteXLSX."""
 import xlsxwriter
 
 workbook = xlsxwriter.Workbook("addsheet.xlsx")
@@ -14,13 +15,13 @@ expenses = (
     ["Food", 300],
     ["Gym", 50],
 )
-row = 0
-col = 0
+ROW = 0
+COL = 0
 for item, cost in expenses:
-    worksheet.write(row, col, item)
-    worksheet.write(row, col + 1, cost)
-    row += 1
-worksheet.write(row, 0, "Total")
+    worksheet.write(ROW, COL, item)
+    worksheet.write(ROW, COL + 1, cost)
+    ROW += 1
+worksheet.write(ROW, 0, "Total")
 worksheet.write_formula("B5", "=SUM(B1:B4)")
 
 cellformat = workbook.add_format({"bg_color": "blue", "font_color": "red"})
