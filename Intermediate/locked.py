@@ -32,4 +32,5 @@ class LockedIterator(Iterator):
         finally:
             self.lock.release()
 
+
 # pylint: enable=too-few-public-methods

@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import pandas as pd
+
 pd.set_option("display.max_rows", 5)
 pd.set_option("display.max_columns", 6)
 pd.plotting.register_matplotlib_converters()
 import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('hists.pdf')
+
+pp = PdfPages("hists.pdf")
 print("Setup Complete")
 
 # Path of the file to read
@@ -20,8 +22,8 @@ iris_data = pd.read_csv(iris_filepath, index_col="Id")
 # Print the first 5 rows of the data
 print(iris_data.head())
 
-# Histogram 
-plot = sns.histplot(iris_data, x='PetalLengthCm')
+# Histogram
+plot = sns.histplot(iris_data, x="PetalLengthCm")
 plot.set_title("Fig 1")
 pp.savefig()
 plot.figure.clear()
@@ -78,8 +80,12 @@ pp.savefig()
 plot.figure.clear()
 
 plot = sns.histplot(
-    penguins, x="bill_length_mm", hue="island", element="step",
-    stat="density", common_norm=False,
+    penguins,
+    x="bill_length_mm",
+    hue="island",
+    element="step",
+    stat="density",
+    common_norm=False,
 )
 plot.set_title("Fig 12")
 pp.savefig()
@@ -92,12 +98,12 @@ plot.set_title("Fig 13")
 pp.savefig()
 plot.figure.clear()
 
-plot = sns.histplot(data=tips, x="day", shrink=.8)
+plot = sns.histplot(data=tips, x="day", shrink=0.8)
 plot.set_title("Fig 14")
 pp.savefig()
 plot.figure.clear()
 
-plot = sns.histplot(data=tips, x="day", hue="sex", multiple="dodge", shrink=.8)
+plot = sns.histplot(data=tips, x="day", hue="sex", multiple="dodge", shrink=0.8)
 plot.set_title("Fig 15")
 pp.savefig()
 plot.figure.clear()
@@ -124,10 +130,16 @@ pp.savefig()
 plot.figure.clear()
 
 plot = sns.histplot(
-    data=planets, x="distance", hue="method",
+    data=planets,
+    x="distance",
+    hue="method",
     hue_order=["Radial Velocity", "Transit"],
-    log_scale=True, element="step", fill=False,
-    cumulative=True, stat="density", common_norm=False,
+    log_scale=True,
+    element="step",
+    fill=False,
+    cumulative=True,
+    stat="density",
+    common_norm=False,
 )
 plot.set_title("Fig 20")
 pp.savefig()
@@ -143,24 +155,30 @@ plot.set_title("Fig 22")
 pp.savefig()
 plot.figure.clear()
 
-plot = sns.histplot(
-    penguins, x="bill_depth_mm", y="species", hue="species", legend=False
-)
+plot = sns.histplot(penguins, x="bill_depth_mm", y="species", hue="species", legend=False)
 plot.set_title("Fig 23")
 pp.savefig()
 plot.figure.clear()
 
 plot = sns.histplot(
-    planets, x="year", y="distance",
-    bins=30, discrete=(True, False), log_scale=(False, True),
+    planets,
+    x="year",
+    y="distance",
+    bins=30,
+    discrete=(True, False),
+    log_scale=(False, True),
 )
 plot.set_title("Fig 24")
 pp.savefig()
 plot.figure.clear()
 
 plot = sns.histplot(
-    planets, x="year", y="distance",
-    bins=30, discrete=(True, False), log_scale=(False, True),
+    planets,
+    x="year",
+    y="distance",
+    bins=30,
+    discrete=(True, False),
+    log_scale=(False, True),
     thresh=None,
 )
 plot.set_title("Fig 25")
@@ -169,18 +187,28 @@ plot.figure.clear()
 
 
 plot = sns.histplot(
-    planets, x="year", y="distance",
-    bins=30, discrete=(True, False), log_scale=(False, True),
-    pthresh=.05, pmax=.9,
+    planets,
+    x="year",
+    y="distance",
+    bins=30,
+    discrete=(True, False),
+    log_scale=(False, True),
+    pthresh=0.05,
+    pmax=0.9,
 )
 plot.set_title("Fig 26")
 pp.savefig()
 plot.figure.clear()
 
 plot = sns.histplot(
-    planets, x="year", y="distance",
-    bins=30, discrete=(True, False), log_scale=(False, True),
-    cbar=True, cbar_kws=dict(shrink=.75),
+    planets,
+    x="year",
+    y="distance",
+    bins=30,
+    discrete=(True, False),
+    log_scale=(False, True),
+    cbar=True,
+    cbar_kws=dict(shrink=0.75),
 )
 plot.set_title("Fig 27")
 pp.savefig()

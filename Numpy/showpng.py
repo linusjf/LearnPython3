@@ -4,27 +4,29 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('showpng.pdf')
-print("Setup Complete") 
 
-img = plt.imread('elephant.png')
+pp = PdfPages("showpng.pdf")
+print("Setup Complete")
+
+img = plt.imread("elephant.png")
 print(img.shape, img.dtype)
 plt.imshow(img)
 
 pp.savefig()
-plt.savefig('plot.png')
-plt.imsave('red_elephant.png', img[:,:,0], cmap=plt.cm.gray)
+plt.savefig("plot.png")
+plt.imsave("red_elephant.png", img[:, :, 0], cmap=plt.cm.gray)
 
 plt.clf()
 
-plt.imshow(plt.imread('red_elephant.png'))
+plt.imshow(plt.imread("red_elephant.png"))
 pp.savefig()
 plt.clf()
 
 import imageio
-img = img[::6,::6].astype(np.uint8)
-imageio.imwrite('tiny_elephant.png',img)
-plt.imshow(plt.imread('tiny_elephant.png'), interpolation='nearest')
+
+img = img[::6, ::6].astype(np.uint8)
+imageio.imwrite("tiny_elephant.png", img)
+plt.imshow(plt.imread("tiny_elephant.png"), interpolation="nearest")
 pp.savefig()
 plt.clf()
 

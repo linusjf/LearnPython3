@@ -3,7 +3,7 @@
 
 from collections import Counter
 
-C = Counter('helloworld')
+C = Counter("helloworld")
 
 print(C)
 

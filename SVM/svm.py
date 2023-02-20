@@ -8,10 +8,11 @@ from sklearn.datasets import make_blobs
 from cvxopt import matrix, solvers
 from matplotlib.backends.backend_pdf import PdfPages
 
+
 def kernel(name, x, y):
-    if name == 'linear':
+    if name == "linear":
         return np.dot(x, y.T)
-    if name == 'poly':
+    if name == "poly":
         return (1 + np.dot(x, y.T)) ** 3
 
 
@@ -19,7 +20,7 @@ class SVM:
     def __init__(self):
         pass
 
-    def fit(self, X, y, kernel_name='linear'):
+    def fit(self, X, y, kernel_name="linear"):
         # Store for later use
         self.X = X
         self.y = y
@@ -42,19 +43,19 @@ class SVM:
         q = matrix(q)
         G = matrix(G)
         h = matrix(h)
-        A = matrix(A.astype('double'))
+        A = matrix(A.astype("double"))
         b = matrix(b)
 
         # Solve Optimization Problem
         sol = solvers.qp(P, q, G, h, A, b)
-        self.lambdas = np.array(sol['x']).reshape(self.m)
+        self.lambdas = np.array(sol["x"]).reshape(self.m)
 
         # Calculate b
         SV = np.where(self.lambdas > 1e-4)[0][0]
         self.b = y[SV] - sum(self.lambdas * y * kernel(kernel_name, X, X[SV]))
 
     # Plot scatterplot of data and contour plot of SVM
-    def plot(self,fname):
+    def plot(self, fname):
         # The PDF document
         pdf_pages = PdfPages(fname)
 
@@ -67,12 +68,15 @@ class SVM:
         d = np.concatenate((xx.ravel().reshape(-1, 1), yy.ravel().reshape(-1, 1)), axis=1)
 
         Z = self.b + np.sum(
-            self.lambdas.reshape((self.m, 1)) * self.y.reshape((self.m, 1)) * kernel(self.kernel_name, self.X, d),
-            axis=0)
+            self.lambdas.reshape((self.m, 1))
+            * self.y.reshape((self.m, 1))
+            * kernel(self.kernel_name, self.X, d),
+            axis=0,
+        )
         Z = Z.reshape(xx.shape)
 
         fig, ax = plt.subplots()
-        sns.scatterplot(x=self.X[:, 0], y=self.X[:, 1], hue=self.y, ax=ax, palette='winter')
+        sns.scatterplot(x=self.X[:, 0], y=self.X[:, 1], hue=self.y, ax=ax, palette="winter")
         ax.contour(xx, yy, Z, levels=[-1, 0, 1])
         pdf_pages.savefig()
         pdf_pages.close()
@@ -96,5 +100,5 @@ svm.plot("ls.pdf")
 # Non-linearly Separable Example
 X_2 = np.array([[1, 0], [0, 1], [2, 1], [1, 2]])
 y_2 = np.array([-1, 1, 1, -1])
-svm.fit(X_2, y_2, kernel_name='poly')
+svm.fit(X_2, y_2, kernel_name="poly")
 svm.plot("nls.pdf")

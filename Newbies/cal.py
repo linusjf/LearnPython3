@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Calendar example."""
 import calendar
+
 # Create a plain text calendar
 CAL = calendar.TextCalendar(calendar.MONDAY)
 CAL_STR = CAL.formatmonth(2020, 1, 0, 0)

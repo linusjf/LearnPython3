@@ -2,21 +2,29 @@
 """Quick reference example."""
 # for timing
 import time
+
 # permutations, combinations
 import itertools as it
+
 # arrays, matrices, functions
 import numpy as np
+
 # determinant, inverse, etc.
 import scipy.linalg as spla
+
 # advanced functions like gamma
 import scipy.special as ss
+
 # pylint: disable=W0611
 # math constants like e
 import scipy.constants as sc
+
 # functions for integration
 import scipy.integrate as si
+
 # functions for optimization
 import scipy.optimize as so
+
 # pylint: enable=W0611
 
 
@@ -52,6 +60,7 @@ class Permutation:
             _result *= i
             # but usually not a good idea
         return _result
+
 
 # ----------------------------------
 

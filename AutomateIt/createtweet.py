@@ -23,15 +23,15 @@ consumer_secret = config.twitterapikeysecret
 payload = {"text": "Hello world!"}
 
 # Get request token
-REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write"
+REQUEST_TOKEN_URL = (
+    "https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write"
+)
 oauth = OAuth1Session(consumer_key, client_secret=consumer_secret)
 
 try:
     fetch_response = oauth.fetch_request_token(REQUEST_TOKEN_URL)
 except ValueError:
-    print(
-        "There may have been an issue with the consumer_key or consumer_secret you entered."
-    )
+    print("There may have been an issue with the consumer_key or consumer_secret you entered.")
 
 resource_owner_key = fetch_response.get("oauth_token")
 resource_owner_secret = fetch_response.get("oauth_token_secret")
@@ -72,8 +72,7 @@ response = oauth.post(
 )
 
 if response.status_code != 201:
-    raise Exception(
-        f"Request returned an error: {response.status_code} {response.text}")
+    raise Exception(f"Request returned an error: {response.status_code} {response.text}")
 
 print("Response code: {response.status_code}")
 

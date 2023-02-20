@@ -2,10 +2,11 @@
 """ROT 13 Encoding."""
 import codecs
 import this
+
 print("")
 print("†††††††††††††††††††††††††††††††††††††††")
 print("")
-print(codecs.decode(this.s, 'rot-13'))
+print(codecs.decode(this.s, "rot-13"))
 
 print("")
 print("†††††††††††††††††††††††††††††††††††††††")

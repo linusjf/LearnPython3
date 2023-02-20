@@ -15,4 +15,4 @@ prs = Presentation()
 slide = prs.slides.add_slide(prs.slide_layouts[0])
 slide.shapes.title.text = "Yo, Python!"
 slide.placeholders[1].text = "Yes it is really awesome"
-prs.save('yoPython.pptx')
+prs.save("yoPython.pptx")

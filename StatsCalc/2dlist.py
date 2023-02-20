@@ -9,4 +9,4 @@ for row in a:
 for i in range(3):
     print(a[i][i])
 for i in range(3):
-    print(f'The {i + 1}-th diagonal element is: {a[i][i]}')
+    print(f"The {i + 1}-th diagonal element is: {a[i][i]}")

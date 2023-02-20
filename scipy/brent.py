@@ -5,18 +5,21 @@ import numpy as np
 from scipy import optimize
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('brent.pdf')
+
+pp = PdfPages("brent.pdf")
 print("Setup Complete")
 
-colors = ['b','g','r','c','y','m']
+colors = ["b", "g", "r", "c", "y", "m"]
 x = np.linspace(-1, 3, 100)
 x_0 = np.exp(-1)
 
+
 def f(x):
     if epsilon > 0:
-        return (x - x_0)**2 + epsilon*np.exp(-5*(x - .5 - x_0)**2)
+        return (x - x_0) ** 2 + epsilon * np.exp(-5 * (x - 0.5 - x_0) ** 2)
     else:
-        return (x - x_0)**2
+        return (x - x_0) ** 2
+
 
 for epsilon in (0, 1):
     plt.figure(figsize=(3, 2.5))
@@ -30,32 +33,41 @@ for epsilon in (0, 1):
     all_x = list()
     all_y = list()
     for iter in range(30):
-        result = optimize.minimize_scalar(f, bracket=(-5, 2.9, 4.5), method="Brent",
-                    options={"maxiter": iter}, tol=np.finfo(1.).eps)
+        result = optimize.minimize_scalar(
+            f,
+            bracket=(-5, 2.9, 4.5),
+            method="Brent",
+            options={"maxiter": iter},
+            tol=np.finfo(1.0).eps,
+        )
         if result.success:
-            print(f'Converged at {iter} for epsilon {epsilon}')
+            print(f"Converged at {iter} for epsilon {epsilon}")
             break
 
         this_x = result.x
         all_x.append(this_x)
         all_y.append(f(this_x))
         if iter < 6:
-            plt.text(this_x - .05*np.sign(this_x) - .05,
-                    f(this_x) + 1.2*(.3 - iter % 2), iter + 1,
-                    size=4,c=colors[iter])
+            plt.text(
+                this_x - 0.05 * np.sign(this_x) - 0.05,
+                f(this_x) + 1.2 * (0.3 - iter % 2),
+                iter + 1,
+                size=4,
+                c=colors[iter],
+            )
 
-    plt.plot(all_x[:10], all_y[:10], 'k+', markersize=12, markeredgewidth=2)
+    plt.plot(all_x[:10], all_y[:10], "k+", markersize=12, markeredgewidth=2)
 
-    plt.plot(all_x[-1], all_y[-1], 'rx', markersize=12)
-    plt.axis('off')
+    plt.plot(all_x[-1], all_y[-1], "rx", markersize=12)
+    plt.axis("off")
     plt.ylim(ymin=-1, ymax=8)
 
     pp.savefig()
     plt.clf()
     plt.figure(figsize=(4, 3))
     plt.semilogy(np.abs(all_y - all_y[-1]), linewidth=2)
-    plt.ylabel('Error on f(x)')
-    plt.xlabel('Iteration')
+    plt.ylabel("Error on f(x)")
+    plt.xlabel("Iteration")
     plt.tight_layout()
     pp.savefig()
     plt.clf()

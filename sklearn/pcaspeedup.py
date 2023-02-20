@@ -7,10 +7,12 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.decomposition import PCA
 
-mnist = fetch_openml('mnist_784')
+mnist = fetch_openml("mnist_784")
 
 # test_size: what proportion of original data is used for test set
-train_img, test_img, train_lbl, test_lbl = train_test_split( mnist.data, mnist.target, test_size=1/7.0, random_state=0)
+train_img, test_img, train_lbl, test_lbl = train_test_split(
+    mnist.data, mnist.target, test_size=1 / 7.0, random_state=0
+)
 
 scaler = StandardScaler()
 # Fit on training set only.
@@ -20,7 +22,7 @@ train_img = scaler.transform(train_img)
 test_img = scaler.transform(test_img)
 
 # Make an instance of the Model
-pca = PCA(.95)
+pca = PCA(0.95)
 
 pca.fit(train_img)
 
@@ -29,13 +31,13 @@ test_img = pca.transform(test_img)
 
 # all parameters not specified are set to their defaults
 # default solver is incredibly slow which is why it was changed to 'lbfgs'
-logisticRegr = LogisticRegression(solver = 'lbfgs')
+logisticRegr = LogisticRegression(solver="lbfgs")
 
 logisticRegr.fit(train_img, train_lbl)
 
 # Predict for One Observation (image)
 print("Single prediction")
-print(logisticRegr.predict(test_img[0].reshape(1,-1)))
+print(logisticRegr.predict(test_img[0].reshape(1, -1)))
 # Predict for One Observation (image)
 print("Ten predictions")
 print(logisticRegr.predict(test_img[0:10]))

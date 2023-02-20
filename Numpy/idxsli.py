@@ -9,9 +9,9 @@ print(a[0], a[2], a[-1])
 print(a[::-1])
 a = np.diag(np.arange(3))
 print(a)
-print(a[1,1])
+print(a[1, 1])
 # third line, second column
-a[2, 1] = 10 
+a[2, 1] = 10
 print(a)
 print(a[1])
 a = np.arange(10)
@@ -28,7 +28,7 @@ print(a)
 b = np.arange(5)
 a[5:] = b[::-1]
 print(a)
-a = np.linspace(0,50,dtype=int,endpoint=False)
+a = np.linspace(0, 50, dtype=int, endpoint=False)
 print(a)
 b = a[0::2]
 print(b)
@@ -44,15 +44,15 @@ print(a[0, 3:5])
 print(a[4:, 4:])
 print(a[:, 2])
 print(a[2::2, ::2])
-a = np.ones((4,4),dtype=np.int8)
-a[2,3] = 2
-a[3,1] = 6
+a = np.ones((4, 4), dtype=np.int8)
+a[2, 3] = 2
+a[3, 1] = 6
 print(a)
 a = np.diag(np.arange(7))
-a = a[1::,2::]
+a = a[1::, 2::]
 print(a)
-a = [[4,3],[2,1]]
-a = np.tile(a,(2,3))
+a = [[4, 3], [2, 1]]
+a = np.tile(a, (2, 3))
 print(a)
 a = np.arange(10)
 print(a)
@@ -74,9 +74,9 @@ np.random.seed(3)
 a = np.random.randint(0, 21, 15)
 print(a)
 print((a % 3 == 0))
-mask = (a % 3 == 0)
+mask = a % 3 == 0
 # or, a[a%3==0]
-extract_from_a = a[mask] 
+extract_from_a = a[mask]
 # extract a sub-array with the mask
 print(extract_from_a)
 a[a % 3 == 0] = -1
@@ -84,7 +84,7 @@ print(a)
 a = np.arange(0, 100, 10)
 print(a)
 # note: [2, 3, 2, 4, 2] is a Python list
-a[[2, 3, 2, 4, 2]] 
+a[[2, 3, 2, 4, 2]]
 a[[9, 7]] = -100
 print(a)
 
@@ -95,7 +95,7 @@ print(a[idx])
 
 a = np.arange(6) + np.arange(0, 51, 10)[:, np.newaxis]
 print(a)
-print(a[(0,1,2,3,4), (1,2,3,4,5)])
-print(a[3:, [0,2,5]])
-mask = np.array([1,0,1,0,0,1], dtype=bool)
+print(a[(0, 1, 2, 3, 4), (1, 2, 3, 4, 5)])
+print(a[3:, [0, 2, 5]])
+mask = np.array([1, 0, 1, 0, 0, 1], dtype=bool)
 print(a[mask, 2])

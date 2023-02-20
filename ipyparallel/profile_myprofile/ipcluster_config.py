@@ -1,8 +1,8 @@
 # Configuration file for ipcluster.
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Application(SingletonConfigurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## This is an application.
 
 ## The date format used by logging formatters for %(asctime)s
@@ -26,9 +26,9 @@
 #  Default: False
 # c.Application.show_config_json = False
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # BaseIPythonApplication(Application) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## IPython: an enhanced interactive Python shell.
 
 ## Whether to create profile dir if it doesn't exist
@@ -43,7 +43,7 @@
 # c.BaseIPythonApplication.copy_config_files = False
 
 ## Path to an extra config file to load.
-#  
+#
 #      If specified, load this config file in addition to any other IPython
 #  config.
 #  Default: ''
@@ -90,9 +90,9 @@
 #  Default: False
 # c.BaseIPythonApplication.verbose_crash = False
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # BaseParallelApplication(BaseIPythonApplication) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## IPython: an enhanced interactive Python shell.
 
 ## Whether to create profile dir if it doesn't exist
@@ -105,10 +105,10 @@
 
 ## String id to add to runtime files, to prevent name collisions when
 #          using multiple clusters with a single profile simultaneously.
-#  
+#
 #          When set, files will be named like:
 #  'ipcontroller-<cluster_id>-engine.json'
-#  
+#
 #          Since this is text inserted into filenames, typical recommendations apply:
 #          Simple character strings are ideal, and spaces are not recommended (but should
 #          generally work).
@@ -123,7 +123,7 @@
 #  See also: BaseIPythonApplication.extra_config_file
 # c.BaseParallelApplication.extra_config_file = ''
 
-## 
+##
 #  See also: BaseIPythonApplication.ipython_dir
 # c.BaseParallelApplication.ipython_dir = ''
 
@@ -171,9 +171,9 @@
 #  Default: '/root'
 # c.BaseParallelApplication.work_dir = '/root'
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # IPClusterEngines(BaseParallelApplication) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Whether to create profile dir if it doesn't exist
 #  See also: BaseIPythonApplication.auto_create
 # c.IPClusterEngines.auto_create = False
@@ -191,7 +191,7 @@
 # c.IPClusterEngines.copy_config_files = False
 
 ## Launch the cluster and immediately exit.
-#  
+#
 #          .. versionchanged:: 7.0
 #              No longer leaves the ipcluster process itself running.
 #              Prior to 7.0, --daemonize did not work on Windows.
@@ -207,7 +207,7 @@
 #  See also: BaseIPythonApplication.extra_config_file
 # c.IPClusterEngines.extra_config_file = ''
 
-## 
+##
 #  See also: BaseIPythonApplication.ipython_dir
 # c.IPClusterEngines.ipython_dir = ''
 
@@ -255,9 +255,9 @@
 #  See also: BaseParallelApplication.work_dir
 # c.IPClusterEngines.work_dir = '/root'
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # IPClusterStart(IPClusterEngines) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## whether to create the profile_dir if it doesn't exist
 #  Default: True
 # c.IPClusterStart.auto_create = True
@@ -287,7 +287,7 @@
 #  See also: BaseIPythonApplication.extra_config_file
 # c.IPClusterStart.extra_config_file = ''
 
-## 
+##
 #  See also: BaseIPythonApplication.ipython_dir
 # c.IPClusterStart.ipython_dir = ''
 
@@ -335,14 +335,14 @@
 #  See also: BaseParallelApplication.work_dir
 # c.IPClusterStart.work_dir = '/root'
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # ProfileDir(LoggingConfigurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## An object to manage the profile directory and its resources.
-#  
+#
 #      The profile directory is used by all IPython applications, to manage
 #      configuration, logging and security.
-#  
+#
 #      This object knows how to find, create and manage these directories. This
 #      should be used by any code that wants to handle profiles.
 
@@ -351,15 +351,15 @@
 #  Default: ''
 # c.ProfileDir.location = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Cluster(LoggingConfigurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Class representing an IPP cluster
-#  
+#
 #      i.e. one controller and a groups of engines
-#  
+#
 #      Can start/stop/monitor/poll cluster resources
-#  
+#
 #      All async methods can be called synchronously with a `_sync` suffix,
 #      e.g. `cluster.start_cluster_sync()`
 
@@ -373,25 +373,25 @@
 
 ## The class for launching a Controller. Change this value if you want
 #          your controller to also be launched by a batch system, such as PBS,SGE,MPI,etc.
-#  
+#
 #          Each launcher class has its own set of configuration options, for making sure
 #          it will work in your environment.
-#  
+#
 #          Note that using a batch launcher for the controller *does not* put it
 #          in the same batch job as the engines, so they will still start separately.
-#  
+#
 #          Third-party engine launchers can be registered via
 #  `ipyparallel.engine_launchers` entry point.
-#  
+#
 #          They can be selected via case-insensitive abbreviation, e.g.
-#  
+#
 #              c.Cluster.controller_launcher_class = 'SSH'
-#  
+#
 #          or:
-#  
+#
 #              ipcluster start --controller=MPI
-#  
-#  Currently installed: 
+#
+#  Currently installed:
 #    - batch: ipyparallel.cluster.launcher.BatchControllerLauncher
 #    - htcondor: ipyparallel.cluster.launcher.HTCondorControllerLauncher
 #    - local: ipyparallel.cluster.launcher.LocalControllerLauncher
@@ -406,7 +406,7 @@
 # c.Cluster.controller_launcher_class = 'ipyparallel.cluster.launcher.LocalControllerLauncher'
 
 ## Set the location (hostname or ip) of the controller.
-#  
+#
 #          This is used by engines and clients to locate the controller
 #          when the controller listens on all interfaces
 #  Default: ''
@@ -420,19 +420,19 @@
 #          to use various batch systems to launch your engines, such as PBS,SGE,MPI,etc.
 #          Each launcher class has its own set of configuration options, for making sure
 #          it will work in your environment.
-#  
+#
 #          Third-party engine launchers can be registered via
 #  `ipyparallel.engine_launchers` entry point.
-#  
+#
 #          They can be selected via case-insensitive abbreviation, e.g.
-#  
+#
 #              c.Cluster.engine_launcher_class = 'ssh'
-#  
+#
 #          or:
-#  
+#
 #              ipcluster start --engines=mpi
-#  
-#  Currently installed: 
+#
+#  Currently installed:
 #    - batch: ipyparallel.cluster.launcher.BatchEngineSetLauncher
 #    - htcondor: ipyparallel.cluster.launcher.HTCondorEngineSetLauncher
 #    - local: ipyparallel.cluster.launcher.LocalEngineSetLauncher
@@ -447,7 +447,7 @@
 # c.Cluster.engine_launcher_class = 'ipyparallel.cluster.launcher.LocalEngineSetLauncher'
 
 ## Timeout to use when waiting for engines to register
-#  
+#
 #          before giving up.
 #  Default: 60
 # c.Cluster.engine_timeout = 60
@@ -460,9 +460,9 @@
 #  Default: None
 # c.Cluster.n = None
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # BaseLauncher(LoggingConfigurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## An abstraction for starting, stopping and signaling a process.
 
 ## When a process exits, display up to this many lines of output
@@ -474,9 +474,9 @@
 #  Default: 60
 # c.BaseLauncher.stop_timeout = 60
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # ControllerLauncher(BaseLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Base class for launching ipcontroller
 
 ## command-line args to pass to ipcontroller
@@ -487,7 +487,7 @@
 #  Default: ['/usr/bin/python', '-m', 'ipyparallel.controller']
 # c.ControllerLauncher.controller_cmd = ['/usr/bin/python', '-m', 'ipyparallel.controller']
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.ControllerLauncher.output_limit = 100
 
@@ -496,15 +496,15 @@
 #  See also: BaseLauncher.stop_timeout
 # c.ControllerLauncher.stop_timeout = 60
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # BatchSystemLauncher(BaseLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch an external process using a batch system.
-#  
+#
 #      This class is designed to work with UNIX batch systems like PBS, LSF,
 #      GridEngine, etc.  The overall model is that there are different commands
 #      like qsub, qdel, etc. that handle the starting and stopping of the process.
-#  
+#
 #      This class also has the notion of a batch script. The ``batch_template``
 #      attribute can be set to a string that is a template for the batch script.
 #      This template is instantiated using string formatting. Thus the template can
@@ -537,13 +537,13 @@
 # c.BatchSystemLauncher.job_id_regexp_group = 0
 
 ## Extra variables to pass to the template.
-#  
+#
 #          This lets you parameterize additional options,
 #          such as wall_time with a custom template.
 #  Default: {}
 # c.BatchSystemLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.BatchSystemLauncher.output_limit = 100
 
@@ -564,9 +564,9 @@
 #  Default: ['']
 # c.BatchSystemLauncher.submit_command = ['']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # BatchControllerLauncher(BatchSystemLauncher, ControllerLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## The filename of the instantiated batch script.
 #  See also: BatchSystemLauncher.batch_file_name
 # c.BatchControllerLauncher.batch_file_name = 'batch_script'
@@ -603,7 +603,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.BatchControllerLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.BatchControllerLauncher.output_limit = 100
 
@@ -624,27 +624,27 @@
 #  See also: BatchSystemLauncher.submit_command
 # c.BatchControllerLauncher.submit_command = ['']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # HTCondorLauncher(BatchSystemLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## A BatchSystemLauncher subclass for HTCondor.
-#  
+#
 #      HTCondor requires that we launch the ipengine/ipcontroller scripts rather
 #      that the python instance but otherwise is very similar to PBS.  This is because
 #      HTCondor destroys sys.executable when launching remote processes - a launched
 #      python process depends on sys.executable to effectively evaluate its
 #      module search paths. Without it, regardless of which python interpreter you launch
 #      you will get the to built in module search paths.
-#  
+#
 #      We use the ip{cluster, engine, controller} scripts as our executable to circumvent
 #      this - the mechanism of shebanged scripts means that the python binary will be
 #      launched with argv[0] set to the *location of the ip{cluster, engine, controller}
 #      scripts on the remote node*. This means you need to take care that:
-#  
+#
 #      a. Your remote nodes have their paths configured correctly, with the ipengine and ipcontroller
 #         of the python environment you wish to execute code in having top precedence.
 #      b. This functionality is untested on Windows.
-#  
+#
 #      If you need different behavior, consider making you own template.
 
 ## The filename of the instantiated batch script.
@@ -675,7 +675,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.HTCondorLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.HTCondorLauncher.output_limit = 100
 
@@ -696,9 +696,9 @@
 #  Default: ['condor_submit']
 # c.HTCondorLauncher.submit_command = ['condor_submit']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # HTCondorControllerLauncher(HTCondorLauncher, BatchControllerLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch a controller using HTCondor.
 
 ## batch file name for the controller job.
@@ -737,7 +737,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.HTCondorControllerLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.HTCondorControllerLauncher.output_limit = 100
 
@@ -758,20 +758,20 @@
 #  See also: HTCondorLauncher.submit_command
 # c.HTCondorControllerLauncher.submit_command = ['condor_submit']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # LocalProcessLauncher(BaseLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Start and stop an external process in an asynchronous manner.
-#  
+#
 #      This will launch the external process with a working directory of
 #      ``self.work_dir``.
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.LocalProcessLauncher.output_limit = 100
 
 ## Interval on which to poll processes (.
-#  
+#
 #          Note: process exit should be noticed immediately,
 #          due to use of Process.wait(),
 #          but this interval should ensure we aren't leaving threads running forever,
@@ -789,9 +789,9 @@
 #  See also: BaseLauncher.stop_timeout
 # c.LocalProcessLauncher.stop_timeout = 60
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # LocalControllerLauncher(LocalProcessLauncher, ControllerLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch a controller as a regular external process.
 
 ## command-line args to pass to ipcontroller
@@ -802,7 +802,7 @@
 #  See also: ControllerLauncher.controller_cmd
 # c.LocalControllerLauncher.controller_cmd = ['/usr/bin/python', '-m', 'ipyparallel.controller']
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.LocalControllerLauncher.output_limit = 100
 
@@ -820,9 +820,9 @@
 #  See also: BaseLauncher.stop_timeout
 # c.LocalControllerLauncher.stop_timeout = 60
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # LSFLauncher(BatchSystemLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## A BatchSystemLauncher subclass for LSF.
 
 ## The filename of the instantiated batch script.
@@ -853,7 +853,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.LSFLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.LSFLauncher.output_limit = 100
 
@@ -874,9 +874,9 @@
 #  Default: ['bsub']
 # c.LSFLauncher.submit_command = ['bsub']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # LSFControllerLauncher(LSFLauncher, BatchControllerLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch a controller using LSF.
 
 ## batch file name for the controller job.
@@ -915,7 +915,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.LSFControllerLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.LSFControllerLauncher.output_limit = 100
 
@@ -936,9 +936,9 @@
 #  See also: LSFLauncher.submit_command
 # c.LSFControllerLauncher.submit_command = ['bsub']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # MPILauncher(LocalProcessLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch an external process using mpiexec.
 
 ## The command line arguments to pass to mpiexec.
@@ -949,7 +949,7 @@
 #  Default: ['mpiexec']
 # c.MPILauncher.mpi_cmd = ['mpiexec']
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.MPILauncher.output_limit = 100
 
@@ -967,9 +967,9 @@
 #  See also: BaseLauncher.stop_timeout
 # c.MPILauncher.stop_timeout = 60
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # MPIControllerLauncher(MPILauncher, ControllerLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch a controller using mpiexec.
 
 ## command-line args to pass to ipcontroller
@@ -988,7 +988,7 @@
 #  See also: MPILauncher.mpi_cmd
 # c.MPIControllerLauncher.mpi_cmd = ['mpiexec']
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.MPIControllerLauncher.output_limit = 100
 
@@ -1006,9 +1006,9 @@
 #  See also: BaseLauncher.stop_timeout
 # c.MPIControllerLauncher.stop_timeout = 60
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # PBSLauncher(BatchSystemLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## A BatchSystemLauncher subclass for PBS.
 
 ## The filename of the instantiated batch script.
@@ -1039,7 +1039,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.PBSLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.PBSLauncher.output_limit = 100
 
@@ -1060,9 +1060,9 @@
 #  Default: ['qsub']
 # c.PBSLauncher.submit_command = ['qsub']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # PBSControllerLauncher(PBSLauncher, BatchControllerLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch a controller using PBS.
 
 ## batch file name for the controller job.
@@ -1101,7 +1101,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.PBSControllerLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.PBSControllerLauncher.output_limit = 100
 
@@ -1122,9 +1122,9 @@
 #  See also: PBSLauncher.submit_command
 # c.PBSControllerLauncher.submit_command = ['qsub']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # SGELauncher(PBSLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Sun GridEngine is a PBS clone with slightly different syntax
 
 ## The filename of the instantiated batch script.
@@ -1155,7 +1155,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.SGELauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.SGELauncher.output_limit = 100
 
@@ -1176,9 +1176,9 @@
 #  See also: PBSLauncher.submit_command
 # c.SGELauncher.submit_command = ['qsub']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # SGEControllerLauncher(SGELauncher, BatchControllerLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch a controller using SGE.
 
 ## batch file name for the ipontroller job.
@@ -1217,7 +1217,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.SGEControllerLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.SGEControllerLauncher.output_limit = 100
 
@@ -1238,9 +1238,9 @@
 #  See also: PBSLauncher.submit_command
 # c.SGEControllerLauncher.submit_command = ['qsub']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # SlurmLauncher(BatchSystemLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## A BatchSystemLauncher subclass for slurm.
 
 ## Slurm account to be used
@@ -1279,7 +1279,7 @@
 #  Default: ''
 # c.SlurmLauncher.options = ''
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.SlurmLauncher.output_limit = 100
 
@@ -1308,9 +1308,9 @@
 #  Default: ''
 # c.SlurmLauncher.timelimit = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # SlurmControllerLauncher(SlurmLauncher, BatchControllerLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch a controller using Slurm.
 
 ## Slurm account to be used
@@ -1357,7 +1357,7 @@
 #  See also: SlurmLauncher.options
 # c.SlurmControllerLauncher.options = ''
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.SlurmControllerLauncher.output_limit = 100
 
@@ -1386,11 +1386,11 @@
 #  See also: SlurmLauncher.timelimit
 # c.SlurmControllerLauncher.timelimit = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # SSHLauncher(LocalProcessLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## A minimal launcher for ssh.
-#  
+#
 #      To be useful this will probably have to be extended to use the ``sshx``
 #      idea for environment variables.  There could be other things this needs
 #      as well.
@@ -1403,7 +1403,7 @@
 #  Default: ''
 # c.SSHLauncher.location = ''
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.SSHLauncher.output_limit = 100
 
@@ -1412,7 +1412,7 @@
 # c.SSHLauncher.poll_seconds = 30
 
 ## The remote profile_dir to use.
-#  
+#
 #          If not specified, use calling profile, stripping out possible leading
 #  homedir.
 #  Default: ''
@@ -1460,9 +1460,9 @@
 #  Default: ''
 # c.SSHLauncher.user = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # SSHControllerLauncher(SSHLauncher, ControllerLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## command-line args to pass to ipcontroller
 #  See also: ControllerLauncher.controller_args
 # c.SSHControllerLauncher.controller_args = []
@@ -1479,7 +1479,7 @@
 #  See also: SSHLauncher.location
 # c.SSHControllerLauncher.location = ''
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.SSHControllerLauncher.output_limit = 100
 
@@ -1533,9 +1533,9 @@
 #  See also: SSHLauncher.user
 # c.SSHControllerLauncher.user = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # WindowsHPCLauncher(BaseLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## The command for submitting jobs.
 #  Default: ''
 # c.WindowsHPCLauncher.job_cmd = ''
@@ -1549,7 +1549,7 @@
 #  Default: '\\d+'
 # c.WindowsHPCLauncher.job_id_regexp = '\\d+'
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.WindowsHPCLauncher.output_limit = 100
 
@@ -1562,9 +1562,9 @@
 #  See also: BaseLauncher.stop_timeout
 # c.WindowsHPCLauncher.stop_timeout = 60
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # WindowsHPCControllerLauncher(WindowsHPCLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## The command for submitting jobs.
 #  See also: WindowsHPCLauncher.job_cmd
 # c.WindowsHPCControllerLauncher.job_cmd = ''
@@ -1577,7 +1577,7 @@
 #  See also: WindowsHPCLauncher.job_id_regexp
 # c.WindowsHPCControllerLauncher.job_id_regexp = '\\d+'
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.WindowsHPCControllerLauncher.output_limit = 100
 
@@ -1590,9 +1590,9 @@
 #  See also: BaseLauncher.stop_timeout
 # c.WindowsHPCControllerLauncher.stop_timeout = 60
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # EngineLauncher(BaseLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Base class for launching one engine
 
 ## command-line arguments to pass to ipengine
@@ -1603,7 +1603,7 @@
 #  Default: ['/usr/bin/python', '-m', 'ipyparallel.engine']
 # c.EngineLauncher.engine_cmd = ['/usr/bin/python', '-m', 'ipyparallel.engine']
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.EngineLauncher.output_limit = 100
 
@@ -1612,9 +1612,9 @@
 #  See also: BaseLauncher.stop_timeout
 # c.EngineLauncher.stop_timeout = 60
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # BatchEngineSetLauncher(BatchSystemLauncher, EngineLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## The filename of the instantiated batch script.
 #  See also: BatchSystemLauncher.batch_file_name
 # c.BatchEngineSetLauncher.batch_file_name = 'batch_script'
@@ -1651,7 +1651,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.BatchEngineSetLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.BatchEngineSetLauncher.output_limit = 100
 
@@ -1672,9 +1672,9 @@
 #  See also: BatchSystemLauncher.submit_command
 # c.BatchEngineSetLauncher.submit_command = ['']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # HTCondorEngineSetLauncher(HTCondorLauncher, BatchEngineSetLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch Engines using HTCondor
 
 ## batch file name for the engine(s) job.
@@ -1713,7 +1713,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.HTCondorEngineSetLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.HTCondorEngineSetLauncher.output_limit = 100
 
@@ -1734,9 +1734,9 @@
 #  See also: HTCondorLauncher.submit_command
 # c.HTCondorEngineSetLauncher.submit_command = ['condor_submit']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # LocalEngineLauncher(LocalProcessLauncher, EngineLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch a single engine as a regular external process.
 
 ## command-line arguments to pass to ipengine
@@ -1747,7 +1747,7 @@
 #  See also: EngineLauncher.engine_cmd
 # c.LocalEngineLauncher.engine_cmd = ['/usr/bin/python', '-m', 'ipyparallel.engine']
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.LocalEngineLauncher.output_limit = 100
 
@@ -1765,9 +1765,9 @@
 #  See also: BaseLauncher.stop_timeout
 # c.LocalEngineLauncher.stop_timeout = 60
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # LocalEngineSetLauncher(LocalEngineLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch a set of engines as regular external processes.
 
 ## delay (in seconds) between starting each engine after the first.
@@ -1784,7 +1784,7 @@
 #  See also: EngineLauncher.engine_cmd
 # c.LocalEngineSetLauncher.engine_cmd = ['/usr/bin/python', '-m', 'ipyparallel.engine']
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.LocalEngineSetLauncher.output_limit = 100
 
@@ -1802,9 +1802,9 @@
 #  See also: BaseLauncher.stop_timeout
 # c.LocalEngineSetLauncher.stop_timeout = 60
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # LSFEngineSetLauncher(LSFLauncher, BatchEngineSetLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch Engines using LSF
 
 ## batch file name for the engine(s) job.
@@ -1843,7 +1843,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.LSFEngineSetLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.LSFEngineSetLauncher.output_limit = 100
 
@@ -1864,9 +1864,9 @@
 #  See also: LSFLauncher.submit_command
 # c.LSFEngineSetLauncher.submit_command = ['bsub']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # MPIEngineSetLauncher(MPILauncher, EngineLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch engines using mpiexec
 
 ## command-line arguments to pass to ipengine
@@ -1885,7 +1885,7 @@
 #  See also: MPILauncher.mpi_cmd
 # c.MPIEngineSetLauncher.mpi_cmd = ['mpiexec']
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.MPIEngineSetLauncher.output_limit = 100
 
@@ -1903,9 +1903,9 @@
 #  See also: BaseLauncher.stop_timeout
 # c.MPIEngineSetLauncher.stop_timeout = 60
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # SGEEngineSetLauncher(SGELauncher, BatchEngineSetLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch Engines with SGE
 
 ## batch file name for the engine(s) job.
@@ -1944,7 +1944,7 @@
 #  See also: BatchSystemLauncher.namespace
 # c.SGEEngineSetLauncher.namespace = {}
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.SGEEngineSetLauncher.output_limit = 100
 
@@ -1965,9 +1965,9 @@
 #  See also: PBSLauncher.submit_command
 # c.SGEEngineSetLauncher.submit_command = ['qsub']
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # SlurmEngineSetLauncher(SlurmLauncher, BatchEngineSetLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launch Engines using Slurm
 
 ## Slurm account to be used
@@ -2014,7 +2014,7 @@
 #  See also: SlurmLauncher.options
 # c.SlurmEngineSetLauncher.options = ''
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.SlurmEngineSetLauncher.output_limit = 100
 
@@ -2043,9 +2043,9 @@
 #  See also: SlurmLauncher.timelimit
 # c.SlurmEngineSetLauncher.timelimit = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # SSHEngineSetLauncher(LocalEngineSetLauncher, SSHLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## delay (in seconds) between starting each engine after the first.
 #  See also: LocalEngineSetLauncher.delay
 # c.SSHEngineSetLauncher.delay = 0.1
@@ -2071,7 +2071,7 @@
 #  See also: SSHLauncher.location
 # c.SSHEngineSetLauncher.location = ''
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.SSHEngineSetLauncher.output_limit = 100
 
@@ -2125,12 +2125,12 @@
 #  See also: SSHLauncher.user
 # c.SSHEngineSetLauncher.user = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # SSHProxyEngineSetLauncher(SSHLauncher, EngineLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Launcher for calling
 #      `ipcluster engines` on a remote machine.
-#  
+#
 #      Requires that remote profile is already configured.
 
 ## command-line arguments to pass to ipengine
@@ -2156,7 +2156,7 @@
 #  See also: SSHLauncher.location
 # c.SSHProxyEngineSetLauncher.location = ''
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.SSHProxyEngineSetLauncher.output_limit = 100
 
@@ -2210,9 +2210,9 @@
 #  See also: SSHLauncher.user
 # c.SSHProxyEngineSetLauncher.user = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # WindowsHPCEngineSetLauncher(WindowsHPCLauncher) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## The command for submitting jobs.
 #  See also: WindowsHPCLauncher.job_cmd
 # c.WindowsHPCEngineSetLauncher.job_cmd = ''
@@ -2225,7 +2225,7 @@
 #  See also: WindowsHPCLauncher.job_id_regexp
 # c.WindowsHPCEngineSetLauncher.job_id_regexp = '\\d+'
 
-## 
+##
 #  See also: BaseLauncher.output_limit
 # c.WindowsHPCEngineSetLauncher.output_limit = 100
 

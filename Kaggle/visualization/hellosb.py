@@ -2,11 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import pandas as pd
+
 pd.plotting.register_matplotlib_converters()
 import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('hellosb.pdf')
+
+pp = PdfPages("hellosb.pdf")
 print("Setup Complete")
 
 # Path of the file to read
@@ -19,9 +21,9 @@ fifa_data = pd.read_csv(fifa_filepath, index_col="Date", parse_dates=True)
 print(fifa_data.head())
 
 # Set the width and height of the figure
-plt.figure(figsize=(16,6))
+plt.figure(figsize=(16, 6))
 
-# Line chart showing how FIFA rankings evolved over time 
+# Line chart showing how FIFA rankings evolved over time
 sns.lineplot(data=fifa_data)
 
 pp.savefig()

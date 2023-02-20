@@ -5,8 +5,9 @@ def factorial(x):
         result *= i
     return result
 
+
 if __name__ == "__main__":
     import sys
+
     x = int(sys.argv[1])
     sys.stdout.write(f"{factorial(x)}\n")
-

@@ -1,23 +1,27 @@
 #!/usr/bin/env python
 import numpy as np
 
+
 def perceptron_learning_algorithm(X, y):
     # can also be initialized at zero.
-    w = np.random.rand(3) 
+    w = np.random.rand(3)
     misclassified_examples = predict(hypothesis, X, y, w)
     while misclassified_examples.any():
         x, expected_y = pick_one_from(misclassified_examples, X, y)
         # update rule
-        w = update_rule(expected_y,w,x) 
+        w = update_rule(expected_y, w, x)
         misclassified_examples = predict(hypothesis, X, y, w)
     return w
 
-def update_rule(expected_y,w,x):
+
+def update_rule(expected_y, w, x):
     w = w + x * expected_y
     return w
 
+
 def hypothesis(x, w):
     return np.sign(np.dot(w, x))
+
 
 # Make predictions on all data points
 # and return the ones that are misclassified.
@@ -26,6 +30,7 @@ def predict(hypothesis_function, X, y, w):
     misclassified = X[y != predictions]
     return misclassified
 
+
 # Pick one misclassified example randomly
 # and return it with its expected label.
 def pick_one_from(misclassified_examples, X, y):
@@ -33,6 +38,7 @@ def pick_one_from(misclassified_examples, X, y):
     x = misclassified_examples[0]
     index = np.where(np.all(X == x, axis=1))
     return x, y[index]
+
 
 from succinctly.datasets import get_dataset, linearly_separable as ls
 
@@ -57,9 +63,9 @@ expected_y = -1
 
 w = np.array([4, 5, 3])
 
-print(hypothesis(w, x))             # The predicted y is 1.
+print(hypothesis(w, x))  # The predicted y is 1.
 
-w = update_rule(expected_y, w, x)   # we apply the update rule.
+w = update_rule(expected_y, w, x)  # we apply the update rule.
 
 # The predicted y is -1.
-print (hypothesis(w, x))            
+print(hypothesis(w, x))

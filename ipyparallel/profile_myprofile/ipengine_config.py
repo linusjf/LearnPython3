@@ -1,8 +1,8 @@
 # Configuration file for ipengine.
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Application(SingletonConfigurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## This is an application.
 
 ## The date format used by logging formatters for %(asctime)s
@@ -26,9 +26,9 @@
 #  Default: False
 # c.Application.show_config_json = False
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # BaseIPythonApplication(Application) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## IPython: an enhanced interactive Python shell.
 
 ## Whether to create profile dir if it doesn't exist
@@ -43,7 +43,7 @@
 # c.BaseIPythonApplication.copy_config_files = False
 
 ## Path to an extra config file to load.
-#  
+#
 #      If specified, load this config file in addition to any other IPython
 #  config.
 #  Default: ''
@@ -90,9 +90,9 @@
 #  Default: False
 # c.BaseIPythonApplication.verbose_crash = False
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # BaseParallelApplication(BaseIPythonApplication) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## IPython: an enhanced interactive Python shell.
 
 ## Whether to create profile dir if it doesn't exist
@@ -105,10 +105,10 @@
 
 ## String id to add to runtime files, to prevent name collisions when
 #          using multiple clusters with a single profile simultaneously.
-#  
+#
 #          When set, files will be named like:
 #  'ipcontroller-<cluster_id>-engine.json'
-#  
+#
 #          Since this is text inserted into filenames, typical recommendations apply:
 #          Simple character strings are ideal, and spaces are not recommended (but should
 #          generally work).
@@ -123,7 +123,7 @@
 #  See also: BaseIPythonApplication.extra_config_file
 # c.BaseParallelApplication.extra_config_file = ''
 
-## 
+##
 #  See also: BaseIPythonApplication.ipython_dir
 # c.BaseParallelApplication.ipython_dir = ''
 
@@ -171,9 +171,9 @@
 #  Default: '/root'
 # c.BaseParallelApplication.work_dir = '/root'
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # IPEngine(BaseParallelApplication) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Whether to create profile dir if it doesn't exist
 #  See also: BaseIPythonApplication.auto_create
 # c.IPEngine.auto_create = False
@@ -210,10 +210,10 @@
 # c.IPEngine.display_hook_factory = 'ipykernel.displayhook.ZMQDisplayHook'
 
 ## Enable the nanny process.
-#  
+#
 #      The nanny process enables remote signaling of single engines
 #      and more responsive notification of engine shutdown.
-#  
+#
 #      .. versionadded:: 7.0
 #  Default: True
 # c.IPEngine.enable_nanny = True
@@ -223,7 +223,7 @@
 # c.IPEngine.extra_config_file = ''
 
 ## Request this engine ID.
-#  
+#
 #          If run in MPI, will use the MPI rank.
 #          Otherwise, let the Hub decide what our rank should be.
 #  Default: None
@@ -233,7 +233,7 @@
 #  Default: '\nfrom mpi4py import MPI\nmpi_rank = MPI.COMM_WORLD.Get_rank()\nmpi_size = MPI.COMM_WORLD.Get_size()\n'
 # c.IPEngine.init_mpi = '\nfrom mpi4py import MPI\nmpi_rank = MPI.COMM_WORLD.Get_rank()\nmpi_size = MPI.COMM_WORLD.Get_size()\n'
 
-## 
+##
 #  See also: BaseIPythonApplication.ipython_dir
 # c.IPEngine.ipython_dir = ''
 
@@ -266,16 +266,16 @@
 
 ## The maximum number of times a check for the heartbeat ping of a
 #          controller can be missed before shutting down the engine.
-#  
+#
 #          If set to 0, the check is disabled.
 #  Default: 50
 # c.IPEngine.max_heartbeat_misses = 50
 
 ## Per-engine delay for mpiexec-launched engines
-#  
+#
 #          avoids flooding the controller with registrations,
 #          which can stall under heavy load.
-#  
+#
 #          Default: .02 (50 engines/sec, or 3000 engines/minute)
 #  Default: 0.02
 # c.IPEngine.mpi_registration_delay = 0.02
@@ -341,7 +341,7 @@
 # c.IPEngine.url_file_name = 'ipcontroller-engine.json'
 
 ## Enable MPI integration.
-#  
+#
 #          If set, MPI rank will be requested for my rank,
 #          and additionally `mpi_init` will be executed in the interactive shell.
 #  Default: False
@@ -362,9 +362,9 @@
 #  See also: BaseParallelApplication.work_dir
 # c.IPEngine.work_dir = '/root'
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # InteractiveShell(SingletonConfigurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## An enhanced, interactive shell for Python.
 
 ## 'all', 'last', 'last_expr' or 'none', 'last_expr_or_assign' specifying which
@@ -532,28 +532,28 @@
 #  Default: 'Context'
 # c.InteractiveShell.xmode = 'Context'
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # ZMQInteractiveShell(InteractiveShell) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## A subclass of InteractiveShell for ZMQ.
 
-## 
+##
 #  See also: InteractiveShell.ast_node_interactivity
 # c.ZMQInteractiveShell.ast_node_interactivity = 'last_expr'
 
-## 
+##
 #  See also: InteractiveShell.ast_transformers
 # c.ZMQInteractiveShell.ast_transformers = []
 
-## 
+##
 #  See also: InteractiveShell.autoawait
 # c.ZMQInteractiveShell.autoawait = True
 
-## 
+##
 #  See also: InteractiveShell.autocall
 # c.ZMQInteractiveShell.autocall = 0
 
-## 
+##
 #  See also: InteractiveShell.automagic
 # c.ZMQInteractiveShell.automagic = True
 
@@ -565,11 +565,11 @@
 #  See also: InteractiveShell.banner2
 # c.ZMQInteractiveShell.banner2 = ''
 
-## 
+##
 #  See also: InteractiveShell.cache_size
 # c.ZMQInteractiveShell.cache_size = 1000
 
-## 
+##
 #  See also: InteractiveShell.color_info
 # c.ZMQInteractiveShell.color_info = True
 
@@ -588,7 +588,7 @@
 #  See also: InteractiveShell.display_page
 # c.ZMQInteractiveShell.display_page = False
 
-## 
+##
 #  See also: InteractiveShell.enable_html_pager
 # c.ZMQInteractiveShell.enable_html_pager = False
 
@@ -596,22 +596,22 @@
 #  See also: InteractiveShell.history_length
 # c.ZMQInteractiveShell.history_length = 10000
 
-## 
+##
 #  See also: InteractiveShell.history_load_length
 # c.ZMQInteractiveShell.history_load_length = 1000
 
 #  See also: InteractiveShell.ipython_dir
 # c.ZMQInteractiveShell.ipython_dir = ''
 
-## 
+##
 #  See also: InteractiveShell.logappend
 # c.ZMQInteractiveShell.logappend = ''
 
-## 
+##
 #  See also: InteractiveShell.logfile
 # c.ZMQInteractiveShell.logfile = ''
 
-## 
+##
 #  See also: InteractiveShell.logstart
 # c.ZMQInteractiveShell.logstart = False
 
@@ -623,7 +623,7 @@
 #  See also: InteractiveShell.object_info_string_level
 # c.ZMQInteractiveShell.object_info_string_level = 0
 
-## 
+##
 #  See also: InteractiveShell.pdb
 # c.ZMQInteractiveShell.pdb = False
 
@@ -663,7 +663,7 @@
 #  See also: InteractiveShell.show_rewritten_input
 # c.ZMQInteractiveShell.show_rewritten_input = True
 
-## 
+##
 #  See also: InteractiveShell.sphinxify_docstring
 # c.ZMQInteractiveShell.sphinxify_docstring = False
 
@@ -674,14 +674,14 @@
 #  See also: InteractiveShell.xmode
 # c.ZMQInteractiveShell.xmode = 'Context'
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # ProfileDir(LoggingConfigurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## An object to manage the profile directory and its resources.
-#  
+#
 #      The profile directory is used by all IPython applications, to manage
 #      configuration, logging and security.
-#  
+#
 #      This object knows how to find, create and manage these directories. This
 #      should be used by any code that wants to handle profiles.
 
@@ -690,33 +690,33 @@
 #  Default: ''
 # c.ProfileDir.location = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Session(Configurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Object for handling serialization and sending of messages.
-#  
+#
 #      The Session object handles building messages and sending them
 #      with ZMQ sockets or ZMQStream objects.  Objects can communicate with each
 #      other over the network via Session objects, and only need to work with the
 #      dict-based IPython message spec. The Session will handle
 #      serialization/deserialization, security, and metadata.
-#  
+#
 #      Sessions support configurable serialization via packer/unpacker traits,
 #      and signing with HMAC digests via the key/keyfile traits.
-#  
+#
 #      Parameters
 #      ----------
-#  
+#
 #      debug : bool
 #          whether to trigger extra debugging statements
 #      packer/unpacker : str : 'json', 'pickle' or import_string
 #          importstrings for methods to serialize message parts.  If just
 #          'json' or 'pickle', predefined JSON and pickle packers will be used.
 #          Otherwise, the entire importstring must be used.
-#  
+#
 #          The functions must accept at least valid JSON input, and output
 #  *bytes*.
-#  
+#
 #          For example, to use msgpack:
 #          packer = 'msgpack.packb', unpacker='msgpack.unpackb'
 #      pack/unpack : callables
@@ -738,7 +738,7 @@
 # c.Session.buffer_threshold = 1024
 
 ## Whether to check PID to protect against calls after fork.
-#  
+#
 #          This check can be disabled if fork-safety is handled elsewhere.
 #  Default: True
 # c.Session.check_pid = True
@@ -752,7 +752,7 @@
 # c.Session.debug = False
 
 ## The maximum number of digests to remember.
-#  
+#
 #          The digest history will be culled when it exceeds this value.
 #  Default: 65536
 # c.Session.digest_history_size = 65536
@@ -799,11 +799,11 @@
 #  Default: 'username'
 # c.Session.username = 'username'
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Kernel(SingletonConfigurable) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Whether to use appnope for compatibility with OS X App Nap.
-#  
+#
 #          Only affects OS X >= 10.9.
 #  Default: True
 # c.Kernel._darwin_app_nap = True
@@ -816,10 +816,10 @@
 
 ## time (in seconds) to wait for messages to arrive
 #          when aborting queued requests after an error.
-#  
+#
 #          Requests that arrive within this window after an error
 #          will be cancelled.
-#  
+#
 #          Increase in the event of unusually slow network
 #          causing significant delays,
 #          which can manifest as e.g. "Run all" in a notebook
@@ -827,9 +827,9 @@
 #  Default: 0.0
 # c.Kernel.stop_on_error_timeout = 0.0
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # IPythonKernel(Kernel) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Whether to use appnope for compatibility with OS X App Nap.
 #  See also: Kernel._darwin_app_nap
 # c.IPythonKernel._darwin_app_nap = True
@@ -852,9 +852,9 @@
 #  Default: True
 # c.IPythonKernel.use_experimental_completions = True
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # IPythonParallelKernel(IPythonKernel) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## Extend IPython kernel for parallel computing
 
 ## Whether to use appnope for compatibility with OS X App Nap.

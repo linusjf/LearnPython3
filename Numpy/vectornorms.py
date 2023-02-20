@@ -3,6 +3,7 @@
 # vector L1 norm
 from numpy import array
 from numpy.linalg import norm
+
 # define vector
 a = array([1, 2, 3])
 print(a)
@@ -20,6 +21,7 @@ print(l2)
 
 # vector max norm
 from math import inf
+
 # define vector
 a = array([1, 2, 3])
 print(a)

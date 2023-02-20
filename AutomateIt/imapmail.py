@@ -1,16 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import config, imaplib
+
 M = imaplib.IMAP4_SSL("imap.gmail.com", 993)
 M.login(config.fromaddr, config.password)
 print(M.list())
-M.select('INBOX')
+M.select("INBOX")
 print("Inbox:", M)
-typ, data = M.search(None, 'SUBJECT','"Email with an attachment"')
+typ, data = M.search(None, "SUBJECT", '"Email with an attachment"')
 print(typ)
 print(data)
-if (data[0] != b''):
-    typs, msg = M.fetch(data[0].split()[-1], '(RFC822)')
+if data[0] != b"":
+    typs, msg = M.fetch(data[0].split()[-1], "(RFC822)")
     print("Message is ", msg[0][1])
 M.close()
 M.logout()

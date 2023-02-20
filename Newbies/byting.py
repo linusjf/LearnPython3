@@ -4,8 +4,8 @@
 
 def byte_size(string):
     """Return size in bytes."""
-    return len(string.encode('utf-8'))
+    return len(string.encode("utf-8"))
 
 
-print(byte_size('😀'))
-print(byte_size('Hello World'))
+print(byte_size("😀"))
+print(byte_size("Hello World"))
