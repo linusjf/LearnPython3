@@ -265,18 +265,18 @@ print(regexpwd.findall("NOtallcaps"))
 print(regexpwd.findall("NODigits"))
 print(regexpwd.findall("NODigits1"))
 
-noQregex = regex.compile(r'[^\WQ]')
-print(noQregex.findall("noqueue"))
-print(noQregex.findall("Queue"))
-noQregex = regex.compile(r'[_0-9a-zA-PR-Z]')
-print(noQregex.findall("noqueue"))
-print(noQregex.findall("Queue"))
-noQregex = regex.compile(r'(?!Q)\w')
-print(noQregex.findall("noqueue"))
-print(noQregex.findall("Queue"))
-noQregex = regex.compile(r'\w(?<!Q)')
-print(noQregex.findall("noqueue"))
-print(noQregex.findall("Queue"))
+noqregex = regex.compile(r'[^\WQ]')
+print(noqregex.findall("noqueue"))
+print(noqregex.findall("Queue"))
+noqregex = regex.compile(r'[_0-9a-zA-PR-Z]')
+print(noqregex.findall("noqueue"))
+print(noqregex.findall("Queue"))
+noqregex = regex.compile(r'(?!Q)\w')
+print(noqregex.findall("noqueue"))
+print(noqregex.findall("Queue"))
+noqregex = regex.compile(r'\w(?<!Q)')
+print(noqregex.findall("noqueue"))
+print(noqregex.findall("Queue"))
 
 # suppose we want to match any character as long as it is not followed by
 # {END}.
@@ -395,7 +395,8 @@ print(numsregex.findall("123"))
 numsregex = regex.compile(r'\d(\d)')
 print(numsregex.findall("123"))
 
-# Suppose you want to match one word character \w as long as it is not the letter Q.
+# Suppose you want to match one word character \w as
+# long as it is not the letter Q.
 # a) Remove leading and trailing whitespaces from all the individual
 # fields of these csv strings.
 CSV1 = ' comma ,separated ,values '
