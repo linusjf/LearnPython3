@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""ReadXL."""
 import openpyxl
 
 workbook = openpyxl.load_workbook("myxlsx.xlsx")
