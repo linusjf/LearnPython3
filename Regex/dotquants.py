@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 """
+DotQuants.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : dotquants
@@ -28,7 +30,8 @@ print([w for w in words if re.search(r"\bre.?d\b", w)])
 print(re.sub(r"par(ro)?t", r"X", "par part parrot parent"))
 # same as: r'part|parrot|parent'
 print(re.sub(r"par(en|ro)?t", r"X", "par part parrot parent"))
-# The * metacharacter quantifies a character or group to match 0 or more times. There is
+# The * metacharacter quantifies a character or group to match 0
+# or more times. There is
 # no upper bound, more details will be discussed at the end of this section.
 # match 't' followed by zero or more of 'a' followed by 'r'
 print(re.sub(r"ta*r", r"X", "tr tear tare steer sitaara"))
@@ -46,8 +49,10 @@ print(re.split(r"1*2", "3111111111125111142", maxsplit=1))
 # it matches between every character
 # and, there is an empty match after the split at u
 print(re.split(r"u*", "cloudy"))
-# The + metacharacter quantifies a character or group to match 1 or more times. Similar
-# to * quantifier, there is no upper bound. More importantly, this doesn’t have surprises like
+# The + metacharacter quantifies a character or group to match 1 or more times.
+# Similar
+# to * quantifier, there is no upper bound. More importantly, this doesn’t
+# have surprises like
 # matching empty string in between patterns or at start/end of string.
 print(re.sub(r"ta+r", r"X", "tr tear tare steer sitaara"))
 print(re.sub(r"t(e|a)+r", r"X", "tr tear tare steer sitaara"))
@@ -62,8 +67,10 @@ print([w for w in demo if re.search(r"ab{3}c", w)])
 # match 'Error' followed by zero or more characters followed by 'valid'
 print(bool(re.search(r"Error.*valid", "Error: not a valid input")))
 print(bool(re.search(r"Error.*valid", "Error: key not found")))
-# To allow matching in any order, you’ll have to bring in alternation as well. That is somewhat
-# manageable for 2 or 3 patterns. In a later chapter, you’ll learn how to use lookarounds for a
+# To allow matching in any order, you’ll have to bring in alternation as
+# well. That is somewhat
+# manageable for 2 or 3 patterns. In a later chapter, you’ll learn how to use
+# lookarounds for a
 # comparatively easier approach.
 SEQ1 = "cat and dog"
 SEQ2 = "dog and cat"
@@ -125,7 +132,9 @@ print(re.findall(r"0*[1-9]\d{2,}", NUMBERS))
 # no backtracking, so another 'a' can never match
 print(re.sub(r"f(a|e)*+at", r"X", "feat ft feaeat"))
 lines = ["#comment", 'c = "#"', "\t #comment", "abc", "", " \t "]
-# The goal is to match lines whose first non-whitespace character is not a # character.
+# The goal is to match lines whose first non-whitespace character is not
+# a
+# # character.
 # A matching line should have at least one non-# character,
 # so empty lines and those with only whitespace characters should not match.
 # this solution fails because \s* can backtrack

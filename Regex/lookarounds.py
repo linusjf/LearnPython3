@@ -256,7 +256,7 @@ print(re.findall(r"\b[a-z](?:(?!pp|rr)[a-z])*\b", WORDS))
 # 2. It must include at least one lowercase character [a-z]
 # 3. It must include at least three uppercase characters [A-Z]
 # 4. It must include at least one digit \d
-regexpwd = re.compile(r"\A(?=[^a-z]*[a-z])(?=(?:[^A-Z]*[A-Z]){3})(?=\D*\d)\w{6,10}\Z")
+regexpwd = re.compile(r"\A(?=[^a-z]*[a-z])(?=(?:[^A-Z]*[A-Z]){3})(?=\D*\d)\w{6,10}\Z")  # noqa
 print(regexpwd.findall("fivec"))
 print(regexpwd.findall("ALLCAPS"))
 print(regexpwd.findall("NOtallcaps"))
