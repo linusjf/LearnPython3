@@ -22,8 +22,6 @@ if [ -z "$proj" ] || [ ! -d "$proj" ]; then
   usage
 else
   echo "$proj"
-  autopep8 --in-place --aggressive -r "$proj" | tee linter.out
-  SUCCESS=SUCCESS+$?
   black "$proj"
   SUCCESS=SUCCESS+$?
   pep257 --explain --source --count "$proj" | tee -a linter.out
