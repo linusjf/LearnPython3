@@ -25,6 +25,7 @@ from googleapiclient.errors import HttpError
 
 def gmail_create_draft_with_attachment():
     """Create and insert a draft email with attachment.
+
     Print the returned draft's message and id.
     Returns: Draft object, including draft id and message meta data.
 
@@ -60,11 +61,13 @@ def gmail_create_draft_with_attachment():
             attachment_data = _fp.read()
         mime_message.add_attachment(attachment_data, maintype, subtype)
 
-        encoded_message = base64.urlsafe_b64encode(mime_message.as_bytes()).decode() # noqa
+        encoded_message = base64.urlsafe_b64encode(mime_message.as_bytes()).decode()  # noqa
 
         create_draft_request_body = {"message": {"raw": encoded_message}}
         # pylint: disable=E1101
-        draft = (service.users().drafts().create(userId="me", body=create_draft_request_body).execute()) # noqa
+        draft = (
+            service.users().drafts().create(userId="me", body=create_draft_request_body).execute()
+        )
         print(f'Draft id: {draft["id"]}\nDraft message: {draft["message"]}')
     except HttpError as error:
         print(f"An error occurred: {error}")
