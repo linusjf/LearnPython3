@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""CAEmployees"""
+"""CAEmployees."""
 import csv
 
 with open("mylist.csv", "rt", encoding="utf-8") as f:

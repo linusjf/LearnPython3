@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""configuration setup"""
+"""Configuration setup."""
 import os
 from dotenv import load_dotenv
 
