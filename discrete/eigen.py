@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import numpy as np
-A = np.array([[3,1], [1,3]])
+
+A = np.array([[3, 1], [1, 3]])
 l, v = np.linalg.eig(A)
-print("The eigenvalues are:\n ",l)
+print("The eigenvalues are:\n ", l)
 print("The eigenvectors are:\n ", v)

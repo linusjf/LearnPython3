@@ -4,7 +4,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('simple.pdf')
+
+pp = PdfPages("simple.pdf")
 print("Setup Complete")
 X = np.linspace(-np.pi, np.pi, 256)
 C, S = np.cos(X), np.sin(X)

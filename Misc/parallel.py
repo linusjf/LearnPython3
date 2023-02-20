@@ -11,40 +11,45 @@ import numpy as np
 from multiprocessing import Pool
 
 iterations_count = round(1e6)
+
+
 def complex_operation(input_index):
-   print("Complex operation. Input index: {:2d}".format(input_index))
-   [math.exp(i) * math.sinh(i) for i in [1] * iterations_count]
- 
+    print("Complex operation. Input index: {:2d}".format(input_index))
+    [math.exp(i) * math.sinh(i) for i in [1] * iterations_count]
+
+
 @timebudget
 def run_complex_operations(operation, input):
-   for i in input:
-      operation(i) 
+    for i in input:
+        operation(i)
 
-print('Serial. Without NumPy')
+
+print("Serial. Without NumPy")
 input = range(10)
 run_complex_operations(complex_operation, input)
+
 
 @timebudget
 def run_complex_operations_p(operation, input, pool):
     pool.map(operation, input)
 
+
 processes_count = 6
 
-print('Parallel. Without NumPy')
+print("Parallel. Without NumPy")
 processes_pool = Pool(processes_count)
 run_complex_operations_p(complex_operation, range(10), processes_pool)
 
-def complex_operation_numpy(input_index):
-      print("Complex operation (numpy). Input index: {:2d}".format(input_index))
-      data = np.ones(iterations_count)
-      np.exp(data) * np.sinh(data)
 
-print('Serial. With NumPy')
+def complex_operation_numpy(input_index):
+    print("Complex operation (numpy). Input index: {:2d}".format(input_index))
+    data = np.ones(iterations_count)
+    np.exp(data) * np.sinh(data)
+
+
+print("Serial. With NumPy")
 run_complex_operations(complex_operation_numpy, input)
 
-print('Parallel. With NumPy')
+print("Parallel. With NumPy")
 processes_pool = Pool(processes_count)
 run_complex_operations_p(complex_operation_numpy, input, processes_pool)
- 
-
-

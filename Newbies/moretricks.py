@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """More python tricks."""
 import sys
+
 # Use Of Ternary Operator For Conditional
 # Assignment.
 
 
 def small(_a, _b, _c):
     """Return smallest number."""
-    return _a if _a <= _b and _a <= _c else (
-        _b if _b <= _a and _b <= _c else _c)
+    return _a if _a <= _b and _a <= _c else (_b if _b <= _a and _b <= _c else _c)
 
 
 print(small(1, 0, 1))
@@ -28,9 +28,7 @@ MULTI_STR = """select * from multi_row
 where row_id < 5"""
 print(MULTI_STR)
 
-MULTI_STR = ("select * from multi_row "
-             "where row_id < 5 "
-             "order by age")
+MULTI_STR = "select * from multi_row " "where row_id < 5 " "order by age"
 print(MULTI_STR)
 
 # Dictionary/Set Comprehensions.
@@ -64,7 +62,7 @@ def test(_x, _y, _z):
     print(_x, _y, _z)
 
 
-TEST_DICT = {'_x': 1, '_y': 2, '_z': 3}
+TEST_DICT = {"_x": 1, "_y": 2, "_z": 3}
 TEST_LIST = [10, 20, 30]
 
 test(*TEST_DICT)
@@ -74,18 +72,18 @@ test(*TEST_LIST)
 # dictionary of expressions
 
 STDCALC = {
-    'sum': lambda x, y: x + y,
-    'subtract': lambda x, y: x - y,
-    'product': lambda x, y: x * y,
-    'division': lambda x, y: x / y,
-    'power': lambda x, y: x ** y,
-    'nthroot': lambda x, y: x ** (1 / y),
+    "sum": lambda x, y: x + y,
+    "subtract": lambda x, y: x - y,
+    "product": lambda x, y: x * y,
+    "division": lambda x, y: x / y,
+    "power": lambda x, y: x**y,
+    "nthroot": lambda x, y: x ** (1 / y),
 }
 
-print(STDCALC['sum'](9, 3))
-print(STDCALC['subtract'](9, 3))
-print(STDCALC['product'](9, 3))
-print(STDCALC['division'](9, 3))
-print(STDCALC['power'](9, 3))
-print(STDCALC['nthroot'](9, 3))
-print(STDCALC['power'](STDCALC['nthroot'](9, 3), 3))
+print(STDCALC["sum"](9, 3))
+print(STDCALC["subtract"](9, 3))
+print(STDCALC["product"](9, 3))
+print(STDCALC["division"](9, 3))
+print(STDCALC["power"](9, 3))
+print(STDCALC["nthroot"](9, 3))
+print(STDCALC["power"](STDCALC["nthroot"](9, 3), 3))

@@ -53,6 +53,8 @@ class MyName:
     """Enum definition."""
 
     Geek, For, Geeks = range(3)
+
+
 # pylint: enable=too-few-public-methods
 
 
@@ -100,6 +102,6 @@ def is_anagram(str1, str2):
     return Counter(str1) == Counter(str2)
 
 
-print(is_anagram('geek', 'eegk'))
+print(is_anagram("geek", "eegk"))
 
-print(is_anagram('geek', 'peek'))
+print(is_anagram("geek", "peek"))

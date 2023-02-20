@@ -32,13 +32,18 @@ class SmoAlgorithm:
             return float(np.dot(self.w.T, self.X[i])) - self.b
         else:
             # Equation 10
-            return np.sum([self.alphas[j] * self.y[j]
-                           * self.kernel(self.X[j], self.X[i])
-                           for j in range(self.m)]) - self.b
+            return (
+                np.sum(
+                    [
+                        self.alphas[j] * self.y[j] * self.kernel(self.X[j], self.X[i])
+                        for j in range(self.m)
+                    ]
+                )
+                - self.b
+            )
 
     # Try to solve the problem analytically.
     def take_step(self, i1, i2):
-
         if i1 == i2:
             return False
 
@@ -85,14 +90,15 @@ class SmoAlgorithm:
             # Under unusual cicumstances, eta will not be positive.
             # Equation 19
             f1 = y1 * (E1 + self.b) - a1 * k11 - s * self.a2 * k12
-            f2 = self.y2 * (self.E2 + self.b) - s * a1 * k12 \
-                 - self.a2 * k22
+            f2 = self.y2 * (self.E2 + self.b) - s * a1 * k12 - self.a2 * k22
             L1 = a1 + s(self.a2 - L)
             H1 = a1 + s * (self.a2 - H)
-            Lobj = L1 * f1 + L * f2 + 0.5 * (L1 ** 2) * k11 \
-                   + 0.5 * (L ** 2) * k22 + s * L * L1 * k12
-            Hobj = H1 * f1 + H * f2 + 0.5 * (H1 ** 2) * k11 \
-                   + 0.5 * (H ** 2) * k22 + s * H * H1 * k12
+            Lobj = (
+                L1 * f1 + L * f2 + 0.5 * (L1**2) * k11 + 0.5 * (L**2) * k22 + s * L * L1 * k12
+            )
+            Hobj = (
+                H1 * f1 + H * f2 + 0.5 * (H1**2) * k11 + 0.5 * (H**2) * k22 + s * H * H1 * k12
+            )
 
             if Lobj < Hobj - self.eps:
                 a2_new = L
@@ -103,8 +109,7 @@ class SmoAlgorithm:
 
         # If alpha2 did not change enough the algorithm
         # returns without updating the multipliers.
-        if abs(a2_new - self.a2) < self.eps * (a2_new + self.a2 \
-                                                       + self.eps):
+        if abs(a2_new - self.a2) < self.eps * (a2_new + self.a2 + self.eps):
             return False
 
         # Equation 18
@@ -118,8 +123,7 @@ class SmoAlgorithm:
 
         # Equation 22
         if self.use_linear_optim:
-            self.w = self.w + y1 * (a1_new - a1) * X1 \
-                     + self.y2 * (a2_new - self.a2) * self.X2
+            self.w = self.w + y1 * (a1_new - a1) * X1 + self.y2 * (a2_new - self.a2) * self.X2
 
         # Update the error cache using the new Lagrange multipliers.
         delta1 = y1 * (a1_new - a1)
@@ -128,9 +132,11 @@ class SmoAlgorithm:
         # Update the error cache.
         for i in range(self.m):
             if 0 < self.alphas[i] < self.C:
-                self.errors[i] += delta1 * self.kernel(X1, self.X[i]) + \
-                                  delta2 * self.kernel(self.X2, self.X[i]) \
-                                  - delta_b
+                self.errors[i] += (
+                    delta1 * self.kernel(X1, self.X[i])
+                    + delta2 * self.kernel(self.X2, self.X[i])
+                    - delta_b
+                )
 
         self.errors[i1] = 0
         self.errors[i2] = 0
@@ -142,12 +148,10 @@ class SmoAlgorithm:
 
     def compute_b(self, E1, a1, a1_new, a2_new, k11, k12, k22, y1):
         # Equation 20
-        b1 = E1 + y1 * (a1_new - a1) * k11 + \
-             self.y2 * (a2_new - self.a2) * k12 + self.b
+        b1 = E1 + y1 * (a1_new - a1) * k11 + self.y2 * (a2_new - self.a2) * k12 + self.b
 
         # Equation 21
-        b2 = self.E2 + y1 * (a1_new - a1) * k12 + \
-             self.y2 * (a2_new - self.a2) * k22 + self.b
+        b2 = self.E2 + y1 * (a1_new - a1) * k12 + self.y2 * (a2_new - self.a2) * k22 + self.b
 
         if (0 < a1_new) and (self.C > a1_new):
             new_b = b1
@@ -184,8 +188,7 @@ class SmoAlgorithm:
 
         r2 = self.E2 * self.y2
 
-        if not ((r2 < -self.tol and self.a2 < self.C) or
-                    (r2 > self.tol and self.a2 > 0)):
+        if not ((r2 < -self.tol and self.a2 < self.C) or (r2 > self.tol and self.a2 > 0)):
             # The KKT conditions are met, SMO looks at another example.
             return 0
 
@@ -222,8 +225,7 @@ class SmoAlgorithm:
         return self.output(i2) - self.y2
 
     def get_non_bound_indexes(self):
-        return np.where(np.logical_and(self.alphas > 0,
-                                       self.alphas < self.C))[0]
+        return np.where(np.logical_and(self.alphas > 0, self.alphas < self.C))[0]
 
     # First heuristic: loop  over examples where alpha is not 0 and not C
     # they are the most likely to violate the KKT conditions
@@ -253,4 +255,3 @@ class SmoAlgorithm:
                 examine_all = False
             elif num_changed == 0:
                 examine_all = True
-

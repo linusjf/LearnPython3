@@ -3,4 +3,5 @@
 
 from trapezoidal import trapezoidal
 from numpy import exp
-print(trapezoidal(lambda x: exp(-x**2), -1, 1.1, 400))
+
+print(trapezoidal(lambda x: exp(-(x**2)), -1, 1.1, 400))

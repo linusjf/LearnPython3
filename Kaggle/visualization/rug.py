@@ -2,14 +2,17 @@
 # -*- coding: utf-8 -*-
 
 import pandas as pd
+
 pd.set_option("display.max_rows", 5)
 pd.set_option("display.max_columns", 6)
 pd.plotting.register_matplotlib_converters()
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 sns.set_theme()
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('rug.pdf')
+
+pp = PdfPages("rug.pdf")
 print("Setup Complete")
 
 tips = sns.load_dataset("tips")
@@ -33,13 +36,13 @@ pp.savefig()
 plot.figure.clear()
 
 plot = sns.scatterplot(data=tips, x="total_bill", y="tip")
-sns.rugplot(data=tips, x="total_bill", y="tip", height=.1)
+sns.rugplot(data=tips, x="total_bill", y="tip", height=0.1)
 plot.set_title("Tips taller rug plot")
 pp.savefig()
 plot.figure.clear()
 
 plot = sns.scatterplot(data=tips, x="total_bill", y="tip")
-sns.rugplot(data=tips, x="total_bill", y="tip", height=-.02, clip_on=False)
+sns.rugplot(data=tips, x="total_bill", y="tip", height=-0.02, clip_on=False)
 plot.set_title("Tips rug outside axes plot")
 pp.savefig()
 plot.figure.clear()
@@ -47,7 +50,7 @@ plot.figure.clear()
 diamonds = sns.load_dataset("diamonds")
 print(diamonds.head())
 plot = sns.scatterplot(data=diamonds, x="carat", y="price", s=5)
-sns.rugplot(data=diamonds, x="carat", y="price", lw=1, alpha=.005)
+sns.rugplot(data=diamonds, x="carat", y="price", lw=1, alpha=0.005)
 plot.set_title("Diamonds rug carat price")
 pp.savefig()
 plot.figure.clear()

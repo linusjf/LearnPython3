@@ -85,8 +85,10 @@ import numpy as np
 import time
 from matplotlib.colors import Normalize
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('plot_rbf_parameters.pdf')
+
+pp = PdfPages("plot_rbf_parameters.pdf")
 print("Setup Complete")
+
 
 class MidpointNormalize(Normalize):
     def __init__(self, vmin=None, vmax=None, midpoint=None, clip=False):
@@ -152,10 +154,7 @@ cv = StratifiedShuffleSplit(n_splits=5, test_size=0.2, random_state=42)
 grid = GridSearchCV(SVC(), param_grid=param_grid, cv=cv)
 grid.fit(X, y)
 
-print(
-    "The best parameters are %s with a score of %0.2f"
-    % (grid.best_params_, grid.best_score_)
-)
+print("The best parameters are %s with a score of %0.2f" % (grid.best_params_, grid.best_score_))
 toc = time.perf_counter()
 print("Time taken for parameter search : {}".format(toc - tic))
 
@@ -201,15 +200,15 @@ for k, (C, gamma, clf) in enumerate(classifiers):
     plt.xticks(())
     plt.yticks(())
     plt.axis("tight")
-    print("gamma={},C={} plotted...".format(gamma,C))
+    print("gamma={},C={} plotted...".format(gamma, C))
 
 toc = time.perf_counter()
 print("Time taken for plots : {}".format(toc - tic))
 
 tic = time.perf_counter()
-print("start save figure...")  
+print("start save figure...")
 pp.savefig()
-print("end save figure...")  
+print("end save figure...")
 toc = time.perf_counter()
 print("Time taken to save plots : {}".format(toc - tic))
 scores = grid.cv_results_["mean_test_score"].reshape(len(C_range), len(gamma_range))
@@ -225,7 +224,7 @@ scores = grid.cv_results_["mean_test_score"].reshape(len(C_range), len(gamma_ran
 # the same color.
 
 tic = time.perf_counter()
-print("start plotting heatmap...")  
+print("start plotting heatmap...")
 plt.figure(figsize=(8, 6))
 plt.subplots_adjust(left=0.2, right=0.95, bottom=0.15, top=0.95)
 plt.imshow(
@@ -241,7 +240,7 @@ plt.xticks(np.arange(len(gamma_range)), gamma_range, rotation=45)
 plt.yticks(np.arange(len(C_range)), C_range)
 plt.title("Validation accuracy")
 pp.savefig()
-print("end plotting heatmap...")  
+print("end plotting heatmap...")
 toc = time.perf_counter()
 print("Time taken for heatmap : {}".format(toc - tic))
 pp.close()

@@ -15,7 +15,7 @@ print(matrix)
 outcome, predictors = dmatrices("y ~ x1 + x2", data)
 print(outcome)
 print(predictors)
-betas = np.linalg.lstsq(predictors, outcome,rcond=None)[0].ravel()
+betas = np.linalg.lstsq(predictors, outcome, rcond=None)[0].ravel()
 print(betas)
 for name, beta in zip(predictors.design_info.column_names, betas):
     print(f"{name}: {beta}")
@@ -33,8 +33,11 @@ print(d)
 d = dmatrix("center(x1) + standardize(x2)", data)
 print(d)
 print(dir(patsy.builtins))
+
+
 def double(x):
     return 2 * x
+
 
 d = dmatrix("x1 + double(x1)", data)
 print(d)
@@ -48,11 +51,11 @@ except patsy.PatsyError as pe:
     print(f"{pe}")
 
 # ...but this works:
-d = dmatrix("Q('weird column!') + x1",weird_data)
+d = dmatrix("Q('weird column!') + x1", weird_data)
 print(d)
 
 # compare to "x1 + x2"
-d = dmatrix("I(x1 + x2)", data)  
+d = dmatrix("I(x1 + x2)", data)
 print(d)
 
 d = dmatrix("I(x1 + x2)", {"x1": np.array([1, 2, 3]), "x2": np.array([4, 5, 6])})

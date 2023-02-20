@@ -3,14 +3,17 @@
 
 from numpy import linspace
 
+
 def f(x):
     return x
+
 
 def g(x):
     return x**2
 
-N = int(input('Give the number of check points N: '))
-epsilon = float(input('Give the error tolerance: '))
+
+N = int(input("Give the number of check points N: "))
+epsilon = float(input("Give the error tolerance: "))
 
 x_values = linspace(-4, 4, N)
 

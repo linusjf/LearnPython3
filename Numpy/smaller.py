@@ -3,17 +3,29 @@
 
 from timeit import Timer
 
-print(min(Timer(setup="""
+print(
+    min(
+        Timer(
+            setup="""
 import numpy as np
 a = np.zeros((int(1e6),), dtype=np.float64)
 """,
-stmt="""
+            stmt="""
 a*a
-""").repeat(5,1000)))
-print(min(Timer(setup="""
+""",
+        ).repeat(5, 1000)
+    )
+)
+print(
+    min(
+        Timer(
+            setup="""
 import numpy as np
 b= np.zeros((int(1e6),), dtype=np.float32)
 """,
-stmt="""
+            stmt="""
 b*b
-""").repeat(5,1000)))
+""",
+        ).repeat(5, 1000)
+    )
+)

@@ -47,9 +47,7 @@ def connect_to_endpoint(url):
     response = requests.request("GET", url, auth=bearer_oauth, timeout=10)
     print(response.status_code)
     if response.status_code != 200:
-        raise Exception(
-            f"Request returned an error: {response.status_code} {response.text}"
-        )
+        raise Exception(f"Request returned an error: {response.status_code} {response.text}")
     return response.json()
 
 

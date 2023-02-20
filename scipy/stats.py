@@ -6,7 +6,7 @@ from scipy.stats import ttest_ind
 from scipy.stats import kstest
 from scipy.stats import normaltest
 from scipy.stats import describe
-from scipy.stats import skew,kurtosis
+from scipy.stats import skew, kurtosis
 
 v1 = np.random.normal(size=100)
 v2 = np.random.normal(size=100)
@@ -16,7 +16,7 @@ res = ttest_ind(v1, v2)
 print(res)
 print(res.pvalue)
 v = np.random.normal(size=100)
-res = kstest(v, 'norm')
+res = kstest(v, "norm")
 
 print(res)
 res = describe(v)
@@ -38,7 +38,7 @@ k2, p = normaltest(x)
 alpha = 1e-3
 print("p = {:g}".format(p))
 # null hypothesis: x comes from a normal distribution
-if p < alpha:  
+if p < alpha:
     print("The null hypothesis can be rejected")
 else:
     print("The null hypothesis cannot be rejected")

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Pythagorean triplets."""
 from math import sqrt
+
 N = input("Maximum Number? ")
 print()
 print("Number input: " + N)

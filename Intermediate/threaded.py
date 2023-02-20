@@ -23,13 +23,17 @@ class ThreadSafeIter(Iterator):
         """Get next object."""
         with self.lock:
             return self._it.__next__()
+
+
 # pylint: enable=too-few-public-methods
 
 
 def threadsafe_generator(_f):
     """Decorate a generator function thread-safe."""
+
     def gen(*_a, **_kw):
         return ThreadSafeIter(_f(*_a, **_kw))
+
     return gen
 
 
@@ -40,6 +44,7 @@ def count():
     while True:
         i += 1
         yield i
+
 
 # pylint: disable=too-few-public-methods
 
@@ -59,6 +64,8 @@ class Counter(Iterator):
         with self.lock:
             self.i += 1
             return self.i
+
+
 # pylint: enable=too-few-public-methods
 
 
@@ -76,8 +83,7 @@ def run(_f, repeats=1000, nthreads=10):
     times in each thread.
     """
     # create threads
-    threads = [Thread(target=loop, args=(_f, repeats))
-               for i in range(nthreads)]
+    threads = [Thread(target=loop, args=(_f, repeats)) for i in range(nthreads)]
 
     # start threads
     for _t in threads:

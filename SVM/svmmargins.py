@@ -29,8 +29,8 @@ from matplotlib.backends.backend_pdf import PdfPages
 np.random.seed(0)
 X = np.r_[np.random.randn(20, 2) - [2, 2], np.random.randn(20, 2) + [2, 2]]
 Y = [0] * 20 + [1] * 20
-print("X: ",X)
-print("Y: ",Y)
+print("X: ", X)
+print("Y: ", Y)
 
 # figure number
 fignum = 1
@@ -39,8 +39,14 @@ fignum = 1
 pdf_pages = PdfPages("svmmargins.pdf")
 
 # fit the model
-for name, penalty in (("unreg", float('inf')),("unreg", 1), ("reg", 0.10),("reg", 0.05),("reg", 0.01),("reg", 0.001)):
-
+for name, penalty in (
+    ("unreg", float("inf")),
+    ("unreg", 1),
+    ("reg", 0.10),
+    ("reg", 0.05),
+    ("reg", 0.01),
+    ("reg", 0.001),
+):
     clf = svm.SVC(kernel="linear", C=penalty)
     clf.fit(X, Y)
 
@@ -74,12 +80,7 @@ for name, penalty in (("unreg", float('inf')),("unreg", 1), ("reg", 0.10),("reg"
         edgecolors="k",
         cmap=cm.get_cmap("RdBu"),
     )
-    plt.scatter(
-        X[:, 0], X[:, 1], c=Y, 
-        zorder=10, 
-        cmap=cm.get_cmap("RdBu"),
-        edgecolors="k"
-    )
+    plt.scatter(X[:, 0], X[:, 1], c=Y, zorder=10, cmap=cm.get_cmap("RdBu"), edgecolors="k")
 
     plt.axis("tight")
     x_min = -4.8
@@ -99,7 +100,7 @@ for name, penalty in (("unreg", float('inf')),("unreg", 1), ("reg", 0.10),("reg"
 
     plt.xticks(())
     plt.yticks(())
-    plt.title("name = {},C = {}".format(name,penalty))
+    plt.title("name = {},C = {}".format(name, penalty))
     fignum = fignum + 1
     pdf_pages.savefig()
 

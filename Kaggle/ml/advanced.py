@@ -2,25 +2,29 @@
 # -*- coding: utf-8 -*-
 
 import pandas as pd
+
 pd.set_option("display.max_rows", None, "display.max_columns", None)
 
 from sklearn.model_selection import train_test_split
 
 # Load the data
-data = pd.read_csv('melb_data.csv')
+data = pd.read_csv("melb_data.csv")
 print(data.head())
 # Select target
 y = data.Price
 
 # To keep things simple, we'll use only numerical predictors
-melb_predictors = data.drop(['Price'], axis=1)
-X = melb_predictors.select_dtypes(exclude=['object'])
+melb_predictors = data.drop(["Price"], axis=1)
+X = melb_predictors.select_dtypes(exclude=["object"])
 
 # Divide data into training and validation subsets
-X_train, X_valid, y_train, y_valid = train_test_split(X, y, train_size=0.8, test_size=0.2,random_state=0)
+X_train, X_valid, y_train, y_valid = train_test_split(
+    X, y, train_size=0.8, test_size=0.2, random_state=0
+)
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
+
 
 # Function for comparing different approaches
 def score_dataset(X_train, X_valid, y_train, y_valid):
@@ -29,9 +33,9 @@ def score_dataset(X_train, X_valid, y_train, y_valid):
     preds = model.predict(X_valid)
     return mean_absolute_error(y_valid, preds)
 
+
 # Get names of columns with missing values
-cols_with_missing = [col for col in X_train.columns
-                     if X_train[col].isnull().any()]
+cols_with_missing = [col for col in X_train.columns if X_train[col].isnull().any()]
 
 # Drop columns in training and validation data
 reduced_X_train = X_train.drop(cols_with_missing, axis=1)
@@ -60,8 +64,8 @@ X_valid_plus = X_valid.copy()
 
 # Make new columns indicating what will be imputed
 for col in cols_with_missing:
-    X_train_plus[col + '_was_missing'] = X_train_plus[col].isnull()
-    X_valid_plus[col + '_was_missing'] = X_valid_plus[col].isnull()
+    X_train_plus[col + "_was_missing"] = X_train_plus[col].isnull()
+    X_valid_plus[col + "_was_missing"] = X_valid_plus[col].isnull()
 
 # Imputation
 my_imputer = SimpleImputer()
@@ -80,7 +84,6 @@ print("Shape of training data ")
 print(X_train.shape)
 
 # Number of missing values in each column of training data
-missing_val_count_by_column = (X_train.isnull().sum())
+missing_val_count_by_column = X_train.isnull().sum()
 print("Missing values count by column")
 print(missing_val_count_by_column[missing_val_count_by_column > 0])
-

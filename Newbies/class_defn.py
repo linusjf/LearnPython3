@@ -3,7 +3,7 @@
 # Example file for working with classes
 
 
-class MyClass():
+class MyClass:
     """Class definition."""
 
     # pylint: disable=no-self-use
@@ -14,6 +14,7 @@ class MyClass():
     def method2(self, some_string):
         """Execute method 2."""
         print("Software Testing:" + some_string)
+
     # pylint: enable=no-self-use
 
 
@@ -29,7 +30,9 @@ class ChildClass(MyClass):
     def method2(self, some_string):
         """Execute method 2."""
         print("Child class method 2:" + some_string)
+
     # pylint: enable=no-self-use
+
 
 # pylint: disable=too-few-public-methods
 
@@ -46,6 +49,8 @@ class User:
     def say_hello(self):
         """Say hello method."""
         print("Welcome to Guru99, " + self.name)
+
+
 # pylint: enable=too-few-public-methods
 
 

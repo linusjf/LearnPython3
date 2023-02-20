@@ -9,10 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 # create a pipeline object
-pipe = make_pipeline(
-    StandardScaler(),
-    LogisticRegression()
-)
+pipe = make_pipeline(StandardScaler(), LogisticRegression())
 
 # load the iris dataset and split it into train and test sets
 X, y = load_iris(return_X_y=True)

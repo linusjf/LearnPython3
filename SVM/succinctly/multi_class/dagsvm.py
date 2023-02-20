@@ -3,10 +3,10 @@ from itertools import combinations
 from sklearn import svm
 import numpy as np
 
+
 def predict_class(X, classifiers, distinct_classes, class_pairs):
     results = []
     for x_row in X:
-
         class_list = list(distinct_classes)
 
         # After each prediction, delete the rejected class
@@ -42,12 +42,10 @@ for class_pair in class_pairs:
 # Train one classifier per class
 classifiers = []
 for data in training_data:
-    clf = svm.SVC(kernel='linear', C=1000)
+    clf = svm.SVC(kernel="linear", C=1000)
     clf.fit(data[0], data[1])
     classifiers.append(clf)
 
 # Make predictions on two data points
-X_to_predict = np.array([[5,5],[2,5]])
-print(predict_class(X_to_predict, classifiers, set(y), class_pairs)) # prints [2 1]
-
-
+X_to_predict = np.array([[5, 5], [2, 5]])
+print(predict_class(X_to_predict, classifiers, set(y), class_pairs))  # prints [2 1]

@@ -3,17 +3,17 @@
 
 primes = [2, 3, 5, 7]
 
-planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
 hands = [
-    ['J', 'Q', 'K'],
-    ['2', '2', '2'],
-    ['6', 'A', 'K'], # (Comma after the last element is optional)
+    ["J", "Q", "K"],
+    ["2", "2", "2"],
+    ["6", "A", "K"],  # (Comma after the last element is optional)
 ]
 
-my_favourite_things = [32, 'raindrops on roses', help]
+my_favourite_things = [32, "raindrops on roses", help]
 # (Yes, Python's help function is *definitely* one of my favourite things)
 
-print(planets[0])  
+print(planets[0])
 print(planets[1])
 print(planets[-1])
 print(planets[-2])
@@ -23,13 +23,18 @@ print(planets[3:])
 print(planets[1:-1])
 print(planets[-3:])
 
-planets[3] = 'Malacandra'
+planets[3] = "Malacandra"
 print(planets)
 
-planets[:3] = ['Mur', 'Vee', 'Ur']
+planets[:3] = ["Mur", "Vee", "Ur"]
 print(planets)
 # That was silly. Let's give them back their old names
-planets[:4] = ['Mercury', 'Venus', 'Earth', 'Mars',]
+planets[:4] = [
+    "Mercury",
+    "Venus",
+    "Earth",
+    "Mars",
+]
 
 # How many planets are there?
 print(len(planets))
@@ -54,8 +59,8 @@ print(x.bit_length)
 print(x.bit_length())
 
 # Pluto is a planet darn it!
-# Actually, it's a dwarf planet. 
-planets.append('Pluto')
+# Actually, it's a dwarf planet.
+planets.append("Pluto")
 
 print(planets)
 
@@ -63,16 +68,16 @@ planets.pop()
 
 print(planets)
 
-print(planets.index('Earth'))
-#print(planets.index('Pluto'))
+print(planets.index("Earth"))
+# print(planets.index('Pluto'))
 
-print('Earth' in planets)
+print("Earth" in planets)
 
 # Is Calbefraques a planet?
 print("Calbefraques" in planets)
 
 t = (1, 2, 3)
-#t = 1, 2, 3 # equivalent to above
+# t = 1, 2, 3 # equivalent to above
 print(t)
 
 x = 0.125

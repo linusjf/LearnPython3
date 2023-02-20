@@ -13,8 +13,9 @@ def my_print(arr, cols, dec):
         # alt: for x in arr
         if i > 0 and i % cols == 0:
             print("")
-        print(fmt % arr[i],end=" ")
+        print(fmt % arr[i], end=" ")
     print("")
+
 
 # =====
 
@@ -23,7 +24,7 @@ def main():
     """Run main program."""
     print("\nBegin array demo \n")
     print("Creating array arr using np.array() & list with hard-coded values")
-    arr = np.array([1., 3., 5., 7., 9.])
+    arr = np.array([1.0, 3.0, 5.0, 7.0, 9.0])
     # float64
     _dt = np.dtype(arr[0])
     print("Cell element type is " + str(_dt.name))
@@ -54,13 +55,14 @@ def main():
     print("")
 
     print("Creating array arr using  np.linspace(2., 5., 6)")
-    arr = np.linspace(2., 5., 6)
+    arr = np.linspace(2.0, 5.0, 6)
     # 6 values from [2.0 to 5.0] inc.
     print("Printing array arr using built-in print() ")
     print(arr)
     print("")
 
     print("\nEnd demo \n")
+
 
 if __name__ == "__main__":
     main()

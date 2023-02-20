@@ -3,7 +3,8 @@
 import tornado.ioloop
 import tornado.web
 import httplib2
- 
+
+
 class AsyncHandler(tornado.web.RequestHandler):
     @tornado.gen.coroutine
     def get(self):
@@ -13,12 +14,16 @@ class AsyncHandler(tornado.web.RequestHandler):
 
     def _async_callback(self, response, content):
         print("Content:", content)
-        print("Response:\nStatusCode: %s Location: %s" %(response['status'], response['content-location']))
+        print(
+            "Response:\nStatusCode: %s Location: %s"
+            % (response["status"], response["content-location"])
+        )
         self.finish()
         tornado.ioloop.IOLoop.instance().stop()
-    
+
+
 application = tornado.web.Application([(r"/", AsyncHandler)], debug=True)
- 
+
 if __name__ == "__main__":
     application.listen(8888)
     tornado.ioloop.IOLoop.instance().start()

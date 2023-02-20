@@ -15,7 +15,7 @@ def main():
     _f.close()
     # Open the file back and read the contents
     _f = open("guru99.txt", "r")
-    if _f.mode == 'r':
+    if _f.mode == "r":
         contents = _f.read()
         print(contents)
         _f.close()
@@ -23,7 +23,7 @@ def main():
     _f = open("guru99.txt", "r")
     lines = _f.readlines()
     for _x in lines:
-        print(_x, end='')
+        print(_x, end="")
 
     # Print the name of the OS
     print(os.name)
@@ -50,7 +50,7 @@ def main():
         print(_t)
         print(datetime.datetime.fromtimestamp(path.getmtime("guru99.txt.bak")))
         # rename the original file
-        os.rename('guru99.txt', 'career.guru99.txt')
+        os.rename("guru99.txt", "career.guru99.txt")
 
 
 if __name__ == "__main__":

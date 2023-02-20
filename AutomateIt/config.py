@@ -6,9 +6,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-fromaddr = os.getenv('fromaddr')
-password = os.getenv('password')
-toaddr = os.getenv('toaddr')
+fromaddr = os.getenv("fromaddr")
+password = os.getenv("password")
+toaddr = os.getenv("toaddr")
 serviceaccount = os.getenv("serviceaccount")
 twitterapikey = os.getenv("TWITTER_API_KEY")
 twitterapikeysecret = os.getenv("TWITTER_API_KEY_SECRET")

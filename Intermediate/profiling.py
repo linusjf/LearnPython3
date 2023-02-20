@@ -17,6 +17,7 @@ class Test:
         self.str = _b * 100
         # ensures that above is run only once
         self.check = self.check_post
+
     # pylint: enable=method-hidden
 
     def check_post(self, _a, _b, _c):

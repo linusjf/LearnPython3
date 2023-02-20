@@ -21,8 +21,8 @@ auth = twitter.get_authentication_tokens()
 
 print(auth)
 
-OAUTH_TOKEN = auth['oauth_token']
-OAUTH_TOKEN_SECRET = auth['oauth_token_secret']
+OAUTH_TOKEN = auth["oauth_token"]
+OAUTH_TOKEN_SECRET = auth["oauth_token_secret"]
 
 auth_url = auth["auth_url"]
 
@@ -36,9 +36,9 @@ twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 final_step = twitter.get_authorized_tokens(verifier)
 
 print(final_step)
-OAUTH_TOKEN = final_step['oauth_token']
-OAUTH_TOKEN_SECRET = final_step['oauth_token_secret']
+OAUTH_TOKEN = final_step["oauth_token"]
+OAUTH_TOKEN_SECRET = final_step["oauth_token_secret"]
 
 twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 twitter.get_home_timeline()
-print(twitter.search(q='python'))
+print(twitter.search(q="python"))

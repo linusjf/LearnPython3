@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import pandas as pd
+
 pd.set_option("display.max_rows", 5)
 pd.set_option("display.max_columns", 6)
 pd.plotting.register_matplotlib_converters()
 import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('kde.pdf')
+
+pp = PdfPages("kde.pdf")
 print("Setup Complete")
 
 tips = sns.load_dataset("tips")
@@ -30,7 +32,7 @@ plot.set_title("Iris density plots")
 pp.savefig()
 plot.figure.clear()
 
-plot = sns.kdeplot(data=tips, x="total_bill", bw_adjust=.2)
+plot = sns.kdeplot(data=tips, x="total_bill", bw_adjust=0.2)
 plot.set_title("Total bill density smoothed less")
 pp.savefig()
 plot.figure.clear()
@@ -56,17 +58,18 @@ pp.savefig()
 plot.figure.clear()
 
 plot = sns.kdeplot(
-    data=tips, x="total_bill", hue="time",
-    cumulative=True, common_norm=False, common_grid=True,
+    data=tips,
+    x="total_bill",
+    hue="time",
+    cumulative=True,
+    common_norm=False,
+    common_grid=True,
 )
 plot.set_title("Total bill density cumulative")
 pp.savefig()
 plot.figure.clear()
 
-tips_agg = (tips
-    .groupby("size")
-    .agg(total_bill=("total_bill", "mean"), n=("total_bill", "count"))
-)
+tips_agg = tips.groupby("size").agg(total_bill=("total_bill", "mean"), n=("total_bill", "count"))
 print(tips_agg.head())
 plot = sns.kdeplot(data=tips_agg, x="total_bill", weights="n")
 plot.set_title("Aggregate tips density")
@@ -86,9 +89,14 @@ pp.savefig()
 plot.figure.clear()
 
 plot = sns.kdeplot(
-   data=tips, x="total_bill", hue="size",
-   fill=True, common_norm=False, palette="crest",
-   alpha=.5, linewidth=0,
+    data=tips,
+    x="total_bill",
+    hue="size",
+    fill=True,
+    common_norm=False,
+    palette="crest",
+    alpha=0.5,
+    linewidth=0,
 )
 plot.set_title("Total bill density (palette)")
 pp.savefig()
@@ -107,30 +115,47 @@ pp.savefig()
 plot.figure.clear()
 
 plot = sns.kdeplot(
-    data=geyser, x="waiting", y="duration", hue="kind", fill=True,
+    data=geyser,
+    x="waiting",
+    y="duration",
+    hue="kind",
+    fill=True,
 )
 plot.set_title("Geyser Bivariate Hues")
 pp.savefig()
 plot.figure.clear()
 
 plot = sns.kdeplot(
-    data=geyser, x="waiting", y="duration", hue="kind", fill=True,
+    data=geyser,
+    x="waiting",
+    y="duration",
+    hue="kind",
+    fill=True,
 )
 plot.set_title("Geyser Bivariate Contours")
 pp.savefig()
 plot.figure.clear()
 
 plot = sns.kdeplot(
-    data=geyser, x="waiting", y="duration", hue="kind",
-    levels=5, thresh=.2,
+    data=geyser,
+    x="waiting",
+    y="duration",
+    hue="kind",
+    levels=5,
+    thresh=0.2,
 )
 plot.set_title("Geyser Bivariate Less Contours")
 pp.savefig()
 plot.figure.clear()
 
 plot = sns.kdeplot(
-    data=geyser, x="waiting", y="duration",
-    fill=True, thresh=0, levels=100, cmap="mako",
+    data=geyser,
+    x="waiting",
+    y="duration",
+    fill=True,
+    thresh=0,
+    levels=100,
+    cmap="mako",
 )
 plot.set_title("Geyser Bivariate ColorMap")
 pp.savefig()
