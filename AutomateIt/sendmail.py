@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""SendMail."""
 
 import smtplib
 import config
@@ -7,6 +8,6 @@ import config
 server = smtplib.SMTP("smtp.gmail.com", 587)
 server.starttls()
 server.login(config.fromaddr, config.password)
-msg = "Some nice msg"
-server.sendmail(config.fromaddr, config.toaddr, msg)
+MSG = "Some nice msg"
+server.sendmail(config.fromaddr, config.toaddr, MSG)
 server.quit()
