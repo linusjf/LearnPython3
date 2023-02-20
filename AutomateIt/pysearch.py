@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 """
+PySearch.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : pysearch

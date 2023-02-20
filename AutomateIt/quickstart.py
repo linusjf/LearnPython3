@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+"""
+QuickStart.
 
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
@@ -7,6 +9,7 @@
 # @description :
 # -*- coding: utf-8 -*-'
 ######################################################################
+"""
 from __future__ import print_function
 
 import os.path
@@ -22,8 +25,10 @@ SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
 
 
 def main():
-    """Shows basic usage of the Gmail API.
-    Lists the user's Gmail labels.
+    """
+    Show basic usage of the Gmail API.
+
+    List the user's Gmail labels.
     """
     creds = None
     # The file token.json stores the user's access and refresh tokens, and is
@@ -36,16 +41,17 @@ def main():
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
-            creds = flow.run_local_server(port=0)
+            flo = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
+            creds = flo.run_local_server(port=0)
         # Save the credentials for the next run
-        with open("token.json", "w") as token:
+        with open("token.json", "w", encoding="utf-8") as token:
             token.write(creds.to_json())
 
     try:
         # Call the Gmail API
         service = build("gmail", "v1", credentials=creds)
-        results = service.users().labels().list(userId="me").execute()
+        users = service.users()
+        results = users.labels().list(userId="me").execute()  # noqa
         labels = results.get("labels", [])
 
         if not labels:
