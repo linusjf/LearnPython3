@@ -4,8 +4,8 @@
 from docx import Document
 
 employee_data = [
-    {"id": 123, "name": "John Sally", "department": "Operations", "isDue": True}, # noqa
-    {"id": 245, "name": "Robert Langford", "department": "Software", "isDue": False}, # noqa
+    {"id": 123, "name": "John Sally", "department": "Operations", "isDue": True},  # noqa
+    {"id": 245, "name": "Robert Langford", "department": "Software", "isDue": False},  # noqa
     {"id": 300, "name": "Nancy Lord", "department": "Software", "isDue": True},
 ]
 agenda = {
@@ -24,9 +24,11 @@ def generate_document(employee_data, agenda):
             document.add_heading("Your New Hire Orientationn", level=1)
             document.add_paragraph("Dear %s," % name)
             document.add_paragraph(
-                "Welcome to Google Inc. You have been selected for our new hire orientation." # noqa
+                "Welcome to Google Inc. You have been selected for our new hire orientation."  # noqa
             )
-            document.add_paragraph("Based on your department you will go through below sessions:") # noqa
+            document.add_paragraph(
+                "Based on your department you will go through below sessions:"
+            )  # noqa
             department = emp["department"]
             for session in agenda[department]:
                 document.add_paragraph(session, style="List Bullet")
