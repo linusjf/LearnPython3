@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""DocRead."""
 import docx
 
 doc = docx.Document("WExercise.docx")
@@ -14,11 +15,11 @@ print("Document Revision:", doc.core_properties.revision)
 if doc.tables:
     table = doc.tables[0]
     print("Column 1:")
-    for i in range(len(table.rows)):
-        print(table.rows[i].cells[0].paragraphs[0].text)
+    for _, row in enumerate(table.rows):
+        print(row.cells[0].paragraphs[0].text)
     print("Column 2:")
-    for i in range(len(table.rows)):
-        print(table.rows[i].cells[1].paragraphs[0].text)
+    for _, row in enumerate(table.rows):
+        print(row.cells[1].paragraphs[0].text)
     print("Column 3:")
-    for i in range(len(table.rows)):
-        print(table.rows[i].cells[2].paragraphs[0].text)
+    for _, row in enumerate(table.rows):
+        print(row.cells[2].paragraphs[0].text)
