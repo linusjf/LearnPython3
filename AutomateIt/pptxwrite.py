@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+"""
+PPTXWrite.
 
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
@@ -7,8 +9,9 @@
 # @description :
 # -*- coding: utf-8 -*-'
 ######################################################################
-import collections
-import collections.abc
+"""
+import collections  # noqa # pylint: disable = unused-import
+from collections import abc  # noqa # pylint: disable = unused-import
 from pptx import Presentation
 
 prs = Presentation()
