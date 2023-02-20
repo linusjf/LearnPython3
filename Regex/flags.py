@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 """
+Flags.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : flags

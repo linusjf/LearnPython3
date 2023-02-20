@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 """
+Characters.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : characters
@@ -43,7 +45,7 @@ print([m[0] for m in m_iter if int(m[0]) < 350])
 
 # note that return value is string and s[0] is used to get matched portion
 def num_range(_):
-    """num-range"""
+    """Num-Range."""
     return "1" if 200 <= int(_[0]) <= 650 else "0"
 
 
@@ -71,9 +73,9 @@ print(re.findall(r"a[+^]b", "f*(a^b) - 3*(a+b)"))
 print(re.findall(r"a[\^+]b", "f*(a^b) - 3*(a+b)"))
 # [ can be escaped with \ or placed as last character
 # ] can be escaped with \ or placed as first character
-print(re.search(r"[a-z\[\]0-9]+", "words[5] = tea")[0])
+print(re.search(r'[a-z\[\]0-9]+', 'words[5] = tea')[0])
 # \ should be escaped using \
-print(re.search(r"[a\\b]+", r"5ba\babc2")[0])
+print(re.search(r'[a\\b]+', r'5ba\babc2')[0])
 
 print(re.split(r"\d+", "Sample123string42with777numbers"))
 print(re.findall(r"\d+", "foo=5, bar=3; x=83, y=120"))
@@ -95,7 +97,8 @@ print(remove_parentheses.sub("", STR1))
 print(remove_parentheses.sub("", STR2))
 print(remove_parentheses.sub("", STR3))
 
-# Extract all hex character sequences, with optional prefix. Match the characters case insen-
+# Extract all hex character sequences, with optional prefix.
+# Match the characters case insen-
 # sitively, and the sequences shouldn’t be surrounded by other word characters.
 hex_seq = re.compile(r"\b(?:0x)?[a-f0-9]+\b", flags=re.IGNORECASE)
 STR1 = "128A foo 0xfe32 34 0xbar"

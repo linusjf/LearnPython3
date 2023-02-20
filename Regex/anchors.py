@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 """
+Anchors.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : anchors
@@ -20,7 +22,9 @@ print(bool(re.search(r"are\Z", "nearest")))
 words = ["surrender", "unicorn", "newer", "door", "empty", "eel", "pest"]
 print([w for w in words if re.search(r"er\Z", w)])
 print([w for w in words if re.search(r"t\Z", w)])
-# Combining both the start and end string anchors, you can restrict the matching to the whole
+# Combining both the start and end string anchors, you can restrict the
+# matching
+# to the whole
 # string. Similar to comparing strings using the == operator.
 word_pat = re.compile(r"\Acat\Z")
 print(bool(word_pat.search("cat")))
