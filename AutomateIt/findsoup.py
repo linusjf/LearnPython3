@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""findsoup"""
+"""Findsoup."""
 # -*- coding: utf-8 -*-
 import bs4
 
