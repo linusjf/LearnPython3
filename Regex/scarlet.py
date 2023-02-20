@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 """
+Scarlet.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : scarlet
