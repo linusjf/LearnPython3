@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+"""CreateAttach"""
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : createattach
@@ -18,12 +18,9 @@ from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
-import config
-
 import google.auth
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-
 
 def gmail_create_draft_with_attachment():
     """Create and insert a draft email with attachment.
@@ -48,7 +45,8 @@ def gmail_create_draft_with_attachment():
 
         # text
         mime_message.set_content(
-            "Hi, this is automated mail with attachment." "Please do not reply."
+            "Hi, this is automated mail with attachment."
+            "Please do not reply."
         )
 
         # attachment
@@ -57,8 +55,8 @@ def gmail_create_draft_with_attachment():
         type_subtype, _ = mimetypes.guess_type(attachment_filename)
         maintype, subtype = type_subtype.split("/")
 
-        with open(attachment_filename, "rb") as fp:
-            attachment_data = fp.read()
+        with open(attachment_filename, "rb") as _fp:
+            attachment_data = _fp.read()
         mime_message.add_attachment(attachment_data, maintype, subtype)
 
         encoded_message = base64.urlsafe_b64encode(mime_message.as_bytes()).decode()
