@@ -1,13 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""ReadCSV."""
 import csv
 
-fh = open("mylist.csv", "rt")
-try:
+with open("mylist.csv", "rt", encoding="utf-8") as fh:
     reader = csv.reader(fh)
     print("Data from the CSV:")
     print(list(reader))
-except Exception as e:
-    print("Exception is:", e)
-finally:
-    fh.close()
