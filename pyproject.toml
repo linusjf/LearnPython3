@@ -1,0 +1,5 @@
+[tool.black]
+line-length = 99
+# 'extend-exclude' excludes files or directories in addition to the defaults
+extend-exclude = '''
+'''
