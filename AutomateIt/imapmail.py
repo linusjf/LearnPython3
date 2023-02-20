@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import config, imaplib
+"""imapmail"""
+import imaplib
+import config
 
 M = imaplib.IMAP4_SSL("imap.gmail.com", 993)
 M.login(config.fromaddr, config.password)
