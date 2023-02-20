@@ -19,7 +19,9 @@ import config
 
 
 def gmail_create_draft():
-    """Create and insert a draft email.
+    """
+    Create and insert a draft email.
+
     Print the returned draft's message and id.
     Returns: Draft object, including draft id and message meta data.
 
@@ -45,7 +47,7 @@ def gmail_create_draft():
         encoded_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
 
         create_message = {"message": {"raw": encoded_message}}
-        # pylint: disable=E1101
+        # pylint: disable=no-member
         draft = service.users().drafts().create(userId="me", body=create_message).execute()  # noqa
 
         print(f'Draft id: {draft["id"]}\nDraft message: {draft["message"]}')
