@@ -21,7 +21,12 @@ print(re.sub(r'the.*ice', r'X', 'Hi there\nHave a Nice Day'))
 # re.S flag will allow newline character to be matched as well
 print(re.sub(r'the.*ice', r'X', 'Hi there\nHave a Nice Day', flags=re.S))
 # multiple flags can be combined using bitwise OR operator
-print(re.sub(r'the.*day', r'Bye', 'Hi there\nHave a Nice Day',flags=re.S | re.I))
+print(
+    re.sub(
+        r'the.*day',
+        r'Bye',
+        'Hi there\nHave a Nice Day',
+        flags=re.S | re.I))
 # check if any line in the string starts with 'top'
 print(bool(re.search(r'^top', "hi hello\ntop spot", flags=re.M)))
 # check if any line in the string ends with 'ar'
