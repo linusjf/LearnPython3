@@ -24,7 +24,8 @@ from googleapiclient.errors import HttpError
 
 
 def gmail_create_draft_with_attachment():
-    """Create and insert a draft email with attachment.
+    """
+    Create and insert a draft email with attachment.
 
     Print the returned draft's message and id.
     Returns: Draft object, including draft id and message meta data.
@@ -47,8 +48,7 @@ def gmail_create_draft_with_attachment():
 
         # text
         mime_message.set_content(
-            "Hi, this is automated mail with attachment."
-            "Please do not reply."
+            "Hi, this is automated mail with attachment.\nPlease do not reply."  # noqa
         )
 
         # attachment
@@ -64,9 +64,12 @@ def gmail_create_draft_with_attachment():
         encoded_message = base64.urlsafe_b64encode(mime_message.as_bytes()).decode()  # noqa
 
         create_draft_request_body = {"message": {"raw": encoded_message}}
-        # pylint: disable=E1101
+        # pylint: disable=no-member
         draft = (
-            service.users().drafts().create(userId="me", body=create_draft_request_body).execute()
+            service.users()
+            .drafts()
+            .create(userId="me", body=create_draft_request_body)
+            .execute()  # noqa
         )
         print(f'Draft id: {draft["id"]}\nDraft message: {draft["message"]}')
     except HttpError as error:
@@ -76,13 +79,16 @@ def gmail_create_draft_with_attachment():
 
 
 def build_file_part(file):
-    """Creates a MIME part for a file.
+    """
+    Create a MIME part for a file.
 
-    Args:
+    Args
       file: The path to the file to be attached.
 
-    Returns:
+    Returns
+    -------
       A MIME part that can be attached to a message.
+
     """
     content_type, encoding = mimetypes.guess_type(file)
 
