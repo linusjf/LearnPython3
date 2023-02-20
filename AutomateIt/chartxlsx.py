@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""chartxlsx"""
 import xlsxwriter
 
 workbook = xlsxwriter.Workbook("chartline.xlsx")
