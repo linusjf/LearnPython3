@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 """
+EscapeMeta.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : escapemeta
