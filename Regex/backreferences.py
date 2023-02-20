@@ -112,8 +112,8 @@ def anchor(_):
     """Anchor."""
     match = _[0].replace(" ", "-")
     _anchor = match.split("-")[0]
-    _name = match[match.find("-") + 1:].lower()
-    _label = _[0][_[0].find(" ") + 1:]
+    _name = match[match.find("-") + 1 :].lower()
+    _label = _[0][_[0].find(" ") + 1 :]
     return _anchor + " " + '<a name="' + _name + '"></a>' + _label
 
 

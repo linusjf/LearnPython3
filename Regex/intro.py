@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Regex samples"""
+"""Regex samples."""
 # -*- coding: utf-8 -*-
 import re
 import regex
