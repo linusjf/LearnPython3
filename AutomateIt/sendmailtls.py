@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""SendMailTLS."""
 import smtplib
 
 server = smtplib.SMTP("smtp.gmail.com", 587)

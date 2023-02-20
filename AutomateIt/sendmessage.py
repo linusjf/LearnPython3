@@ -21,13 +21,18 @@ from googleapiclient.errors import HttpError
 
 
 def gmail_send_message():
-    """Create and send an email message
+    """
+    Create and send an email message.
+
     Print the returned  message id
-    Returns: Message object, including message id
+    Returns
+    -------
+    Message object, including message id
 
     Load pre-authorized user credentials from the environment.
     TODO(developer) - See https://developers.google.com/identity
     for guides on implementing OAuth2 for the application.
+
     """
     creds, _ = google.auth.default()
 
@@ -45,9 +50,9 @@ def gmail_send_message():
         encoded_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
 
         create_message = {"raw": encoded_message}
-        # pylint: disable=E1101
-        send_message = service.users().messages().send(userId="me",
-                                                    body=create_message).execute() # noqa
+        # pylint: disable=no-member
+        messages = service.users().messages()
+        send_message = messages.send(userId="me", body=create_message).execute()
         print(f'Message Id: {send_message["id"]}')
     except HttpError as error:
         print(f"An error occurred: {error}")
