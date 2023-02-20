@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""CreateAttach"""
+"""CreateAttach."""
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : createattach
@@ -46,7 +46,8 @@ def gmail_create_draft_with_attachment():
 
         # text
         mime_message.set_content(
-            "Hi, this is automated mail with attachment." "Please do not reply."
+            "Hi, this is automated mail with attachment."
+            "Please do not reply."
         )
 
         # attachment
@@ -59,13 +60,11 @@ def gmail_create_draft_with_attachment():
             attachment_data = _fp.read()
         mime_message.add_attachment(attachment_data, maintype, subtype)
 
-        encoded_message = base64.urlsafe_b64encode(mime_message.as_bytes()).decode()
+        encoded_message = base64.urlsafe_b64encode(mime_message.as_bytes()).decode() # noqa
 
         create_draft_request_body = {"message": {"raw": encoded_message}}
         # pylint: disable=E1101
-        draft = (
-            service.users().drafts().create(userId="me", body=create_draft_request_body).execute()
-        )
+        draft = (service.users().drafts().create(userId="me", body=create_draft_request_body).execute()) # noqa
         print(f'Draft id: {draft["id"]}\nDraft message: {draft["message"]}')
     except HttpError as error:
         print(f"An error occurred: {error}")
