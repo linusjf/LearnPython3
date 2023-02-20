@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+"""CreateDraft"""
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : createdraft
@@ -12,16 +12,16 @@ from __future__ import print_function
 import base64
 from email.message import EmailMessage
 
-import config
 import google.auth
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+import config
 
 
 def gmail_create_draft():
     """Create and insert a draft email.
-     Print the returned draft's message and id.
-     Returns: Draft object, including draft id and message meta data.
+    Print the returned draft's message and id.
+    Returns: Draft object, including draft id and message meta data.
 
     Load pre-authorized user credentials from the environment.
     TODO(developer) - See https://developers.google.com/identity
@@ -46,7 +46,8 @@ def gmail_create_draft():
 
         create_message = {"message": {"raw": encoded_message}}
         # pylint: disable=E1101
-        draft = service.users().drafts().create(userId="me", body=create_message).execute()
+        draft = service.users().drafts().create(userId="me",
+                                                body=create_message).execute()
 
         print(f'Draft id: {draft["id"]}\nDraft message: {draft["message"]}')
 
