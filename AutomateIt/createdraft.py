@@ -46,8 +46,7 @@ def gmail_create_draft():
 
         create_message = {"message": {"raw": encoded_message}}
         # pylint: disable=E1101
-        draft = service.users().drafts().create(userId="me",
-                                                body=create_message).execute()
+        draft = service.users().drafts().create(userId="me", body=create_message).execute()
 
         print(f'Draft id: {draft["id"]}\nDraft message: {draft["message"]}')
 

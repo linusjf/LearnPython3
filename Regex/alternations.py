@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 """
+Alternations.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : alternations
@@ -18,7 +20,8 @@ print(bool(re.search(r"cat|dog", "I like parrots")))
 print(re.sub(r"\Acat|cat\b", r"X", "catapults concatenate cat scat"))
 # replace either 'cat' or 'dog' or 'fox' with 'mammal'
 print(re.sub(r"cat|dog|fox", r"mammal", "cat dog bee parrot fox"))
-# The join string method can be used to build the alternation list automatically
+# The join string method can be used to build the alternation list
+# automatically
 # from an iterable of strings.
 print("|".join(["car", "jeep"]))
 words = ["cat", "dog", "fox"]
