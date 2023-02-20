@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+"""
+SendMessage.
 
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
@@ -7,9 +9,9 @@
 # @description :
 # -*- coding: utf-8 -*-'
 ######################################################################
+"""
 from __future__ import print_function
 
-import config
 import base64
 from email.message import EmailMessage
 
@@ -44,7 +46,8 @@ def gmail_send_message():
 
         create_message = {"raw": encoded_message}
         # pylint: disable=E1101
-        send_message = service.users().messages().send(userId="me", body=create_message).execute()
+        send_message = service.users().messages().send(userId="me",
+                                                    body=create_message).execute() # noqa
         print(f'Message Id: {send_message["id"]}')
     except HttpError as error:
         print(f"An error occurred: {error}")
