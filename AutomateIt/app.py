@@ -49,12 +49,11 @@ def create_user():
     """Create user."""
     if not request.json or "email" not in request.json:
         abort(404)
-    user_id = int(users[-1].get('id')) + 1
+    user_id = int(users[-1].get("id")) + 1
     username = request.json.get("username")
     email = request.json.get("email")
     status = False
-    user = {"id": user_id, "email": email, "username": username,
-            "active": status}
+    user = {"id": user_id, "email": email, "username": username, "active": status}
     users.append(user)
     return jsonify({"user": user}), 201
 
@@ -63,9 +62,9 @@ def create_user():
 def update_user(u_id):
     """Update user."""
     user = [user for user in users if user["id"] == u_id]
-    user[0]['username'] = request.json.get('username', user[0]['username'])
-    user[0]['email'] = request.json.get('email', user[0]['email'])
-    user[0]['active'] = request.json.get('active', user[0]['active'])
+    user[0]["username"] = request.json.get("username", user[0]["username"])
+    user[0]["email"] = request.json.get("email", user[0]["email"])
+    user[0]["active"] = request.json.get("active", user[0]["active"])
     return jsonify({"user": user[0]})
 
 
