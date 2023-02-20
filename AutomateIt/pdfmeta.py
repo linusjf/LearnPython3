@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""PDFMeta."""
 from PyPDF2 import PdfMerger, PdfReader
 
-mergerObj = PdfMerger()
-fp = open("myPdf.pdf", "wb")
-metadata = {
-    "/edited": "ByPdfMerger",
-}
-mergerObj.add_metadata(metadata)
-mergerObj.write(fp)
+merger = PdfMerger()
+with open("myPdf.pdf", "wb", encoding="utf-8") as fp:
+    metadata = {
+        "/edited": "ByPdfMerger",
+    }
+merger.add_metadata(metadata)
+merger.write(fp)
 fp.close()
-pdf = open("myPdf.pdf", "rb")
-readerObj = PdfReader(pdf)
-print("Document Info:", readerObj.metadata)
-pdf.close()
+with open("myPdf.pdf", "rb", encoding="utf-8") as pdf:
+    reader = PdfReader(pdf)
+    print("Document Info:", reader.metadata)
