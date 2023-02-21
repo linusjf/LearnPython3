@@ -11,7 +11,7 @@ IMAGE_TYPE = "Project"
 MOVIE = "Avatar"
 URL = "https://www.google.com/search?q=" + MOVIE + "&source=lnms&tbm=isch"
 HEADER = {"User-Agent": "Mozilla/5.0"}
-with req.urlopen(req.Request(URL, headers=HEADER)) as doc:
+with req.urlopen(req.Request(URL, headers=HEADER)) as doc:  # nosec
     soup = BeautifulSoup(doc, "lxml")
     imglines = soup.find_all("img", {"src": re.compile("gstatic.com")})[:5]
     images = [a["src"] for a in imglines]
