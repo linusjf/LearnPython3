@@ -8,7 +8,3 @@ repos:
         # pre-commit's default_language_version, see
         # https://pre-commit.com/#top_level-default_language_version
         language_version: python3.11
-  - repo: https://github.com/PyCQA/prospector
-    rev: 1.7.5 # The version of Prospector to use, if not 'master' for latest
-    hooks:
-    -   id: prospector
