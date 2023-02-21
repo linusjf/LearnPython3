@@ -5,7 +5,7 @@ import json
 import sys
 import requests
 
-TOKEN = ""
+TOKEN = ""  # nosec
 try:
     with open(".gisttoken", "r", encoding="utf-8") as file:
         TOKEN = file.read()
@@ -82,6 +82,6 @@ gists = r.json()
 print("List gists result:")
 print("------------------------------")
 for gist in gists:
-    data = gist["files"].values()
-    data = list(data)[0]
+    vals = gist["files"].values()
+    val = list(vals)[0]
     print(data["filename"], data["raw_url"], data["language"])
