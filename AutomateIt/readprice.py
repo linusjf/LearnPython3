@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """ReadPrice."""
-from lxml import html
+from lxml import html  # type: ignore # nosec
 import requests
 
 page = requests.get("https://github.com/pricing/", timeout=5)
-tree = html.fromstring(page.content)
+tree = html.fromstring(page.content)  # nosec
 print("Page Object:", tree)
 plans = tree.xpath('//h2[@class="mb-2 h5-mktg"]/text()')
 pricing = tree.xpath(
