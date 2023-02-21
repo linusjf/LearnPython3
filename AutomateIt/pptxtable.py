@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+"""
+PPTXTable.
 
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
@@ -7,8 +9,10 @@
 # @description :
 # -*- coding: utf-8 -*-'
 ######################################################################
-import collections
-import collections.abc
+"""
+import collections  # noqa F401 #pylint: disable=unused-import
+import collections.abc  # noqa F401 #pylint: disable=unused-import
+
 
 from pptx import Presentation
 from pptx.util import Inches
@@ -18,12 +22,12 @@ title_only_slide_layout = prs.slide_layouts[5]
 slide = prs.slides.add_slide(title_only_slide_layout)
 shapes = slide.shapes
 shapes.title.text = "Students Data"
-rows = 4
-cols = 3
+ROWS = 4
+COLS = 3
 left = top = Inches(2.0)
 width = Inches(6.0)
 height = Inches(1.2)
-table = shapes.add_table(rows, cols, left, top, width, height).table
+table = shapes.add_table(ROWS, COLS, left, top, width, height).table
 table.columns[0].width = Inches(2.0)
 table.columns[1].width = Inches(2.0)
 table.columns[2].width = Inches(2.0)
