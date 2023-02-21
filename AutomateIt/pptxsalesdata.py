@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-
 """
+PPTXSalesData.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : pptxsalesdata
@@ -9,22 +10,23 @@
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
-import collections
-import collections.abc
+import collections  # noqa F401 #pylint: disable=unused-import
+import collections.abc  # noqa F401 #pylint: disable=unused-import
+
+from datetime import datetime
+import pandas as pd
 from pptx import Presentation
 from pptx.chart.data import ChartData
 from pptx.enum.chart import XL_CHART_TYPE
-from pptx.enum.chart import XL_LABEL_POSITION, XL_LEGEND_POSITION
+from pptx.enum.chart import XL_LEGEND_POSITION
 from pptx.util import Inches
-from datetime import datetime
-import pandas as pd
 
 xls_file = pd.ExcelFile("Sales_Data.xlsx")
 prs = Presentation("sample_ppt.pptx")
 first_slide = prs.slides[0]
 first_slide.shapes[0].text_frame.paragraphs[
     0
-].text = "Weekly Sales Report %s" % datetime.now().strftime("%D")
+].text = f"Weekly Sales Report {datetime.now().strftime('%D')}"
 first_slide.placeholders[1].text = "Author: Alex, alex@innova8"
 blank_slide_layout = prs.slide_layouts[6]
 slide = prs.slides.add_slide(blank_slide_layout)
