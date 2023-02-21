@@ -11,7 +11,6 @@ Lookarounds.
 ######################################################################
 """
 import re
-
 import regex
 
 # change 'foo' only if it is not followed by a digit character
@@ -91,14 +90,22 @@ print(bool(regex.search(r"(?<!parrot.*)dog", "fox,cat,dog,parrot")))
 print(bool(re.search(r"\A((?!cat).)*dog", "fox,cat,dog,parrot")))
 print(bool(re.search(r"\A((?!parrot).)*dog", "fox,cat,dog,parrot")))
 # easier to understand by checking matched portion
-print(re.search(r"\A((?!cat).)*", "fox,cat,dog,parrot")[0])
-print(re.search(r"\A((?!parrot).)*", "fox,cat,dog,parrot")[0])
-print(re.search(r"\A((?!(.)\2).)*", "fox,cat,dog,parrot")[0])
+m = re.search(r"\A((?!cat).)*", "fox,cat,dog,parrot")
+if m:
+    print(m[0])
+m = re.search(r"\A((?!parrot).)*", "fox,cat,dog,parrot")
+if m:
+    print(m[0])
+m = re.search(r"\A((?!(.)\2).)*", "fox,cat,dog,parrot")
+if m:
+    print(m[0])
 # match if 'do' is not there between 'at' and 'par'
 print(bool(re.search(r"at((?!do).)*par", "fox,cat,dog,parrot")))
 # match if 'go' is not there between 'at' and 'par'
 print(bool(re.search(r"at((?!go).)*par", "fox,cat,dog,parrot")))
-print(re.search(r"at((?!go).)*par", "fox,cat,dog,parrot")[0])
+m = re.search(r"at((?!go).)*par", "fox,cat,dog,parrot")
+if m:
+    print(m[0])
 # use non-capturing group if required
 print(re.findall(r"a(?:(?!\d).)*z", "at,baz,a2z,bad-zoo"))
 
@@ -234,19 +241,27 @@ print(re.sub(r"(\b[pd][a-z]*)\d+", r"\1", S))
 # note the use of \A anchor to force matching all the characters up to 'dog'
 print(bool(re.search(r"\A((?!cat).)*dog", "fox,cat,dog,parrot")))
 print(re.search(r"\A((?!cat).)*dog", "fox,cat,dog,parrot"))
-print(re.search(r"\A((?!cat).)*", "fox,cat,dog,parrot")[0])
+m = re.search(r"\A((?!cat).)*", "fox,cat,dog,parrot")
+if m:
+    print(m[0])
 # easier to understand by checking the matched portion
 print(bool(re.search(r"\A((?!parrot).)*dog", "fox,cat,dog,parrot")))
-print(re.search(r"\A((?!parrot).)*", "fox,cat,dog,parrot")[0])
+m = re.search(r"\A((?!parrot).)*", "fox,cat,dog,parrot")
+if m:
+    print(m[0])
 # without the anchor, you'll get false matches
 print(bool(re.search(r"((?!cat).)*dog", "fox,cat,dog,parrot")))
-print(re.search(r"\A(?:(?!(.)\1).)*", "fox,cat,dog,parrot")[0])
+m = re.search(r"\A(?:(?!(.)\1).)*", "fox,cat,dog,parrot")
+if m:
+    print(m[0])
 
 # match if 'do' is not there between 'at' and 'par'
 print(bool(re.search(r"at((?!do).)*par", "fox,cat,dog,parrot")))
 # match if 'go' is not there between 'at' and 'par'
 print(bool(re.search(r"at((?!go).)*par", "fox,cat,dog,parrot")))
-print(re.search(r"at((?!go).)*par", "fox,cat,dog,parrot")[0])
+m = re.search(r"at((?!go).)*par", "fox,cat,dog,parrot")
+if m:
+    print(m[0])
 
 # use non-capturing group if required
 WORDS = "apple banana 12_bananas cherry fig mango cake42"
