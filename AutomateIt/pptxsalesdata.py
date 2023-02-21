@@ -14,12 +14,12 @@ import collections  # noqa F401 #pylint: disable=unused-import
 import collections.abc  # noqa F401 #pylint: disable=unused-import
 
 from datetime import datetime
-import pandas as pd  # pylint: disable=import-error
-from pptx import Presentation
-from pptx.chart.data import ChartData
-from pptx.enum.chart import XL_CHART_TYPE
-from pptx.enum.chart import XL_LEGEND_POSITION
-from pptx.util import Inches
+import pandas as pd  # type: ignore  # pylint: disable=import-error
+from pptx import Presentation  # type: ignore
+from pptx.chart.data import ChartData  # type: ignore
+from pptx.enum.chart import XL_CHART_TYPE  # type: ignore
+from pptx.enum.chart import XL_LEGEND_POSITION  # type: ignore
+from pptx.util import Inches  # type: ignore
 
 xls_file = pd.ExcelFile("Sales_Data.xlsx")
 prs = Presentation("sample_ppt.pptx")
