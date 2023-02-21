@@ -13,8 +13,8 @@ PPXTextBox.
 import collections  # noqa F401 #pylint: disable=unused-import
 import collections.abc  # noqa F401 #pylint: disable=unused-import
 
-from pptx import Presentation
-from pptx.util import Inches, Pt
+from pptx import Presentation  # type: ignore
+from pptx.util import Inches, Pt  # type: ignore
 
 prs = Presentation()
 blank_slide_layout = prs.slide_layouts[6]
