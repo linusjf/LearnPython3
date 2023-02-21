@@ -1,22 +1,30 @@
 doc-warnings: true
 test-warnings: true
 strictness: veryhigh
+member-warnings: false
 
 pylint:
+  full: true
   run: true
   disable:
     - E401
     - E501
+  options:
+    max-line-length: 99
 
 pep8:
+  full: true
   run: true
   disable:
     # pycodestyle
     - E203
     - E401
     - E501
+  options:
+    max-line-length: 99
 
 pep257:
+  full: true
   run: true
   disable:
     # These ones are ignored because the `missing-docstring` is checked
@@ -29,10 +37,33 @@ pep257:
   enable:
     # pydocstyle
     - D401
+  options:
+    max-line-length: 99
 
 pyflakes:
+  full: true
   run: false
   disable:
     # pycodestyle
     - E401
     - E501
+  options:
+    max-line-length: 99
+
+pycodestyle:
+  full: true
+  run: true
+  options:
+    max-line-length: 99
+
+mccabe:
+  run: true
+
+pyroma:
+  run: true
+
+mypy:
+  run: true
+
+bandit:
+  run: true
