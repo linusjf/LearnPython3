@@ -12,7 +12,7 @@ fromaddr = config.fromaddr
 toaddr = config.toaddr
 msg = MIMEMultipart()
 msg["From"] = fromaddr
-msg["To"] = toaddr
+msg["To"] = str(toaddr)
 msg["Subject"] = "Email with an attachment"
 BODY = "Click to open the attachment"
 msg.attach(MIMEText(BODY, "plain"))
@@ -28,5 +28,6 @@ with open(FILENAME, "rb", encoding="utf-8") as attachment:
     if fromaddr and config.password:
         server.login(fromaddr, config.password)
         text = msg.as_string()
-        server.sendmail(fromaddr, toaddr, text)
+        if toaddr:
+            server.sendmail(fromaddr, toaddr, text)
     server.quit()

@@ -11,15 +11,17 @@ fromaddr = config.fromaddr
 toaddr = config.toaddr
 msg = MIMEMultipart()
 msg["Subject"] = "Hello from the Reader of Automate It!"
-msg["To"] = email.utils.formataddr(("Recipient", toaddr))
-msg["From"] = email.utils.formataddr(("Author", fromaddr))
-BODY = "What a wonderful world!"
-msg_body = MIMEText(BODY, "plain")
-msg.attach(msg_body)
-server = smtplib.SMTP("smtp.gmail.com", 587)
-server.starttls()
-server.login(fromaddr, config.password)
-text = msg.as_string()
-print("Text is:", text)
-server.sendmail(fromaddr, toaddr, text)
-server.quit()
+if fromaddr and toaddr:
+    msg["To"] = email.utils.formataddr(("Recipient", toaddr))
+    msg["From"] = email.utils.formataddr(("Author", fromaddr))
+    BODY = "What a wonderful world!"
+    msg_body = MIMEText(BODY, "plain")
+    msg.attach(msg_body)
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
+    if config.password:
+        server.login(fromaddr, config.password)
+        text = msg.as_string()
+        print("Text is:", text)
+        server.sendmail(fromaddr, toaddr, text)
+    server.quit()
