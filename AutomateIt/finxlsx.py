@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Finxlsx."""
 
-import xlsxwriter
+import xlsxwriter  # type: ignore
 
 workbook = xlsxwriter.Workbook("chartcolumn.xlsx")
 worksheet = workbook.add_worksheet()
