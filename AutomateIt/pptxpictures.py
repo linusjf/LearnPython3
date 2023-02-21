@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-PPTXPuctures.
+PPTXPictures.
 
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
@@ -12,8 +12,9 @@ PPTXPuctures.
 """
 import collections  # noqa F401 #pylint: disable=unused-import
 import collections.abc  # noqa F401 #pylint: disable=unused-import
-from pptx import Presentation
-from pptx.util import Inches
+from pptx import Presentation  # type: ignore
+from pptx.util import Inches  # type: ignore
+
 
 IMG_PATH = "python.png"
 IMG_PATH2 = "learn_python.jpeg"
