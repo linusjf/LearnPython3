@@ -25,7 +25,8 @@ with open(FILENAME, "rb", encoding="utf-8") as attachment:
     msg.attach(part)
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
-    server.login(fromaddr, config.password)
-    text = msg.as_string()
-    server.sendmail(fromaddr, toaddr, text)
+    if fromaddr and config.password:
+        server.login(fromaddr, config.password)
+        text = msg.as_string()
+        server.sendmail(fromaddr, toaddr, text)
     server.quit()
