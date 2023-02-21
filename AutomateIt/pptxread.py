@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+"""
+PPTXRead.
 
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
@@ -7,13 +9,15 @@
 # @description :
 # -*- coding: utf-8 -*-'
 ######################################################################
-import collections
-import collections.abc
+"""
+import collections  # noqa F401 #pylint: disable=unused-import
+import collections.abc  # noqa F401 #pylint: disable=unused-import
+
 
 from pptx import Presentation
 
-path_to_presentation = "samplepptx.pptx"
-prs = Presentation(path_to_presentation)
+PATH_TO_PRESENTATION = "samplepptx.pptx"
+prs = Presentation(PATH_TO_PRESENTATION)
 print("Presentation object for myprofile file: ", prs)
 print("Slides are:")
 for slide in prs.slides:
@@ -22,7 +26,7 @@ print("Slide has following objects:")
 slide1, slide2 = prs.slides[0], prs.slides[1]
 print("Slide Ids: \n", slide1.slide_id, ",", slide2.slide_id)
 print("Slide Open XML elements: \n", slide1.element, ",", slide2.element)
-print("Slide layouts: \n", slide1.slide_layout.name, ",", slide2.slide_layout.name)
+print("Slide layouts: \n", slide1.slide_layout.name, ",", slide2.slide_layout.name)  # noqa F501
 
 print("Shapes in the slides")
 i = 1
