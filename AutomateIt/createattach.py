@@ -18,9 +18,9 @@ from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
-import google.auth
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
+import google.auth  # type: ignore
+from googleapiclient.discovery import build  # type: ignore
+from googleapiclient.errors import HttpError  # type: ignore
 
 
 def gmail_create_draft_with_attachment():
