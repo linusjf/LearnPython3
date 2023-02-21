@@ -79,13 +79,13 @@ m = re.search(r"\d{4}-\d{2}-\d{2}.*\d{4}-\d{2}-\d{2}", ROW)
 if m:
     print(m[0])
 # with regex module and subexpression calling
-m = regex.search(r"(\d{4}-\d{2}-\d{2}).*(?1)", ROW)
-if m:
-    print(m[0])
+m_ = regex.search(r"(\d{4}-\d{2}-\d{2}).*(?1)", ROW)
+if m_:
+    print(m_[0])
 
-m = regex.search(r"(?P<date>\d{4}-\d{2}-\d{2}).*(?&date)", ROW)
-if m:
-    print(m[0])
+m_ = regex.search(r"(?P<date>\d{4}-\d{2}-\d{2}).*(?&date)", ROW)
+if m_:
+    print(m_[0])
 
 
 print("\n--------------")
@@ -93,13 +93,13 @@ print("Exercises")
 print("--------------\n")
 
 ROW = "3.14,hi:42.5,bye:1056.1,cool:00.9,fool"
-regex = regex.compile(r"(\d+\.\d),(\w+)")
-print(regex.sub(r"\2,\g<1>0", ROW))
+reg = regex.compile(r"(\d+\.\d),(\w+)")
+print(reg.sub(r"\2,\g<1>0", ROW))
 
 SCARLET_PIMPERNEL_LINK = r"https://www.gutenberg.org/cache/epub/60/pg60.txt"
 word_expr = re.compile(rb"\b\w+(\w)\1\w*(\w)\2\w*\b")  # add your solution here
 COUNT = 0
-with urllib.request.urlopen(SCARLET_PIMPERNEL_LINK) as ip_file:
+with urllib.request.urlopen(SCARLET_PIMPERNEL_LINK) as ip_file:  # nosec
     for line in ip_file:
         for word in re.findall(rb"\w+", line):
             if word_expr.search(word):
@@ -123,23 +123,23 @@ def anchor(_):
     _anchor = match.split("-")[0]
     _name = match[match.find("-") + 1 :].lower()
     _label = _[0][_[0].find(" ") + 1 :]
-    return _anchor + " " + '<a name="' + _name + '"></a>' + _label
+    return _anchor + " " + "<a name='" + _name + "'></a>" + _label
 
 
-regex = re.compile(r"\#+[A-Za-z0-9 ]+")
-print(regex.findall(HEADER1))
-print(regex.findall(HEADER2))
-print(regex.sub(anchor, HEADER1))
-print(regex.sub(anchor, HEADER2))
+regexx = re.compile(r"\#+[A-Za-z0-9 ]+")
+print(regexx.findall(HEADER1))
+print(regexx.findall(HEADER2))
+print(regexx.sub(anchor, HEADER1))
+print(regexx.sub(anchor, HEADER2))
 
 # Convert the given markdown anchors to corresponding hyperlinks.
-ANCHOR1 = '# <a name="regular-expressions"></a>Regular Expressions'
-ANCHOR2 = '## <a name="subexpression-calls"></a>Subexpression calls'
-regex = re.compile(r'\#+ \<a name="([\w-]+)"></a>([A-Za-z ]+)')
-print(regex.findall(ANCHOR1))
-print(regex.findall(ANCHOR2))
-print(regex.sub(r"[\2](#\1)", ANCHOR1))
-print(regex.sub(r"[\2](#\1)", ANCHOR2))
+ANCHOR1 = "# <a name='regular-expressions'></a>Regular Expressions"
+ANCHOR2 = "## <a name='subexpression-calls'></a>Subexpression calls"
+regexx = re.compile(r"\#+ \<a name=\'([\w-]+)\'></a>([A-Za-z ]+)")
+print(regexx.findall(ANCHOR1))
+print(regexx.findall(ANCHOR2))
+print(regexx.sub(r"[\2](#\1)", ANCHOR1))
+print(regexx.sub(r"[\2](#\1)", ANCHOR2))
 
 # Use appropriate regular expression function to get the expected output
 # for the given string.
