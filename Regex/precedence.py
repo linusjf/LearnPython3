@@ -52,10 +52,10 @@ print(re.sub("|".join(words), r"X", "hands handful handed handy"))
 # received or replied or refused or retired as whole words. Note that each line
 # in the for loop will be of bytes data type.
 SCARLET_PIMPERNEL_LINK = r"https://www.gutenberg.org/cache/epub/60/pg60.txt"
-words = re.compile(rb"re(ceiv|fus|mov|pli|tir|st)ed")
+wordsregex = re.compile(rb"re(ceiv|fus|mov|pli|tir|st)ed")
 COUNT = 0
-with urllib.request.urlopen(SCARLET_PIMPERNEL_LINK) as ip_file:
+with urllib.request.urlopen(SCARLET_PIMPERNEL_LINK) as ip_file:  # nosec
     for line in ip_file:
-        if words.search(line):
+        if wordsregex.search(line):
             COUNT += 1
 print(COUNT)

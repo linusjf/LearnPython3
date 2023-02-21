@@ -68,16 +68,25 @@ print([m[0] for m in m_iter])
 re.sub(r"(?P<fw>\w+),(?P<sw>\w+)", r"\g<sw>,\g<fw>", "good,bad 42,24")
 SENTENCE = "I bought an apple"
 m = re.search(r"(?P<fruit>\w+)\Z", SENTENCE)
-print(m[1])
-print(m["fruit"])
-print(m.group("fruit"))
+if m:
+    print(m[1])
+    print(m["fruit"])
+    print(m.group("fruit"))
 
 ROW = "today,2008-03-24,food,2012-08-12,nice,5632"
 # with re module and manually repeating the pattern
-print(re.search(r"\d{4}-\d{2}-\d{2}.*\d{4}-\d{2}-\d{2}", ROW)[0])
+m = re.search(r"\d{4}-\d{2}-\d{2}.*\d{4}-\d{2}-\d{2}", ROW)
+if m:
+    print(m[0])
 # with regex module and subexpression calling
-print(regex.search(r"(\d{4}-\d{2}-\d{2}).*(?1)", ROW)[0])
-print(regex.search(r"(?P<date>\d{4}-\d{2}-\d{2}).*(?&date)", ROW)[0])
+m = regex.search(r"(\d{4}-\d{2}-\d{2}).*(?1)", ROW)
+if m:
+    print(m[0])
+
+m = regex.search(r"(?P<date>\d{4}-\d{2}-\d{2}).*(?&date)", ROW)
+if m:
+    print(m[0])
+
 
 print("\n--------------")
 print("Exercises")
