@@ -13,10 +13,10 @@ PPTXShapes.
 import collections  # noqa F401 #pylint: disable=unused-import
 import collections.abc  # noqa F401 #pylint: disable=unused-import
 
-from pptx import Presentation
-from pptx.dml.color import RGBColor
-from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE as MSO_SHAPE
-from pptx.util import Inches
+from pptx import Presentation  # type: ignore
+from pptx.dml.color import RGBColor  # type: ignore
+from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE as MSO_SHAPE  # type: ignore
+from pptx.util import Inches  # type: ignore
 
 prs = Presentation()
 title_only_slide_layout = prs.slide_layouts[5]
