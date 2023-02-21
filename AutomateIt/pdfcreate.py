@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """PDFCreate."""
-from fpdf import FPDF
+from fpdf import FPDF  # type: ignore
 
 pdf = FPDF(format="letter")
 pdf.add_page()
