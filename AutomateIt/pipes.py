@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""Pipes."""
 import csv
 
 print("Available dialects: ", csv.list_dialects())
@@ -17,7 +18,7 @@ for dialect in csv.list_dialects():
     print("strict: ", d.strict)
     print()
 csv.register_dialect("pipes", delimiter="-")
-with open("pipes.csv", "r") as f:
+with open("pipes.csv", "r", encoding="utf-8") as f:
     reader = csv.reader(f, dialect="pipes")
     for row in reader:
         print(row)
