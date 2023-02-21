@@ -10,9 +10,10 @@ ReadTopTweet.
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
-from requests_oauthlib import OAuth1Session
-import twython
-from twython import Twython
+import sys
+from requests_oauthlib import OAuth1Session  # type: ignore
+import twython  # type: ignore
+from twython import Twython  # type: ignore
 
 import config
 
@@ -31,36 +32,38 @@ except ValueError:
         "There may have been an\
             issue with the consumer_key or consumer_secret you entered."
     )
+    sys.exit(1)
 
-resource_owner_key = fetch_response.get("oauth_token")
-resource_owner_secret = fetch_response.get("oauth_token_secret")
-print(f"Got OAuth token: {resource_owner_key}")
+if fetch_response:
+    resource_owner_key = fetch_response.get("oauth_token")
+    resource_owner_secret = fetch_response.get("oauth_token_secret")
+    print(f"Got OAuth token: {resource_owner_key}")
 
-# Get authorization
-BASE_AUTHORIZATION_URL = "https://api.twitter.com/oauth/authorize"
-authorization_url = oauth.authorization_url(BASE_AUTHORIZATION_URL)
-print(f"Please go here and authorize: {authorization_url}")
-verifier = input("Paste the PIN here: ")
+    # Get authorization
+    BASE_AUTHORIZATION_URL = "https://api.twitter.com/oauth/authorize"
+    authorization_url = oauth.authorization_url(BASE_AUTHORIZATION_URL)
+    print(f"Please go here and authorize: {authorization_url}")
+    verifier = input("Paste the PIN here: ")
 
-# Get the access token
-ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
-oauth = OAuth1Session(
-    consumer_key,
-    client_secret=consumer_secret,
-    resource_owner_key=resource_owner_key,
-    resource_owner_secret=resource_owner_secret,
-    verifier=verifier,
-)
-oauth_tokens = oauth.fetch_access_token(ACCESS_TOKEN_URL)
+    # Get the access token
+    ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"  # nosec
+    oauth = OAuth1Session(
+        consumer_key,
+        client_secret=consumer_secret,
+        resource_owner_key=resource_owner_key,
+        resource_owner_secret=resource_owner_secret,
+        verifier=verifier,
+    )
+    oauth_tokens = oauth.fetch_access_token(ACCESS_TOKEN_URL)
 
-access_token = oauth_tokens["oauth_token"]
-access_token_secret = oauth_tokens["oauth_token_secret"]
-twitter = Twython(consumer_key, consumer_secret, access_token, access_token_secret)
-try:
-    tweet = twitter.get_home_timeline()[1]
-    print("Tweet text: ", tweet["text"])
-    print("Tweet created at: ", tweet["created_at"])
-    print("Tweeted by: ", tweet["entities"]["user_mentions"][0]["name"])
-    print("Re Tweeted?: ", tweet["retweet_count"])
-except twython.exceptions.TwythonError as err:
-    print(str(err))
+    access_token = oauth_tokens["oauth_token"]
+    access_token_secret = oauth_tokens["oauth_token_secret"]
+    twitter = Twython(consumer_key, consumer_secret, access_token, access_token_secret)
+    try:
+        tweet = twitter.get_home_timeline()[1]
+        print("Tweet text: ", tweet["text"])
+        print("Tweet created at: ", tweet["created_at"])
+        print("Tweeted by: ", tweet["entities"]["user_mentions"][0]["name"])
+        print("Re Tweeted?: ", tweet["retweet_count"])
+    except twython.exceptions.TwythonError as err:
+        print(str(err))
