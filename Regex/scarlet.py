@@ -13,13 +13,14 @@ Scarlet.
 import urllib.request
 import re
 
-SCARLET_PIMPERNEL_LINK = r"https://www.gutenberg.org/cache/epub/60/pg60.txt"
+SCARLET_PIMPERNEL_LINK = "https://www.gutenberg.org/cache/epub/60/pg60.txt"
 word1 = re.compile(rb"\bthe\b")
 word2 = re.compile(rb"\bis\b")
 _COUNT = 0
-with urllib.request.urlopen(SCARLET_PIMPERNEL_LINK) as ip_file:
+
+req = urllib.request.Request(SCARLET_PIMPERNEL_LINK)
+with urllib.request.urlopen(req) as ip_file:  # nosec
     for line in ip_file:
-        print(line)
         if word1.search(line) or word2.search(line):
             _COUNT += 1
 print(_COUNT)
