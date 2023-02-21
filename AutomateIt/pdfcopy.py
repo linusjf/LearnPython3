@@ -4,10 +4,10 @@
 from PyPDF2 import PdfReader, PdfWriter
 
 with open("diveintopython.pdf", "rb", encoding="utf-8") as infile:
-    infile = PdfReader(infile)
+    reader = PdfReader(infile)
     outfile = PdfWriter()
     outfile.add_blank_page(612, 792)
-    p = infile.pages[0]
+    p = reader.pages[0]
     outfile.add_page(p)
     with open("myPdf.pdf", "wb") as f:
         outfile.write(f)
