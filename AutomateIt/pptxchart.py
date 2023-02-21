@@ -13,19 +13,19 @@ PPTXChart.
 import collections  # noqa F401 #pylint: disable=unused-import
 import collections.abc  # noqa F401 #pylint: disable=unused-import
 
-
-from pptx import Presentation
-from pptx.chart.data import CategoryChartData
-from pptx.chart.data import ChartData
-from pptx.chart.data import XyChartData
-from pptx.chart.data import BubbleChartData
-from pptx.dml.color import RGBColor
-from pptx.enum.chart import XL_CHART_TYPE
+from pptx import Presentation  # type: ignore
+from pptx.chart.data import CategoryChartData  # type: ignore
+from pptx.chart.data import ChartData  # type: ignore
+from pptx.chart.data import XyChartData  # type: ignore
+from pptx.chart.data import BubbleChartData  # type: ignore
+from pptx.dml.color import RGBColor  # type: ignore
+from pptx.enum.chart import XL_CHART_TYPE  # type: ignore
 from pptx.enum.chart import XL_LABEL_POSITION
-from pptx.enum.chart import XL_LEGEND_POSITION
-from pptx.enum.chart import XL_TICK_MARK
-from pptx.util import Inches
-from pptx.util import Pt
+from pptx.enum.chart import XL_LEGEND_POSITION  # type: ignore
+from pptx.enum.chart import XL_TICK_MARK  # type: ignore
+from pptx.util import Inches  # type: ignore
+from pptx.util import Pt  # type: ignore
+
 
 # create presentation with 1 slide ------
 prs = Presentation()

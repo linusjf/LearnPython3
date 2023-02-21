@@ -4,7 +4,7 @@
 
 from PyPDF2 import PdfReader, PdfWriter
 
-infile = PdfReader("myPdf.pdf", "rb")
+infile = PdfReader("myPdf.pdf")
 output = PdfWriter()
 for _, p in enumerate(infile.pages):
     if p.get_contents():
