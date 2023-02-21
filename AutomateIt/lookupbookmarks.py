@@ -17,7 +17,7 @@ import os
 import re
 
 import requests
-from requests_oauthlib import OAuth2Session
+from requests_oauthlib import OAuth2Session  # type: ignore
 
 import config
 
@@ -52,8 +52,8 @@ code_verifier = re.sub("[^a-zA-Z0-9]+", "", code_verifier)
 
 # Create a code challenge
 CODE_CHALLENGE = hashlib.sha256(code_verifier.encode("utf-8")).digest()
-CODE_CHALLENGE = base64.urlsafe_b64encode(CODE_CHALLENGE).decode("utf-8")
-CODE_CHALLENGE = CODE_CHALLENGE.replace("=", "")
+CODE_CH = base64.urlsafe_b64encode(CODE_CHALLENGE).decode("utf-8")
+CODE_CH = CODE_CH.replace("=", "")
 
 # Start an OAuth 2.0 session
 oauth = OAuth2Session(client_id, redirect_uri=REDIRECT_URI, scope=scopes)
@@ -61,7 +61,7 @@ oauth = OAuth2Session(client_id, redirect_uri=REDIRECT_URI, scope=scopes)
 # Create an authorize URL
 AUTH_URL = "https://twitter.com/i/oauth2/authorize"
 authorization_url, state = oauth.authorization_url(
-    AUTH_URL, code_challenge=CODE_CHALLENGE, code_challenge_method="S256"
+    AUTH_URL, code_challenge=CODE_CH, code_challenge_method="S256"
 )
 
 # Visit the URL to authorize your App to make requests on behalf of a user
@@ -78,7 +78,7 @@ authorization_response = input(
 )
 
 # Fetch your access token
-TOKEN_URL = "https://api.twitter.com/2/oauth2/token"
+TOKEN_URL = "https://api.twitter.com/2/oauth2/token"  # nosec
 
 # The following line of code will only work if you are using
 # a type of App that is a public client
