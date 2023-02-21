@@ -85,4 +85,4 @@ def write_pid_file():
 
 if __name__ == "__main__":
     write_pid_file()
-    app.run(debug=True)
+    app.run(debug=True, use_debugger=False, use_reloader=False)  # nosec
