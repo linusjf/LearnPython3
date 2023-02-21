@@ -13,7 +13,7 @@ PpTxTwoContent.
 import collections  # noqa F401 #pylint: disable=unused-import
 import collections.abc  # noqa F401 #pylint: disable=unused-import
 
-from pptx import Presentation
+from pptx import Presentation  # type: ignore
 
 prs = Presentation()
 two_content_slide_layout = prs.slide_layouts[3]
