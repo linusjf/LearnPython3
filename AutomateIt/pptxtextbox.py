@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+"""
+PPXTextBox.
 
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
@@ -7,16 +9,18 @@
 # @description :
 # -*- coding: utf-8 -*-'
 ######################################################################
-import collections
-import collections.abc
+"""
+import collections  # noqa F401 #pylint: disable=unused-import
+import collections.abc  # noqa F401 #pylint: disable=unused-import
+
 from pptx import Presentation
 from pptx.util import Inches, Pt
 
 prs = Presentation()
 blank_slide_layout = prs.slide_layouts[6]
 slide = prs.slides.add_slide(blank_slide_layout)
-txBox = slide.shapes.add_textbox(Inches(2), Inches(2), Inches(5), Inches(1))
-tf = txBox.text_frame
+txbox = slide.shapes.add_textbox(Inches(2), Inches(2), Inches(5), Inches(1))
+tf = txbox.text_frame
 tf.text = "Wow! I'm inside a textbox"
 p = tf.add_paragraph()
 p.text = "Adding a new text"
