@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """DocOrient."""
-from docx import Document
+from docx import Document  # type: ignore
 
 employee_data = [
     {"id": 123, "name": "John Sally", "department": "Operations", "isDue": True},  # noqa
