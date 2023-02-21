@@ -64,6 +64,7 @@ pyroma:
 
 mypy:
   run: true
+  ignore_missing_imports: true
 
 bandit:
   run: true
