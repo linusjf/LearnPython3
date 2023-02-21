@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 """
+PPTXChart.
+
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : pptxchart
@@ -8,8 +10,9 @@
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
-import collections
-import collections.abc
+import collections  # noqa F401 #pylint: disable=unused-import
+import collections.abc  # noqa F401 #pylint: disable=unused-import
+
 
 from pptx import Presentation
 from pptx.chart.data import CategoryChartData
@@ -17,7 +20,9 @@ from pptx.chart.data import ChartData
 from pptx.chart.data import XyChartData
 from pptx.chart.data import BubbleChartData
 from pptx.dml.color import RGBColor
-from pptx.enum.chart import XL_CHART_TYPE, XL_LABEL_POSITION, XL_LEGEND_POSITION
+from pptx.enum.chart import XL_CHART_TYPE
+from pptx.enum.chart import XL_LABEL_POSITION
+from pptx.enum.chart import XL_LEGEND_POSITION
 from pptx.enum.chart import XL_TICK_MARK
 from pptx.util import Inches
 from pptx.util import Pt
