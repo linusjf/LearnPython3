@@ -13,8 +13,7 @@ PPTXRead.
 import collections  # noqa F401 #pylint: disable=unused-import
 import collections.abc  # noqa F401 #pylint: disable=unused-import
 
-
-from pptx import Presentation
+from pptx import Presentation  # type: ignore
 
 PATH_TO_PRESENTATION = "samplepptx.pptx"
 prs = Presentation(PATH_TO_PRESENTATION)
