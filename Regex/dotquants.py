@@ -114,7 +114,9 @@ print([w for w in demo if re.search(r"ab*+c", w)])
 # different results
 print(re.sub(r"f(a|e)*at", r"X", "feat ft feaeat"))
 IP = "fig:mango:pineapple:guava:apples:orange"
-print(re.search(r":.*+", IP)[0])
+m = re.search(r":.*+", IP)
+if m:
+    print(m[0])
 print(bool(re.search(r":.*+apple", IP)))
 # Suppose you want to match integer numbers greater than or equal
 # to 100 where these numbers can optionally have leading zeros.
@@ -131,7 +133,7 @@ print(re.findall(r"0*[1-9]\d{2,}", NUMBERS))
 # (a|e)*+ would match 'a' or 'e' as much as possible
 # no backtracking, so another 'a' can never match
 print(re.sub(r"f(a|e)*+at", r"X", "feat ft feaeat"))
-lines = ["#comment", 'c = "#"', "\t #comment", "abc", "", " \t "]
+lines = ["#comment", "c = '#'", "\t #comment", "abc", "", " \t "]
 # The goal is to match lines whose first non-whitespace character is not
 # a
 # # character.
@@ -159,13 +161,17 @@ print(re.findall(r"(?>0*)\d{3,}", NUMBERS))
 IP = "fig::mango::pineapple::guava::apples::orange"
 
 # this matches from the first '::' to the first occurrence of '::apple'
-print(re.search(r"::.*?::apple", IP)[0])
+m = re.search(r"::.*?::apple", IP)
+if m:
+    print(m[0])
 
 # '(?>::.*?::)' will match only from '::' to the very next '::'
 # '::mango::' fails because 'apple' isn't found afterwards
 # similarly '::pineapple::' fails
 # '::guava::' succeeds because it is followed by 'apple'
-print(re.search(r"(?>::.*?::)apple", IP)[0])
+m = re.search(r"(?>::.*?::)apple", IP)
+if m:
+    print(m[0])
 
 print("\n-------")
 print("Exercises....")
