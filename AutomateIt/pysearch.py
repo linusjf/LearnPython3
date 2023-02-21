@@ -10,7 +10,7 @@ PySearch.
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
-from twython import Twython
+from twython import Twython  # type: ignore
 
 import config
 
