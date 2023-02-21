@@ -73,9 +73,13 @@ print(re.findall(r"a[+^]b", "f*(a^b) - 3*(a+b)"))
 print(re.findall(r"a[\^+]b", "f*(a^b) - 3*(a+b)"))
 # [ can be escaped with \ or placed as last character
 # ] can be escaped with \ or placed as first character
-print(re.search(r"[a-z\[\]0-9]+", "words[5] = tea")[0])
+m = re.search(r"[a-z\[\]0-9]+", "words[5] = tea")
+if m:
+    print(m[0])
 # \ should be escaped using \
-print(re.search(r"[a\\b]+", r"5ba\babc2")[0])
+m = re.search(r"[a\\b]+", r"5ba\babc2")
+if m:
+    print(m[0])
 
 print(re.split(r"\d+", "Sample123string42with777numbers"))
 print(re.findall(r"\d+", "foo=5, bar=3; x=83, y=120"))
