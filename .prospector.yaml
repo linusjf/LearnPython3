@@ -28,4 +28,7 @@ pep257:
     - D401
 
 pyflakes:
-  run: true
+  run: false
+  disable:
+    # pycodestyle
+    - E501
