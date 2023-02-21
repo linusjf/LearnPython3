@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """WriteXLSX."""
-import xlsxwriter
+import xlsxwriter  # type: ignore
 
 workbook = xlsxwriter.Workbook("addsheet.xlsx")
 worksheet = workbook.add_worksheet(name="Sheets")
