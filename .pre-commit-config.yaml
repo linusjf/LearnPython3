@@ -1,6 +1,5 @@
 repos:
-  - repo: https://github.com/psf/black
-    rev: 23.1.0
+  - repo: local
     hooks:
       - id: black
         name: black
@@ -9,8 +8,8 @@ repos:
         types: [python]
   - repo: local
     hooks:
-    - id: pylint
-      name: pylint
-      entry: pylint
+    - id: prospector
+      name: prospector
+      entry: prospector
       language: system
       types: [python]
