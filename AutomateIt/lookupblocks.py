@@ -12,7 +12,7 @@ Lookupblocks.
 """
 import json
 
-from requests_oauthlib import OAuth1Session
+from requests_oauthlib import OAuth1Session  # type: ignore
 
 import config
 
@@ -24,7 +24,7 @@ params = {"user.fields": "created_at,description"}
 # pinned_tweet_id, profile_image_url, protected,
 # public_metrics, url, username, verified, and withheld
 
-REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
+REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"  # nosec
 oauth = OAuth1Session(consumer_key, client_secret=consumer_secret)
 
 try:
@@ -46,7 +46,7 @@ print(f"Please go here and authorize: {authorization_url}")
 verifier = input("Paste the PIN here: ")
 
 # Get the access token
-ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
+ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"  # nosec
 oauth = OAuth1Session(
     consumer_key,
     client_secret=consumer_secret,
