@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """DocWrite."""
-from docx import Document
-from docx.shared import Inches
+from docx import Document  # type: ignore
+from docx.shared import Inches  # type: ignore
 
 document = Document()
 document.add_heading("Test Document from Docx", 0)
