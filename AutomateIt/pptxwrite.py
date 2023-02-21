@@ -12,7 +12,7 @@ PPTXWrite.
 """
 import collections  # noqa # pylint: disable = unused-import
 from collections import abc  # noqa # pylint: disable = unused-import
-from pptx import Presentation
+from pptx import Presentation  # type: ignore
 
 prs = Presentation()
 slide = prs.slides.add_slide(prs.slide_layouts[0])
