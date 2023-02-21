@@ -5,13 +5,16 @@ strictness: veryhigh
 pylint:
   run: true
   disable:
+    - E401
+    - E501
 
 pep8:
   run: true
   disable:
     # pycodestyle
-    - E501
     - E203
+    - E401
+    - E501
 
 pep257:
   run: true
@@ -31,4 +34,5 @@ pyflakes:
   run: false
   disable:
     # pycodestyle
+    - E401
     - E501
