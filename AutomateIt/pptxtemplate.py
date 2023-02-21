@@ -12,7 +12,7 @@ PPTXTemplate.
 """
 import collections  # noqa F401 #pylint: disable=unused-import
 import collections.abc  # noqa F401 #pylint: disable=unused-import
-from pptx import Presentation
+from pptx import Presentation  # type: ignore
 
 prs = Presentation("Sample_ppt.pptx")
 first_slide = prs.slides[0]
