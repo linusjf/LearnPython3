@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """Chartxlsx."""
-import xlsxwriter
+import xlsxwriter  # type: ignore
 
 workbook = xlsxwriter.Workbook("chartline.xlsx")
 worksheet = workbook.add_worksheet()
