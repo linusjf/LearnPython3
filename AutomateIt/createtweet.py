@@ -12,7 +12,7 @@ CreateTweet.
 """
 import json
 
-from requests_oauthlib import OAuth1Session
+from requests_oauthlib import OAuth1Session  # type: ignore
 
 import config
 
@@ -26,8 +26,9 @@ consumer_secret = config.twitterapikeysecret
 payload = {"text": "Hello world!"}
 
 # Get request token
-REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token?\
-        oauth_callback=oob&x_auth_access_type=write"  # noqa
+REQUEST_TOKEN_URL =\
+        "https://api.twitter.com/oauth/request_token?\
+        oauth_callback=oob&x_auth_access_type=write"  # nosec
 oauth = OAuth1Session(consumer_key, client_secret=consumer_secret)
 
 try:
@@ -49,7 +50,7 @@ print(f"Please go here and authorize: {authorization_url}")
 verifier = input("Paste the PIN here: ")
 
 # Get the access token
-ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
+ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"  # nosec
 oauth = OAuth1Session(
     consumer_key,
     client_secret=consumer_secret,
