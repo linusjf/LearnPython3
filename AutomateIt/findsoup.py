@@ -16,5 +16,7 @@ with open("python.html", encoding="utf-8") as myfile:
     # Find Elements by css print
     print(soup.select(".wow"))
     print("Facebook URL:", soup.find_all("a")[0]["href"])
-    print("Inventor:", soup.find("div", {"id": "inventor"}).text)
+    inventor = soup.find("div", {"id": "inventor"})
+    if inventor:
+        print("Inventor:", inventor.text)
     print("Span content:", soup.select("span")[0].getText())
