@@ -14,7 +14,7 @@ import collections  # noqa F401 #pylint: disable=unused-import
 import collections.abc  # noqa F401 #pylint: disable=unused-import
 
 from datetime import datetime
-import pandas as pd
+import pandas as pd  # pylint: disable=import-error
 from pptx import Presentation
 from pptx.chart.data import ChartData
 from pptx.enum.chart import XL_CHART_TYPE
