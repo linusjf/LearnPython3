@@ -36,7 +36,7 @@ bool(word.search(SENTENCE, 2, 4))
 BYTE_DATA = b"This is a sample string"
 # error message truncated for presentation purposes
 try:
-    print(re.search(r"is", BYTE_DATA))
+    print(re.search(rb"is", BYTE_DATA))
 except TypeError as te:
     print(te)
 print(bool(re.search(rb"is", BYTE_DATA)))
