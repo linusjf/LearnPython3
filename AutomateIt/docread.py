@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """DocRead."""
-import docx
+import docx  # type: ignore
 
 doc = docx.Document("WExercise.docx")
 print("Document Object:", doc)
