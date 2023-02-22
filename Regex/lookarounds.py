@@ -410,6 +410,14 @@ print(numsregex.findall("123"))
 numsregex = regex.compile(r"\d(\d)")
 print(numsregex.findall("123"))
 
+# Replace all whole words with X unless it is preceded by a ( character.
+
+IP = "(apple) guava berry) apple (mango) (grape"
+regexx = regex.compile(r"(?<!\()\b\w+\b")
+print(regexx.sub("X", IP))
+regexx = regex.compile(r"\b\w+\b(?![)])")
+print(regexx.sub("X", IP))
+
 # Suppose you want to match one word character \w as
 # long as it is not the letter Q.
 # a) Remove leading and trailing whitespaces from all the individual
