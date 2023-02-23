@@ -429,6 +429,7 @@ regexx = regex.compile(r"(?!\b[adn]\w*\b)\b\w+\b")
 print(regexx.findall(IP))
 
 IP = "Poke,on=-=so_good:ink.to/is(vast)ever2-sit"
+print(IP)
 regexx = regex.compile(r"(?=\b\w+\b[:,-])\b\w+\b")
 print(regexx.findall(IP))
 
@@ -436,6 +437,8 @@ regexx = regex.compile(r"(?<=[=/-])\b\w+\b")
 print(regexx.findall(IP))
 
 regexx = regex.compile(r"(?<=[=:])(?=\b\w+\b[:\.])\b\w+\b")
+print(regexx.findall(IP))
+regexx = regex.compile(r"(?<=[\(:=\.-])(?=\b\w+\b(?:[^\./]|$))\b\w+\b")
 print(regexx.findall(IP))
 # Suppose you want to match one word character \w as
 # long as it is not the letter Q.
