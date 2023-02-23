@@ -417,6 +417,8 @@ regexx = regex.compile(r"(?<!\()\b\w+\b")
 print(regexx.sub("X", IP))
 regexx = regex.compile(r"\b\w+\b(?![)])")
 print(regexx.sub("X", IP))
+regexx = regex.compile(r"(?<![(])\b\w+\b(?![)])")
+print(regexx.sub("X", IP))
 
 # Suppose you want to match one word character \w as
 # long as it is not the letter Q.
