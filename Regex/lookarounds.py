@@ -445,7 +445,12 @@ print(regexx.findall(IP))
 # a) Remove leading and trailing whitespaces from all the individual
 # fields of these csv strings.
 CSV1 = " comma ,separated ,values "
+print(CSV1)
 CSV2 = "good bad,nice ice , 42 , , stall small"
-remove_whitespace = regex.compile(r"(?<=^|, )|(?<=, ) | (?=$|,)|(?<=, )(?=,)")
+print(CSV2)
+CSV3 = "good bad,nice ice , 42 , , stall small  "
+print(CSV3)
+remove_whitespace = regex.compile(r"(?<=\A|(\b\w+\b)|,)(?!\s+(\b\w+\b)\s*(,|\Z))\s+")
 print(remove_whitespace.sub("", CSV1))
 print(remove_whitespace.sub("", CSV2))
+print(remove_whitespace.sub("", CSV3))
