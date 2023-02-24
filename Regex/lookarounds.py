@@ -503,3 +503,28 @@ IP = "::very--at<=>row|in.a_b#b2c=>lion----east"
 PAT = regex.compile(r"(?<!(?::|<=>|-{4}|#))\b\w+\b")
 print(PAT.findall(IP))
 # ['at', 'in', 'a_b', 'lion']
+
+# Match strings if it contains qty
+# followed by price but not if there is any whitespace character or the string
+# error between them
+
+STR1 = "23,qty,price,42"
+STR2 = "qty price,oh"
+STR3 = "3.14,qty,6,errors,9,price,3"
+STR4 = "42\nqty-6,apple-56,price-234,error"
+STR5 = "4,price,3.14,qty,4"
+STR6 = "(qtyprice) (hi-there)"
+
+neg = re.compile(r"(?!qty.*(\s|error)+.*price)qty.*price")
+print(bool(neg.search(STR1)))
+# True
+print(bool(neg.search(STR2)))
+# False
+print(bool(neg.search(STR3)))
+# False
+print(bool(neg.search(STR4)))
+# True
+print(bool(neg.search(STR5)))
+# False
+print(bool(neg.search(STR6)))
+# True
