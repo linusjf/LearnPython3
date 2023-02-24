@@ -451,3 +451,18 @@ print(CSV2)
 remove_whitespace = regex.compile(r"(?<=(\A|(\b\w+\b)|,))(?<!\b\w+\b(?!\s+,))\s+")
 print(remove_whitespace.sub("", CSV1))
 print(remove_whitespace.sub("", CSV2))
+
+# Filter all elements that satisfy all of these rules:
+
+# should have at least two alphabets
+# should have at least three digits
+# should have at least one special character among % or * or # or $
+# should not end with a whitespace character
+pwds = ["hunter2", "F2H3u%9", "*X3Yz3.14\t", "r2_d2_42", "A $B C1234"]
+print(pwds)
+regexx = regex.compile(
+    r"\A(?=([^A-Za-z]*[A-Za-z]){2,})(?=(\D*\d){3,})(?=([^\*%\#\$]*[\*%\#\$]){1,})(?!.+\s\Z).*\Z"
+)
+
+print([w for w in pwds if regex.search(regexx, w)])
+# ['F2H3u%9', 'A $B C1234']
