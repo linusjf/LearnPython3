@@ -468,3 +468,12 @@ regexx = regex.compile(COMP)
 
 print([w for w in pwds if regex.search(regexx, w)])
 # ['F2H3u%9', 'A $B C1234']
+
+# For the given string, surround all whole words with {} except for whole words par
+# and cat and apple.
+
+IP = "part; cat {super} rest_42 par scatter apple spar"
+print(IP)
+regexx = regex.compile(r"(?!(\bpar\b)|(\bcat\b)|(\bapple\b))(\b\w+\b)")
+print(regexx.sub(r"{\4}", IP))
+# '{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
