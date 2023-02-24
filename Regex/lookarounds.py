@@ -448,9 +448,6 @@ CSV1 = " comma ,separated ,values "
 print(CSV1)
 CSV2 = "good bad,nice ice , 42 , , stall small"
 print(CSV2)
-CSV3 = "good bad,nice ice , 42 , , stall small  "
-print(CSV3)
-remove_whitespace = regex.compile(r"(?<=\A|(\b\w+\b)|,)(?!\s+(\b\w+\b)\s*(,|\Z))\s+")
+remove_whitespace = regex.compile(r"(?<=(\A|(\b\w+\b)|,))(?<!\b\w+\b(?!\s+,))\s+")
 print(remove_whitespace.sub("", CSV1))
 print(remove_whitespace.sub("", CSV2))
-print(remove_whitespace.sub("", CSV3))
