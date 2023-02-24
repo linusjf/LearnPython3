@@ -535,3 +535,15 @@ print(regex.sub(r"\b..\b", "{\\g<0>}", IP))
 # '{I }have {12}{, }{he} has{ 2}!'
 print(regex.sub(r"(?<!\w)..(?!\w)", "{\\g<0>}", IP))
 # 'I have {12}, {he} has {2!}'
+
+# The given input string has comma separated fields and some of
+# them can occur more than once. For the duplicated fields,
+# retain only the rightmost one. Assume that there are no empty fields.
+ROW = "421,cat,2425,42,5,cat,6,6,42,61,6,6,scat,6,6,4,Cat,425,4"
+print(ROW)
+regexx = regex.compile(r"(\b\w+\b)(?!(?:(?:.*?\1.*?){2,}))")
+print(regexx.findall(ROW))
+ROW = "6,6"
+print(ROW)
+print(regexx.findall(ROW))
+# '421,2425,5,cat,42,61,scat,6,Cat,425,4'
