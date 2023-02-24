@@ -528,3 +528,10 @@ print(bool(neg.search(STR5)))
 # False
 print(bool(neg.search(STR6)))
 # True
+
+# Can you reason out why the following regular expressions behave differently?
+IP = "I have 12, he has 2!"
+print(regex.sub(r"\b..\b", "{\\g<0>}", IP))
+# '{I }have {12}{, }{he} has{ 2}!'
+print(regex.sub(r"(?<!\w)..(?!\w)", "{\\g<0>}", IP))
+# 'I have {12}, {he} has {2!}'
