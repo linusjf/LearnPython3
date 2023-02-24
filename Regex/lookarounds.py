@@ -476,6 +476,7 @@ IP = "part; cat {super} rest_42 par scatter apple spar"
 print(IP)
 regexx = regex.compile(r"(?!(\bpar\b)|(\bcat\b)|(\bapple\b))(\b\w+\b)")
 print(regexx.sub(r"{\4}", IP))
+# '{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
 
 # Extract integer portion of floating-point numbers for the given string.
 # Integers and numbers ending with . and no further digits should
@@ -484,6 +485,13 @@ IP = "12 ab32.4 go 5 2. 46.42 5"
 print(IP)
 regexx = regex.compile(r"(?=[A-Za-z]*\d+\.\d*)[A-Za-z]*(\d+)\.[^\s]")
 print(regexx.findall(IP))
-
 # ['32', '46']
-# '{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
+
+# For the given input strings, extract all overlapping two character sequences.
+S1 = "apple"
+S2 = "1.2-3:4"
+PAT = regex.compile(r"(?=(\S\S)\S*)")
+print(PAT.findall(S1))
+print(PAT.findall(S2))
+# ['ap', 'pp', 'pl', 'le']
+# ['1.', '.2', '2-', '-3', '3:', ':4']
