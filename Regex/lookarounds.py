@@ -495,3 +495,11 @@ print(PAT.findall(S1))
 print(PAT.findall(S2))
 # ['ap', 'pp', 'pl', 'le']
 # ['1.', '.2', '2-', '-3', '3:', ':4']
+
+# Extract all whole words unless they are preceded by
+# : or <=> or ---- or #.
+
+IP = "::very--at<=>row|in.a_b#b2c=>lion----east"
+PAT = regex.compile(r"(?<!(?::|<=>|-{4}|#))\b\w+\b")
+print(PAT.findall(IP))
+# ['at', 'in', 'a_b', 'lion']
