@@ -461,7 +461,7 @@ print(remove_whitespace.sub("", CSV2))
 pwds = ["hunter2", "F2H3u%9", "*X3Yz3.14\t", "r2_d2_42", "A $B C1234"]
 print(pwds)
 regexx = regex.compile(
-    r"\A(?=([^A-Za-z]*[A-Za-z]){2,})(?=(\D*\d){3,})(?=([^\*%\#\$]*[\*%\#\$]){1,})(?!.+\s\Z).*\Z"
+    r"\A(?=([^A-Za-z]*[A-Za-z]){2,})(?=(\D*\d){3,})(?=([^\*%\#\$]*[\*%\#\$]){1,}).+[^\s]\Z"
 )
 
 print([w for w in pwds if regex.search(regexx, w)])
