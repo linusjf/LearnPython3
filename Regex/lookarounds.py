@@ -476,4 +476,14 @@ IP = "part; cat {super} rest_42 par scatter apple spar"
 print(IP)
 regexx = regex.compile(r"(?!(\bpar\b)|(\bcat\b)|(\bapple\b))(\b\w+\b)")
 print(regexx.sub(r"{\4}", IP))
+
+# Extract integer portion of floating-point numbers for the given string.
+# Integers and numbers ending with . and no further digits should
+# not be considered.
+IP = "12 ab32.4 go 5 2. 46.42 5"
+print(IP)
+regexx = regex.compile(r"(?=[A-Za-z]*\d+\.\d*)[A-Za-z]*(\d+)\.[^\s]")
+print(regexx.findall(IP))
+
+# ['32', '46']
 # '{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
