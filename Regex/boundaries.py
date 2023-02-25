@@ -61,3 +61,11 @@ print(",".join(regexx.findall(STRING)))
 
 regexx = regex.compile(r"(?<=\A|#)\d(?=\Z|#)")
 print(",".join(regexx.findall(STRING)))
+
+# To match A, B or E in A0 1B1 2C D3 4E,
+# i.e capital letters that have either a
+# digit or a string-end on each side, you can
+# use this pattern:
+STRING = "A0 1B1 2C D3 4E"
+regexx = regex.compile(r"(?<!\D)[A-Z](?!\D)")
+print(",".join(regexx.findall(STRING)))
