@@ -47,5 +47,17 @@ and 500 cokes and she wouldn't pay more than 100Rs."
 print(regexx.sub("|", EMAILLINE))
 
 STRING = "0# 1 #2 #3# 4# #5"
-regexx = regex.compile(r"(?:(?:^|#| )*?)(\d)(?:$|#| )")
+regexx = regex.compile(r"(?:^|#)(\d)(?:$|#)")
+print(",".join(regexx.findall(STRING)))
+
+regexx = regex.compile(r"(?<=^|#)\d(?=$|#)")
+print(",".join(regexx.findall(STRING)))
+
+regexx = regex.compile(r"(?:^|#\K)\d(?=$|#)")
+print(",".join(regexx.findall(STRING)))
+
+regexx = regex.compile(r"(?<![^#])\d(?![^#])")
+print(",".join(regexx.findall(STRING)))
+
+regexx = regex.compile(r"(?<=\A|#)\d(?=\Z|#)")
 print(",".join(regexx.findall(STRING)))
