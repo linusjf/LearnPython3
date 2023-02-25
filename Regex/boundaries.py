@@ -31,3 +31,12 @@ regexx = regex.compile(r"(?:(?=\w)(?<!\w)|(?<=\w)(?!\w))")
 print(regexx.sub("|", EMAILLINE))
 regexx = regex.compile(r"\b")
 print(regexx.sub("|", EMAILLINE))
+
+# A "real word boundary" that detects the edge between
+# an ASCII letter and a non-letter
+regexx = regex.compile(r"(?i)(?<=^|[^a-z])(?=[a-z])|(?<=[a-z])(?=$|[^a-z])")
+print(regexx.sub("|", EMAILLINE))
+EMAILLINE = "> and then she told him \
+she wouldn't settle for less than 1000 Hawaiian pizzas, \
+and 500 cokes."
+print(regexx.sub("|", EMAILLINE))
