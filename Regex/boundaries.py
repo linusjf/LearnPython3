@@ -69,3 +69,11 @@ print(",".join(regexx.findall(STRING)))
 STRING = "A0 1B1 2C D3 4E"
 regexx = regex.compile(r"(?<!\D)[A-Z](?!\D)")
 print(",".join(regexx.findall(STRING)))
+
+STRING = "A -B- C -D -E F"
+regexx = regex.compile(r"(?<!\S)[A-Z](?!\S)")
+print(",".join(regexx.findall(STRING)))
+
+STRING = "~A ? 2! _#4 @5 6:"
+regexx = regex.compile(r"(?<!\W)[~#:@?!](?!\W)")
+print(",".join(regexx.findall(STRING)))
