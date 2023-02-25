@@ -27,7 +27,7 @@ payload = {"text": "Hello world!"}
 
 # Get request token
 REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token?\
-        oauth_callback=oob&x_auth_access_type=write"  # nosec
+oauth_callback=oob&x_auth_access_type=write"  # nosec
 oauth = OAuth1Session(consumer_key, client_secret=consumer_secret)
 
 try:
