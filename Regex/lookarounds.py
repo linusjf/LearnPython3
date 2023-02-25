@@ -548,4 +548,8 @@ ROW = "6,7,6,6"
 print(ROW)
 print(regexx.findall(ROW))
 print(",".join(regexx.findall(ROW)))
+regexx = regex.compile(r"(?<=\A|\b)([\b\w]+),(?=.*(?<=\b)\1(?=\Z|,))")
+print(regexx.sub("", ROW))
+ROW = "421,cat,2425,42,5,cat,6,6,42,61,6,6,scat,6,6,4,Cat,425,4"
+print(regexx.sub("", ROW))
 # '421,2425,5,cat,42,61,scat,6,Cat,425,4'
