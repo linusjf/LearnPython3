@@ -541,9 +541,11 @@ print(regex.sub(r"(?<!\w)..(?!\w)", "{\\g<0>}", IP))
 # retain only the rightmost one. Assume that there are no empty fields.
 ROW = "421,cat,2425,42,5,cat,6,6,42,61,6,6,scat,6,6,4,Cat,425,4"
 print(ROW)
-regexx = regex.compile(r"(\b\w+\b)(?!(?:(?:.*?\1.*?){2,}))")
+regexx = regex.compile(r"(\b\w+\b)(?:,\1)*(?!(?:.*?\1.*?){2,})")
 print(regexx.findall(ROW))
-ROW = "6,6"
+print(",".join(regexx.findall(ROW)))
+ROW = "6,7,6,6"
 print(ROW)
 print(regexx.findall(ROW))
+print(",".join(regexx.findall(ROW)))
 # '421,2425,5,cat,42,61,scat,6,Cat,425,4'
