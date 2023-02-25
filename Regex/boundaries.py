@@ -40,3 +40,8 @@ EMAILLINE = "> and then she told him \
 she wouldn't settle for less than 1000 Hawaiian pizzas, \
 and 500 cokes."
 print(regexx.sub("|", EMAILLINE))
+regexx = regex.compile("(?:(?i)(?<=^|\\d)(?=[a-z])|(?<=[a-z])(?=$|\\d))")
+EMAILLINE = "> and then she told him \
+she wouldn't settle for less than 1000 Hawaiian pizzas, \
+and 500 cokes and she wouldn't pay more than 100Rs."
+print(regexx.sub("|", EMAILLINE))
