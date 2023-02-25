@@ -79,7 +79,6 @@ print(regex.sub(r"(cat.*?){2}\Kcat", r"X", "cat scatter cater scat", count=1))
 print(regex.findall(r"(?<=\b[a-z]+)\d+", "pore42 car3 pare7 care5"))
 print(regex.sub(r"(?<=\A|,)(?=,|\Z)", r"NA", ",1,,,two,3,,,"))
 print(regex.sub(r"(?<=(cat.*?){2})cat", r"X", "cat scatter cater scat", count=1))
-
 print(regex.findall(r"(?<!car|pare)\d+", "pore42 car3 pare7 care5"))
 # match 'dog' only if it is not preceded by 'cat'
 print(bool(regex.search(r"(?<!cat.*)dog", "fox,cat,dog,parrot")))
@@ -553,3 +552,28 @@ print(regexx.sub("", ROW))
 ROW = "421,cat,2425,42,5,cat,6,6,42,61,6,6,scat,6,6,4,Cat,425,4"
 print(regexx.sub("", ROW))
 # '421,2425,5,cat,42,61,scat,6,Cat,425,4'
+
+# The given input strings contain fields separated by the :
+# character. Delete : and the last field if there is a digit
+# character anywhere before the last field.
+
+S1 = "42:cat"
+S2 = "twelve:a2b"
+S3 = "we:be:he:0:a:b:bother"
+S4 = "apple:banana-42:cherry:"
+S5 = "dragon:unicorn:centaur"
+
+pat = regex.compile(r"(?<=\d.*)(:[^:]*)\Z")
+print(S1)
+print(pat.findall(S1))
+print(pat.sub(r"", S1))
+print(S2)
+print(pat.findall(S2))
+print(pat.sub(r"", S2))
+print(S3)
+print(pat.findall(S3))
+print(pat.sub(r"", S3))
+print(S4)
+print(pat.findall(S4))
+print(pat.sub(r"", S4))
+print(S5)
