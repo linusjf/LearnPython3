@@ -139,3 +139,7 @@ for m in regexx.finditer(SCORES):
 regexx = regex.compile(r"(?:Tarzan|\G) \w+:(\d+)")
 for m in regexx.finditer(SCORES):
     print(m.group(1))
+regexx = regex.compile(r"(?:Jane|\G) \w+:\K\d+")
+print(regexx.findall(SCORES))
+regexx = regex.compile(r"(?:Tarzan|\G) \w+:\K\d+")
+print(regexx.findall(SCORES))
