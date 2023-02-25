@@ -11,6 +11,7 @@ Anchors.
 ######################################################################
 """
 import re
+import regex
 
 print(bool(re.search(r"\Acat", "cater")))
 print(bool(re.search(r"\Acat", "concatenation")))
@@ -130,3 +131,11 @@ ball fall wall tall
 mall call ball pall
 wall mall ball fall"""
 print(re.sub(r"^mall", r"1234", PARA, flags=re.M))
+
+regexx = regex.compile(r"(?:Jane|\G) \w+:(\d+)")
+SCORES = "Tarzan A:33 B:32 C:36 Jane A:35 B:33 C:31"
+for m in regexx.finditer(SCORES):
+    print(m.group(1))
+regexx = regex.compile(r"(?:Tarzan|\G) \w+:(\d+)")
+for m in regexx.finditer(SCORES):
+    print(m.group(1))
