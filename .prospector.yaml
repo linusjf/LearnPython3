@@ -42,7 +42,7 @@ pep257:
 
 pyflakes:
   full: true
-  run: false
+  run: true
   disable:
     # pycodestyle
     - E401
