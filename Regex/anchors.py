@@ -143,3 +143,11 @@ regexx = regex.compile(r"(?:Jane|\G) \w+:\K\d+")
 print(regexx.findall(SCORES))
 regexx = regex.compile(r"(?:Tarzan|\G) \w+:\K\d+")
 print(regexx.findall(SCORES))
+
+SUB = "A1B1C1vsA1A2A3"
+regexx = regex.compile(r"\G[A-Z]\d")
+print("".join(regexx.findall(SUB)))
+regexx = regex.compile(r"(?:vs|\G(?!\A))([A-Z]\d)")
+print("".join(regexx.findall(SUB)))
+regexx = regex.compile(r"(?:vs|\G(?<!\A))([A-Z]\d)")
+print("".join(regexx.findall(SUB)))
