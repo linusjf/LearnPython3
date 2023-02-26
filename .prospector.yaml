@@ -68,3 +68,6 @@ mypy:
 
 bandit:
   run: true
+
+vulture:
+  run: true
