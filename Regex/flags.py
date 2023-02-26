@@ -28,3 +28,16 @@ print(re.sub(r"the.*day", r"Bye", "Hi there\nHave a Nice Day", flags=re.S | re.I
 print(bool(re.search(r"^top", "hi hello\ntop spot", flags=re.M)))
 # check if any line in the string ends with 'ar'
 print(bool(re.search(r"ar$", "spare\npar\ndare", flags=re.M)))
+
+# same as: rex = re.compile(r'\A((?:[^,]+,){3})([^,]+)')
+# note the use of triple quoted string
+rex = re.compile(
+    r"""
+\A( # group-1, captures first 3 columns
+(?:[^,]+,){3} # non-capturing group to get the 3 columns
+)
+([^,]+) # group-2, captures 4th column
+""",
+    flags=re.X,
+)
+print(rex.sub(r"\1(\2)", "1,2,3,4,5,6,7", count=1))
