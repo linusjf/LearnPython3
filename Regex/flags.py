@@ -23,7 +23,8 @@ print(re.sub(r"the.*ice", r"X", "Hi there\nHave a Nice Day"))
 # re.S flag will allow newline character to be matched as well
 print(re.sub(r"the.*ice", r"X", "Hi there\nHave a Nice Day", flags=re.S))
 # multiple flags can be combined using bitwise OR operator
-print(re.sub(r"the.*day", r"Bye", "Hi there\nHave a Nice Day", flags=re.S | re.I))
+expr = re.compile(r"the.*day", flags=re.S | re.I)
+print(expr.sub(r"Bye", "Hi there\nHave a Nice Day"))
 # check if any line in the string starts with 'top'
 print(bool(re.search(r"^top", "hi hello\ntop spot", flags=re.M)))
 # check if any line in the string ends with 'ar'
@@ -41,3 +42,54 @@ rex = re.compile(
     flags=re.X,
 )
 print(rex.sub(r"\1(\2)", "1,2,3,4,5,6,7", count=1))
+
+print(bool(re.search(r"t a", "cat and dog", flags=re.X)))
+print(bool(re.search(r"t\ a", "cat and dog", flags=re.X)))
+print(bool(re.search(r"t[ ]a", "cat and dog", flags=re.X)))
+print(bool(re.search(r"t\x20a", "cat and dog", flags=re.X)))
+m = re.search(r"a#b", "foo a#b 123", flags=re.X)
+if m:
+    print(m[0])
+m = re.search(r"a\#b", "foo a#b 123", flags=re.X)
+if m:
+    print(m[0])
+rex = re.compile(r"\A((?:[^,]+,){3})(?#3-cols)([^,]+)(?#4th-col)")
+print(rex.sub(r"\1(\2)", "1,2,3,4,5,6,7", count=1))
+
+# case-sensitive for whole RE definition
+print(re.findall(r"Cat[a-z]*\b", "Cat SCatTeR CATER cAts"))
+# case-insensitive only for '[a-z]*' portion
+print(re.findall(r"Cat(?i:[a-z]*)\b", "Cat SCatTeR CATER cAts"))
+# case-insensitive for whole RE definition using flags argument
+print(re.findall(r"Cat[a-z]*\b", "Cat SCatTeR CATER cAts", flags=re.I))
+# case-insensitive for whole RE definition using special group
+print(re.findall(r"(?i)Cat[a-z]*\b", "Cat SCatTeR CATER cAts"))
+# case-sensitive only for 'Cat' portion
+print(re.findall(r"(?-i:Cat)[a-z]*\b", "Cat SCatTeR CATER cAts", flags=re.I))
+
+# a) Delete from the string start if it is at beginning of a line up to the
+# next occurrence of the
+# string end at end of a line. Match these keywords irrespective of case.
+PARA = """\
+good start
+start working on that
+project you always wanted
+to, do not let it end
+hi there
+start and end the end
+42
+Start and try to
+finish the End
+bye"""
+expr = re.compile(r"\nstart.*?end\n", flags=re.S | re.I)
+print(expr.sub("\n\n", PARA))
+# good start
+# hi there
+# 42
+# bye
+
+# Explore what the re.DEBUG flag does.
+# Here’s some examples, check their output.
+expr = re.compile(r"\Aden|ly\Z", flags=re.DEBUG)
+expr = re.compile(r"\b(0x)?[\da-f]+\b", flags=re.DEBUG)
+expr = re.compile(r"\b(?:0x)?[\da-f]+\b", flags=re.I | re.DEBUG)
