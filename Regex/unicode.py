@@ -32,3 +32,11 @@ print(regex.findall(r"\p{Word}+", "φοο12,βτ_4,foo"))
 # delete all characters other than letters
 # \p{^L} can also be used instead of \P{L}
 print(regex.sub(r"\P{L}+", r"", "φοο12,βτ_4,foo"))
+# to get codepoints for ASCII characters
+print([hex(ord(c)) for c in "fox"])
+# to get codepoints for Unicode characters
+print([c.encode("unicode_escape") for c in "αλεπού"])
+print([c.encode("unicode_escape") for c in "İıſK"])
+# character range example using \u
+# all english lowercase letters
+print(re.findall(r"[\u0061-\u007a]+", "fox:αλεπού,eagle:αετός"))
