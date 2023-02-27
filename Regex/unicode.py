@@ -11,6 +11,7 @@ Unicode.
 ######################################################################
 """
 import re
+import regex
 
 # \w is Unicode aware
 print(re.findall(r"\w+", "fox:αλεπού"))
@@ -21,3 +22,13 @@ m = re.search(r"[a-z]+", "İıſK", flags=re.I)
 if m:
     print(m[0])
 print(bool(re.search(r"[a-z]", "İıſK", flags=re.I | re.A)))
+
+# extract all consecutive letters
+print(regex.findall(r"\p{L}+", "fox:αλεπού,eagle:αετός"))
+# extract all consecutive Greek letters
+print(regex.findall(r"\p{Greek}+", "fox:αλεπού,eagle:αετός"))
+# extract all words
+print(regex.findall(r"\p{Word}+", "φοο12,βτ_4,foo"))
+# delete all characters other than letters
+# \p{^L} can also be used instead of \P{L}
+print(regex.sub(r"\P{L}+", r"", "φοο12,βτ_4,foo"))
