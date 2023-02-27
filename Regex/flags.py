@@ -83,6 +83,8 @@ finish the End
 bye"""
 expr = re.compile(r"\nstart.*?end\n", flags=re.S | re.I)
 print(expr.sub("\n\n", PARA))
+expr = re.compile(r"^start.*?end$", flags=re.S | re.I | re.M)
+print(expr.sub("", PARA))
 # good start
 # hi there
 # 42
