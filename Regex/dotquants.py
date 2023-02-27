@@ -11,6 +11,7 @@ DotQuants.
 ######################################################################
 """
 import re
+import regex
 
 # matches character 'c', any character and then character 't'
 print(re.sub(r"c.t", r"X", "tac tin cat abc;tuv acute"))
@@ -172,6 +173,14 @@ if m:
 m = re.search(r"(?>::.*?::)apple", IP)
 if m:
     print(m[0])
+
+STR = "@ABC @DEF"
+regexx = regex.compile(r"@[A-Z].*\K@[A-Z]+")
+print(regexx.findall(STR))
+STR = "@DEF"
+print(regexx.findall(STR))
+STR = "@ABC @GHI @DEF"
+print(regexx.findall(STR))
 
 print("\n-------")
 print("Exercises....")
