@@ -90,6 +90,37 @@ print(expr.sub("\n\n", PARA))
 
 # Explore what the re.DEBUG flag does.
 # Here’s some examples, check their output.
+print()
+print(r"\Aden|ly\Z")
 expr = re.compile(r"\Aden|ly\Z", flags=re.DEBUG)
+print()
+print(r"\b(0x)?[\da-f]+\b")
 expr = re.compile(r"\b(0x)?[\da-f]+\b", flags=re.DEBUG)
+print()
+print(r"\b(?:0x)?[\da-f]+\b")
 expr = re.compile(r"\b(?:0x)?[\da-f]+\b", flags=re.I | re.DEBUG)
+
+# Remove from the first occurrence of
+# hat to the last occurrence of it for the given input strings. Match these
+# markers case insensitively.
+
+S1 = "But Cool THAT\nsee What okay\nwow quite"
+S2 = "it this hat is sliced HIT."
+
+PAT = re.compile(r"HAT.*IT", flags=re.I | re.S)
+print(PAT.sub("", S1))
+print(PAT.sub("", S2))
+
+S1 = "This is nice and Cool"
+S2 = "Nice and cool this is"
+S3 = "What is so nice and cool about This?"
+S4 = "nice,cool,This"
+S5 = "not nice This?"
+S6 = "This is not cool"
+PAT = re.compile(r"(?i)(?=.*nice)(?=.*cool)(?-i:.*This)")
+print(bool(PAT.search(S1)))
+print(bool(PAT.search(S2)))
+print(bool(PAT.search(S3)))
+print(bool(PAT.search(S4)))
+print(bool(PAT.search(S5)))
+print(bool(PAT.search(S6)))
