@@ -124,3 +124,18 @@ print(bool(PAT.search(S3)))
 print(bool(PAT.search(S4)))
 print(bool(PAT.search(S5)))
 print(bool(PAT.search(S6)))
+
+# For the given input strings, match if the
+# string begins with Th and also contains a line
+# that starts with There.
+
+S1 = "There there\nHave a cookie"
+S2 = "This is a mess\nYeah?\nThereeeee"
+S3 = "Oh\nThere goes the fun"
+S4 = "This is not\ngood\nno There"
+
+PAT = re.compile(r"\A(?=Th)(?ms:.*^There)")
+print(bool(PAT.search(S1)))
+print(bool(PAT.search(S2)))
+print(bool(PAT.search(S3)))
+print(bool(PAT.search(S4)))
