@@ -79,3 +79,10 @@ print(regex.sub(r"\G\S", r"*", STR))
 # all digits and optional hyphen combo from start of string
 print(regex.findall(r"\G\d+-?", STR))
 print(regex.sub(r"\G(\d+)(-?)", r"(\1)\2", STR))
+
+# all word characters from start of string
+# only if it is followed by word character
+print(regex.findall(r"\G\w(?=\w)", "cat12 bat pin"))
+print(regex.sub(r"\G\w(?=\w)", r"\g<0>:", "cat12 bat pin"))
+# all lowercase alphabets or space from start of string
+print(regex.sub(r"\G[a-z ]", r"(\g<0>)", "par tar-den hen-food mood"))
