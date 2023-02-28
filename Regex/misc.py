@@ -135,3 +135,15 @@ print(lvln.findall(EQN1))
 print(lvln.findall(EQN2))
 EQN3 = "(3+a) * ((r-2)*(t+2)/6) + 42 * (a(b(c(d(e)))))"
 print(lvln.findall(EQN3))
+
+# similar to: r'\d+' or r'[0-9]+'
+print(regex.split(r"[[:digit:]]+", "Sample123string42with777numbers"))
+# similar to: r'[a-zA-Z]+'
+print(regex.sub(r"[[:alpha:]]+", r":", "Sample123string42with777numbers"))
+# similar to: r'[\w\s]+'
+print(regex.findall(r"[[:word:][:space:]]+", "tea sea-pit sit-lean\tbean"))
+# similar to: r'\S+'
+print(regex.findall(r"[[:^space:]]+", "tea sea-pit sit-lean\tbean"))
+# words not surrounded by punctuation characters
+STR = "tie. ink eat;"
+print(regex.findall(r"(?<![[:punct:]])\b\w+\b(?![[:punct:]])", STR))
