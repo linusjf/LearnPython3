@@ -11,6 +11,7 @@ Misc.
 ######################################################################
 """
 import re
+import regex
 
 # one to one mappings
 d = {"1": "one", "2": "two", "4": "four"}
@@ -37,3 +38,35 @@ LIST = [re.escape(k) for k in d]
 # build alternation list
 # add anchors and flags as needed to construct the final RE
 print("|".join(sorted(LIST, key=len, reverse=True)))
+
+WORD = "coffining"
+print(WORD)
+# recursively delete 'fin'
+while True:
+    WORD, cnt = re.subn(r"fin", r"", WORD)
+    if cnt == 0:
+        break
+    print(WORD)
+print(WORD)
+
+ROW = "421,foo,2425,42,5,foo,6,6,42"
+# lookarounds used to ensure start/end of column matching
+# possessive quantifier used to ensure partial column is not captured
+# if a column has same text as another column, the latter column is deleted
+print(ROW)
+while True:
+    ROW, cnt = regex.subn(r"(?<=\A|,)([^,]++).*\K,\1(?=,|\Z)", r"", ROW)
+    if cnt == 0:
+        break
+    print(ROW)
+print(ROW)
+print()
+ROW = "421,foo,2425,42,5,foo,6,6,42"
+print()
+print(ROW)
+while True:
+    ROW, cnt = regex.subn(r"(?<=\A|,)([^,]+).*\K,\1(?=,|\Z)", r"", ROW)
+    if cnt == 0:
+        break
+    print(ROW)
+print(ROW)
