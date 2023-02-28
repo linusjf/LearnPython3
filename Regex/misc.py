@@ -86,3 +86,34 @@ print(regex.findall(r"\G\w(?=\w)", "cat12 bat pin"))
 print(regex.sub(r"\G\w(?=\w)", r"\g<0>:", "cat12 bat pin"))
 # all lowercase alphabets or space from start of string
 print(regex.sub(r"\G[a-z ]", r"(\g<0>)", "par tar-den hen-food mood"))
+
+# note the use of possessive quantifier
+EQN0 = "a + (b * c) - (d / e)"
+print(regex.findall(r"\([^()]++\)", EQN0))
+EQN1 = "((f+x)^y-42)*((3-g)^z+2)"
+print(regex.findall(r"\([^()]++\)", EQN1))
+# Next, matching a set of parentheses which may optionally
+# contain any
+# number of non-nested
+# sets of parentheses (termed as level-two RE for reference).
+# See debuggex for a railroad
+# diagram, notice the recursive nature of this RE.
+EQN1 = "((f+x)^y-42)*((3-g)^z+2)"
+# note the use of non-capturing group
+print(regex.findall(r"\((?:[^()]++|\([^()]++\))++\)", EQN1))
+EQN2 = "a + (b) + ((c)) + (((d)))"
+print(regex.findall(r"\((?:[^()]++|\([^()]++\))++\)", EQN2))
+
+lvl2 = regex.compile(
+    """\\( #literal (
+(?: #start of non-capturing group
+[^()]++ #non-parentheses characters
+| #OR
+\\([^()]++\\) #level-one RE
+)++ #end of non-capturing group, 1 or more times
+\\) #literal )
+""",
+    flags=regex.X,
+)
+print(lvl2.findall(EQN1))
+print(lvl2.findall(EQN2))
