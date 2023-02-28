@@ -117,3 +117,21 @@ lvl2 = regex.compile(
 )
 print(lvl2.findall(EQN1))
 print(lvl2.findall(EQN2))
+
+lvln = regex.compile(
+    """
+\\( #literal (
+(?: #start of non-capturing group
+[^()]++ #non-parentheses characters
+| #OR
+(?0) #recursive call
+)++ #end of non-capturing group, 1 or more times
+\\) #literal )
+""",
+    flags=regex.X,
+)
+print(lvln.findall(EQN0))
+print(lvln.findall(EQN1))
+print(lvln.findall(EQN2))
+EQN3 = "(3+a) * ((r-2)*(t+2)/6) + 42 * (a(b(c(d(e)))))"
+print(lvln.findall(EQN3))
