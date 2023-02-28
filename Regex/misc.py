@@ -70,3 +70,12 @@ while True:
         break
     print(ROW)
 print(ROW)
+
+STR = "123-87-593 42 foo"
+print(STR)
+# all non-whitespace characters from start of string
+print(regex.findall(r"\G\S", STR))
+print(regex.sub(r"\G\S", r"*", STR))
+# all digits and optional hyphen combo from start of string
+print(regex.findall(r"\G\d+-?", STR))
+print(regex.sub(r"\G(\d+)(-?)", r"(\1)\2", STR))
