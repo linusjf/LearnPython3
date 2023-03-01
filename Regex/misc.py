@@ -166,3 +166,51 @@ regex.sub(r"\b(?:imp|rat)\b(*SKIP)(*F)|[a-z]++", r"(\g<0>)", WORDS)
 # change all commas other than those inside double quotes
 ROW = '1,"cat,12",nice,two,"dog,5"'
 regex.sub(r'"[^"]++"(*SKIP)(*F)|,', r"|", ROW)
+
+# a) Count the maximum depth of nested braces for the given string.
+# Unbalanced or wrongly ordered braces should return -1
+
+
+def max_nested_braces(word):
+    """Max_nested_braces."""
+    print(word)
+    count = 0
+    while True:
+        word, no_of_subs = re.subn(r"\{[^{}]*\}", "", word)
+        print(word)
+        if no_of_subs == 0:
+            break
+        count += 1
+    if re.search(r"[{}]", word):
+        return -1
+    return count
+
+
+print(max_nested_braces("a*b"))
+print(max_nested_braces("}a+b{"))
+print(max_nested_braces("a*b+{}"))
+print(max_nested_braces("{{a+2}*{b+c}+e}"))
+print(max_nested_braces("{{a+2}*{b+{c*d}}+e}"))
+print(max_nested_braces("{{a+2}*{\n{b+{c*d}}+e*d}}"))
+print(max_nested_braces("a*{b+c*{e*3.14}}}"))
+
+
+def max_nested_brackets(expr):
+    """Max_nested_brackets."""
+    count = 0
+    while (_op := re.subn(r"\{[^{}]*\}", "", expr)) and _op[1]:
+        expr = _op[0]
+        count += 1
+
+    if re.search(r"[{}]", expr):
+        return -1
+    return count
+
+
+print(max_nested_brackets("a*b"))
+print(max_nested_brackets("}a+b{"))
+print(max_nested_brackets("a*b+{}"))
+print(max_nested_brackets("{{a+2}*{b+c}+e}"))
+print(max_nested_brackets("{{a+2}*{b+{c*d}}+e}"))
+print(max_nested_brackets("{{a+2}*{\n{b+{c*d}}+e*d}}"))
+print(max_nested_brackets("a*{b+c*{e*3.14}}}"))
