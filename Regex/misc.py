@@ -167,6 +167,13 @@ regex.sub(r"\b(?:imp|rat)\b(*SKIP)(*F)|[a-z]++", r"(\g<0>)", WORDS)
 ROW = '1,"cat,12",nice,two,"dog,5"'
 regex.sub(r'"[^"]++"(*SKIP)(*F)|,', r"|", ROW)
 
+# Normal matching.
+print(regex.search(r"Mr|Mrs", "Mrs"))
+print(regex.search(r"one(self)?(selfsufficient)?", "oneselfsufficient"))
+# POSIX matching.
+print(regex.search(r"(?p)Mr|Mrs", "Mrs"))
+print(regex.search(r"(?p)one(self)?(selfsufficient)?", "oneselfsufficient"))
+
 # a) Count the maximum depth of nested braces for the given string.
 # Unbalanced or wrongly ordered braces should return -1
 
@@ -229,3 +236,10 @@ STR3 = "write a parser"
 print(re.sub(PAT, lambda m: d[str(m[0])], STR1))
 print(re.sub(PAT, lambda m: d[str(m[0])], STR2))
 print(re.sub(PAT, lambda m: d[str(m[0])], STR3))
+
+# c) Read about POSIX flag from regex module documentation.
+# Is the following code snippet
+# showing the correct output?
+WORDS = "plink incoming tint winter in caution sentient"
+change = regex.compile(r"int|in|ion|ing|inco|inter|ink", flags=regex.POSIX)
+print(change.sub(r"X", WORDS))
