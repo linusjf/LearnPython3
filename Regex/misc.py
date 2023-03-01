@@ -214,3 +214,18 @@ print(max_nested_brackets("{{a+2}*{b+c}+e}"))
 print(max_nested_brackets("{{a+2}*{b+{c*d}}+e}"))
 print(max_nested_brackets("{{a+2}*{\n{b+{c*d}}+e*d}}"))
 print(max_nested_brackets("a*{b+c*{e*3.14}}}"))
+
+# b) Replace the string par with spar , spare with extra and park with garden
+d = {"par": "spar", "spare": "extra", "park": "garden"}
+# take care of metacharacter escaping first
+LIST = [re.escape(k) for k in d]
+# build alternation list
+# add anchors and flags as needed to construct the final RE
+PAT = "|".join(sorted(LIST, key=len, reverse=True))
+print(PAT)
+STR1 = "apartment has a park"
+STR2 = "do you have a spare cable"
+STR3 = "write a parser"
+print(re.sub(PAT, lambda m: d[str(m[0])], STR1))
+print(re.sub(PAT, lambda m: d[str(m[0])], STR2))
+print(re.sub(PAT, lambda m: d[str(m[0])], STR3))
