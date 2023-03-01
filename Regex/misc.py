@@ -147,3 +147,22 @@ print(regex.findall(r"[[:^space:]]+", "tea sea-pit sit-lean\tbean"))
 # words not surrounded by punctuation characters
 STR = "tie. ink eat;"
 print(regex.findall(r"(?<![[:punct:]])\b\w+\b(?![[:punct:]])", STR))
+
+# [^aeiou] will match any non-vowel character
+# which means space is also a v
+print(re.findall(r"\b[^aeiou]+\b", "tryst glyph pity why"))
+# intersection or difference can be used here
+# to get a positive definition of characters to match
+print(regex.findall(r"(?V1)\b[a-z&&[^aeiou]]+\b", "tryst glyph pity why"))
+# [[a-l]~~[g-z]] is same as [a-fm-z]
+print(regex.findall(r"(?V1)\b[[a-l]~~[g-z]]+\b", "gets eat top sigh"))
+# remove all punctuation characters except . ! and ?
+PARA = '"Hi", there! How *are* you? All fine here.'
+print(regex.sub(r"(?V1)[[:punct:]--[.!?]]+", r"", PARA))
+
+# change lowercase words other than imp or rat
+WORDS = "tiger imp goat eagle rat"
+regex.sub(r"\b(?:imp|rat)\b(*SKIP)(*F)|[a-z]++", r"(\g<0>)", WORDS)
+# change all commas other than those inside double quotes
+ROW = '1,"cat,12",nice,two,"dog,5"'
+regex.sub(r'"[^"]++"(*SKIP)(*F)|,', r"|", ROW)
