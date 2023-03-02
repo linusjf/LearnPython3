@@ -271,3 +271,19 @@ print(re.sub(r"ta*r", "X", "tr tear tare steer sitaara"))
 print(re.sub(r"t(e|a)*r", "X", "tr tear tare steer sitaara"))
 # match zero or more of '1' followed by '2'
 print(re.sub(r"1*2", "X", "3111111111125111142"))
+
+# last element is empty because there is nothing after 2 at the end of string
+print(re.split(r"1*2", "3111111111125111142"))
+# later, you'll see how maxsplit helps to get behavior like str.partition
+print(re.split(r"1*2", "3111111111125111142", maxsplit=1))
+
+# empty string matches at the start and end of string
+# it matches between every character
+# and, there is an empty match after the split at u
+print(re.split(r"u*", "cloudy"))
+
+print(re.sub(r"ta+r", "X", "tr tear tare steer sitaara"))
+print(re.sub(r"t(e|a)+r", "X", "tr tear tare steer sitaara"))
+print(re.sub(r"1+2", "X", "3111111111125111142"))
+print(re.split(r"1+", "3111111111125111142"))
+print(re.split(r"u+", "cloudy"))
