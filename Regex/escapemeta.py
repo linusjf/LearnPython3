@@ -81,3 +81,14 @@ print(re.sub(r"\x20", "", "h e l l o"))
 # \x7c is '|' character
 print(re.sub(r"2\x7c3", "5", "12|30"))
 print(re.sub(r"2|3", "5", "12|30"))
+
+# Replace (4)\| with 2 only at the start or end of the given input strings.
+
+S1 = r"2.3/(4)\|6 foo 5.3-(4)\|"
+S2 = r"(4)\|42 - (4)\|3"
+S3 = r"two - (4)\\|\n"
+pat = re.compile(r"\A\(4\)\\\||\(4\)\\\|\Z")
+print(pat.pattern)
+print(pat.sub("2", S1))
+print(pat.sub("2", S2))
+print(pat.sub("2", S3))
