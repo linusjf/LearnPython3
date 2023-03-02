@@ -74,3 +74,10 @@ try:
     re.search(r"\e", "hello")
 except re.error as e:
     print(str(e))
+
+# \x20 is space character
+print(re.sub(r"\x20", "", "h e l l o"))
+
+# \x7c is '|' character
+print(re.sub(r"2\x7c3", "5", "12|30"))
+print(re.sub(r"2|3", "5", "12|30"))
