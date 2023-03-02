@@ -103,3 +103,25 @@ print(pat.pattern)
 print(pat.sub("X", "0a.bcd"))
 print(pat.sub("X", "E{n}AMPLE"))
 print(pat.sub("X", r"43+n2 ax\y\ze"))
+
+# Replace the backspace character \b with a single
+# space character for the given input string.
+IP = "123\b456"
+print(IP)
+print(repr(IP))
+pat = re.compile(r"\x08")
+print(pat.sub(" ", IP))
+
+# Replace all occurrences of \e with e.
+IP = r"th\er\e ar\e common asp\ects among th\e alt\ernations"
+print(re.sub(r"\\e", "e", IP))
+
+# Replace any matching item from the list eqns with X for given the string ip.
+# Match the items from eqns literally.
+IP = "3-(a^b)+2*(a^b)-(a/b)+3"
+eqns = ["(a^b)", "(a/b)", "(a^b)+2"]
+eqns = [re.escape(s) for s in eqns]
+print(eqns)
+pat = re.compile("|".join(sorted(eqns, key=len, reverse=True)))
+print(pat.pattern)
+print(pat.sub("X", IP))
