@@ -51,3 +51,26 @@ print(alt_re.sub(r"X", r"43+n2 ax\y\ze"))
 print(alt_re2.sub(r"X", "0a.bcd"))
 print(alt_re2.sub(r"X", "E{n}AMPLE"))
 print(alt_re2.sub(r"X", r"43+n2 ax\y\ze"))
+
+# iterable of strings, assume alternation precedence sorting isn't needed
+terms = ["a_42", "(a^b)", "2|3"]
+print(terms)
+# using 're.escape' and 'join' to construct the pattern
+pat1 = re.compile("|".join(re.escape(s) for s in terms))
+# using only 'join' to construct the pattern
+pat2 = re.compile("|".join(terms))
+
+print(pat1.pattern)
+print(pat2.pattern)
+S = "ba_423 (a^b)c 2|3 a^b"
+print(S)
+print(pat1.sub("X", S))
+print(pat2.sub("X", S))
+
+print(re.sub(r"\t", ":", "a\tb\tc"))
+print(re.sub(r"\n", " ", "1\n2\n3"))
+
+try:
+    re.search(r"\e", "hello")
+except re.error as e:
+    print(str(e))
