@@ -264,3 +264,10 @@ print([w for w in words if re.search(r"\bre.?d\b", w)])
 print(re.sub(r"par(ro)?t", "X", "par part parrot parent"))
 # same as: r'part|parent|parrot'
 print(re.sub(r"par(en|ro)?t", "X", "par part parrot parent"))
+
+# match 't' followed by zero or more of 'a' followed by 'r'
+print(re.sub(r"ta*r", "X", "tr tear tare steer sitaara"))
+# match 't' followed by zero or more of 'e' or 'a' followed by 'r'
+print(re.sub(r"t(e|a)*r", "X", "tr tear tare steer sitaara"))
+# match zero or more of '1' followed by '2'
+print(re.sub(r"1*2", "X", "3111111111125111142"))
