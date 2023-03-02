@@ -57,3 +57,18 @@ foo = ["lovely", "1 dentist", "2 lonely", "eden", "fly away", "dent"]
 se = re.compile(r"(\Aden)|(ly\Z)")
 print([e for e in foo if se.search(e)])
 # ['lovely', '2 lonely', 'dent']
+
+terms = ["no", "ten", "it"]
+items = ["dip", "nobody", "it", "oh", "no", "bitten"]
+pat = re.compile("|".join(terms))
+# matching only whole elements
+print([w for w in items if pat.fullmatch(w)])
+# matching anywhere
+print([w for w in items if pat.search(w)])
+
+# Filter all whole elements from the input list items based on elements listed
+# in words.
+items = ["slate", "later", "plate", "late", "slates", "slated "]
+words = ["late", "later", "slated"]
+pat = re.compile("|".join(words))
+print([w for w in items if pat.fullmatch(w)])
