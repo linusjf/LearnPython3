@@ -315,3 +315,12 @@ patterns = (r"cat", r"dog")
 
 print(all(re.search(p, S1) for p in patterns))
 print(all(re.search(p, S2) for p in patterns))
+
+print(re.sub(r"f.?o", "X", "foot"))
+# a more practical example
+# prefix '<' with '\' if it is not already prefixed
+# both '<' and '\<' will get replaced with '\<'
+# note the use of raw string for all the three arguments
+print(re.sub(r"\\?<", r"\<", r"table \< fig < bat \< box < cake"))
+# say goodbye to r'handful|handy|hand' shenanigans
+print(re.sub(r"hand(y|ful)?", "X", "hand handy handful"))
