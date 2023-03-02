@@ -202,14 +202,14 @@ print(max_nested_braces("{{a+2}*{\n{b+{c*d}}+e*d}}"))
 print(max_nested_braces("a*{b+c*{e*3.14}}}"))
 
 
-def max_nested_brackets(expr):
+def max_nested_brackets(_expr):
     """Max_nested_brackets."""
     count = 0
-    while (_op := re.subn(r"\{[^{}]*\}", "", expr)) and _op[1]:
-        expr = _op[0]
+    while (_op := re.subn(r"\{[^{}]*\}", "", _expr)) and _op[1]:
+        _expr = _op[0]
         count += 1
 
-    if re.search(r"[{}]", expr):
+    if re.search(r"[{}]", _expr):
         return -1
     return count
 
@@ -243,3 +243,20 @@ print(re.sub(PAT, lambda m: d[str(m[0])], STR3))
 WORDS = "plink incoming tint winter in caution sentient"
 change = regex.compile(r"int|in|ion|ing|inco|inter|ink", flags=regex.POSIX)
 print(change.sub(r"X", WORDS))
+
+# d) For the given markdown file, replace all occurrences of the string
+# python (irrespective of
+# case) with the string Python . However, any match within code blocks that
+# start with whole
+# line ```python and end with whole line ``` shouldn’t be replaced.
+# Consider the input file
+# to be small enough to fit memory requirements.
+# Refer to exercises folder for files required to solve this exercise.
+with open("sample.md", "r", encoding="utf-8") as ip:
+    ip_str = ip.read()
+    expr = regex.compile(r"(?ms)^```python$.*?^```$(*SKIP)(*F)|(?i:python)")
+    with open("sample_mod.md", "w", encoding="utf-8") as op_file:
+        op_file.write(expr.sub(lambda m: m[0].capitalize(), ip_str))
+    with open("sample_mod.md", encoding="utf-8") as s:
+        with open("expected.md", encoding="utf-8") as t:
+            assert s.read() == t.read()  # nosec
