@@ -81,3 +81,12 @@ pat = re.compile("|".join(sorted(words, key=len, reverse=True)))
 
 print(pat.sub("A", S1))
 print(pat.sub("A", S2))
+
+# For the given strings, replace all occurrences of removed or reed or
+# received or refused with X.
+
+S1 = "creed refuse removed read"
+S2 = "refused reed redo received"
+pat = re.compile(r"removed|refused|received|reed")
+print(pat.sub("X", S1))
+print(pat.sub("X", S2))
