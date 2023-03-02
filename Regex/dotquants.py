@@ -217,3 +217,13 @@ print(change.sub(r"X", WORDS))
 # expected output
 change = re.compile(r"inter|inco|ing|ink|int|ion|in")  # add your solution here
 print(change.sub(r"X", WORDS))
+
+# Some characters like g̈ have more than one codepoint
+# (numerical value of a character).
+# You'll need to use multiple .
+# metacharacters to match such characters (equal to the number of codepoints).
+# Or, you can use the regex module to handle such cases — see the \X vs dot
+# metacharacter section for more details.
+
+print(re.sub(r"a.e", "o", "cag̈ed"))
+print(re.sub(r"a..e", "o", "cag̈ed"))
