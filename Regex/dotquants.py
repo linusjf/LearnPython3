@@ -287,3 +287,10 @@ print(re.sub(r"t(e|a)+r", "X", "tr tear tare steer sitaara"))
 print(re.sub(r"1+2", "X", "3111111111125111142"))
 print(re.split(r"1+", "3111111111125111142"))
 print(re.split(r"u+", "cloudy"))
+
+repeats = ["abc", "ac", "adc", "abbc", "xabbbcz", "bbb", "bc", "abbbbbc"]
+
+print([w for w in repeats if re.search(r"ab{1,4}c", w)])
+print([w for w in repeats if re.search(r"ab{3,}c", w)])
+print([w for w in repeats if re.search(r"ab{,2}c", w)])
+print([w for w in repeats if re.search(r"ab{3}c", w)])
