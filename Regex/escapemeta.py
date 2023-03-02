@@ -92,3 +92,14 @@ print(pat.pattern)
 print(pat.sub("2", S1))
 print(pat.sub("2", S2))
 print(pat.sub("2", S3))
+
+
+# Replace any matching element from the list items with X for given the input
+# strings. Match the elements from items literally. Assume no two elements
+# of items will result in any matching conflict.
+items = ["a.b", "3+n", r"x\y\z", "qty||price", "{n}"]
+pat = re.compile("|".join(re.escape(e) for e in items))
+print(pat.pattern)
+print(pat.sub("X", "0a.bcd"))
+print(pat.sub("X", "E{n}AMPLE"))
+print(pat.sub("X", r"43+n2 ax\y\ze"))
