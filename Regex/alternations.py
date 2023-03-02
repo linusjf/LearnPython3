@@ -72,3 +72,12 @@ items = ["slate", "later", "plate", "late", "slates", "slated "]
 words = ["late", "later", "slated"]
 pat = re.compile("|".join(words))
 print([w for w in items if pat.fullmatch(w)])
+
+S1 = "plate full of slate"
+S2 = "slated for later, don't be late"
+words = ["late", "later", "slated"]
+print("|".join(sorted(words, key=len, reverse=True)))
+pat = re.compile("|".join(sorted(words, key=len, reverse=True)))
+
+print(pat.sub("A", S1))
+print(pat.sub("A", S2))
