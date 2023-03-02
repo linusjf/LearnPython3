@@ -227,3 +227,10 @@ print(change.sub(r"X", WORDS))
 
 print(re.sub(r"a.e", "o", "cag̈ed"))
 print(re.sub(r"a..e", "o", "cag̈ed"))
+
+# same as: 'apple-85-mango-70'.split('-')
+print(re.split(r"-", "apple-85-mango-70"))
+# maxsplit determines the maximum number of times to split the input
+print(re.split(r"-", "apple-85-mango-70", maxsplit=1))
+# example with dot metacharacter
+print(re.split(r":.:", "bus:3:car:-:van"))
