@@ -294,3 +294,6 @@ print([w for w in repeats if re.search(r"ab{1,4}c", w)])
 print([w for w in repeats if re.search(r"ab{3,}c", w)])
 print([w for w in repeats if re.search(r"ab{,2}c", w)])
 print([w for w in repeats if re.search(r"ab{3}c", w)])
+
+print(re.sub(r"a\{5}", "a{6}", "a{5} = 10"))
+print(re.sub(r"_{a,b}", "-{c,d}", "report_{a,b}.txt"))
