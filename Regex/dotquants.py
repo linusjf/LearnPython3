@@ -297,3 +297,21 @@ print([w for w in repeats if re.search(r"ab{3}c", w)])
 
 print(re.sub(r"a\{5}", "a{6}", "a{5} = 10"))
 print(re.sub(r"_{a,b}", "-{c,d}", "report_{a,b}.txt"))
+
+# match 'Error' followed by zero or more characters followed by 'valid'
+print(bool(re.search(r"Error.*valid", "Error: not a valid input")))
+print(bool(re.search(r"Error.*valid", "Error: key not found")))
+
+S1 = "cat and dog and parrot"
+S2 = "dog and cat and parrot"
+pat = re.compile(r"cat.*dog|dog.*cat")
+
+print(pat.sub("X", S1))
+print(pat.sub("X", S2))
+
+S1 = "cat and dog and parrot"
+S2 = "dog and cat and parrot"
+patterns = (r"cat", r"dog")
+
+print(all(re.search(p, S1) for p in patterns))
+print(all(re.search(p, S2) for p in patterns))
