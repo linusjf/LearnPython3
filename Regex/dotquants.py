@@ -234,3 +234,33 @@ print(re.split(r"-", "apple-85-mango-70"))
 print(re.split(r"-", "apple-85-mango-70", maxsplit=1))
 # example with dot metacharacter
 print(re.split(r":.:", "bus:3:car:-:van"))
+
+# same as: r'ear|ar'
+print(re.sub(r"e?ar", "X", "far feat flare fear"))
+
+# same as: r'\bpar(t|)\b'
+print(re.sub(r"\bpart?\b", "X", "par spare part party"))
+
+# same as: r'\b(re.d|red)\b'
+words = ["red", "read", "ready", "re;d", "road", "redo", "reed", "rod"]
+print([w for w in words if re.search(r"\bre.?d\b", w)])
+
+# same as: r'part|parrot'
+print(re.sub(r"par(ro)?t", "X", "par part parrot parent"))
+# same as: r'part|parent|parrot'
+print(re.sub(r"par(en|ro)?t", "X", "par part parrot parent"))
+
+# same as: r'ear|ar'
+print(re.sub(r"e?ar", "X", "far feat flare fear"))
+
+# same as: r'\bpar(t|)\b'
+print(re.sub(r"\bpart?\b", "X", "par spare part party"))
+
+# same as: r'\b(re.d|red)\b'
+words = ["red", "read", "ready", "re;d", "road", "redo", "reed", "rod"]
+print([w for w in words if re.search(r"\bre.?d\b", w)])
+
+# same as: r'part|parrot'
+print(re.sub(r"par(ro)?t", "X", "par part parrot parent"))
+# same as: r'part|parent|parrot'
+print(re.sub(r"par(en|ro)?t", "X", "par part parrot parent"))
