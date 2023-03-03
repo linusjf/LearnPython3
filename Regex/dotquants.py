@@ -336,3 +336,9 @@ print(re.sub(r"t.*a", "X", "star"))
 # so, the engine backtracks until the overall RE can be matched
 print(re.sub(r"t.*a.*q.*f", "X", SENTENCE))
 print(re.sub(r"t.*a.*u", "X", SENTENCE))
+
+
+print(re.sub(r"f.??o", "X", "foot"))
+print(re.sub(r"f.??o", "X", "frost"))
+
+print(re.sub(r".{2,5}?", "X", "123456789", count=1))
