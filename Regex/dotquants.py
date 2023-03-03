@@ -324,3 +324,15 @@ print(re.sub(r"f.?o", "X", "foot"))
 print(re.sub(r"\\?<", r"\<", r"table \< fig < bat \< box < cake"))
 # say goodbye to r'handful|handy|hand' shenanigans
 print(re.sub(r"hand(y|ful)?", "X", "hand handy handful"))
+
+SENTENCE = "that is quite a fabricated tale"
+
+# r't.*a' will always match from the first 't' to the last 'a'
+# which implies that there cannot be more than one match for such patterns
+print(re.sub(r"t.*a", "X", SENTENCE))
+print(re.sub(r"t.*a", "X", "star"))
+
+# matching first 't' to last 'a' for 't.*a' won't work for these cases
+# so, the engine backtracks until the overall RE can be matched
+print(re.sub(r"t.*a.*q.*f", "X", SENTENCE))
+print(re.sub(r"t.*a.*u", "X", SENTENCE))
