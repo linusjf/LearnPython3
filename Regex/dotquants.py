@@ -348,3 +348,19 @@ print(re.split(r":.*:", "green:3.14:teal::brown:oh!:blue"))
 
 # r':.*?:' will match from ':' to the very next ':'
 print(re.split(r":.*?:", "green:3.14:teal::brown:oh!:blue"))
+
+IP = "fig:mango:pineapple:guava:apples:orange"
+print(re.sub(r":.*+", "X", IP))
+print(bool(re.search(r":.*+apple", IP)))
+
+NUMBERS = "42 314 001 12 00984"
+
+# this solution fails because 0* and \d{3,} can both match leading zeros
+# and greedy quantifiers will give up characters to help the overall RE succeed
+print(re.findall(r"0*\d{3,}", NUMBERS))
+
+# here 0*+ will never give back leading zeros
+print(re.findall(r"0*+\d{3,}", NUMBERS))
+
+# workaround if you can only use greedy quantifiers
+print(re.findall(r"0*[1-9]\d{2,}", NUMBERS))
