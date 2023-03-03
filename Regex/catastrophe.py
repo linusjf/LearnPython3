@@ -14,31 +14,31 @@ import re
 from timeit import timeit
 import regex
 
-_greedy = re.compile(r"(a+|\w+)*:")
-_possessive = re.compile(r"(a+|\w+)*+:")
+greedy = re.compile(r"(a+|\w+)*:")  # noqa
+possessive = re.compile(r"(a+|\w+)*+:")  # noqa
 
 # string that'll match the above patterns
-_S1 = "aaaaaaaaaaaaaaaa:123"
+S1 = "aaaaaaaaaaaaaaaa:123"  # noqa
 # string that does NOT match the above patterns
-_S2 = "aaaaaaaaaaaaaaaa-123"
+S2 = "aaaaaaaaaaaaaaaa-123"  # noqa
 
 # no issues when input string has a match
-print(timeit("_greedy.search(S1)", number=10000, globals=globals()))
-print(timeit("_possessive.search(S1)", number=10000, globals=globals()))
+print(timeit("greedy.search(S1)", number=10000, globals=globals()))
+print(timeit("possessive.search(S1)", number=10000, globals=globals()))
 
 # if input doesn't match, greedy version suffers from catastrophic backtracking
 # note that 'number' parameter is reduced to 10 since it takes a long time
-print(timeit("_greedy.search(S2)", number=10, globals=globals()))
-print(timeit("_possessive.search(S2)", number=10, globals=globals()))
+print(timeit("greedy.search(S2)", number=10, globals=globals()))
+print(timeit("possessive.search(S2)", number=10, globals=globals()))
 
-_greedyr = regex.compile(r"(a+|\w+)*:")
-_possessiver = regex.compile(r"(a+|\w+)*+:")
+greedyr = regex.compile(r"(a+|\w+)*:")  # noqa
+possessiver = regex.compile(r"(a+|\w+)*+:")  # noqa
 
 # no issues when input string has a match
-print(timeit("_greedyr.search(S1)", number=10000, globals=globals()))
-print(timeit("_possessiver.search(S1)", number=10000, globals=globals()))
+print(timeit("greedyr.search(S1)", number=10000, globals=globals()))
+print(timeit("possessiver.search(S1)", number=10000, globals=globals()))
 
 # if input doesn't match, greedy version suffers from catastrophic backtracking
 # note that 'number' parameter is reduced to 10 since it takes a long time
-print(timeit("_greedyr.search(S2)", number=10, globals=globals()))
-print(timeit("_possessiver.search(S2)", number=10, globals=globals()))
+print(timeit("greedyr.search(S2)", number=10, globals=globals()))
+print(timeit("possessiver.search(S2)", number=10, globals=globals()))
