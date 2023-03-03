@@ -34,3 +34,19 @@ print(f"notmutex: {notmutex.pattern}")
 print(timeit("notmutex.search(S1)", number=10000, globals=globals()))
 print(f"notmutex: {notmutex.pattern}")
 print(timeit("notmutex.search(S2)", number=10000, globals=globals()))
+
+print()
+
+possessive = re.compile(r"[\d\w]++")
+print(f"possessive: {possessive.pattern}")
+print(timeit("possessive.search(S1)", number=10000, globals=globals()))
+print(f"possessive: {possessive.pattern}")
+print(timeit("possessive.search(S2)", number=10000, globals=globals()))
+
+print()
+
+atomic = re.compile(r"(?>[\d\w]+)")
+print(f"atomic: {atomic.pattern}")
+print(timeit("atomic.search(S1)", number=10000, globals=globals()))
+print(f"atomic: {atomic.pattern}")
+print(timeit("atomic.search(S2)", number=10000, globals=globals()))
