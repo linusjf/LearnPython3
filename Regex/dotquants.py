@@ -342,3 +342,9 @@ print(re.sub(r"f.??o", "X", "foot"))
 print(re.sub(r"f.??o", "X", "frost"))
 
 print(re.sub(r".{2,5}?", "X", "123456789", count=1))
+
+# r':.*:' will match from the first ':' to the last ':'
+print(re.split(r":.*:", "green:3.14:teal::brown:oh!:blue"))
+
+# r':.*?:' will match from ':' to the very next ':'
+print(re.split(r":.*?:", "green:3.14:teal::brown:oh!:blue"))
