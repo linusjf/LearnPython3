@@ -67,3 +67,24 @@ print(nested_subroutine.sub("", S2))
 print(nested_subroutine.findall(S2))
 print(nested_subroutine.sub("", S3))
 print(nested_subroutine.findall(S3))
+
+recursive = regex.compile(r"(A(?(R))B)(?R)?C")
+S1 = "AABCC"
+S2 = "ACABC"
+print(recursive.sub("", S1))
+print(recursive.findall(S1))
+print(recursive.sub("", S2))
+print(recursive.findall(S2))
+
+delimiters = regex.compile(r"^(?:(BEGIN:)|({{)).*?(?(1):END)(?(2)}})$")
+alternate = regex.compile(r"^(BEGIN:.*?:END)|({{.*?}})$")
+S1 = "{{foo}}"
+S2 = "BEGIN:bar:END"
+print(delimiters.sub("", S1))
+print(delimiters.findall(S1))
+print(delimiters.sub("", S2))
+print(delimiters.findall(S2))
+print(alternate.sub("", S1))
+print(alternate.findall(S1))
+print(alternate.sub("", S2))
+print(alternate.findall(S2))
