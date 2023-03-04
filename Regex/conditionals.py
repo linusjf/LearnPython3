@@ -41,3 +41,13 @@ print(lookaround.sub("", S1))
 print(lookaround.sub("", S2))
 print(lookaround.findall(S1))
 print(lookaround.findall(S2))
+
+subroutine = regex.compile(r"(A(?(1)B|C))(?1)")
+S1 = "ACAB"
+print(subroutine.sub("", S1))
+print(subroutine.findall(S1))
+
+named_subroutine = regex.compile(r"(?P<foo>A(?(foo)B|C))(?P>foo)")
+S1 = "ACAB"
+print(named_subroutine.sub("", S1))
+print(named_subroutine.findall(S1))
