@@ -51,3 +51,19 @@ named_subroutine = regex.compile(r"(?P<foo>A(?(foo)B|C))(?P>foo)")
 S1 = "ACAB"
 print(named_subroutine.sub("", S1))
 print(named_subroutine.findall(S1))
+
+nested_subroutine = regex.compile(r"(A(?(1)C))(B(?1))(?2)")
+S1 = "ABACBAC"
+print(nested_subroutine.sub("", S1))
+print(nested_subroutine.findall(S1))
+
+nested_subroutine = regex.compile(r"(A(?(2)C))(B(?1))(?2)")
+S1 = "ABABA"
+S2 = "ABABAC"
+S3 = "ABABACD"
+print(nested_subroutine.sub("", S1))
+print(nested_subroutine.findall(S1))
+print(nested_subroutine.sub("", S2))
+print(nested_subroutine.findall(S2))
+print(nested_subroutine.sub("", S3))
+print(nested_subroutine.findall(S3))
