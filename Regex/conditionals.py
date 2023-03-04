@@ -90,6 +90,7 @@ print(alternate.sub("", S2))
 print(alternate.findall(S2))
 
 force_failure = regex.compile(r"^(BEG)?\d+(?:END|_end(?(1)(?!)))$")
+force_failure2 = regex.compile(r"^(BEG)?\d+(?:_end|END(?(1)|(?!)))$")
 S1 = "BEG12_end"
 S2 = "BEG00END"
 S3 = "00END"
@@ -102,3 +103,11 @@ print(force_failure.sub("", S3))
 print(force_failure.findall(S3))
 print(force_failure.sub("", S4))
 print(force_failure.findall(S4))
+print(force_failure2.sub("", S1))
+print(force_failure2.findall(S1))
+print(force_failure2.sub("", S2))
+print(force_failure2.findall(S2))
+print(force_failure2.sub("", S3))
+print(force_failure2.findall(S3))
+print(force_failure2.sub("", S4))
+print(force_failure2.findall(S4))
