@@ -32,3 +32,12 @@ print(named_capture.sub("", S1))
 print(named_capture.sub("", S2))
 print(named_capture.findall(S1))
 print(named_capture.findall(S2))
+
+PAT = r"^(?(?=.*_FRUIT$)(?:apple|banana)|(?:carrot|pumpkin))\b"
+lookaround = regex.compile(PAT)
+S1 = "apple _FRUIT"
+S2 = "carrot"
+print(lookaround.sub("", S1))
+print(lookaround.sub("", S2))
+print(lookaround.findall(S1))
+print(lookaround.findall(S2))
