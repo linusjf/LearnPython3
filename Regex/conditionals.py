@@ -129,3 +129,12 @@ print(self_reference.sub("", S1))
 print(self_reference.findall(S1))
 print(self_reference.sub("", S2))
 print(self_reference.findall(S2))
+
+SELF_PAT = r"^(?:A(?=A*+[^AB]*+(\g<1>?+)B))++[^B]*+\g<1>$"
+self_reference = regex.compile(SELF_PAT)
+S1 = "AA foo BB"
+S2 = "AAA foo BBB"
+print(self_reference.sub("", S1))
+print(self_reference.findall(S1))
+print(self_reference.sub("", S2))
+print(self_reference.findall(S2))
