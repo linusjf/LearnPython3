@@ -96,8 +96,7 @@ Why not blue?
 Or red or brown?
 ~1~2~3~4~5~6~7~8~9~10
 """
-print(S1)
-S2 = """blue
+S2 = """Paint it blue
 Paint it green
 Paint it black
 Why not white?
@@ -108,6 +107,7 @@ Or red or brown?
 PAT = r"""
 (?xsm)             # free-spacing mode, DOTALL, multi-line
 (?=.*?blue)        # if blue isn't there, fail without delay
+
 ######    Recursive Section     ######
 # This section aims to balance empty lines with digits, i.e.
 # emptyLine,emptyLine,emptyLine ... ~1~2~3
@@ -115,25 +115,38 @@ PAT = r"""
 (?=                # lookahead
 (                  # Group 1
 (?:               # skip one line that doesn't contain blue
-^              # start of line
-(?:(?!blue)[^\r\n])*  # zero or more chars that do not start blue
-(?:\r?\n)      # newline
-)
-(?:(?1)|[^~]+)   # recurse Group 1 OR match all non-tilde chars
-(~\d+)           # match a sequence of digits
+      ^              # start of line
+      (?:(?!blue)[^\r\n])*  # zero or more chars
+                            # that do not start blue
+      (?:\r?\n)      # newline
+    )
+    (?:(?1)|[^~]+)   # recurse Group 1 OR match all non-tilde chars
+    (~\d+)           # match a sequence of digits
 )?                 # End Group 1
 )                  # End lookahead.
+
 # Group 2, if set, now contains the number of lines skipped
 .*?               # lazily match chars up to...
 blue              # match blue
-.*?               # lazily match chars up to...
+.*?               # lazily match chars up to..
 (?(2)\2)          # if Group 2 is set, match Group 2
 ~                 # Match the next tilde
 \K                # drop what was matched so far
 \d+               # match the next digits: this is the match
 """
-recursive = regex.compile(PAT, regex.DEBUG)
+print(S1)
+recursive = regex.compile(PAT)
 print(recursive.findall(S1))
 print(bool(recursive.search(S1)))
+print(S2)
 print(recursive.findall(S2))
+print(bool(recursive.search(S2)))
+
+PAT2 = r"(?xsm)(?=.*?blue)(?=(^[^\r\n]*\r?\n)(?(?=^.*blue)[^~]+|(?1)))"
+recursive = regex.compile(PAT2)
+print(S1)
+print(f"Line number : {len(recursive.findall(S1))}")
+print(bool(recursive.search(S1)))
+print(S2)
+print(f"Line number : {len(recursive.findall(S2))}")
 print(bool(recursive.search(S2)))
