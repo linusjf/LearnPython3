@@ -44,15 +44,47 @@ S3 = "book"
 S4 = "paper"
 S5 = "kayak"
 S6 = "okonoko"
+S7 = "aaaaa"
+S8 = "bbbb"
 print(palindrome.sub("", S1))
 print(palindrome.sub("", S2))
 print(palindrome.sub("", S3))
 print(palindrome.sub("", S4))
 print(palindrome.sub("", S5))
 print(palindrome.sub("", S6))
+print(palindrome.sub("", S7))
+print(palindrome.sub("", S8))
 print(palindrome.findall(S1))
 print(palindrome.findall(S2))
 print(palindrome.findall(S3))
 print(palindrome.findall(S4))
 print(palindrome.findall(S5))
 print(palindrome.findall(S6))
+print(palindrome.findall(S7))
+print(palindrome.findall(S8))
+
+palindrome = regex.compile(r"^((\w)(?:(?1)|\w?)\2)$")
+S1 = "dontmatchme"
+S2 = "kook"
+S3 = "book"
+S4 = "paper"
+S5 = "kayak"
+S6 = "okonoko"
+S7 = "aaaaa"
+S8 = "bbbb"
+print(palindrome.sub("", S1))
+print(palindrome.sub("", S2))
+print(palindrome.sub("", S3))
+print(palindrome.sub("", S4))
+print(palindrome.sub("", S5))
+print(palindrome.sub("", S6))
+print(palindrome.sub("", S7))
+print(palindrome.sub("", S8))
+print(palindrome.findall(S1))
+print(palindrome.findall(S2))
+print(palindrome.findall(S3))
+print(palindrome.findall(S4))
+print(palindrome.findall(S5))
+print(palindrome.findall(S6))
+print(palindrome.findall(S7))
+print(palindrome.findall(S8))
