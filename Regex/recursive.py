@@ -141,27 +141,3 @@ print(bool(recursive.search(S1)))
 print(S2)
 print(recursive.findall(S2))
 print(bool(recursive.search(S2)))
-
-S1 = """
-Paint it white
-Paint it black
-Why not blue?
-Or red or brown?
-"""
-
-S2 = """Paint it blue
-Paint it green
-Paint it black
-Why not white?
-Or red or brown?
-"""
-PAT2 = r"(?xsm)(?=.*?blue)(?=(^[^\r\n]*\r?\n)(?(?=^.*blue).*+|(?1)))"
-recursive = regex.compile(PAT2)
-print(S1)
-print(recursive.findall(S1))
-print(f"Line number : {len(recursive.findall(S1))}")
-print(bool(recursive.search(S1)))
-print(S2)
-print(recursive.findall(S2))
-print(f"Line number : {len(recursive.findall(S2))}")
-print(bool(recursive.search(S2)))
