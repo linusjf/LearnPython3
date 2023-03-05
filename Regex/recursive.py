@@ -36,3 +36,23 @@ print(recursive.sub("", S2))
 print(recursive.findall(S2))
 print(recursive.sub("", S3))
 print(recursive.findall(S3))
+
+palindrome = regex.compile(r"(\w)(?:(?R)|\w?)\1")
+S1 = "dontmatchme"
+S2 = "kook"
+S3 = "book"
+S4 = "paper"
+S5 = "kayak"
+S6 = "okonoko"
+print(palindrome.sub("", S1))
+print(palindrome.sub("", S2))
+print(palindrome.sub("", S3))
+print(palindrome.sub("", S4))
+print(palindrome.sub("", S5))
+print(palindrome.sub("", S6))
+print(palindrome.findall(S1))
+print(palindrome.findall(S2))
+print(palindrome.findall(S3))
+print(palindrome.findall(S4))
+print(palindrome.findall(S5))
+print(palindrome.findall(S6))
