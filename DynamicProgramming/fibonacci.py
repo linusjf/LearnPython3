@@ -18,8 +18,8 @@ def fib(_n, _dp=None):
     if _n in (1, 2):
         return 1
     if _dp is None:
-        _dp = [-1] * _n
-    if _dp[_n - 1] != -1:
+        _dp = [None] * _n
+    if _dp[_n - 1] is not None:
         return _dp[_n - 1]
     _dp[_n - 1] = fib(_n - 1, _dp) + fib(_n - 2, _dp)
     return _dp[_n - 1]
