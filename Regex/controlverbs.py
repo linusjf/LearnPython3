@@ -86,7 +86,7 @@ m = regexx.search(S2)
 if m:
     print(m[0])
 print(regexx.findall(S2))
-PAT = r"(?ms)(?:(?:(?=^\w{6,} Jones:)[^\r\n]+\r?\n?)(*SKIP)(*FAIL)|([^\r\n]+)\r?\n?)"
+PAT = r"(?ms)((?:(?=^\w{6,} Jones:)[^\r\n]+\r?\n?)(*SKIP)(*F)|[^\r\n]+\r?\n?)"
 regexx = regex.compile(PAT)
 m = regexx.search(S1)
 if m:
