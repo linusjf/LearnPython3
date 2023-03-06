@@ -76,7 +76,7 @@ ATOMIC = r"(?>\w{2,4} )Murray|Bill Burr|Peter Sellers"
 print(regex.search(ATOMIC, "Bill Burr -- Peter Sellers"))
 ACTOR_REGEX = r"\w{2,4} (*PRUNE)Murray|Bill Burr|Peter Sellers"
 print(regex.search(ACTOR_REGEX, "Bill Burr -- Peter Sellers"))
-PAT = r"(?ms)((?:(?!^\w{6,} Jones:)[^\r\n]+\r?\n)(*SKIP)(*FAIL)|[^\r\n]+\r?\n)"
+PAT = r"(?ms)((?:(?!^\w{6,} Jones:)[^\r\n]+\r?\n)(*SKIP)(*F)|[^\r\n]+\r?\n)"
 regexx = regex.compile(PAT)
 m = regexx.search(S1)
 if m:
