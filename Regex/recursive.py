@@ -103,6 +103,20 @@ Why not white?
 Or red or brown?
 ~1~2~3~4~5~6~7~8~9~10
 """
+S3 = """Paint it blue
+Paint it blue
+Paint it blue
+Why not blue?
+Or blue or blue?
+~1~2~3~4~5~6~7~8~9~10
+"""
+S4 = """Paint it black
+Paint it green
+Paint it brown
+Why not white?
+Or red or violet?
+~1~2~3~4~5~6~7~8~9~10
+"""
 
 PAT = r"""
 (?xsm)             # free-spacing mode, DOTALL, multi-line
@@ -136,8 +150,18 @@ blue              # match blue
 """
 print(S1)
 recursive = regex.compile(PAT)
-print(recursive.findall(S1))
-print(bool(recursive.search(S1)))
+m = recursive.search(S1)
+if m:
+    print(m[0])
 print(S2)
-print(recursive.findall(S2))
-print(bool(recursive.search(S2)))
+m = recursive.search(S2)
+if m:
+    print(m[0])
+print(S3)
+m = recursive.search(S3)
+if m:
+    print(m[0])
+print(S4)
+m = recursive.search(S4)
+if m:
+    print(m[0])
