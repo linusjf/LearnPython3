@@ -103,3 +103,10 @@ if m:
     print(m.groups(0))
 print(regexx.findall(S3))
 print(regexx.sub("", S3))
+
+S1 = "aaaardvark aaardwolf"
+PAT = r"aa(*SKIP)ard\w+"
+regexx = regex.compile(PAT)
+m = regexx.search(S1)
+if m:
+    print(m[0])
