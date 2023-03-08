@@ -85,6 +85,27 @@ def power(fibmat, num):
         multiply(fibmat, mat)
 
 
+def recurfib(num, fibarr=None):
+    """Recur Fibonacci."""
+    # Base cases
+    if num == 0:
+        return 0
+    if num in (1, 2):
+        return 1
+    if fibarr is None:
+        fibarr = [None] * num
+    # If fib(n) is already computed
+    if fibarr[num - 1]:
+        return fibarr[num - 1]
+    if num & 1:
+        k = (num + 1) // 2
+        fibarr[num - 1] = fib(k) * fib(k) + fib(k - 1) * fib(k - 1)
+    else:
+        k = num // 2
+        fibarr[num - 1] = (2 * fib(k - 1) + fib(k)) * fib(k)
+    return fibarr[num - 1]
+
+
 print(naivefib(15))
 print(timeit("naivefib(15)", number=10000, globals=globals()))
 print(fib(15))
@@ -93,3 +114,5 @@ print(spacefib(15))
 print(timeit("spacefib(15)", number=10000, globals=globals()))
 print(powerfib(15))
 print(timeit("powerfib(15)", number=10000, globals=globals()))
+print(recurfib(15))
+print(timeit("recurfib(15)", number=10000, globals=globals()))
