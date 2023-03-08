@@ -52,6 +52,8 @@ def powerfib(num):  # noqa
     fibmat = [[1, 1], [1, 0]]
     if num == 0:
         return 0
+    if num in (1, 2):
+        return 1
     power(fibmat, num - 1)
     return fibmat[0][0]
 
@@ -60,9 +62,9 @@ def multiply(fibmat, mat):
     """Multiply."""
     xval = fibmat[0][0] * mat[0][0] + fibmat[0][1] * mat[1][0]
 
-    yval = fibmat[0][0] * fibmat[0][1] + fibmat[0][1] * fibmat[1][1]
+    yval = fibmat[0][0] * mat[0][1] + fibmat[0][1] * mat[1][1]
 
-    zval = fibmat[1][0] * fibmat[0][0] + fibmat[1][1] * fibmat[1][0]
+    zval = fibmat[1][0] * mat[0][0] + fibmat[1][1] * mat[1][0]
 
     wval = fibmat[1][0] * mat[0][1] + fibmat[1][1] * mat[1][1]
 
@@ -73,15 +75,21 @@ def multiply(fibmat, mat):
 
 
 def power(fibmat, num):
-    """Power."""
+    """Power optimized."""
+    if num in (0, 1):
+        return
     mat = [[1, 1], [1, 0]]
-    # n - 1 times multiply the
-    # matrix to {{1,0},{0,1}}
-    for _ in range(2, num + 1):
+    power(fibmat, num // 2)
+    multiply(fibmat, fibmat)
+    if num % 2 != 0:
         multiply(fibmat, mat)
 
 
+print(naivefib(15))
 print(timeit("naivefib(15)", number=10000, globals=globals()))
+print(fib(15))
 print(timeit("fib(15)", number=10000, globals=globals()))
+print(spacefib(15))
 print(timeit("spacefib(15)", number=10000, globals=globals()))
+print(powerfib(15))
 print(timeit("powerfib(15)", number=10000, globals=globals()))
