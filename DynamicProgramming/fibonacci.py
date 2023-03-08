@@ -10,6 +10,7 @@ Fibonacci.
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
+import math
 from timeit import timeit
 
 
@@ -106,6 +107,12 @@ def recurfib(num, fibarr=None):
     return fibarr[num - 1]
 
 
+def binetfib(num):
+    """Binet Fibonacci."""
+    phi = (1 + math.sqrt(5)) / 2
+    return round(pow(phi, num) / math.sqrt(5))
+
+
 print(naivefib(15))
 print(timeit("naivefib(15)", number=10000, globals=globals()))
 print(fib(15))
@@ -116,3 +123,5 @@ print(powerfib(15))
 print(timeit("powerfib(15)", number=10000, globals=globals()))
 print(recurfib(15))
 print(timeit("recurfib(15)", number=10000, globals=globals()))
+print(binetfib(15))
+print(timeit("binetfib(15)", number=10000, globals=globals()))
