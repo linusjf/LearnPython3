@@ -111,3 +111,6 @@ print_lcs(cache, X, Y)
 print(timeit("lcs(X,Y, cache)", number=10000, globals=globals()))
 print(naivelcs(X, Y, len(X), len(Y)))
 print(timeit("naivelcs(X,Y, len(X), len(Y))", number=10000, globals=globals()))
+X = "GEEKSFORGEEKS"
+Y = X[::-1]
+print(lcsopt2(X, Y))
