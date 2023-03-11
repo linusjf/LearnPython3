@@ -58,8 +58,8 @@ arr = [1, 5, 8, 9, 10, 17, 17, 20]
 SIZE = len(arr)
 
 print(cutrod(arr, SIZE))
-print(timeit("cutrod(arr, SIZE)", number=10000, globals=globals()))
+print(timeit("cutrod(arr, SIZE)", number=1, globals=globals()))
 print(cachecutrod(tuple(arr), SIZE))
-print(timeit("cachecutrod(tuple(arr), SIZE)", number=10000, globals=globals()))
+print(timeit("cachecutrod(tuple(arr), SIZE)", number=1, globals=globals()))
 print(dpcutrod(arr, SIZE))
-print(timeit("dpcutrod(arr, SIZE)", number=10000, globals=globals()))
+print(timeit("dpcutrod(arr, SIZE)", number=1, globals=globals()))
