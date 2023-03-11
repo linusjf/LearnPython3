@@ -87,8 +87,8 @@ class MatrixChain:
 ARR = [1, 2, 3, 4, 3, 7, 9, 11]
 chain = MatrixChain(ARR)
 print(chain.recursolve(1, len(ARR) - 1))
-print(timeit("chain.recursolve(1, len(ARR) - 1)", number=10000, globals=globals()))
+print(timeit("chain.recursolve(1, len(ARR) - 1)", number=1, globals=globals()))
 print(chain.cachedsolve(1, len(ARR) - 1))
-print(timeit("chain.cachedsolve(1, len(ARR) - 1)", number=10000, globals=globals()))
+print(timeit("chain.cachedsolve(1, len(ARR) - 1)", number=1, globals=globals()))
 print(chain.dpsolve(1, len(ARR) - 1))
-print(timeit("chain.dpsolve(1, len(ARR) - 1)", number=10000, globals=globals()))
+print(timeit("chain.dpsolve(1, len(ARR) - 1)", number=1, globals=globals()))
