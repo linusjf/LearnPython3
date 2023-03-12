@@ -12,7 +12,7 @@ Matrixchain.
 """
 import sys
 from timeit import timeit
-import functools
+from functools import lru_cache
 
 
 class MatrixChain:
@@ -41,7 +41,7 @@ class MatrixChain:
 
         return minimum
 
-    @functools.lru_cache(maxsize=128)
+    @lru_cache
     def cachedsolve(self, i, j):
         """Solve recursively."""
         if self.matrices is None:
