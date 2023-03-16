@@ -10,6 +10,7 @@ Obstacles.
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
+from copy import deepcopy
 from timeit import timeit
 from functools import lru_cache
 
@@ -58,16 +59,54 @@ def solve_for_obstacles_td(array):
     return unique_paths_td(0, 0, array)
 
 
+def solve_for_obstacles_dpspace(array):
+    """Solve for obstacles with dp space array."""
+    xpos = len(array)
+    ypos = len(array[0])
+    # If obstacle is at starting position
+    if array[0][0]:
+        return 0
+    #  Initializing starting position
+    array[0][0] = 1
+    # first row all are '1' until obstacle
+    for j in range(1, ypos):
+        if array[0][j] == 0:
+            array[0][j] = array[0][j - 1]
+        else:
+            # No ways to reach at this index
+            array[0][j] = 0
+    # first column all are '1' until obstacle
+    for i in range(1, xpos):
+        if array[i][0] == 0:
+            array[i][0] = array[i - 1][0]
+        else:
+            # No ways to reach at this index
+            array[i][0] = 0
+    for i in range(1, xpos):
+        for j in range(1, ypos):
+            # If current cell has no obstacle
+            if array[i][j] == 0:
+                array[i][j] = array[i - 1][j] + array[i][j - 1]
+            else:
+                # No ways to reach at this index
+                array[i][j] = 0
+    # returning the bottom right
+    # corner of Grid
+    return array[xpos - 1][ypos - 1]
+
+
 # Driver code
 A = [
-    tuple([0, 0, 0, 0, 0]),
-    tuple([0, 1, 0, 0, 0]),
-    tuple([0, 0, 1, 0, 0]),
-    tuple([0, 0, 0, 1, 0]),
-    tuple([0, 0, 0, 0, 0]),
-    tuple([0, 0, 0, 0, 0]),
+    ([0, 0, 0, 0, 0]),
+    ([0, 1, 0, 0, 0]),
+    ([0, 0, 1, 0, 0]),
+    ([0, 0, 0, 1, 0]),
+    ([0, 0, 0, 0, 0]),
+    ([0, 0, 0, 0, 0]),
 ]
-print(solve_for_obstacles(tuple(A)))
-print(timeit("solve_for_obstacles(tuple(A))", number=10000, globals=globals()))
-print(solve_for_obstacles_td(tuple(A)))
-print(timeit("solve_for_obstacles_td(tuple(A))", number=10000, globals=globals()))
+print(solve_for_obstacles_td(A))
+print(timeit("solve_for_obstacles_td(A)", number=10000, globals=globals()))
+print(solve_for_obstacles_dpspace(deepcopy(A)))
+print(timeit("solve_for_obstacles_dpspace(deepcopy(A))", number=10000, globals=globals()))
+print(solve_for_obstacles(tuple(map(tuple, A))))
+print(timeit("solve_for_obstacles(tuple(map(tuple, A)))", number=10000, globals=globals()))
