@@ -95,6 +95,42 @@ def solve_for_obstacles_dpspace(array):
     return array[xpos - 1][ypos - 1]
 
 
+def solve_for_obstacles_dp(grid):
+    """Solve for obstacles dp."""
+    xpos = len(grid)
+    ypos = len(grid[0])
+    if xpos == 1 and ypos == 1 and grid[0][0] == 0:
+        return 1
+    if xpos == 1 and ypos == 1 and grid[0][0] == 1:
+        return 0
+    dparray = [[-1] * ypos for _ in range(xpos)]
+
+    def path(array, grid, i, j):
+        if i < xpos and j < ypos and grid[i][j] == 1:
+            return 0
+        if i == xpos - 1 and j == ypos - 1:
+            return 1
+        if i >= xpos or j >= ypos:
+            return 0
+
+        if array[i][j] != -1:
+            return array[i][j]
+
+        left = path(array, grid, i + 1, j)
+
+        right = path(array, grid, i, j + 1)
+
+        array[i][j] = left + right
+
+        return array[i][j]
+
+    path(dparray, grid, 0, 0)
+
+    if dparray[0][0] == -1:
+        return 0
+    return dparray[0][0]
+
+
 # Driver code
 A = [
     ([0, 0, 0, 0, 0]),
@@ -108,5 +144,7 @@ print(solve_for_obstacles_td(A))
 print(timeit("solve_for_obstacles_td(A)", number=10000, globals=globals()))
 print(solve_for_obstacles_dpspace(deepcopy(A)))
 print(timeit("solve_for_obstacles_dpspace(deepcopy(A))", number=10000, globals=globals()))
+print(solve_for_obstacles_dp(A))
+print(timeit("solve_for_obstacles_dp(A)", number=10000, globals=globals()))
 print(solve_for_obstacles(tuple(map(tuple, A))))
 print(timeit("solve_for_obstacles(tuple(map(tuple, A)))", number=10000, globals=globals()))
