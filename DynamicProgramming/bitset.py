@@ -25,3 +25,12 @@ def setbit(bit, data):  # noqa
 def isbitset(bit, data):  # noqa
     """Check if bit is set."""
     return data & (1 << bit)
+
+
+def count_set_bits(value, bitcount):
+    """Count set bits."""
+    count = 0
+    for i in range(bitcount):
+        if isbitset(i, value):
+            count += 1
+    return count
