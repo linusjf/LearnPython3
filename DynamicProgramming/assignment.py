@@ -23,9 +23,8 @@ def assign_tasks(costs):
         count = bitset.count_set_bits(mask, size)
         for j in range(size):
             if not bitset.isbitset(j, mask):
-                dparray[mask | (1 << j)] = min(
-                    dparray[mask | (1 << j)], dparray[mask] + costs[count][j]
-                )
+                index = mask | (1 << j)
+                dparray[index] = min(dparray[index], dparray[mask] + costs[count][j])
     return dparray[2**size - 1]
 
 
