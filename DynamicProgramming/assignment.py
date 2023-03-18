@@ -14,22 +14,13 @@ from math import inf as infinity
 import bitset
 
 
-def count_set_bits(value, bitcount):
-    """Count set bits."""
-    count = 0
-    for i in range(bitcount):
-        if bitset.isbitset(i, value):
-            count += 1
-    return count
-
-
 def assign_tasks(costs):
     """Assign tasks while minimizing total cost."""
     size = len(costs)
     dparray = [infinity] * (2**size)
     dparray[0] = 0
     for mask in range(2**size):
-        count = count_set_bits(mask, size)
+        count = bitset.count_set_bits(mask, size)
         for j in range(size):
             if not bitset.isbitset(j, mask):
                 dparray[mask | (1 << j)] = min(
