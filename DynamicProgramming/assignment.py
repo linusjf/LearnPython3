@@ -31,3 +31,5 @@ def assign_tasks(costs):
 
 COSTS = [[5, 2, 3, 4, 5], [4, 3, 2, 6, 8], [12, 15, 10, 6, 8], [2, 4, 6, 7, 8], [4, 6, 8, 9, 6]]
 print(assign_tasks(COSTS))
+COSTS = [[5, 2, 3], [4, 3, 2], [12, 15, 10]]
+print(assign_tasks(COSTS))
