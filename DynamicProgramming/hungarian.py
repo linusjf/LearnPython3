@@ -3,7 +3,7 @@
 #
 # @file        : hungarian
 # @created     : Saturday Mar 18, 2023 16:20:07 IST
-# @description :
+# https://python.plainenglish.io/hungarian-algorithm-introduction-python-implementation-93e7c0890e15
 # -*- coding: utf-8 -*-"
 ######################################################################
 import numpy as np
@@ -38,9 +38,8 @@ def min_zero_row(zero_mat, mark_zero):
     zero_mat[:, col] = False
 
 
-def mark_matrix(mat):  # noqa
+def mark_matrix(mat):
     """Find the returning possible solutions for LAP problem."""
-
     # Transform the matrix to boolean matrix(0 = True, others = False)
     cur_mat = mat
     zero_bool_mat = cur_mat == 0
@@ -53,10 +52,8 @@ def mark_matrix(mat):  # noqa
 
     # Recording the row and column positions separately.
     marked_zero_row = []
-    marked_zero_col = []
     for _, row in enumerate(marked_zero):
         marked_zero_row.append(row[0])
-        marked_zero_col.append(row[1])
 
     # Step 2-2-1
     non_marked_row = list(set(range(cur_mat.shape[0])) - set(marked_zero_row))
@@ -114,7 +111,7 @@ def adjust_matrix(mat, cover_rows, cover_cols):  # noqa
     return cur_mat
 
 
-def hungarian_algorithm(mat):
+def hungarian_algorithm(mat):  # noqa
     """Solve Hungarian algorithm."""
     dim = mat.shape[0]
     print(f"dim = {dim}")
@@ -138,7 +135,7 @@ def hungarian_algorithm(mat):
     return ans_pos
 
 
-def ans_calculation(mat, pos):
+def ans_calculation(mat, pos):  # noqa
     """Calculate answer."""
     total = 0
     ans_mat = np.zeros((mat.shape[0], mat.shape[1]))
