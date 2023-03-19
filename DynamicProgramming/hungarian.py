@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Hungarian.
+Hungarian Algorithm.
 
 # @file        : hungarian
 # @created     : Saturday Mar 18, 2023 16:20:07 IST
