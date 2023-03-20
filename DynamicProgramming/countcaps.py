@@ -12,6 +12,7 @@ Count caps.
 """
 # Python program to find number of ways to wear hats
 from collections import defaultdict
+from bitset import isbitset, setbit
 
 
 class AssignCap:
@@ -23,6 +24,7 @@ class AssignCap:
         self.allmask = 0
         self.total_caps = 100
         self.caps = defaultdict(list)
+        self.ways = defaultdict(int)
 
     #  Mask is the set of persons, i is the current cap number.
     def count_ways_util(self, dparray, mask, cap_no):
@@ -50,12 +52,15 @@ class AssignCap:
         if cap_no in self.caps:
             for ppl in self.caps[cap_no]:
                 # if person 'ppl' is already wearing a cap then continue
-                if mask & (1 << ppl):
+                if isbitset(ppl, mask):
                     continue
                 # Else assign him this cap and recur for remaining caps with
                 # new updated mask vector
-                ways += self.count_ways_util(dparray, mask | (1 << ppl), cap_no + 1)
+                ways += self.count_ways_util(dparray, setbit(ppl, mask), cap_no + 1)
                 ways = ways % (10**9 + 7)
+                if ways > 0:
+                    self.ways[cap_no] = ways
+
         # Save the result and return it
         dparray[mask][cap_no] = ways
         return dparray[mask][cap_no]
@@ -70,20 +75,22 @@ class AssignCap:
             for i in cap_possessed_by_person:
                 self.caps[i].append(ppl)
 
+        for key, val in self.caps.items():
+            print(f"Cap {key}:  - Persons = {val}")
         # allmask is used to check if all persons
         # are included or not, set all n bits as 1
         self.allmask = (1 << count) - 1
+        print(f"self.allmask = {self.allmask}")
         # Initialize all entries in dparray as -1
         dparray = [[-1] * (self.total_caps + 1) for _ in range(2**count)]
+        dim = [len(dparray), len(dparray[0])]
+        print(f"Dimension = {dim}")
         # Call recursive function countWaysUtil
         # result will be in dparray[0][1]
-        print(
-            self.count_ways_util(
-                dparray,
-                0,
-                1,
-            )
-        )
+        ans = self.count_ways_util(dparray, 0, 1)
+        for key, val in self.ways.items():
+            print(f"{key} - {val}")
+        print(ans)
 
 
 def main():
