@@ -20,7 +20,7 @@ def assign_tasks(costs):
     dparray = [infinity] * (2**size)
     dparray[0] = 0
     for mask in range(2**size):
-        count = bitset.count_set_bits(mask, size)
+        count = bitset.count_set_bits(mask)
         for j in range(size):
             if not bitset.isbitset(j, mask):
                 index = mask | (1 << j)

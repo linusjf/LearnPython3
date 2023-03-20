@@ -28,12 +28,12 @@ def isbitset(bit, data):  # noqa
     return data & (1 << bit)
 
 
-def count_set_bits(value, bitcount):  # noqa
+def count_set_bits(value):  # noqa
     """Count set bits."""
     count = 0
-    for i in range(bitcount):
-        if isbitset(i, value):
-            count += 1
+    while value:
+        value &= value - 1
+        count += 1
     return count
 
 
