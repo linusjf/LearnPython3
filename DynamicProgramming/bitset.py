@@ -10,6 +10,7 @@ Bitset.
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
+import math
 
 
 def unsetbit(bit, data):  # noqa
@@ -27,10 +28,20 @@ def isbitset(bit, data):  # noqa
     return data & (1 << bit)
 
 
-def count_set_bits(value, bitcount):
+def count_set_bits(value, bitcount):  # noqa
     """Count set bits."""
     count = 0
     for i in range(bitcount):
         if isbitset(i, value):
             count += 1
     return count
+
+
+def get_bit(bit, data):  # noqa
+    """Get bit."""
+    return (data >> bit) & 1
+
+
+def first_bit_index(data):  # noqa
+    """Get first set bit index."""
+    return int(math.log(data, 2))
