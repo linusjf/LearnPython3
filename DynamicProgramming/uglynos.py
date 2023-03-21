@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Uglynos.
+Ugly nos.
 
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
@@ -46,10 +46,36 @@ def get_nth_uglyno(num):
     return ugly[-1]
 
 
+# Python Implementation of the above approach
+def nth_uglynumber(num):
+    """Get nth ugly number."""
+    if num in range(1, 6):
+        return num
+    set_s = [1]
+    num -= 1
+    while num:
+        item = set_s[0]
+        # Get the beginning element of the set
+        value = item
+        # Deleting the ith element
+        set_s = set_s[1:]
+        set_s = set(set_s)
+        # Inserting all the other options
+        set_s.add(value * 2)
+        set_s.add(value * 3)
+        set_s.add(value * 5)
+        set_s = list(set_s)
+        set_s.sort()
+        num -= 1
+    # The top of the set represents the nth ugly number
+    return set_s[0]
+
+
 # Driver Code
 def main():
     """Run main."""
     print(get_nth_uglyno(150))
+    print(nth_uglynumber(150))
 
 
 if __name__ == "__main__":
