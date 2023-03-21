@@ -11,12 +11,44 @@ Digits Sum.
 ######################################################################
 """
 from functools import lru_cache
+import math
 
 # Given two integers a and b. The task is to
 # print sum of all the digits appearing in the
 # integers between a and b
 # Memoization for the state results
 dp = [[[-1] * 1 for _ in range(180)] for _ in range(20)]
+
+
+# Function to computer sum of digits in
+# numbers from 1 to n
+def sum_digits_formula(num):
+    """Sum of digits formula."""
+    dig_cnt = int(math.log(num, 10))
+    if dig_cnt == 0:
+        return num
+    array = [0] * (dig_cnt + 1)
+    array[0] = 0
+    array[1] = 45
+    for i in range(2, dig_cnt + 1):
+        array[i] = array[i - 1] * 10 + 45 * int(math.ceil(pow(10, i - 1)))
+    return sum_digits_util(num, array)
+
+
+def sum_digits_util(num, array):
+    """Sum digits utility."""
+    if num < 10:
+        return (num * (num + 1)) // 2
+    d = int(math.log(num, 10))  # pylint: disable=invalid-name
+    p = int(math.ceil(pow(10, d)))  # pylint: disable=invalid-name
+
+    msd = num // p
+    return (
+        msd * array[d]
+        + (msd * (msd - 1) // 2) * p
+        + msd * (1 + num % p)
+        + sum_digits_util(num % p, array)
+    )
 
 
 # Stores the digits in x in a list digit
@@ -119,3 +151,5 @@ a, b = 2, 35
 print("digit sum for given range: ", range_digit_sum(a, b))
 a, b = 2, 35
 print("digit sum for given range: ", sum_of_digits(b) - sum_of_digits(a - 1))
+a, b = 2, 35
+print("digit sum for given range: ", sum_digits_formula(b) - sum_digits_formula(a - 1))
