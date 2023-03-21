@@ -26,7 +26,7 @@ def sum_digits_formula(num):
     """Sum of digits formula."""
     dig_cnt = int(math.log(num, 10))
     if dig_cnt == 0:
-        return num
+        return (num * (num + 1)) // 2
     array = [0] * (dig_cnt + 1)
     array[0] = 0
     array[1] = 45
