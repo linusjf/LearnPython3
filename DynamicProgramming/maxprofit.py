@@ -151,6 +151,39 @@ def maxbuyselltwice(prices):
     return fcalc(0, 0, prices, 2)
 
 
+def fcalc_dp(idx, buy, prices, dparray, cap):
+    """Calculate."""
+    size = len(prices)
+    if cap == 0:
+        return 0
+    if idx == size:
+        return 0
+    if dparray[idx][buy][cap] != -1:
+        return dparray[idx][buy][cap]
+    profit = 0
+    # you can either buy or not buy
+    if buy == 0:
+        profit = max(
+            -prices[idx] + fcalc_dp(idx + 1, 1, prices, dparray, cap),
+            fcalc_dp(idx + 1, 0, prices, dparray, cap),
+        )
+    # you can either sell or not sell
+    else:
+        profit = max(
+            prices[idx] + fcalc_dp(idx + 1, 0, prices, dparray, cap - 1),
+            fcalc_dp(idx + 1, 1, prices, dparray, cap),
+        )
+    dparray[idx][buy][cap] = profit
+    return profit
+
+
+def maxtwobuysell_dp(prices):
+    """Solve max profit dynamically."""
+    size = len(prices)
+    dparray = [[[-1 for _ in range(3)] for _ in range(2)] for _ in range(size)]
+    return fcalc_dp(0, 0, prices, dparray, 2)
+
+
 # Driver function
 PRICE = (2, 30, 15, 10, 8, 25, 80)
 print(f"Maximum profit is {max_profit(PRICE)}")
@@ -164,3 +197,5 @@ PRICE = (2, 30, 15, 10, 8, 25, 80)
 print(f"Maximum profit is {maxtwobuysell(PRICE)}")
 PRICE = (2, 30, 15, 10, 8, 25, 80)
 print(f"Maximum profit is {maxbuyselltwice(PRICE)}")
+PRICE = (2, 30, 15, 10, 8, 25, 80)
+print(f"Maximum profit is {maxtwobuysell_dp(PRICE)}")
