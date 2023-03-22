@@ -164,7 +164,7 @@ def fcalc_dp(idx, buy, prices, dparray, cap):
     # you can either buy or not buy
     if buy == 0:
         profit = max(
-            -prices[idx] + fcalc_dp(idx + 1, 1, prices, dparray, cap),
+            prices[idx] + fcalc_dp(idx + 1, 1, prices, dparray, cap),
             fcalc_dp(idx + 1, 0, prices, dparray, cap),
         )
     # you can either sell or not sell
