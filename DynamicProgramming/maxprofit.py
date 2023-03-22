@@ -10,6 +10,7 @@ Maximize profit.
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
+from functools import lru_cache
 import sys
 
 
@@ -125,14 +126,41 @@ def max_profit2(price):
     return result
 
 
+@lru_cache
+def fcalc(idx, buy, prices, cap):
+    """Calculate max profit recursively."""
+    size = len(prices)
+    if cap == 0:
+        return 0
+    if idx == size:
+        return 0
+    profit = 0
+    # you can either buy or not buy
+    if buy == 0:
+        profit = max(-prices[idx] + fcalc(idx + 1, 1, prices, cap), fcalc(idx + 1, 0, prices, cap))
+    # you can either sell or not sell
+    else:
+        profit = max(
+            prices[idx] + fcalc(idx + 1, 0, prices, cap - 1), fcalc(idx + 1, 1, prices, cap)
+        )
+    return profit
+
+
+def maxbuyselltwice(prices):
+    """Maximize profit with 2 buy-sell pairs."""
+    return fcalc(0, 0, prices, 2)
+
+
 # Driver function
-PRICE = [2, 30, 15, 10, 8, 25, 80]
+PRICE = (2, 30, 15, 10, 8, 25, 80)
 print(f"Maximum profit is {max_profit(PRICE)}")
-PRICE = [2, 30, 15, 10, 8, 25, 80]
+PRICE = (2, 30, 15, 10, 8, 25, 80)
 print(f"Maximum profit is {max_profit2(PRICE)}")
-PRICE = [2, 30, 15, 15, 8, 25, 80]
+PRICE = (2, 30, 15, 10, 8, 25, 80)
 print(f"Maximum profit is {max_profit(PRICE)}")
-PRICE = [2, 30, 15, 15, 8, 25, 80]
+PRICE = (2, 30, 15, 10, 8, 25, 80)
 print(f"Maximum profit is {max_profit2(PRICE)}")
-PRICE = [2, 30, 15, 10, 8, 25, 80]
+PRICE = (2, 30, 15, 10, 8, 25, 80)
 print(f"Maximum profit is {maxtwobuysell(PRICE)}")
+PRICE = (2, 30, 15, 10, 8, 25, 80)
+print(f"Maximum profit is {maxbuyselltwice(PRICE)}")
