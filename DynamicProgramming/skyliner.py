@@ -16,6 +16,7 @@ import heapq
 
 Building = namedtuple("Building", ["left", "right", "height"])
 Edge = namedtuple("Edge", ["height", "right"])
+Strip = namedtuple("Strip", ["left", "height"])
 
 
 # pylint: disable=too-few-public-methods
@@ -38,29 +39,37 @@ class Solution:
         print(f"events = {events}")
         events.sort()
         print(f"sorted events = {events}")
-        res = [(0, 0)]
+        res = [Strip(0, 0)]
         heap = [Edge(0, inf)]
+        heapmin = heap[0]
         for left, neg_h, right in events:
             print(f"left = {left}, neg_h = {neg_h}, right = {right}")
             print(f"heap = {heap}")
+            heapmin = heap[0]
             # processing events
             # 1. clean out old events by pop out those right ends
             # before new event
             # 2. push the new events to the queue
             # 3. check if new largest height affect result skyline
             # pop out building which is end
-            while heap[0].right <= left:
+            while heapmin.right <= left:
+                print(f"heapmin.right <= left: {heapmin.right} {left}")
                 heapq.heappop(heap)
-            print(f"heap after pop = {heap}")
+                print(f"heap after pop = {heap}")
+                heapmin = heap[0]
             # if it is a start of building, push
             # it into heap as current building
             if neg_h != 0:
+                print(f"neg_h != 0: {neg_h}")
                 heapq.heappush(heap, Edge(neg_h, right))
-            print(f"heap after push = {heap}")
+                print(f"heap after push = {heap}")
+                heapmin = heap[0]
             # if change in height with previous key point, append to result
-            if res[-1][1] != -heap[0].height:
-                res.append((left, -heap[0].height))
-            print(f"res = {res}")
+            reslast = res[-1]
+            if reslast.height != -heapmin.height:
+                print(f"reslast.height != -heapmin.height : {reslast.height} {-heapmin.height}")
+                res.append(Strip(left, -heapmin.height))
+                print(f"res = {res}")
         return res[1:]
 
 
@@ -74,4 +83,7 @@ ARR = [
     Building(23, 29, 13),
     Building(24, 28, 4),
 ]
-print(Solution().get_skyline(ARR))
+soln = Solution().get_skyline(ARR)
+for strip in soln:
+    print(f"({strip.left}, {strip.height}),", end=" ")
+print()
