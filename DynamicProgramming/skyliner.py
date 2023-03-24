@@ -40,12 +40,12 @@ class Solution:
         events.sort()
         print(f"sorted events = {events}")
         res = [Strip(0, 0)]
-        heap = [Edge(0, inf)]
-        heapmin = heap[0]
+        heap_hts = [Edge(0, inf)]
+        heapmin = heap_hts[0]
         for left, neg_h, right in events:
             print(f"left = {left}, neg_h = {neg_h}, right = {right}")
-            print(f"heap = {heap}")
-            heapmin = heap[0]
+            print(f"heap_hts = {heap_hts}")
+            heapmin = heap_hts[0]
             # processing events
             # 1. clean out old events by pop out those right ends
             # before new event
@@ -54,16 +54,16 @@ class Solution:
             # pop out building which is end
             while heapmin.right <= left:
                 print(f"heapmin.right <= left: {heapmin.right} {left}")
-                heapq.heappop(heap)
-                print(f"heap after pop = {heap}")
-                heapmin = heap[0]
+                heapq.heappop(heap_hts)
+                print(f"heap_hts after pop = {heap_hts}")
+                heapmin = heap_hts[0]
             # if it is a start of building, push
             # it into heap as current building
             if neg_h != 0:
                 print(f"neg_h != 0: {neg_h}")
-                heapq.heappush(heap, Edge(neg_h, right))
-                print(f"heap after push = {heap}")
-                heapmin = heap[0]
+                heapq.heappush(heap_hts, Edge(neg_h, right))
+                print(f"heap_hts after push = {heap_hts}")
+                heapmin = heap_hts[0]
             # if change in height with previous key point, append to result
             reslast = res[-1]
             if reslast.height != -heapmin.height:
