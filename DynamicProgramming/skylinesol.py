@@ -6,7 +6,7 @@ Skylinesol.
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : skylinesol
 # @created     : Saturday Mar 25, 2023 19:57:33 IST
-# @description :
+# https://iq.opengenus.org/skyline-problem/
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
