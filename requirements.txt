@@ -20,4 +20,4 @@ seaborn==0.12.2
 timebudget==0.7.1
 twython==3.9.1
 xgboost==1.7.4
-XlsxWriter==3.0.8
+XlsxWriter==3.0.9
