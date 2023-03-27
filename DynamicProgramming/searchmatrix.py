@@ -59,3 +59,6 @@ if __name__ == "__main__":
     COLCOUNT = len(MAT[0])
     KEY = 50
     search(MAT, (0, ROWCOUNT - 1, 0, COLCOUNT - 1), KEY)
+    for idx in range(0, ROWCOUNT):
+        for jdx in range(0, COLCOUNT):
+            search(MAT, (0, ROWCOUNT - 1, 0, COLCOUNT - 1), MAT[idx][jdx])
