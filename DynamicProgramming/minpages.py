@@ -21,8 +21,6 @@ def is_possible(arr, student_count, curr_min):
     size = len(arr)
     students_required = 1
     curr_sum = 0
-    if max(arr) > curr_min:
-        return False
     # iterate over all books
     for i in range(size):
         if (curr_sum + arr[i]) > curr_min:
