@@ -28,3 +28,5 @@ def minimize(num):
 # Driver Code
 NUM = 11
 print(minimize(NUM))
+NUM = 0
+print(minimize(NUM))
