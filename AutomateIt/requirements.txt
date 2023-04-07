@@ -1,4 +1,4 @@
-beautifulsoup4==4.12.1
+beautifulsoup4==4.12.2
 docx==0.2.4
 Flask==2.2.3
 fpdf==1.7.2
