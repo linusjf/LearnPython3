@@ -1,6 +1,6 @@
 beautifulsoup4==4.12.2
 docx==0.2.4
-Flask==2.3.0
+Flask==2.3.2
 fpdf==1.7.2
 google_api_python_client==2.86.0
 google_auth_oauthlib==1.0.0
