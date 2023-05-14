@@ -21,3 +21,10 @@ print(X)
 # define a vector
 XV = np.array((1, 2, 3))
 print(XV)
+print(f"shape of vector: {XV.shape}")
+print(f"size of vector: {XV.size}")
+# defining a matrix
+XM = np.matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(XM)
+print(f"shape of matrix: {XM.shape}")
+print(f"size of matrix: {XM.size}")
