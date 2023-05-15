@@ -45,3 +45,31 @@ XTENSORONES = np.ones((3, 3, 3, 3))
 print(XTENSORONES)
 print(f"shape of tensor: {XTENSORONES.shape}")
 print(f"size of tensor: {XTENSORONES.size}")
+# indices
+A = np.ones((5, 5), dtype=int)
+print(A)
+# indexing starts at 0
+A[0, 1] = 2
+print(A)
+A[:, 1] = 3
+print(A)
+A[:, :] = 5
+print(A)
+# for higher dimensions just add an ibdex
+B = np.ones((5, 5, 5), dtype=int)
+B[:, 0, 0] = 4
+print(B)
+# matrix operations
+C = np.matrix([[1, 2], [3, 4]])
+D = np.ones((2, 2), dtype=int)
+print(C)
+print(D)
+# element wise addition
+E = C + D
+print(E)
+# element wise substraction
+F = C - D
+print(F)
+# matrix multiplication
+G = C * D
+print(G)
