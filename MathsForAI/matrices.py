@@ -73,3 +73,7 @@ print(F)
 # matrix multiplication
 G = C * D
 print(G)
+# the matrix transpose
+H = np.array(range(9))
+H = H.reshape(3, 3)
+print(H)
