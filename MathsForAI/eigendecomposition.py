@@ -12,8 +12,6 @@ Eigendecomposition.
 """
 import sys
 import matplotlib.pyplot as plt
-import mpl_toolkits
-from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 from numpy import linalg
 from matplotlib.backends.backend_pdf import PdfPages
@@ -69,7 +67,8 @@ origin = [0, 0, 0]
 fig = plt.figure(figsize=(18, 10))
 ax1 = fig.add_subplot(121, projection="3d")
 ax1.quiver(
-    origin, origin, origin, eigenvectors[0, :], eigenvectors[1, :], eigenvectors[2, :], color="k"
+    origin, origin, origin, eigenvectors[0, :], eigenvectors[1, :],
+    eigenvectors[2, :], color="k"
 )
 ax1.set_xlim([-3, 3])
 ax1.set_ylim([-3, 3])
@@ -79,6 +78,26 @@ ax1.set_ylabel("Y-axis")
 ax1.set_zlabel("Z-axis")
 ax1.view_init(15, 30)
 ax1.set_title("Before multiplication")
+
+new_eig = np.matmul(C, eigenvectors)
+ax2 = fig.add_subplot(122, projection="3d")
+ax2.quiver(origin, origin, origin, new_eig[0, :], new_eig[1, :], new_eig[2, :],
+           color="k")
+# add the eigen values to the plot
+ax2.plot(
+    eigenvalues[0] * eigenvectors[0],
+    eigenvalues[1] * eigenvectors[1],
+    eigenvalues[2] * eigenvectors[2],
+    "rX",
+)
+ax2.set_xlim([-3, 3])
+ax2.set_ylim([-3, 3])
+ax2.set_zlim([-3, 3])
+ax2.set_xlabel("X-axis")
+ax2.set_ylabel("Y-axis")
+ax2.set_zlabel("Z-axis")
+ax2.view_init(15, 30)
+ax2.set_title("After multiplication")
 
 # show plot
 plt.plot(origin, origin)
