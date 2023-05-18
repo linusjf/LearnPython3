@@ -65,10 +65,10 @@ print(val)
 # plot the eigen vectors
 origin = [0, 0, 0]
 fig = plt.figure(figsize=(18, 10))
+fig.suptitle("Effects of eigen values and vectors")
 ax1 = fig.add_subplot(121, projection="3d")
 ax1.quiver(
-    origin, origin, origin, eigenvectors[0, :], eigenvectors[1, :],
-    eigenvectors[2, :], color="k"
+    origin, origin, origin, eigenvectors[0, :], eigenvectors[1, :], eigenvectors[2, :], color="k"
 )
 ax1.set_xlim([-3, 3])
 ax1.set_ylim([-3, 3])
@@ -81,8 +81,7 @@ ax1.set_title("Before multiplication")
 
 new_eig = np.matmul(C, eigenvectors)
 ax2 = fig.add_subplot(122, projection="3d")
-ax2.quiver(origin, origin, origin, new_eig[0, :], new_eig[1, :], new_eig[2, :],
-           color="k")
+ax2.quiver(origin, origin, origin, new_eig[0, :], new_eig[1, :], new_eig[2, :], color="k")
 # add the eigen values to the plot
 ax2.plot(
     eigenvalues[0] * eigenvectors[0],
