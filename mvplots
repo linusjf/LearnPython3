@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 require() {
-hash "$@" || exit 127;
+  hash "$@" || exit 127
 }
 require mkdir find parallel mv
 mkdir -p "${HOME}/storage/downloads/Pyplots/"
 find . -name "*.pdf" ! -name "diveintopython.pdf" | parallel -I% --max-args 1 mv % "${HOME}/storage/downloads/Pyplots"
-find . -name "*.png" ! -name "elephant.png" ! -name "fname.png" | parallel -I% --max-args 1 mv % "${HOME}/storage/downloads/Pyplots"
+find . -name "*.png" ! -name "elephant.png" ! -name "fname.png" ! -name "python.png" | parallel -I% --max-args 1 mv % "${HOME}/storage/downloads/Pyplots"
 find . -name "*.jpg" | parallel -I% --max-args 1 mv % "${HOME}/storage/downloads/Pyplots"
-
