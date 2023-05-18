@@ -40,3 +40,13 @@ A_unit = A / norm
 print(A_unit)
 # the magnitude of unit vector is 1
 print(linalg.norm(A_unit))
+
+# find the eigen values and eigen vectors for a simple square matrix
+C = np.diag(np.arange(1, 4))
+print(C)
+eigenvalues, eigenvectors = linalg.eig(C)
+print(eigenvalues, eigenvectors)
+# the eigen value w[i] corresponds to the eigen vector v[:, i]
+for i in range(3):
+    print(f"Eigen value: {eigenvalues[i]}")
+    print(f"Eigen vector: {eigenvectors[:, i]}")
