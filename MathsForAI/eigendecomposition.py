@@ -50,3 +50,10 @@ print(eigenvalues, eigenvectors)
 for i in range(3):
     print(f"Eigen value: {eigenvalues[i]}")
     print(f"Eigen vector: {eigenvectors[:, i]}")
+# verify eigen decomposition
+diag = np.diag(eigenvalues)
+print(diag)
+vinverse = linalg.inv(eigenvectors)
+mul = np.matmul(diag, vinverse)
+val = np.matmul(eigenvectors, mul)
+print(val)
