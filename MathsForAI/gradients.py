@@ -11,11 +11,11 @@ Gradients.
 ######################################################################
 """
 # pylint: disable=invalid-name
+# pylint: disable=unused-argument
 import sys
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-from numpy import linalg
 from matplotlib.backends.backend_pdf import PdfPages
 
 print(f"Python version {sys.version}")
@@ -39,9 +39,52 @@ def f(x, y):
 
 
 # calculate z value for x, y points
-z = f(xvals, yvals)
+z = f(xv, yv)
 print(z)
 print(z.shape)
 
-# pp.savefig()
+# draw a color plot to display the data
+plt.figure(figsize=(14, 12))
+plt.pcolor(xv, yv, z)
+plt.title("2D plot for f(x, y) = xy^2")
+plt.colorbar()
+pp.savefig()
+
+# generate 2D meshgrid for the gradient
+nx, ny = (10, 10)
+xvals = np.linspace(0, 10, nx)
+yvals = np.linspace(0, 10, ny)
+
+xg, yg = np.meshgrid(xvals, yvals)
+# calculate the gradient of f(x,y)
+Gy, Gx = np.gradient(f(xg, yg))
+# draw a color plot to display the gradient
+plt.figure(figsize=(14, 12))
+plt.pcolor(xv, yv, z)
+plt.title("2D plot for gradient of f(x, y) = xy^2")
+plt.colorbar()
+plt.quiver(xg, yg, Gx, Gy, scale=1000, color="w")
+pp.savefig()
+
+
+def ddx(x, y):
+    """calculate the gradient of f(x,y) = xy^2"""
+    return y**2
+
+
+def ddy(x, y):
+    """calculate the gradient of f(x,y) = xy^2"""
+    return x * 2 * y
+
+
+Gx = ddx(xg, yg)
+Gy = ddx(xg, yg)
+# draw a color plot to display the gradient
+plt.figure(figsize=(14, 12))
+plt.pcolor(xv, yv, z)
+plt.title("plot of y^2 and 2xy")
+plt.colorbar()
+plt.quiver(xg, yg, Gx, Gy, scale=1000, color="w")
+pp.savefig()
+
 pp.close()
