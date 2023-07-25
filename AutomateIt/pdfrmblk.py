@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """PDFRmBlk."""
 
-from PyPDF2 import PdfReader, PdfWriter
+from pypdf import PdfReader, PdfWriter
 
 infile = PdfReader("myPdf.pdf")
 output = PdfWriter()

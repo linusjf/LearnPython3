@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """PDFRead."""
-from PyPDF2 import PdfReader
+from pypdf import PdfReader
 
-with open("diveintopython.pdf", "rb", encoding="utf-8") as pdf:
+with open("diveintopython.pdf", "rb") as pdf:
     reader = PdfReader(pdf, strict=False)
     print("PDF Reader Object is:", reader)
     print("Details of diveintopython book")
@@ -13,8 +13,8 @@ with open("diveintopython.pdf", "rb", encoding="utf-8") as pdf:
         print("Author:", reader.metadata.author)
 
     print("Reading Page 1")
-    page = reader.pages[0]
-    print(page.extract_text())  # pylint: disable=no-member
+    PAGE = reader.pages[0]
+    print(PAGE.extract_text())
 
     print("Book Outline")
     for heading in reader.outline:
