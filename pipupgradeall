@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+require() {
+  hash "$@" || exit 127
+}
+require pip-review
+pip-review --local --auto
