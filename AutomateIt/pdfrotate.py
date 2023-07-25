@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """PDFRotate."""
-from PyPDF2 import PdfReader, PdfWriter
+from pypdf import PdfReader, PdfWriter
 
-with open("diveintopython.pdf", "rb", encoding="utf-8") as fp:
+with open("diveintopython.pdf", "rb") as fp:
     reader = PdfReader(fp)
-    page = reader.pages[0]
-    page.rotate(90)  # pylint: disable=no-member
+    PAGE = reader.pages[0]
+    PAGE.rotate(90)
     writer = PdfWriter()
-    writer.add_page(page)
-    with open("rotated.pdf", "wb", encoding="utf-8") as fw:
+    writer.add_page(PAGE)
+    with open("rotated.pdf", "wb") as fw:
         writer.write(fw)
