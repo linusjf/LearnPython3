@@ -1,0 +1,4 @@
+ipyparallel==8.6.1
+numpy==1.25.1
+Pillow==10.0.0
+timebudget==0.7.1

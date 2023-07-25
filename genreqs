@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+find . -maxdepth 1 -type d -name "[[:upper:]]*" |
+  parallel pipreqs {} --force
+pipreqs . --force
