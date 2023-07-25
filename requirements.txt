@@ -5,11 +5,12 @@ gensim==4.3.1
 google_api_python_client==2.94.0
 google_auth_oauthlib==1.0.0
 graphviz==0.20.1
+hungarian_algorithm==0.1.11
 imageio==2.31.1
-lxml==4.9.3
+lxml==4.9.2
 matplotlib==3.7.2
+munkres==1.1.4
 networkx==3.1
-numpy==1.25.1
 price_parser==0.3.4
 protobuf==4.23.4
 python_docx==0.8.11
@@ -20,4 +21,4 @@ seaborn==0.12.2
 timebudget==0.7.1
 twython==3.9.1
 xgboost==1.7.6
-XlsxWriter==3.1.2
+XlsxWriter==3.0.8
