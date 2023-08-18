@@ -8,7 +8,7 @@ httplib2==0.22.0
 lxml==4.9.3
 openpyxl==3.1.2
 pandas==2.0.3
-protobuf==4.24.0
+protobuf==4.24.1
 pypdf==3.15.1
 python-dotenv==1.0.0
 Requests==2.31.0
