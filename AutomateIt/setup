@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+curl -s -o diveintopython.pdf https://histo.ucsf.edu/BMS270/diveintopython.pdf
