@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+curl -s -L -o winemag-data-130k-v2.csv "https://www.dropbox.com/scl/fi/gnbia5qoe2rhv60g0b3y7/winemag-data-130k-v2.csv?rlkey=ke1ejt5qjk00tgvrhkgmvz32z&dl=0"
