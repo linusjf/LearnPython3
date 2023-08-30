@@ -18,3 +18,4 @@ commit.txt
 !requirements.txt
 !freeze.txt
 AutomateIt/diveintopython.pdf
+Discrete/mnist_784_csv.csv
