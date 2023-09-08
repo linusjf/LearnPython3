@@ -26,4 +26,4 @@ sympy==1.12
 timebudget==0.7.1
 twython==3.9.1
 xgboost==1.7.6
-xlsxwriter==3.1.2
+xlsxwriter==3.1.3
