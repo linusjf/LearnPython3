@@ -1,4 +1,4 @@
 matplotlib==3.8.0
-pandas==2.1.0
+pandas==2.1.1
 patsy==0.5.3
 statsmodels==0.14.0
