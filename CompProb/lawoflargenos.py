@@ -103,4 +103,18 @@ plt.hist(samplemeanlist[16], 10, density=True)
 pp.savefig()
 plt.clf()
 
+plt.rcParams["figure.dpi"] = 300
+m = []
+for n in np.linspace(1, 6, 30):
+    t = np.random.normal(1, 1, size=int(n**10))
+    m.append(t.mean())
+    N_POINTS = 10000
+N_BINS = 20
+
+plt.plot(m, 'r-', label="single sample mean", color="blue")
+plt.ylabel("single sample mean")
+plt.xlabel("10^n")
+pp.savefig()
+plt.clf()
+
 pp.close()
