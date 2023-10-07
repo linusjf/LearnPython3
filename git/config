@@ -12,6 +12,3 @@
 [branch "development"]
   remote = origin
   merge = refs/heads/development
-[branch "renovate/imageio-2.x"]
-  remote = origin
-  merge = refs/heads/renovate/imageio-2.x
