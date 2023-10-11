@@ -13,7 +13,7 @@ httplib2==0.21.0
 hungarian_algorithm==0.1.11
 imageio==2.31.5
 ipyparallel==8.6.1
-lxml==4.9.2
+lxml==4.9.3
 matplotlib==3.8.0
 munkres==1.1.4
 networkx==3.1
