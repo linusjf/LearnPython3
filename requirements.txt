@@ -7,7 +7,7 @@ fpdf==1.7.2
 fpdf2==2.7.5
 gensim==4.3.2
 google_api_python_client==2.103.0
-google_auth_oauthlib==1.0.0
+google_auth_oauthlib==1.1.0
 graphviz==0.20.1
 httplib2==0.22.0
 hungarian_algorithm==0.1.11
