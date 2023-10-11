@@ -1,2 +1,2 @@
 gensim==4.3.2
-python_Levenshtein==0.22.0
+python_Levenshtein==0.23.0
