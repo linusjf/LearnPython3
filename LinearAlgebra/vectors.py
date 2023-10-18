@@ -33,5 +33,9 @@ print(ALPHA * x)
 a, b = 2, 3
 x, y = np.array([[2], [3]]), np.array([[4], [5]])
 print(a*x + b*y)
+# multiply two vectors
 x, y = np.array([[-2], [2]]), np.array([[4], [-3]])
 print(x.T @ y)
+# compute L2 norm
+x = np.array([[3], [4]])
+print(np.linalg.norm(x, 2))
