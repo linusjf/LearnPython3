@@ -27,3 +27,13 @@ A = np.array([[1, 2],
               [3, 4]])
 print(ALPHA * A)
 print(np.multiply(ALPHA, A))
+A = np.array([[0, 2],
+              [1, 4]])
+x = np.array([[1],
+              [2]])
+print(A @ x)
+print(np.dot(A, x))
+B = np.array([[1, 3],
+              [2, 1]])
+print(A @ B)
+print(np.dot(A, B))
