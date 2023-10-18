@@ -39,3 +39,14 @@ print(x.T @ y)
 # compute L2 norm
 x = np.array([[3], [4]])
 print(np.linalg.norm(x, 2))
+# compute Manhattan norm
+x = np.array([[3], [-4]])
+print(np.linalg.norm(x, 1))
+# compute max norm
+x = np.array([[3], [-4]])
+print(np.linalg.norm(x, np.inf))
+x, y = np.array([[-2], [2]]), np.array([[4], [-3]])
+print(x.T @ y)
+# To compute the L2 distance between a pair of vectors:
+distance = np.linalg.norm(x-y, 2)
+print(f'L_2 distance : {distance}')
