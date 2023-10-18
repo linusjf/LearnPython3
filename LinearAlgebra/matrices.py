@@ -16,3 +16,9 @@ import seaborn as sns
 A = np.array([[0, 2],  # 1st row
               [1, 4]])  # 2nd row
 print(f'a 2x2 Matrix:\n{A}')
+A = np.array([[0, 2],
+              [1, 4]])
+B = np.array([[3, 1],
+              [-3, 2]])
+print(A + B)
+np.add(A, B)
