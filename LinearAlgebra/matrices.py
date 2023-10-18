@@ -22,3 +22,8 @@ B = np.array([[3, 1],
               [-3, 2]])
 print(A + B)
 np.add(A, B)
+ALPHA = 2
+A = np.array([[1, 2],
+              [3, 4]])
+print(ALPHA * A)
+print(np.multiply(ALPHA, A))
