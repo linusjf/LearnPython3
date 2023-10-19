@@ -44,3 +44,7 @@ A_inv = np.linalg.inv(A)
 print(f'A inverse:\n{A_inv}')
 I_3 = np.round(A_inv @ A)
 print(f'A_inv times A results in I_3:\n{I_3}')
+A = np.array([[1, 2],
+              [3, 4],
+              [5, 6]])
+print(A.T)
