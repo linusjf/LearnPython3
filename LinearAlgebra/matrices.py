@@ -37,3 +37,10 @@ B = np.array([[1, 3],
               [2, 1]])
 print(A @ B)
 print(np.dot(A, B))
+A = np.array([[1, 2, 1],
+              [4, 4, 5],
+              [6, 7, 7]])
+A_inv = np.linalg.inv(A)
+print(f'A inverse:\n{A_inv}')
+I_3 = np.round(A_inv @ A)
+print(f'A_inv times A results in I_3:\n{I_3}')
