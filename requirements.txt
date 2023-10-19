@@ -16,7 +16,7 @@ ipyparallel==8.6.1
 lxml==4.9.3
 matplotlib==3.8.0
 munkres==1.1.4
-networkx==3.1
+networkx==3.2
 openpyxl==3.1.2
 patsy==0.5.3
 Pillow==10.1.0
