@@ -48,3 +48,11 @@ A = np.array([[1, 2],
               [3, 4],
               [5, 6]])
 print(A.T)
+# In numpy, we compute the Hadamard product
+# with the * operator or multiply method:
+A = np.array([[0, 2],
+              [1, 4]])
+B = np.array([[1, 3],
+              [2, 1]])
+print(A * B)
+print(np.multiply(A, B))
