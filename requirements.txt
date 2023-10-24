@@ -38,5 +38,5 @@ sympy==1.12
 timebudget==0.7.1
 tornado==6.3.3
 twython==3.9.1
-xgboost==2.0.0
+xgboost==2.0.1
 XlsxWriter==3.1.9
