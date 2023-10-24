@@ -3,7 +3,7 @@ docx==0.2.4
 Flask==3.0.0
 fpdf==1.7.2
 fpdf2==2.7.6
-google_api_python_client==2.104.0
+google_api_python_client==2.105.0
 google_auth_oauthlib==1.1.0
 httplib2==0.22.0
 lxml==4.9.3
