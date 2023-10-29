@@ -10,7 +10,7 @@ lxml==4.9.3
 openpyxl==3.1.2
 pandas==2.1.2
 protobuf==4.24.4
-pypdf==3.16.4
+pypdf==3.17.0
 python-dotenv==1.0.0
 python_docx==1.0.1
 python_pptx==0.6.22
