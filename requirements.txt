@@ -6,7 +6,7 @@ Flask==3.0.0
 fpdf==1.7.2
 fpdf2==2.7.6
 gensim==4.3.2
-google_api_python_client==2.105.0
+google_api_python_client==2.106.0
 google_auth_oauthlib==1.1.0
 graphviz==0.20.1
 httplib2==0.22.0
