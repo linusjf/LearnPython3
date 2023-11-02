@@ -1,1 +1,1 @@
-python_pptx==0.6.22
+python_pptx==0.6.23
