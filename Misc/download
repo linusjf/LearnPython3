@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+curl -O -s -C - https://www.openintro.org/data/csv/loans_full_schema.csv
