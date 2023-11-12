@@ -44,4 +44,22 @@ plt.title("Temperatures along critical stretch (ºC)")
 plt.ylabel("Temperature (ºC)")
 plt.xlabel("Position on conveyor belt")
 pp.savefig()
+
+x_ = np.linspace(-5, 5, 5)
+y_ = 4 * (x_**3) + 2 * (x_**2) + 5 * x_
+plt.clf()
+plt.plot(x_, y_)
+pp.savefig()
+
+x_ = np.linspace(-5, 5, 10)
+y_ = 4 * (x_**3) + 2 * (x_**2) + 5 * x_
+plt.clf()
+plt.plot(x_, y_)
+pp.savefig()
+
+x_ = np.linspace(-5, 5, 100)
+y_ = 4 * (x_**3) + 2 * (x_**2) + 5 * x_
+plt.clf()
+plt.plot(x_, y_)
+pp.savefig()
 pp.close()
