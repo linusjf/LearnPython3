@@ -1,22 +1,23 @@
 #!/usr/bin/env python
 """
-Downloadserial.
+Downloadconcurrent.
 
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
-# @file        : downloadserial
-# @created     : Thursday Nov 16, 2023 20:27:53 IST
+# @file        : downloadconcurrent
+# @created     : Friday Nov 17, 2023 11:25:59 IST
 # @description :
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
 # SuperFastPython.com
-# download document files and save to local files serially
+# download document files and save to local files concurrently
 from os import makedirs
 from os.path import basename
 from os.path import join
 from urllib.request import urlopen
 from urllib.error import URLError
+from concurrent.futures import ThreadPoolExecutor
 import timeit
 
 
@@ -27,9 +28,9 @@ def download_url(url):
         with urlopen(url, timeout=3) as connection:
             # read the contents of the html doc
             return connection.read()
-    except URLError as ex:
+    except URLError as exc:
         # bad url, socket timeout, http forbidden, etc.
-        print(ex)
+        print(exc)
         return None
 
 
@@ -63,9 +64,11 @@ def download_docs(urls, path):
     """download a list of URLs to local files"""
     # create the local directory, if needed
     makedirs(path, exist_ok=True)
-    # download each url and save as a local file
-    for url in urls:
-        download_and_save(url, path)
+    # create the thread pool
+    n_threads = len(urls)
+    with ThreadPoolExecutor(n_threads) as executor:
+        # download each url and save as a local file
+        _ = [executor.submit(download_and_save, url, path) for url in urls]
 
 
 # python concurrency API docs
