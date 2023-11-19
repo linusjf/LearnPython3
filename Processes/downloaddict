@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+curl -o 1.1millionwordlist.txt -s https://raw.githubusercontent.com/A35G/gmCaptcha/master/dictionary/1.1million%20word%20list.txt
