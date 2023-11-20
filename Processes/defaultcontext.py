@@ -23,5 +23,5 @@ def main():
         print(executor._mp_context)  # pylint: disable=protected-access
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

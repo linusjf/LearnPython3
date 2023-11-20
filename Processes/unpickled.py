@@ -17,14 +17,14 @@ from concurrent.futures import ProcessPoolExecutor
 
 def work(file):
     """write to a file"""
-    file.write('hi there')
+    file.write("hi there")
     return "All done!"
 
 
 def main():
     """entry point"""
     # submit the task
-    with open('tmp.txt', 'w', encoding='UTF-8') as file:
+    with open("tmp.txt", "w", encoding="UTF-8") as file:
         # start the process pool
         with ProcessPoolExecutor() as executor:
             # submit the task
@@ -34,5 +34,5 @@ def main():
             print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

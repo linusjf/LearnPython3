@@ -23,7 +23,7 @@ def hash_word(word):
     # create the hash object
     hash_object = sha512()
     # convert the string to bytes
-    byte_data = word.encode('utf-8')
+    byte_data = word.encode("utf-8")
     # hash the word
     hash_object.update(byte_data)
     # get the hex hash of the word
@@ -41,21 +41,20 @@ def load_words(path):
 def main():
     """entry point"""
     # load a file of words
-    path = '1.1millionwordlist.txt'
+    path = "1.1millionwordlist.txt"
     words = load_words(path)
-    print(f'Loaded {len(words)} words from {path}')
+    print(f"Loaded {len(words)} words from {path}")
     # create the process pool
     with ProcessPoolExecutor(4) as executor:
         # select a chunk size
         # chunksize = ceil(len(words) / 4)
         # create a set of word hashes
         known_words = set(executor.map(hash_word, words, chunksize=10000))
-    print(f'Done, with {len(known_words)} hashes')
+    print(f"Done, with {len(known_words)} hashes")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     start = timeit.default_timer()
     print("The start time is :", start)
     main()
-    print("The difference of time is :",
-          timeit.default_timer() - start)
+    print("The difference of time is :", timeit.default_timer() - start)

@@ -22,7 +22,7 @@ def task1():
     """mock test that works for moment"""
     value = randbelow(10) / 10.0
     sleep(value)
-    print(f'Task 1: {value}', flush=True)
+    print(f"Task 1: {value}", flush=True)
     return value
 
 
@@ -30,7 +30,7 @@ def task2(value1):
     """mock test that works for moment"""
     value2 = randbelow(10) / 10.0
     sleep(value2)
-    print(f'Task 2: value1={value1}, value2={value2}', flush=True)
+    print(f"Task 2: value1={value1}, value2={value2}", flush=True)
     return value2
 
 
@@ -51,5 +51,5 @@ def main():
         # wait for all follow-up tasks to complete
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

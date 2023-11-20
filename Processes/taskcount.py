@@ -30,13 +30,13 @@ def main():
     with ProcessPoolExecutor(4) as executor:
         # submit many tasks
         futures = [executor.submit(task) for _ in range(50)]
-        print('Waiting for tasks to complete...')
+        print("Waiting for tasks to complete...")
         # update each time a task finishes
         for _ in as_completed(futures):
             # report the number of remaining tasks
             items = executor._pending_work_items  # pylint: disable=protected-access
-            print(f'About {len(items)} tasks remain')
+            print(f"About {len(items)} tasks remain")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

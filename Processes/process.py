@@ -17,11 +17,11 @@ from multiprocessing import Process
 
 def task():
     """a task to execute in another process"""
-    print('This is another process', flush=True)
+    print("This is another process", flush=True)
 
 
 # entry point for the program
-if __name__ == '__main__':
+if __name__ == "__main__":
     # define a task to run in a new process
     p = Process(target=task)
     # start the task in a new process

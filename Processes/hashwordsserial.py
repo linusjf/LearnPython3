@@ -21,7 +21,7 @@ def hash_word(word):
     # create the hash object
     hash_object = sha512()
     # convert the string to bytes
-    byte_data = word.encode('utf-8')
+    byte_data = word.encode("utf-8")
     # hash the word
     hash_object.update(byte_data)
     # get the hex hash of the word
@@ -31,7 +31,7 @@ def hash_word(word):
 def load_words(path):
     """load a file of words"""
     # open the file
-    with open(path, encoding='utf-8') as file:
+    with open(path, encoding="utf-8") as file:
         # read all data as lines
         return file.readlines()
 
@@ -39,12 +39,12 @@ def load_words(path):
 def entry():
     """entry point"""
     # load a file of words
-    path = '1.1millionwordlist.txt'
+    path = "1.1millionwordlist.txt"
     words = load_words(path)
-    print(f'Loaded {len(words)} words from {path}')
+    print(f"Loaded {len(words)} words from {path}")
     # hash all known words
     known_words = {hash_word(word) for word in words}
-    print(f'Done, with {len(known_words)} hashes')
+    print(f"Done, with {len(known_words)} hashes")
 
 
 def main():
@@ -52,9 +52,8 @@ def main():
     entry()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     start = timeit.default_timer()
     print("The start time is :", start)
     main()
-    print("The difference of time is :",
-          timeit.default_timer() - start)
+    print("The difference of time is :", timeit.default_timer() - start)

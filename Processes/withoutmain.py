@@ -26,7 +26,7 @@ def task(value):
 
 
 # create a start process context
-context = get_context('spawn')
+context = get_context("spawn")
 # start the process pool
 with ProcessPoolExecutor(mp_context=context) as executor:
     # submit all tasks

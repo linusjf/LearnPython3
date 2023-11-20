@@ -19,12 +19,12 @@ from concurrent.futures import ProcessPoolExecutor
 def main():
     """entry point"""
     # create a start process context
-    context = get_context('spawn')
+    context = get_context("spawn")
     # create a process pool
     with ProcessPoolExecutor(mp_context=context) as executor:
         # report the context used
         print(executor._mp_context)  # pylint: disable=protected-access
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
