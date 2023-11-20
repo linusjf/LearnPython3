@@ -1,37 +1,34 @@
 #!/usr/bin/env python
 """
-Processexitcode.
+Parentprocess.
 
 ######################################################################
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
-# @file        : processexitcode
-# @created     : Monday Nov 20, 2023 13:19:21 IST
+# @file        : parentprocess
+# @created     : Monday Nov 20, 2023 14:18:09 IST
 # @description :
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
-# SuperFastPython.com
-# example of checking the exit status of a child process
-from time import sleep
+
+# example of getting the parent process of a child process
+from multiprocessing import parent_process
 from multiprocessing import Process
 
 
 def task():
     """function to execute in a new process"""
-    sleep(1)
+    # get the the parent process
+    _process = parent_process()
+    # report details
+    print(_process)
 
 
 # entry point
 if __name__ == "__main__":
-    # create the process
+    # create a new process
     process = Process(target=task)
-    # report the exit status
-    print(process.exitcode)
-    # start the process
+    # start the new process
     process.start()
-    # report the exit status
-    print(process.exitcode)
-    # wait for the process to finish
+    # wait for the new process to terminate
     process.join()
-    # report the exit status
-    print(process.exitcode)

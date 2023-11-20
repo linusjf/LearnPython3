@@ -13,8 +13,9 @@ Processpid.
 # SuperFastPython.com
 # example of reporting the native process identifier
 from multiprocessing import Process
+
 # entry point
-if __name__ == '__main__':
+if __name__ == "__main__":
     # create the process
     process = Process()
     # report the process identifier
