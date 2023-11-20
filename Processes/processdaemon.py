@@ -19,3 +19,7 @@ if __name__ == '__main__':
     process = Process()
     # report the daemon attribute
     print(process.daemon)
+    # create a daemon process
+    process = Process(daemon=True)
+    # report if the process is a daemon
+    print(process.daemon)
