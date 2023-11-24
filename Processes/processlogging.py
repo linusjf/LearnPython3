@@ -78,7 +78,7 @@ if __name__ == '__main__':
     # report initial message
     logger.info('Main process started.')
     # configure child processes
-    processes = [Process(target=task, args=(queue,)) for i in range(5)]
+    processes = [Process(target=task, args=(queue,)) for _ in range(5)]
     # start child processes
     for process in processes:
         process.start()
