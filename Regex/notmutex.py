@@ -6,7 +6,7 @@ Notmutex.
 # @author      : Linus Fernandes (linusfernandes at gmail dot com)
 # @file        : notmutex
 # @created     : Friday Mar 03, 2023 15:29:57 IST
-# @description :
+# @description : Examples of not mutually exclusive patterns
 # -*- coding: utf-8 -*-'
 ######################################################################
 """
