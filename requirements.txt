@@ -21,7 +21,7 @@ patsy==0.5.3
 Pillow==10.0.1
 Pillow==10.0.1
 price_parser==0.3.4
-protobuf==4.25.0
+protobuf==4.25.1
 pypdf==3.17.0
 python-dotenv==1.0.0
 python_Levenshtein==0.23.0
