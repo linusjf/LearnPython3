@@ -37,3 +37,18 @@ if __name__ == '__main__':
         for result in pool.imap(task, range(50)):
             print(f'Got result: {result}')
     # thread pool is closed automatically
+    with ThreadPool() as pool:
+        # issue tasks to the thread pool
+        pool.imap(task, range(50))
+        # shutdown the thread pool
+        pool.close()
+        # wait for all issued task to complete
+        pool.join()
+    # create and configure
+    with ThreadPool(4) as pool:
+        # issue tasks to the process pool
+        pool.imap(task, range(40), chunksize=10)
+        # shutdown the process pool
+        pool.close()
+        # wait for all issued task to complete
+        pool.join()
