@@ -23,6 +23,7 @@ def task(arg1, arg2, arg3):
     # generate a random value between 0 and 1
     value = randbelow(100) / 100.0
     # block for a moment
+    print(f'Task ({arg1}, {arg2}, {arg3}) executing with {value}')
     sleep(value)
     # return the generated value combined with the argument
     return arg1 + arg2 + arg3 + value
@@ -43,3 +44,17 @@ if __name__ == '__main__':
         for result in results:
             # report the result
             print(f'Got: {result}')
+    with ThreadPool() as pool:
+        # prepare arguments
+        items1 = [(i, randbelow(5), randbelow(5)) for i in range(10)]
+        # issues tasks to thread pool
+        _ = pool.starmap_async(task, items1)
+        # prepare arguments
+        items2 = [(i, randbelow(5), randbelow(5)) for i in range(11, 20)]
+        # issues tasks to thread pool
+        _ = pool.starmap_async(task, items2)
+        # close the thread pool
+        pool.close()
+        # wait for all tasks to complete and threads to close
+        pool.join()
+    # thread pool is closed automatically
