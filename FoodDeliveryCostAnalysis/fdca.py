@@ -47,11 +47,12 @@ df["Discounts and Offers"] = df["Discounts and Offers"].apply(extract)
 df.loc[df["Discounts and Offers"] <= 15, "Discounts and Offers"] = df[
     "Discounts and Offers"] / 100 * df["Order Value"]
 df["Discounts and Offers"] = df["Discounts and Offers"].fillna(0)
+df = df.rename(columns={"Commission Fee": "Commissions"})
 
 df["Costs"] = df["Delivery Fee"] + df['Discounts and Offers'] + df[
     "Payment Processing Fee"]
 
-df["Profit"] = df["Commission Fee"] - df['Costs']
+df["Profit"] = df["Commissions"] - df['Costs']
 print(df["Profit"].sum())
 
 cost_dist = df[[
@@ -66,11 +67,11 @@ plt.pie(cost_dist, labels=cost_dist.index, autopct="%1.2f%%")
 pp.savefig()
 plt.clf()
 
-abc = df[["Commission Fee", "Costs", "Profit"]].sum()
+abc = df[["Commissions", "Costs", "Profit"]].sum()
 print(abc)
 
 plt.bar(abc.index, abc)
-plt.xticks(rotation=90)
+# plt.xticks(rotation=90)
 pp.savefig()
 plt.clf()
 
