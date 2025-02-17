@@ -2,5 +2,5 @@ imageio==2.28.1
 matplotlib==3.7.1
 numpy==1.24.4
 pandas==1.5.3
-scipy==1.11.3
+scipy==1.15.2
 statsmodels==0.14.0

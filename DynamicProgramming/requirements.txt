@@ -1,4 +1,4 @@
 hungarian_algorithm==0.1.11
 munkres==1.1.4
 numpy==1.24.4
-scipy==1.11.3
+scipy==1.15.2
