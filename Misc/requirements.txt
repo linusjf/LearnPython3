@@ -1,5 +1,5 @@
 ipyparallel==8.6.1
-matplotlib==3.7.1
+matplotlib==3.10.1
 numpy==1.24.4
 pandas==1.5.3
 Pillow==10.2.0
