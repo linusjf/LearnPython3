@@ -5,7 +5,7 @@ docx==0.2.4
 Flask==3.0.0
 fpdf==1.7.2
 gensim==4.3.2
-google_api_python_client==2.106.0
+google_api_python_client==2.166.0
 google_auth_oauthlib==1.1.0
 graphviz==0.20.1
 httplib2==0.22.0
