@@ -1,9 +1,43 @@
 #!/usr/bin/env bash
-require() {
-  hash "$@" || exit 127
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+# Source require.sh from same directory
+script_dir="$(dirname "$(realpath -s "${BASH_SOURCE[0]}")")"
+source "${script_dir}/require.sh" || {
+  printf "Error: Failed to source required file: %s/require.sh\n" "${script_dir}" >&2
+  exit 1
 }
-require mkdir find parallel mv
-mkdir -p "${HOME}/storage/downloads/Pyplots/"
-find . -name "*.pdf" ! -name "diveintopython.pdf" | parallel -I% --max-args 1 mv % "${HOME}/storage/downloads/Pyplots"
-find . -name "*.png" ! -name "elephant.png" ! -name "fname.png" ! -name "python.png" | parallel -I% --max-args 1 mv % "${HOME}/storage/downloads/Pyplots"
-find . -name "*.jpg" | parallel -I% --max-args 1 mv % "${HOME}/storage/downloads/Pyplots"
+
+require mkdir
+require find
+require parallel
+require mv
+
+# Determine OS and set appropriate downloads directory
+if [[ -d "/data/data/com.termux" ]]; then
+  # Termux Android
+  downloads_dir="${HOME}/storage/downloads/Pyplots/"
+elif [[ -f "/etc/arch-release" ]]; then
+  # Arch Linux
+  downloads_dir="${HOME}/downloads/Pyplots/"
+elif [[ -f "/etc/lsb-release" ]] && grep -q "Ubuntu" /etc/lsb-release; then
+  # Ubuntu
+  downloads_dir="${HOME}/downloads/Pyplots/"
+else
+  # Default case
+  downloads_dir="${HOME}/downloads/Pyplots/"
+fi
+
+mkdir -p "${downloads_dir}"
+
+find . -name "*.pdf" ! -name "diveintopython.pdf" \
+  | parallel -I% --max-args 1 mv % "${downloads_dir}"
+
+find . -name "*.png" ! -name "elephant.png" ! -name "fname.png" ! -name "python.png" \
+  | parallel -I% --max-args 1 mv % "${downloads_dir}"
+
+find . -name "*.jpg" \
+  | parallel -I% --max-args 1 mv % "${downloads_dir}"
