@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
-require() {
-  hash "$@" || exit 127
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+script_dir="$(dirname "$(realpath -s "${BASH_SOURCE[0]}")")"
+source "${script_dir}/require.sh" || {
+  printf "Error: Failed to source required file: %s/require.sh\n" "${script_dir}" >&2
+  exit 1
 }
+
 require pip-review
 pip-review --local --auto
