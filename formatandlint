@@ -1,20 +1,29 @@
 #!/usr/bin/env bash
 #######################################################################
-#@author: Linus Fernandes(linusfernandes @gmail.com)
+# @author: Linus Fernandes(linusfernandes @gmail.com)
 # @file: formatandlint
-## @created: Wed 25 Sep 2019.
+# @created: Wed 25 Sep 2019.
 # @copyright: Copyright(c) Linus Fernandes
-## @description:
+# @description: Format and lint Python project
 ######################################################################
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+script_dir="$(dirname "$(realpath -s "${BASH_SOURCE[0]}")")"
+source "${script_dir}/require.sh" || {
+  printf "Error: Failed to source required file: %s/require.sh\n" "${script_dir}" >&2
+  exit 1
+}
+
 usage() {
   echo "usage: formatandlint dir"
   echo "dir - Project directory, must exist"
   exit 1
 }
-require() {
-  hash "$@" || exit 127
-}
-require autopep8 pep257 pylint prospector tee
+
+require autopep8 pep257 pylint prospector tee black
 
 proj="$1"
 declare -i SUCCESS=0
