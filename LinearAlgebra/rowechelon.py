@@ -13,7 +13,7 @@ Rowechelon.
 import numpy as np
 
 # Function to get the position of pivot in a row
-def pivot_idx(r, i):
+def pivot_idx(r):
     nonZeroIdx = np.nonzero(r)[0]
     print(nonZeroIdx)
     print(len(r))
@@ -23,7 +23,7 @@ def pivot_idx(r, i):
 
 # Function to check if matrix is in ref
 def isREF(A):
-    pivotIdxs = np.array([pivot_idx(A[i, :], i) for i in range(A.shape[0])])
+    pivotIdxs = np.array([pivot_idx(A[i, :]) for i in range(A.shape[0])])
     print(pivotIdxs)
     if (np.ediff1d(pivotIdxs) <= 0).any():
         return False
