@@ -33,9 +33,9 @@ def validate_rules(rules):
         dist = {node: 0 for node in nodes}
         for _ in range(len(nodes)):
             updated = False
-            for u, v, w in edges:
-                if dist[v] > dist[u] + w:
-                    dist[v] = dist[u] + w
+            for u, v, weight in edges:
+                if dist[v] > dist[u] + weight:
+                    dist[v] = dist[u] + weight
                     updated = True
             if not updated:
                 return True
