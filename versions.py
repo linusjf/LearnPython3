@@ -1,29 +1,49 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
+"""Display versions of key Python scientific computing packages."""
+
 import sys
+from typing import Dict
+import importlib
 
-print("sys: %s" % sys.version)
-# scipy
-import scipy
+def get_package_versions() -> Dict[str, str]:
+    """Get versions of installed scientific computing packages.
+    
+    Returns:
+        Dictionary mapping package names to their version strings.
+    """
+    packages = {
+        'sys': None,  # Special case for Python version
+        'scipy': None,
+        'numpy': None,
+        'matplotlib': None,
+        'pandas': None,
+        'statsmodels': None,
+        'sklearn': None
+    }
+    
+    versions = {}
+    for pkg in packages:
+        if pkg == 'sys':
+            versions[pkg] = sys.version.split()[0]
+        else:
+            try:
+                module = importlib.import_module(pkg)
+                versions[pkg] = getattr(module, '__version__', 'unknown')
+            except ImportError:
+                versions[pkg] = 'not installed'
+    
+    return versions
 
-print("scipy: %s" % scipy.__version__)
-# numpy
-import numpy
+def print_versions(versions: Dict[str, str]) -> None:
+    """Print package versions in a consistent format.
+    
+    Args:
+        versions: Dictionary of package names and versions
+    """
+    max_len = max(len(pkg) for pkg in versions)
+    for pkg, ver in versions.items():
+        print(f"{pkg.ljust(max_len)}: {ver}")
 
-print("numpy: %s" % numpy.__version__)
-# matplotlib
-import matplotlib
-
-print("matplotlib: %s" % matplotlib.__version__)
-# pandas
-import pandas
-
-print("pandas: %s" % pandas.__version__)
-# statsmodels
-import statsmodels
-
-print("statsmodels: %s" % statsmodels.__version__)
-# scikit-learn
-import sklearn
-
-print("sklearn: %s" % sklearn.__version__)
+if __name__ == '__main__':
+    versions = get_package_versions()
+    print_versions(versions)
