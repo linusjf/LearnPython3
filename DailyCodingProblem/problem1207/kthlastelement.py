@@ -4,6 +4,9 @@ To solve this problem in one pass and constant space, we can use two pointers th
 
 Here's a Python implementation:
 """
+import logging
+logging.basicConfig(level=logging.WARNING)
+
 
 class ListNode:
     val: object
@@ -19,8 +22,10 @@ def remove_kth_last(head, k):
     second = dummy
 
     for _ in range(k + 1):
-        assert second.next is not None
-        second = second.next
+      if not second:
+        logging.warning("k (%d) is larger than list length", k)
+        return head
+      second = second.next
 
     while second:
         assert first.next is not None
@@ -53,6 +58,9 @@ head = remove_kth_last(head, 2)
 print("List after removing the 2nd last element:")
 print_list(head)
 
+head = remove_kth_last(head, 8)
+print("List after attempting removing the 8th last element:")
+print_list(head)
 """
 In this implementation, the `remove_kth_last` function uses two pointers to find the kth last element in the list and removes it. The `print_list` function is used to print the elements of the linked list.
 
