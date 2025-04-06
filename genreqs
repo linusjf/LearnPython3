@@ -1,8 +1,88 @@
 #!/usr/bin/env bash
-require() {
-  hash "$@" || exit 127
+#
+# Generate Python requirements files for all directories
+# Scans top-level directories starting with uppercase letters and current directory
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+readonly VERSION="1.0.0"
+readonly SCRIPT_DIR="$(dirname "$(realpath -s "${BASH_SOURCE[0]}")")"
+
+# Source dependencies
+source "${SCRIPT_DIR}/require.sh" || {
+  printf "Error: Failed to source required file: %s/require.sh\n" "${SCRIPT_DIR}" >&2
+  exit 1
 }
-require find pipreqs parallel
-find . -maxdepth 1 -type d -name "[[:upper:]]*" |
-  parallel pipreqs {} --force
-pipreqs . --force
+
+function usage() {
+  cat << EOF
+Usage: ${0##*/} [options]
+Generate Python requirements files using pipreqs
+
+Options:
+  -h, --help     Show this help message
+  -v, --version  Show version information
+  -q, --quiet    Suppress output
+  --debug        Enable debug mode
+
+Examples:
+  ${0##*/}          # Generate requirements for all directories
+  ${0##*/} --quiet  # Run quietly
+EOF
+}
+
+function version() {
+  printf "%s\n" "$VERSION"
+}
+
+function main() {
+  local quiet=false
+  local debug=false
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -h | --help)
+        usage
+        exit 0
+        ;;
+      -v | --version)
+        version
+        exit 0
+        ;;
+      -q | --quiet) quiet=true ;;
+      --debug)
+        debug=true
+        set -x
+        ;;
+      *)
+        printf "Error: Invalid option: %s\n" "$1" >&2
+        usage
+        exit 1
+        ;;
+    esac
+    shift
+  done
+
+  require find
+  require pipreqs
+  require parallel
+
+  if [[ "$debug" = false ]] && [[ "$quiet" = false ]]; then
+    printf "Generating requirements files...\n"
+  fi
+
+  find . -maxdepth 1 -type d -name "[[:upper:]]*" \
+    | parallel --will-cite pipreqs {} --force
+
+  pipreqs . --force
+
+  if [[ "$debug" = false ]] && [[ "$quiet" = false ]]; then
+    printf "Done.\n"
+  fi
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi

@@ -1,10 +1,37 @@
 #!/usr/bin/env bash
-require() {
-hash "$@" || exit 127;
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+script_dir="$(dirname "$(realpath -s "${BASH_SOURCE[0]}")")"
+source "${script_dir}/require.sh" || {
+  printf "Error: Failed to source required file: %s/require.sh\n" "${script_dir}" >&2
+  exit 1
 }
-require mkdir find parallel cp
-mkdir -p "${HOME}/storage/downloads/Pydocs"
-find . -name "*.xlsx" | parallel -I% --max-args 1 cp % "${HOME}/storage/downloads/Pydocs"
-find . -name "*.csv" | parallel -I% --max-args 1 cp % "${HOME}/storage/downloads/Pydocs"
-find . -name "*.docx" | parallel -I% --max-args 1 cp % "${HOME}/storage/downloads/Pydocs"
-find . -name "*.pptx" | parallel -I% --max-args 1 cp % "${HOME}/storage/downloads/Pydocs"
+
+require mkdir
+require find
+require parallel
+require cp
+
+if [[ -d "/data/data/com.termux" ]]; then
+  # Termux Android
+  docs_dir="${HOME}/storage/downloads/Pydocs/"
+elif [[ -f "/etc/arch-release" ]]; then
+  # Arch Linux
+  docs_dir="${HOME}/downloads/Pydocs/"
+elif [[ -f "/etc/lsb-release" ]] && grep -q "Ubuntu" /etc/lsb-release; then
+  # Ubuntu
+  docs_dir="${HOME}/downloads/Pydocs/"
+else
+  # Default case
+  docs_dir="${HOME}/downloads/Pydocs/"
+fi
+
+mkdir -p "${docs_dir}"
+
+find . -name "*.xlsx" | parallel -I% --max-args 1 cp % "${docs_dir}"
+find . -name "*.csv" | parallel -I% --max-args 1 cp % "${docs_dir}"
+find . -name "*.docx" | parallel -I% --max-args 1 cp % "${docs_dir}"
+find . -name "*.pptx" | parallel -I% --max-args 1 cp % "${docs_dir}"
