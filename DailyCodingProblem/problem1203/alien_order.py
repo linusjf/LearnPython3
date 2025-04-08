@@ -63,3 +63,8 @@ words = ['abc', 'abd']
 # First difference: 'c' < 'd'
 # Expected output: ['a', 'b', 'c', 'd']
 print(f"{alien_order(words)}\n")
+
+words = ['bat', 'cat', 'fat']
+# First difference: 'c' < 'd'
+# Expected output: ['a', 'b', 'c', 'd']
+print(f"{alien_order(words)}\n")

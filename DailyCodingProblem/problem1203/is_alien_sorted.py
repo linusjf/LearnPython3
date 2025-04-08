@@ -26,3 +26,7 @@ words: List[str] = List(['xww', 'wxyz', 'wxyw', 'ywx', 'ywz'])
 order="xzwy"
 sol = Solution()
 print(sol.isAlienSorted(words,order))
+
+words: List[str] = List(['abc', 'bcd', 'cde'])
+order="adebc"
+print(sol.isAlienSorted(words,order))
