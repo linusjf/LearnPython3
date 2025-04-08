@@ -30,3 +30,7 @@ print(sol.isAlienSorted(words,order))
 words: List[str] = List(['abc', 'bcd', 'cde'])
 order="adebc"
 print(sol.isAlienSorted(words,order))
+
+words: List[str] = List(['bat', 'cat', 'fat'])
+order='batcf'
+print(sol.isAlienSorted(words,order))
