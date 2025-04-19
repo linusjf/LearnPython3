@@ -34,7 +34,7 @@ seaborn==0.13.0
 statsmodels==0.14.0
 sympy==1.12
 timebudget==0.7.1
-tornado==6.3.3
+tornado==6.4.1
 twython==3.9.1
 xgboost==2.0.1
 xlsxwriter==3.1.9
