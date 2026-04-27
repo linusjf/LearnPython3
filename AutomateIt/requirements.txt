@@ -5,7 +5,7 @@ fpdf==1.7.2
 google_api_python_client==2.106.0
 google_auth_oauthlib==1.1.0
 httplib2==0.22.0
-lxml==4.9.2
+lxml==4.9.4
 openpyxl==3.1.2
 pandas==1.5.3
 protobuf==4.25.1
